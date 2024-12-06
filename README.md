@@ -1,8 +1,8 @@
 ## Integrantes
 - Caio César Moraes Costa
-- <preencher>
-- <preencher>
-- <preencher>
+- Rafic Alves Magalhães Farah Leão
+- Leonardo Barreto Gaiao
+- Vinicius de Alcantara Garrido
 
 ## Estrutura do repositório
 - **bin:** Arquivos binários finais (Windows & Linux)
