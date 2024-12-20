@@ -92,7 +92,8 @@ Board::~Board()
 {
     for (uint i = 0; i < this->board.size(); i++)
     {
-        delete this->board[i];
+        if(this->board[i] != nullptr)
+            delete this->board[i];
     }
     this->board.clear();
 }
