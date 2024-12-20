@@ -4,9 +4,13 @@ Vec2 Piece::GetPosition()
 {
     return this->position;
 }
-Vec2 Piece::SetPosition(Vec2 new_position)
+void Piece::SetPosition(Vec2 new_position)
 {
     this->position = new_position;
+}
+uint Piece::GetPlayerId()
+{
+    return this->player_id;
 }
 Piece::Piece()
 {
