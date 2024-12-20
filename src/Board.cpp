@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include <iostream>
 
 uint Board::Vec2ToIndex(Vec2 position)
 {
@@ -47,6 +48,35 @@ bool Board::AddPiece(Piece* piece_ptr)
 
     this->board[Vec2ToIndex(piece_position)] = piece_ptr;
     return true;
+}
+void Board::Draw()
+{
+    using std::cout;
+    using std::endl;
+    uint current_piece = 0;
+
+    for (uint i = 0; i < this->board_size.y; i++)
+    {
+        for (uint j = 0; j < this->board_size.x; j++)
+        {
+            cout << " ";
+            if(this->board[Vec2ToIndex(Vec2{j, i})] == nullptr)
+                cout << " ";
+            else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetPlayerId();
+            cout << " ";
+
+            if(j < this->board_size.x - 1)
+                cout << '|';
+        }
+        cout << endl;
+
+        if(i < this->board_size.y - 1)
+        {
+            for (uint j = 0; j < (this->board_size.x * 3) + (this->board_size.x - 1); j++)
+                cout << "=";
+            cout << endl;
+        }
+    }
 }
 Board::Board()
 {

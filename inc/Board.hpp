@@ -19,6 +19,8 @@ public:
     bool MovePiece(Vec2 position, Vec2 new_position);
     bool AddPiece(Piece* piece_ptr);
 
+    virtual void Draw();
+
     Board();
     Board(Vec2 _size);
     ~Board();
