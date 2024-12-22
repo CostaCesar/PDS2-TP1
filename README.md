@@ -13,3 +13,11 @@
 
 ## Terminologia
 *dummy-file* é um arquivo vazio, criado para forçar a estrutura de diretório no repositório. Serão apagados quando o projeto estiver concluido
+
+## Andamento
+
+- **Tabuleiro base:** Caio César Moraes Costa
+- **Jogo da velha:** Vinicius de Alcantara Garrido
+- **Lig4:** Leonardo Barreto Gaiao
+- **Reversi:** Caio César Moraes Costa
+- **Sistema de jogador**: Rafic Alves Magalhães Farah Leão
