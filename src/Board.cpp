@@ -96,4 +96,4 @@ Board::~Board()
             delete this->board[i];
     }
     this->board.clear();
-} //teste
+} //Só um teste para aprender a usar
