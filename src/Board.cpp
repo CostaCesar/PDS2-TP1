@@ -5,26 +5,37 @@ uint Board::Vec2ToIndex(Vec2 position)
 {
     return (position.y * this->board_size.x) + position.x;
 }
-bool Board::CheckPosition(Vec2 position)
+bool Board::IsInsideBoard(Vec2 position)
 {
     return (position.x < this->board_size.x) && (position.y < this->board_size.y);
 }
-bool Board::HandleOverlap(Vec2 position, Vec2 new_position)
+Piece* Board::GetPiece(Vec2 position)
+{
+    if(IsInsideBoard(position) == false)
+        return nullptr;
+
+    return this->board[Vec2ToIndex(position)];
+}
+bool Board::HandleOverlap_Move(Vec2 position, Vec2 new_position)
+{
+    return false;
+}
+bool Board::HandleOverlap_Add(Vec2 position, Vec2 new_position)
 {
     return false;
 }
 bool Board::MovePiece(Vec2 position, Vec2 new_position)
 {
-    if(CheckPosition(position) == false)
+    if(IsInsideBoard(position) == false)
         return false;
-    if(CheckPosition(new_position) == false)
+    if(IsInsideBoard(new_position) == false)
         return false;
 
     if(this->board[Vec2ToIndex(position)] == NULL)
         return false;
     if(this->board[Vec2ToIndex(new_position)] != NULL)
     {
-        return HandleOverlap(position, new_position);
+        return HandleOverlap_Move(position, new_position);
     }
     else
     {
@@ -40,13 +51,26 @@ bool Board::AddPiece(Piece* piece_ptr)
         return false;
 
     Vec2 piece_position = piece_ptr->GetPosition();
-    if(CheckPosition(piece_position) == false)
+    if(IsInsideBoard(piece_position) == false)
         return false;
     
     if(this->board[Vec2ToIndex(piece_position)] != NULL)
         return false;
 
     this->board[Vec2ToIndex(piece_position)] = piece_ptr;
+    return true;
+}
+bool Board::DeletePiece(Vec2 position)
+{
+    if(IsInsideBoard(position) == false)
+        return false;
+
+    if(this->board[Vec2ToIndex(position)] == nullptr)
+        return false;
+
+    delete this->board[Vec2ToIndex(position)];
+    this->board[Vec2ToIndex(position)] = nullptr;
+
     return true;
 }
 void Board::Draw()
@@ -77,6 +101,10 @@ void Board::Draw()
             cout << endl;
         }
     }
+}
+Vec2 Board::GetSize()
+{
+    return this->board_size;
 }
 Board::Board()
 {

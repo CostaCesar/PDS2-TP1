@@ -13,13 +13,23 @@ private:
     vector<Piece*> board;
 
     uint Vec2ToIndex(Vec2 position);
-    bool CheckPosition(Vec2 position);
-    virtual bool HandleOverlap(Vec2 position, Vec2 new_position);
-public:
-    bool MovePiece(Vec2 position, Vec2 new_position);
-    bool AddPiece(Piece* piece_ptr);
+    bool IsInsideBoard(Vec2 position);
+    Piece* GetPiece(Vec2 position);
 
+protected:
+    virtual bool HandleOverlap_Move(Vec2 position, Vec2 new_position);
+    virtual bool HandleOverlap_Add(Vec2 position, Vec2 new_position);
+    virtual bool DeletePiece(Vec2 position);
+
+public:
+    Vec2 GetSize();
+
+    virtual bool MovePiece(Vec2 position, Vec2 new_position);
+    virtual bool AddPiece(Piece* piece_ptr);
     virtual void Draw();
+
+    virtual uint GetWinner() = 0;
+    virtual bool IsDraw() = 0;
 
     Board();
     Board(Vec2 _size);
