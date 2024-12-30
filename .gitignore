@@ -1,3 +1,5 @@
 .vscode/
 
-temp/*.o
+tmp/*.o
+bin/*
+!bin/Programa
