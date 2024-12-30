@@ -12,11 +12,13 @@ private:
     Vec2 board_size;
     vector<Piece*> board;
 
-    uint Vec2ToIndex(Vec2 position);
-    bool IsInsideBoard(Vec2 position);
-    Piece* GetPiece(Vec2 position);
 
 protected:
+    uint Vec2ToIndex(Vec2 position);
+    Vec2 IndexToVec2(uint index);
+    bool IsInsideBoard(Vec2 position);
+    Piece* GetPiece(Vec2 position);
+    
     virtual bool HandleOverlap_Move(Vec2 position, Vec2 new_position);
     virtual bool HandleOverlap_Add(Vec2 position, Vec2 new_position);
     virtual bool DeletePiece(Vec2 position);
@@ -33,5 +35,5 @@ public:
 
     Board();
     Board(Vec2 _size);
-    ~Board();
+    virtual ~Board();
 };

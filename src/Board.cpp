@@ -5,6 +5,13 @@ uint Board::Vec2ToIndex(Vec2 position)
 {
     return (position.y * this->board_size.x) + position.x;
 }
+Vec2 Board::IndexToVec2(uint index)
+{
+    return Vec2{
+        index % this->board_size.x, 
+        index / this->board_size.x
+    };
+}
 bool Board::IsInsideBoard(Vec2 position)
 {
     return (position.x < this->board_size.x) && (position.y < this->board_size.y);
