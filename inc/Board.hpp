@@ -13,6 +13,7 @@ private:
     vector<Piece*> board;
 
     uint Vec2ToIndex(Vec2 position);
+    Vec2 IndexToVec2(uint index);
     bool IsInsideBoard(Vec2 position);
     Piece* GetPiece(Vec2 position);
 
