@@ -10,12 +10,10 @@ class Board
 {
 private:
     Vec2 board_size;
-    vector<Piece*> board;
+    vector<vector<Piece*>> board;
 
 
 protected:
-    uint Vec2ToIndex(Vec2 position);
-    Vec2 IndexToVec2(uint index);
     bool IsInsideBoard(Vec2 position);
     Piece* GetPiece(Vec2 position);
     
