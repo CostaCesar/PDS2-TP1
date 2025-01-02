@@ -31,5 +31,8 @@ Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
 Board.o: $(SRC_PATH)/Board.cpp $(INC_PATH)/Board.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Board.cpp -o $(OBJ_PATH)/Board.o -I$(INC_PATH)
 
+JogoVelha.o: $(INC_PATH)/Board.hpp $(SRC_PATH)/Velha.cpp $(INC_PATH)/Velha.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Velha.cpp -o $(OBJ_PATH)/Velha.o -I$(INC_PATH)
+
 test_board: Board.o Piece.o $(TST_PATH)/Board_Test.cpp
 	$(CXX) $(CXXFLAGS) $(TST_PATH)/Board_Test.cpp $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Board_Test -I$(INC_PATH)
