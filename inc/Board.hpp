@@ -26,10 +26,11 @@ public:
 
     virtual bool MovePiece(Vec2 position, Vec2 new_position);
     virtual bool AddPiece(Piece* piece_ptr);
+    
     virtual void Draw();
-
     virtual uint GetWinner() = 0;
     virtual bool IsDraw() = 0;
+    virtual uint Play() = 0;
 
     Board();
     Board(Vec2 _size);
