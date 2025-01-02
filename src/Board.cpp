@@ -1,12 +1,27 @@
 #include "Board.hpp"
 #include <iostream>
 
+uint Board::Vec2ToIndex(Vec2 position)
+{
+    return (position.y * this->board_size.x) + position.x;
+}
+Vec2 Board::IndexToVec2(uint index)
+{
+    return Vec2{
+        index % this->board_size.x, 
+        index / this->board_size.x
+    };
+}
+bool Board::IsInsideBoard(Vec2 position)
+{
+    return (position.x < this->board_size.x) && (position.y < this->board_size.y);
+}
 Piece* Board::GetPiece(Vec2 position)
 {
     if(IsInsideBoard(position) == false)
         return nullptr;
 
-    return this->board[position.x][position.y];
+    return this->board[Vec2ToIndex(position)];
 }
 bool Board::HandleOverlap_Move(Vec2 position, Vec2 new_position)
 {
@@ -23,17 +38,17 @@ bool Board::MovePiece(Vec2 position, Vec2 new_position)
     if(IsInsideBoard(new_position) == false)
         return false;
 
-    if(this->board[position.x][position.y] == NULL)
+    if(this->board[Vec2ToIndex(position)] == NULL)
         return false;
-    if(this->board[position.x][position.y] != NULL)
+    if(this->board[Vec2ToIndex(new_position)] != NULL)
     {
         return HandleOverlap_Move(position, new_position);
     }
     else
     {
-        this->board[new_position.x][new_position.y] = this->board[position.x][position.y];
-        this->board[new_position.x][new_position.y]->SetPosition(new_position);
-        this->board[position.x][position.y] = NULL;
+        this->board[Vec2ToIndex(new_position)] = this->board[Vec2ToIndex(position)];
+        this->board[Vec2ToIndex(new_position)]->SetPosition(new_position);
+        this->board[Vec2ToIndex(position)] = NULL;
     }
     return true;
 }
@@ -46,10 +61,10 @@ bool Board::AddPiece(Piece* piece_ptr)
     if(IsInsideBoard(piece_position) == false)
         return false;
     
-    if(this->board[piece_position.x][piece_position.y] != NULL)
+    if(this->board[Vec2ToIndex(piece_position)] != NULL)
         return false;
 
-    this->board[piece_position.x][piece_position.y] = piece_ptr;
+    this->board[Vec2ToIndex(piece_position)] = piece_ptr;
     return true;
 }
 bool Board::DeletePiece(Vec2 position)
@@ -57,11 +72,11 @@ bool Board::DeletePiece(Vec2 position)
     if(IsInsideBoard(position) == false)
         return false;
 
-    if(this->board[position.x][position.y] == nullptr)
+    if(this->board[Vec2ToIndex(position)] == nullptr)
         return false;
 
-    delete this->board[position.x][position.y];
-    this->board[position.x][position.y] = nullptr;
+    delete this->board[Vec2ToIndex(position)];
+    this->board[Vec2ToIndex(position)] = nullptr;
 
     return true;
 }
@@ -76,9 +91,9 @@ void Board::Draw()
         for (uint j = 0; j < this->board_size.x; j++)
         {
             cout << " ";
-            if(this->board[j][i] == nullptr)
+            if(this->board[Vec2ToIndex(Vec2{j, i})] == nullptr)
                 cout << " ";
-            else cout << this->board[j][i]->GetPlayerId();
+            else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetPlayerId();
             cout << " ";
 
             if(j < this->board_size.x - 1)
@@ -101,21 +116,19 @@ Vec2 Board::GetSize()
 Board::Board()
 {
     this->board_size = Vec2{0, 0};
-    this->board = vector<vector<Piece*>>();
+    this->board = vector<Piece*>();
 }
 Board::Board(Vec2 _size)
 {
     this->board_size = _size;
-    this->board = vector<vector<Piece*>>(_size.x, vector<Piece*>(_size.y, nullptr));
+    this->board = vector<Piece*>(Vec2ToIndex(_size), nullptr);
 }
 Board::~Board()
 {
-    for (uint i = 0; i < this->GetSize().x; i++){
-        for (uint j = 0; j < this->GetSize().y; j++){
-        
-            if(this->board[i][j] != nullptr)
-                delete this->board[i][j];
-    }
+    for (uint i = 0; i < this->board.size(); i++)
+    {
+        if(this->board[i] != nullptr)
+            delete this->board[i];
     }
     this->board.clear();
 }
