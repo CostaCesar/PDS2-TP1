@@ -22,6 +22,10 @@ public:
     {
         return IndexToVec2(index);
     }
+    uint Play()
+    {
+        return 0;
+    }
     
     BoardTest(uint _x, uint _y)
     : Board(Vec2{_x, _y})
