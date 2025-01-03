@@ -84,7 +84,6 @@ void Board::Draw()
 {
     using std::cout;
     using std::endl;
-    uint current_piece = 0;
 
     for (uint i = 0; i < this->board_size.y; i++)
     {
@@ -93,7 +92,7 @@ void Board::Draw()
             cout << " ";
             if(this->board[Vec2ToIndex(Vec2{j, i})] == nullptr)
                 cout << " ";
-            else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetPlayerId();
+            else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetSymbol();
             cout << " ";
 
             if(j < this->board_size.x - 1)
