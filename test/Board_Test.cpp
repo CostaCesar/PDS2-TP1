@@ -52,10 +52,10 @@ TEST_CASE("Board Creation")
     bool reverse = object->Test_IndexToVec2(73) == Vec2{3,7};
     CHECK(reverse == true);
 
-    Piece* piece_a = new Piece(Vec2{1,1});
+    Piece* piece_a = new Piece(Vec2{1,1}, 1, 'A');
     CHECK(alias->AddPiece(piece_a) == true);
 
-    Piece* piece_b = new Piece(Vec2{1,1});
+    Piece* piece_b = new Piece(Vec2{1,1}, 2);
     CHECK(alias->AddPiece(piece_b) == false);
     piece_b->SetPosition(Vec2{2,2});
     CHECK(alias->AddPiece(piece_b) == true);
@@ -67,6 +67,8 @@ TEST_CASE("Board Creation")
 
     CHECK(piece_a->GetPosition().x == 3);
     CHECK(piece_a->GetPosition().y == 3);
+
+    object->Draw();
 
     delete object;
 }
