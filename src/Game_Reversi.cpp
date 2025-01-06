@@ -42,28 +42,36 @@ bool Game_Reversi::March(Vec2 &position, uint direction)
 
 uint Game_Reversi::Play()
 {
-    this->current_player = (this->current_player % 2) + 1;
-    Draw();
-    std::cout << "\n";
-
-    Vec2 move;
-    while (1)
+    while (GetWinner() == 0)
     {
-        std::cout << "Move for player " << this->current_player << " <X Y>: ";
-        std::cout.flush();
+        if(IsDraw()) break;
 
-        std::cin >> move.x >> move.y;
-        Piece* play = new Piece(move, this->current_player);
-        if(AddPiece(play) == true)
-            break;
-        else
+        this->current_player = (this->current_player % 2) + 1;
+        
+        MarkAsPlayable();
+        Draw();
+        std::cout << "\n";
+
+        Vec2 move;
+        while (1)
         {
-            std::cout << "Invalid Play! [" << move.x << "X " << move.y << "Y]"<< std::endl;
-            delete play;
-        }
-    }
+            std::cout << "Move for player " << this->current_player << " <X Y>: ";
+            std::cout.flush();
 
-    return 0;
+            std::cin >> move.x >> move.y;
+            Piece* play = new Piece(move, this->current_player);
+            if(AddPiece(play) == true)
+                break;
+            else
+            {
+                std::cout << "Invalid Play! [" << move.x << "X " << move.y << "Y]"<< std::endl;
+                delete play;
+            }
+        }
+        this->num_plays--;
+    }
+    
+    return GetWinner();
 }
 bool Game_Reversi::IsDraw()
 {
@@ -99,6 +107,7 @@ bool Game_Reversi::AddPiece(Piece* new_piece)
     else if(this->current_player == 2)
         this->black_count++;
 
+    CalculateBorders(new_piece->GetPosition());
     CascadeMove(new_piece);
     return true;
 }
@@ -130,32 +139,18 @@ void Game_Reversi::CascadeMove(Piece *start_piece)
     }
 }
 
-void Game_Reversi::CalculateBorders()
+void Game_Reversi::CalculateBorders(Vec2 position)
 {
-    for (auto &&pos : this->border_tiles)
+    for(uint i = 0; i < 8; i++)
     {
-        // Filter empty tiles
-        if(GetPiece(pos) == nullptr) continue;
-        if(GetPiece(pos)->GetPlayerId() == 0) continue;
-
-        // Checking adjacent tiles to the current tile
-        // 0 = North -> 7 = North-West, Clockwise
-        for(uint i = 0; i < 8; i++)
-        {
-            Vec2 i_pos = PosFromDirec(pos, i);
-
-            if(GetPiece(i_pos) == nullptr)
-                border_tiles.push_back(i_pos);
-        }
+        Vec2 i_pos = PosFromDirec(position, i);
+        if(GetPiece(i_pos) == nullptr)
+            border_tiles.insert(i_pos);
     }
-
-    auto border_end = this->border_tiles.end();
-    for(auto i = this->border_tiles.begin(); i != border_end; i++)
-    {
-        if((GetPiece(*i) != nullptr) && GetPiece(*i)->GetPlayerId() != 0)
-            i = border_tiles.erase(i);
-    }
+    
+    this->border_tiles.erase(position);
 }
+
 void Game_Reversi::MarkAsPlayable()
 {
     for (auto &&pos : this->border_tiles)
@@ -186,8 +181,6 @@ void Game_Reversi::MarkAsPlayable()
 
 void Game_Reversi::Draw()
 {
-    CalculateBorders();
-    MarkAsPlayable();
     Board::Draw();
 
     // Score
@@ -197,7 +190,13 @@ void Game_Reversi::Draw()
 }
 
 Game_Reversi::Game_Reversi(uint _num_plays)
-: Board(Vec2{8, 8})
+:   Board(Vec2{8, 8}),
+    border_tiles
+    {   // Intial tiles for borders
+        Vec2{2,2}, Vec2{2,3}, Vec2{2,4}, Vec2{2,5},
+        Vec2{3,2}, Vec2{3,5}, Vec2{4,2}, Vec2{4,5},
+        Vec2{5,2}, Vec2{5,3}, Vec2{5,4}, Vec2{5,5}
+    }
 {
     // White Pieces
     Board::AddPiece(new Piece(Vec2{3,3}, 1, k_player1));
@@ -207,18 +206,8 @@ Game_Reversi::Game_Reversi(uint _num_plays)
     Board::AddPiece(new Piece(Vec2{3,4}, 2, k_player2));
     Board::AddPiece(new Piece(Vec2{4,3}, 2, k_player2));
 
-    // Borders
-    for(uint i = 2; i <= 5; i++)
-    {
-        for(uint j = 2; j <= 5; j++)
-        {
-            if(i == 2 || j == 2 || i == 5 || j == 5)
-                this->border_tiles.push_back(Vec2{j, i});
-        }
-    }
-
     this->black_count = this->white_count = 2;
-    this->num_plays = num_plays;
+    this->num_plays = _num_plays * 2;
     this->current_player = 1;
 }
 Game_Reversi::~Game_Reversi()

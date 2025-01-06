@@ -1,6 +1,19 @@
 #pragma once
 
 #include "Board.hpp"
+#include <unordered_set>
+using std::unordered_set;
+
+// Here because there's a unordered set of Vec2
+struct Vec2Hash
+{
+    size_t operator()(const Vec2& vec) const
+    {
+    size_t xHash = std::hash<int>()(vec.x);
+    size_t yHash = std::hash<int>()(vec.y) << 1;
+    return xHash ^ yHash;
+    }
+};
 
 class Game_Reversi : public Board
 {
@@ -14,7 +27,7 @@ private:
 
     uint num_plays;
     uint current_player;
-    vector<Vec2> border_tiles;
+    unordered_set<Vec2, Vec2Hash> border_tiles;
 
     bool AddPiece(Piece* new_piece);
     void Draw();
@@ -22,7 +35,7 @@ private:
     bool IsDraw() override;
 
     bool March(Vec2 &start_pos, uint direction);
-    void CalculateBorders();
+    void CalculateBorders(Vec2 position);
     void CascadeMove(Piece* start_piece);
     void MarkAsPlayable();
 
