@@ -12,6 +12,13 @@ uint Piece::GetPlayerId()
 {
     return this->player_id;
 }
+
+void Piece::ChangePlayerId(uint new_id){
+
+    this->player_id = new_id;
+
+}
+
 Piece::Piece()
 {
     this->position = Vec2{0, 0};
