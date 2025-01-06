@@ -1,4 +1,4 @@
-#include "Register.hpp"
+#include "Player.hpp"
 
 map<string, uint> Player::GetWins(string game)
 {
