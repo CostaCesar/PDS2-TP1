@@ -16,12 +16,53 @@ Vec2 PosFromDirec(Vec2 pos, uint direction)
     return pos;
 }
 
+bool Game_Reversi::March(Vec2 &position, uint direction)
+{
+    bool found_opponent = false;
+    while (IsInsideBoard(position))
+    {
+        position = PosFromDirec(position, direction);
+
+        // Checking for empty, end search if true
+        if (GetPiece(position) == nullptr)
+            break;
+        if (GetPiece(position)->GetPlayerId() == 0)
+            break;
+
+        if (GetPiece(position)->GetPlayerId() == (this->current_player % 2) + 1)
+        { // Oposing piece, continue searching
+            found_opponent = true;
+            continue;
+        }
+        // Same piece, end search
+        else return (found_opponent == true);
+    }
+    return false;
+}
+
 uint Game_Reversi::Play()
 {
-    Draw();
     this->current_player = (this->current_player % 2) + 1;
-    std::cout << "\n";
     Draw();
+    std::cout << "\n";
+
+    Vec2 move;
+    while (1)
+    {
+        std::cout << "Move for player " << this->current_player << " <X Y>: ";
+        std::cout.flush();
+
+        std::cin >> move.x >> move.y;
+        Piece* play = new Piece(move, this->current_player);
+        if(AddPiece(play) == true)
+            break;
+        else
+        {
+            std::cout << "Invalid Play! [" << move.x << "X " << move.y << "Y]"<< std::endl;
+            delete play;
+        }
+    }
+
     return 0;
 }
 bool Game_Reversi::IsDraw()
@@ -36,12 +77,14 @@ uint Game_Reversi::GetWinner()
 }
 bool Game_Reversi::AddPiece(Piece* new_piece)
 {
+    // Must be a player move. Call Board::AddPiece() if you otherwise
     if(new_piece->GetPlayerId() == 1)
         new_piece->SetSymbol(k_player1);
     else if(new_piece->GetPlayerId() == 2)
         new_piece->SetSymbol(k_player2);
     else return false;
 
+    // Check if is a valid Reversi move
     Piece* at_board = this->GetPiece(new_piece->GetPosition());
     if(at_board == nullptr)
         return false;
@@ -49,12 +92,46 @@ bool Game_Reversi::AddPiece(Piece* new_piece)
         return false;
 
     DeletePiece(new_piece->GetPosition());
-    return Board::AddPiece(new_piece);
+    Board::AddPiece(new_piece);
+
+    if(this->current_player == 1)
+        this->white_count++;
+    else if(this->current_player == 2)
+        this->black_count++;
+
+    CascadeMove(new_piece);
+    return true;
 }
+void Game_Reversi::CascadeMove(Piece *start_piece)
+{
+    // Checking lines from the current tile
+    // 0 = North -> 7 = North-West, Clockwise
+    for (uint i = 0; i < 8; i++)
+    {
+        Vec2 i_pos = start_piece->GetPosition();
+        if(March(i_pos, i) == true)
+        {
+            // Go in reverse direction and change pieces
+            while (1)
+            {
+                i_pos = PosFromDirec(i_pos, (i + 4) % 8);
+                if(GetPiece(i_pos) == start_piece)
+                    break;
+
+                GetPiece(i_pos)->SetSymbol(start_piece->GetSymbol());
+                GetPiece(i_pos)->SetPlayerId(start_piece->GetPlayerId());
+
+                if(this->current_player == 1)
+                    this->white_count++, this->black_count--;
+                else if(this->current_player == 2)
+                    this->black_count++, this->white_count--;   
+            }
+        }
+    }
+}
+
 void Game_Reversi::CalculateBorders()
 {
-    auto border_end = this->border_tiles.end();
-
     for (auto &&pos : this->border_tiles)
     {
         // Filter empty tiles
@@ -72,6 +149,7 @@ void Game_Reversi::CalculateBorders()
         }
     }
 
+    auto border_end = this->border_tiles.end();
     for(auto i = this->border_tiles.begin(); i != border_end; i++)
     {
         if((GetPiece(*i) != nullptr) && GetPiece(*i)->GetPlayerId() != 0)
@@ -82,38 +160,14 @@ void Game_Reversi::MarkAsPlayable()
 {
     for (auto &&pos : this->border_tiles)
     {
-        bool valid;
+        bool valid = false;
+
         // Checking lines from the current tile
         // 0 = North -> 7 = North-West, Clockwise
         for(uint i = 0; i < 8; i++)
         {
-            bool found_same = false;
-            bool found_opponent = false;
-
-            valid = false;
             Vec2 i_pos = pos;
-            while (IsInsideBoard(i_pos))
-            {
-                i_pos = PosFromDirec(i_pos, i);
-
-                // Checking for empty, end search if true
-                if(GetPiece(i_pos) == nullptr)
-                    break;
-                if(GetPiece(i_pos)->GetPlayerId() == 0)
-                    break;
-
-                if(GetPiece(i_pos)->GetPlayerId() == (this->current_player % 2) + 1)
-                { // Oposing piece, continue searching
-                    found_opponent = true;
-                    continue;
-                }
-                else
-                { // Same piece, end search
-                    found_same = true;
-                    break;
-                }
-            }
-            if(found_opponent == true && found_same == true)
+            if(March(i_pos, i) == true)
             {
                 valid = true;
                 Piece* at_board = GetPiece(pos);
@@ -135,6 +189,11 @@ void Game_Reversi::Draw()
     CalculateBorders();
     MarkAsPlayable();
     Board::Draw();
+
+    // Score
+    std::cout << this->white_count << " " << this->k_player1;
+    std::cout << " v.s "; 
+    std::cout << this->black_count << " " << this->k_player2 << std::endl;
 }
 
 Game_Reversi::Game_Reversi(uint _num_plays)

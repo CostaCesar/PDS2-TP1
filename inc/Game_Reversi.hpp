@@ -17,17 +17,19 @@ private:
     vector<Vec2> border_tiles;
 
     bool AddPiece(Piece* new_piece);
-    uint GetWinner();
-    bool IsDraw();
     void Draw();
+    uint GetWinner() override;
+    bool IsDraw() override;
 
-    //bool IsValidForPlay(uint player_id, Vec2 position);
+    bool March(Vec2 &start_pos, uint direction);
     void CalculateBorders();
+    void CascadeMove(Piece* start_piece);
+    void MarkAsPlayable();
+
 public:
     uint Play();
 
     Game_Reversi(uint _num_plays = 30);
     ~Game_Reversi();
 
-    void MarkAsPlayable();
 };

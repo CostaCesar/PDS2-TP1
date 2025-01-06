@@ -8,6 +8,9 @@ TEST_CASE("Reversi Creation")
 
     object->Play();
     object->Play();
+    object->Play();
+    object->Play();
+    object->Play();
 
     delete object;
 }
