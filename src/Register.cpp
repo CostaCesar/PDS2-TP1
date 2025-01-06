@@ -1,19 +1,34 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 
-using std::cin;
-using std::cout;
-using std::ofstream, std::ifstream;
+using std::ofstream, std::ifstream, std::string, std::stringstream;
 
-int check_player() {
-    ifstream csv;
-    std::string valor;
-    while (getline())
+int playerExists (string& nome_arquivo, string& nickname) {
+    ifstream csv(nome_arquivo);
+    string linha;
+    
+    while (std::getline(csv, linha)) {
+        stringstream ss(linha);
+        string valor;
+
+        while (std::getline(ss, valor, ',')) {
+            if (valor == nickname) {
+                csv.close();
+                return 1;
+            }
+        }
+    }
+    return 0;
 }
 
-void register(string nome, string nickname) {
+void registerPlayer(string nome, string nickname) {
+    string arquivo = "cadastro.csv"; 
     ofstream csv;
-    csv.open("./data/cadastro.csv", std::fstream::in);
-    csv << nome << "," << nickname << "," << "0" << "," << "0" << "/n";
+
+    csv.open(arquivo, std::fstream::app);
+    if (!playerExists (arquivo, nickname)) {
+        csv << nome << "," << nickname << "," << "0" << "," << "0" << std::endl;
+    }
 }
