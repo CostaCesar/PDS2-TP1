@@ -28,7 +28,7 @@ clean:
 Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Piece.cpp -o $(OBJ_PATH)/Piece.o -I$(INC_PATH)
 
-Board.o: $(SRC_PATH)/Board.cpp $(INC_PATH)/Board.hpp
+Board.o: $(SRC_PATH)/Board.cpp $(INC_PATH)/Board.hpp $(INC_PATH)/Direction.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Board.cpp -o $(OBJ_PATH)/Board.o -I$(INC_PATH)
 
 test_board: Board.o Piece.o $(TST_PATH)/Board_Test.cpp
