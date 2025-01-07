@@ -5,11 +5,18 @@
 #include <sstream>
 #include <vector>
 
-using std::ofstream, std::ifstream, std::string, std::stringstream,
-      std::vector;
+using
+    std::ofstream,
+    std::ifstream,
+    std::string,
+    std::stringstream,
+    std::vector;
 
-int playerExists (string nome_arquivo, string nickname) {
-    ifstream csv(nome_arquivo);
+
+const string NOME_ARQ = "./src/cadastro.csv";
+
+int playerExists (string NOME_ARQ, string nickname) {
+    ifstream csv(NOME_ARQ);
     string linha;
     
     while (std::getline(csv, linha)) {
@@ -27,13 +34,12 @@ int playerExists (string nome_arquivo, string nickname) {
 }
 
 int registerPlayer(string nickname, string name) {
-    string arquivo = "cadastro.csv"; 
     ofstream csv;
 
-    csv.open(arquivo, std::fstream::app);
+    csv.open(NOME_ARQ, std::fstream::app);
 
-    if (!playerExists (arquivo, nickname)) {
-        csv << name << "," << nickname << "," << "0" << "," << "0" << std::endl;
+    if (!playerExists (NOME_ARQ, nickname)) {
+        csv << name << "," << nickname << "," << "0" << "," << "0" << "," << "0" << "," << "0" << "0" << "," << "0" << std::endl;
     } else {
         return 1;
     }
@@ -44,10 +50,9 @@ int registerPlayer(string nickname, string name) {
 }
 
 int deletePlayer(string nickname) {
-    string arquivo = "cadastro.csv";
     ifstream csv;
 
-    csv.open(arquivo, std::fstream::in);
+    csv.open(NOME_ARQ, std::fstream::in);
     
     vector<string> linhas;
     string linha;
@@ -79,7 +84,7 @@ int deletePlayer(string nickname) {
     }
 
     ofstream updated_csv;
-    updated_csv.open(arquivo, std::fstream::trunc);
+    updated_csv.open(NOME_ARQ, std::fstream::trunc);
     
     for (auto updated_linha : linhas) {
         updated_csv << updated_linha << std::endl;
