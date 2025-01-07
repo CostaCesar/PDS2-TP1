@@ -56,6 +56,7 @@ uint Game_Reversi::Play()
         this->num_plays--;
     }
     
+    Draw();
     return GetWinner();
 }
 bool Game_Reversi::IsDraw()
