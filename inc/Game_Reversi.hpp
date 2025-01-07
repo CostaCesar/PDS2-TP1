@@ -37,7 +37,7 @@ private:
     bool March(Vec2 &start_pos, uint direction);
     void CalculateBorders(Vec2 position);
     void CascadeMove(Piece* start_piece);
-    void MarkAsPlayable();
+    uint MarkAsPlayable();
 
 public:
     uint Play();

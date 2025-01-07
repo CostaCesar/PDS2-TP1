@@ -33,9 +33,11 @@ uint Game_Reversi::Play()
 
         this->current_player = (this->current_player % 2) + 1;
         
-        MarkAsPlayable();
-        Draw();
+        // No valid plays, skip to next player
+        if(MarkAsPlayable() == 0)
+            continue;
 
+        Draw();
         Vec2 move;
         while (1)
         {
@@ -134,8 +136,9 @@ void Game_Reversi::CalculateBorders(Vec2 position)
     this->border_tiles.erase(position);
 }
 
-void Game_Reversi::MarkAsPlayable()
+uint Game_Reversi::MarkAsPlayable()
 {
+    uint valid_plays = 0;
     for (auto &&pos : this->border_tiles)
     {
         bool valid = false;
@@ -148,6 +151,8 @@ void Game_Reversi::MarkAsPlayable()
             if(March(i_pos, i) == true)
             {
                 valid = true;
+                valid_plays++;
+
                 Piece* at_board = GetPiece(pos);
                 if(at_board == nullptr)
                     Board::AddPiece(new Piece(pos, 0, k_available));
@@ -160,6 +165,7 @@ void Game_Reversi::MarkAsPlayable()
         if(!valid)
             DeletePiece(pos);
     }
+    return valid_plays;
 }
 
 void Game_Reversi::Draw()
