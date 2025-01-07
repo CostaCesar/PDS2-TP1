@@ -35,15 +35,13 @@ uint Game_Reversi::Play()
         
         MarkAsPlayable();
         Draw();
-        std::cout << "\n";
 
         Vec2 move;
         while (1)
         {
-            std::cout << "Move for player " << this->current_player << " <X Y>: ";
-            std::cout.flush();
-
+            std::cout << "Move for player " << this->current_player << " <X Y>: " << std::endl;
             std::cin >> move.x >> move.y;
+
             Piece* play = new Piece(move, this->current_player);
             if(AddPiece(play) == true)
                 break;
