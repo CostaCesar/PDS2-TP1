@@ -1,27 +1,12 @@
 #include "Game_Reversi.hpp"
 #include <iostream>
 
-Vec2 PosFromDirec(Vec2 pos, uint direction)
-{
-    if(direction <= 1 || direction == 7) // North
-        pos.y -= 1;
-    else if(direction >= 3 && direction <= 5) // South
-        pos.y += 1;
-
-    if(direction >= 1 && direction <= 3) // East
-        pos.x += 1;
-    else if(direction >= 5 && direction <= 7) // West
-        pos.x -= 1;
-
-    return pos;
-}
-
 bool Game_Reversi::March(Vec2 &position, uint direction)
 {
     bool found_opponent = false;
     while (IsInsideBoard(position))
     {
-        position = PosFromDirec(position, direction);
+        position = PosFromDirec(position, static_cast<Direction>(direction));
 
         // Checking for empty, end search if true
         if (GetPiece(position) == nullptr)
@@ -123,7 +108,7 @@ void Game_Reversi::CascadeMove(Piece *start_piece)
             // Go in reverse direction and change pieces
             while (1)
             {
-                i_pos = PosFromDirec(i_pos, (i + 4) % 8);
+                i_pos = PosFromDirec(i_pos, static_cast<Direction>((i + 4) % 8));
                 if(GetPiece(i_pos) == start_piece)
                     break;
 
@@ -143,7 +128,7 @@ void Game_Reversi::CalculateBorders(Vec2 position)
 {
     for(uint i = 0; i < 8; i++)
     {
-        Vec2 i_pos = PosFromDirec(position, i);
+        Vec2 i_pos = PosFromDirec(position, static_cast<Direction>(i));
         if(GetPiece(i_pos) == nullptr)
             border_tiles.insert(i_pos);
     }
