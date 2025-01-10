@@ -103,23 +103,43 @@ void Board::Draw()
     using std::cout;
     using std::endl;
 
+    // X-axis positions
+    cout << "   ";
+    for (uint i = 0; i < this->board_size.x; i++)
+    {
+        cout << "| " << i << " ";
+    }
+    cout << "\n+++";
+    for (uint i = 0; i < this->board_size.x; i++)
+    {
+        cout << "++++";
+    }
+    cout << endl;
+    
     for (uint i = 0; i < this->board_size.y; i++)
     {
+        // Y-axis positions
+        cout << " " << i << " +";
+
         for (uint j = 0; j < this->board_size.x; j++)
         {
+            // Actual Tiles
             cout << " ";
             if(this->board[Vec2ToIndex(Vec2{j, i})] == nullptr)
                 cout << " ";
             else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetSymbol();
             cout << " ";
 
+            // Vertical lines
             if(j < this->board_size.x - 1)
                 cout << '|';
         }
         cout << endl;
 
+        // Horizontal lines
         if(i < this->board_size.y - 1)
         {
+            cout << "===+";
             for (uint j = 0; j < (this->board_size.x * 3) + (this->board_size.x - 1); j++)
                 cout << "=";
             cout << endl;
