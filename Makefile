@@ -35,7 +35,6 @@ test_reversi: $(BIN_PATH)/Reversi_Test
 clean:
 	rm $(OBJ_PATH)/*.o
 
-
 # good luck (don't) use these
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Piece.cpp -o $(OBJ_PATH)/Piece.o -I$(INC_PATH)
@@ -51,3 +50,11 @@ $(OBJ_PATH)/Game_Reversi.o: $(SRC_PATH)/Game_Reversi.cpp $(INC_PATH)/Game_Revers
 
 $(BIN_PATH)/Reversi_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Reversi.o $(TST_PATH)/Reversi_Test.cpp
 	$(CXX) $(CXXFLAGS) $(TST_PATH)/Reversi_Test.cpp $(OBJ_PATH)/Board.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Reversi_Test -I$(INC_PATH)
+
+# object bin TEMPLATE:
+# $(OBJ_PATH)/<example>.o: <required targets>
+#	$(CXX) $(CXXFLAGS) -c <required files> -o $(OBJ_PATH)/<example> -I$(INC_PATH)
+
+# final bin TEMPLATE:
+# $(BIN_PATH)/<example>: <required targets>
+#	$(CXX) $(CXXFLAGS) <required files> -o $(BIN_PATH)/<example> -I$(INC_PATH)
