@@ -1,6 +1,24 @@
 #include "Board.hpp"
+#include "Direction.hpp"
+
 #include <iostream>
 
+Vec2 Board::PosFromDirec(Vec2 pos, Direction direc)
+{
+    uint direction = static_cast<uint>(direc);
+
+    if(direction <= 1 || direction == 7) // North
+        pos.y -= 1;
+    else if(direction >= 3 && direction <= 5) // South
+        pos.y += 1;
+
+    if(direction >= 1 && direction <= 3) // East
+        pos.x += 1;
+    else if(direction >= 5 && direction <= 7) // West
+        pos.x -= 1;
+
+    return pos;
+}
 uint Board::Vec2ToIndex(Vec2 position)
 {
     return (position.y * this->board_size.x) + position.x;
@@ -27,7 +45,7 @@ bool Board::HandleOverlap_Move(Vec2 position, Vec2 new_position)
 {
     return false;
 }
-bool Board::HandleOverlap_Add(Vec2 position, Vec2 new_position)
+bool Board::HandleOverlap_Add(Vec2 position, Piece* new_piece)
 {
     return false;
 }
@@ -62,7 +80,7 @@ bool Board::AddPiece(Piece* piece_ptr)
         return false;
     
     if(this->board[Vec2ToIndex(piece_position)] != NULL)
-        return false;
+        return HandleOverlap_Add(piece_position, piece_ptr);
 
     this->board[Vec2ToIndex(piece_position)] = piece_ptr;
     return true;
@@ -84,30 +102,78 @@ void Board::Draw()
 {
     using std::cout;
     using std::endl;
-    uint current_piece = 0;
 
+    // X-axis positions
+    cout << "   ";
+    for (uint i = 0; i < this->board_size.x; i++)
+    {
+        cout << "| " << i << " ";
+    }
+    cout << "\n+++";
+    for (uint i = 0; i < this->board_size.x; i++)
+    {
+        cout << "++++";
+    }
+    cout << endl;
+    
     for (uint i = 0; i < this->board_size.y; i++)
     {
+        // Y-axis positions
+        cout << " " << i << " +";
+
         for (uint j = 0; j < this->board_size.x; j++)
         {
+            // Actual Tiles
             cout << " ";
             if(this->board[Vec2ToIndex(Vec2{j, i})] == nullptr)
                 cout << " ";
-            else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetPlayerId();
+            else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetSymbol();
             cout << " ";
 
+            // Vertical lines
             if(j < this->board_size.x - 1)
                 cout << '|';
         }
         cout << endl;
 
+        // Horizontal lines
         if(i < this->board_size.y - 1)
         {
+            cout << "===+";
             for (uint j = 0; j < (this->board_size.x * 3) + (this->board_size.x - 1); j++)
                 cout << "=";
             cout << endl;
         }
     }
+}
+
+// @return
+// 0 - Reached Board Limit
+// 1 - Reached Empty Position
+// 2 - Reached Another Player Piece
+// 3 - All Pieces Match
+uint Board::MatchUntilStep(Vec2 position, Direction direction, uint steps)
+{
+    if(GetPiece(position) == nullptr)
+        return 1;
+    uint base_id = GetPiece(position)->GetPlayerId();
+
+    for(uint i = 0; i < steps; i ++)
+    {
+        position = PosFromDirec(position, direction);
+        if (!IsInsideBoard(position))
+            return 0;
+
+        // Checking for empty, end search if true
+        if (GetPiece(position) == nullptr)
+            return 1;
+
+         // Oposing piece, end search
+        if (GetPiece(position)->GetPlayerId() != base_id)
+            return 2;
+    }
+    // Same piece, end search
+    return 3;
 }
 Vec2 Board::GetSize()
 {
