@@ -27,7 +27,7 @@ uint Liga4::Play() {
             continue;
         }
 
-        last_move = Vec2{0, column};
+        last_move = Vec2{row, column};
 
         if (CheckWin(current_player, last_move)) {
             game_over = true;
