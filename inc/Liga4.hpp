@@ -4,19 +4,19 @@
 
 class Liga4 : public Board {
 private:
+    bool game_over;
+    uint current_player;
 
-bool game_over;
-uint current_player;
-void SwitchPlayer();
+    void SwitchPlayer();
+    bool CheckDirection(uint x, uint y, int dx, int dy, uint player);
+    uint EmptyRow(uint colummn);
 
 public:
-
-Liga4(uint rows, uint cols); 
+    Liga4(uint rows, uint cols);
 
     bool MakeMove(uint column);
     uint GetWinner() override;
     bool IsDraw() override;
-    bool CheckWin(uint player_ID);
+    bool CheckWin(uint player_ID, const Vec2& last_move);
     uint Play() override;
-
 };

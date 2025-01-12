@@ -6,8 +6,7 @@ Liga4::Liga4(uint rows, uint cols) : Board(Vec2{rows, cols}) {
     game_over = false;
 }
 
-Liga4::~Liga4() {
-}
+Liga4::~Liga4() {}
 
 void Liga4::SwitchPlayer() {
     current_player = (current_player == 1) ? 2 : 1;
@@ -15,26 +14,25 @@ void Liga4::SwitchPlayer() {
 
 uint Liga4::Play() {
     uint column;
+    Vec2 last_move;
 
     while (!game_over) {
         Draw();
 
-        std::cout << "Jogador " << current_player << ", escolha uma coluna: ";
         std::cin >> column;
+        uint row = EmptyRow(column);
 
         if (!AddPiece(new Piece(Vec2{0, column}, current_player))) {
-            std::cout << "Coluna inválida ou cheia. Tente novamente." << std::endl;
+            std::cout << "ERRO: jogada inválida" << std::endl;
             continue;
         }
 
-        if (CheckWin(current_player)) {
-            game_over = true;
-            std::cout << "Jogador " << current_player << " venceu!" << std::endl;
-        }
+        last_move = Vec2{0, column};
 
-        else if (IsDraw()) {
+        if (CheckWin(current_player, last_move)) {
             game_over = true;
-            std::cout << "O jogo terminou em empate!" << std::endl;
+        } else if (IsDraw()) {
+            game_over = true;
         }
 
         if (!game_over) {
@@ -45,53 +43,46 @@ uint Liga4::Play() {
     return GetWinner();
 }
 
-bool Liga4::CheckWin(uint player) {
-
-    for (uint y = 0; y < GetSize().y; ++y) {
-        for (uint x = 0; x < GetSize().x - 3; ++x) {
-            if (GetPiece(Vec2{x, y}) != nullptr && GetPiece(Vec2{x, y})->GetPlayerId() == player &&
-                GetPiece(Vec2{x + 1, y}) != nullptr && GetPiece(Vec2{x + 1, y})->GetPlayerId() == player &&
-                GetPiece(Vec2{x + 2, y}) != nullptr && GetPiece(Vec2{x + 2, y})->GetPlayerId() == player &&
-                GetPiece(Vec2{x + 3, y}) != nullptr && GetPiece(Vec2{x + 3, y})->GetPlayerId() == player) {
-                return true;
-            }
+uint Liga4::EmptyRow(uint column) {
+    for (uint row = GetSize().y ; row > 0; --row) {
+        if (GetPiece(Vec2{row-1, column}) == nullptr) {
+            return row;
         }
     }
 
-    for (uint x = 0; x < GetSize().x; ++x) {
-        for (uint y = 0; y < GetSize().y - 3; ++y) {
-            if (GetPiece(Vec2{x, y}) != nullptr && GetPiece(Vec2{x, y})->GetPlayerId() == player &&
-                GetPiece(Vec2{x, y + 1}) != nullptr && GetPiece(Vec2{x, y + 1})->GetPlayerId() == player &&
-                GetPiece(Vec2{x, y + 2}) != nullptr && GetPiece(Vec2{x, y + 2})->GetPlayerId() == player &&
-                GetPiece(Vec2{x, y + 3}) != nullptr && GetPiece(Vec2{x, y + 3})->GetPlayerId() == player) {
-                return true;
-            }
+    return GetSize().y;
+}
+
+bool Liga4::CheckWin(uint player, const Vec2& last_move) {
+    uint x = last_move.x;
+    uint y = last_move.y;
+
+    for (int dx = -3; dx <= 3; ++dx) {
+        if (GetPiece(Vec2{x + dx, y}) != nullptr && GetPiece(Vec2{x + dx, y})->GetPlayerId() == player) {
+            if (CheckDirection(x, y, dx, 0, player)) return true;
         }
     }
 
-    for (uint x = 0; x < GetSize().x - 3; ++x) {
-        for (uint y = 0; y < GetSize().y - 3; ++y) {
-            if (GetPiece(Vec2{x, y}) != nullptr && GetPiece(Vec2{x, y})->GetPlayerId() == player &&
-                GetPiece(Vec2{x + 1, y + 1}) != nullptr && GetPiece(Vec2{x + 1, y + 1})->GetPlayerId() == player &&
-                GetPiece(Vec2{x + 2, y + 2}) != nullptr && GetPiece(Vec2{x + 2, y + 2})->GetPlayerId() == player &&
-                GetPiece(Vec2{x + 3, y + 3}) != nullptr && GetPiece(Vec2{x + 3, y + 3})->GetPlayerId() == player) {
-                return true;
-            }
+    for (int dy = -3; dy <= 3; ++dy) {
+        if (GetPiece(Vec2{x, y + dy}) != nullptr && GetPiece(Vec2{x, y + dy})->GetPlayerId() == player) {
+            if (CheckDirection(x, y, 0, dy, player)) return true;
         }
     }
 
-    for (uint x = 0; x < GetSize().x - 3; ++x) {
-        for (uint y = 3; y < GetSize().y; ++y) {
-            if (GetPiece(Vec2{x, y}) != nullptr && GetPiece(Vec2{x, y})->GetPlayerId() == player &&
-                GetPiece(Vec2{x + 1, y - 1}) != nullptr && GetPiece(Vec2{x + 1, y - 1})->GetPlayerId() == player &&
-                GetPiece(Vec2{x + 2, y - 2}) != nullptr && GetPiece(Vec2{x + 2, y - 2})->GetPlayerId() == player &&
-                GetPiece(Vec2{x + 3, y - 3}) != nullptr && GetPiece(Vec2{x + 3, y - 3})->GetPlayerId() == player) {
-                return true;
-            }
-        }
-    }
+    if (CheckDirection(x, y, 1, 1, player)) return true;
+    if (CheckDirection(x, y, -1, 1, player)) return true;
 
     return false;
+}
+
+bool Liga4::CheckDirection(uint x, uint y, int dx, int dy, uint player) {
+    for (int i = 1; i < 4; ++i) {
+        if (GetPiece(Vec2{x + i * dx, y + i * dy}) == nullptr ||
+            GetPiece(Vec2{x + i * dx, y + i * dy})->GetPlayerId() != player) {
+            return false;
+        }
+    }
+    return true;
 }
 
 bool Liga4::IsDraw() {
