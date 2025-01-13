@@ -24,13 +24,16 @@ TST_PATH := ./test
 # use these
 all: tests
 
-tests: test_board test_reversi
+tests: test_board test_reversi test_liga4
 	$(BIN_PATH)/Board_Test
 	$(BIN_PATH)/Reversi_Test
+	$(BIN_PATH)/Liga4_Test
 
 test_board: $(BIN_PATH)/Board_Test 
 
 test_reversi: $(BIN_PATH)/Reversi_Test
+
+test_liga4: $(BIN_PATH)/Liga4_Test
 
 clean:
 	rm $(OBJ_PATH)/*.o
@@ -49,5 +52,11 @@ $(BIN_PATH)/Board_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(TST_PATH)/Boar
 $(OBJ_PATH)/Game_Reversi.o: $(SRC_PATH)/Game_Reversi.cpp $(INC_PATH)/Game_Reversi.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Game_Reversi.cpp -o $(OBJ_PATH)/Game_Reversi.o -I$(INC_PATH)
 
+$(OBJ_PATH)/Liga4.o: $(SRC_PATH)/Liga4.cpp $(INC_PATH)/Liga4.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Liga4.cpp -o $(OBJ_PATH)/Liga4.o -I$(INC_PATH)
+
 $(BIN_PATH)/Reversi_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Reversi.o $(TST_PATH)/Reversi_Test.cpp
 	$(CXX) $(CXXFLAGS) $(TST_PATH)/Reversi_Test.cpp $(OBJ_PATH)/Board.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Reversi_Test -I$(INC_PATH)
+
+$(BIN_PATH)/Liga4_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Liga4.o $(TST_PATH)/Liga4_Test.cpp
+	$(CXX) $(CXXFLAGS) $(TST_PATH)/Liga4_Test.cpp $(OBJ_PATH)/Board.o $(OBJ_PATH)/Liga4.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Liga4_Test -I$(INC_PATH)
