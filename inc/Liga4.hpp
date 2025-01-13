@@ -4,8 +4,8 @@
 
 class Liga4 : public Board {
 private:
-    bool game_over;
     uint current_player;
+
 
     void SwitchPlayer();
     bool CheckDirection(uint x, uint y, int dx, int dy, uint player);
@@ -13,8 +13,8 @@ private:
 
 public:
     Liga4(uint rows, uint cols);
+    ~Liga4();
 
-    bool MakeMove(uint column);
     uint GetWinner() override;
     bool IsDraw() override;
     bool CheckWin(uint player_ID, const Vec2& last_move);

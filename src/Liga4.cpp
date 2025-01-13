@@ -3,7 +3,6 @@
 
 Liga4::Liga4(uint rows, uint cols) : Board(Vec2{rows, cols}) {
     current_player = 1;
-    game_over = false;
 }
 
 Liga4::~Liga4() {}
@@ -16,61 +15,57 @@ uint Liga4::Play() {
     uint column;
     Vec2 last_move;
 
-    while (!game_over) {
+    uint num_plays = GetSize().x * GetSize().y;
+
+    while (num_plays > 0)
+    {
         Draw();
 
         std::cin >> column;
         uint row = EmptyRow(column);
 
-        if (!AddPiece(new Piece(Vec2{0, column}, current_player))) {
+        last_move = Vec2{column, row};
+        Piece* piece = new Piece(last_move, current_player);
+
+        if (!AddPiece(piece)) {
             std::cout << "ERRO: jogada inválida" << std::endl;
+            delete piece;
             continue;
         }
 
-        last_move = Vec2{row, column};
+        if (CheckWin(current_player, last_move))
+            break;
 
-        if (CheckWin(current_player, last_move)) {
-            game_over = true;
-        } else if (IsDraw()) {
-            game_over = true;
-        }
-
-        if (!game_over) {
-            SwitchPlayer();
-        }
+        SwitchPlayer();
     }
 
+    Draw();
     return GetWinner();
 }
 
 uint Liga4::EmptyRow(uint column) {
     for (uint row = GetSize().y ; row > 0; --row) {
-        if (GetPiece(Vec2{row-1, column}) == nullptr) {
-            return row;
+        if (GetPiece(Vec2{column, row-1}) == nullptr) {
+            return row-1;
         }
     }
 
     return GetSize().y;
 }
 
+uint Liga4::GetWinner()
+{
+    if(IsDraw())
+        return 0;
+    else return current_player;
+}
+
 bool Liga4::CheckWin(uint player, const Vec2& last_move) {
-    uint x = last_move.x;
-    uint y = last_move.y;
-
-    for (int dx = -3; dx <= 3; ++dx) {
-        if (GetPiece(Vec2{x + dx, y}) != nullptr && GetPiece(Vec2{x + dx, y})->GetPlayerId() == player) {
-            if (CheckDirection(x, y, dx, 0, player)) return true;
-        }
+    for (uint i = 0; i < 8; i++)
+    {
+        if(MatchUntilStep(last_move, (Direction) i, 3) == 3)
+            return true;
     }
-
-    for (int dy = -3; dy <= 3; ++dy) {
-        if (GetPiece(Vec2{x, y + dy}) != nullptr && GetPiece(Vec2{x, y + dy})->GetPlayerId() == player) {
-            if (CheckDirection(x, y, 0, dy, player)) return true;
-        }
-    }
-
-    if (CheckDirection(x, y, 1, 1, player)) return true;
-    if (CheckDirection(x, y, -1, 1, player)) return true;
 
     return false;
 }
