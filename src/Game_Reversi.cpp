@@ -1,32 +1,42 @@
 #include "Game_Reversi.hpp"
 #include <iostream>
 
-bool Game_Reversi::March(Vec2 &position, uint direction)
+#include <fstream>
+#include <sstream>
+
+// bool Game_Reversi::March(Vec2 &position, uint direction)
+// {
+//     bool found_opponent = false;
+//     while (IsInsideBoard(position))
+//     {
+//         position = PosFromDirec(position, static_cast<Direction>(direction));
+
+//         // Checking for empty, end search if true
+//         if (GetPiece(position) == nullptr)
+//             break;
+//         if (GetPiece(position)->GetPlayerId() == 0)
+//             break;
+
+//         if (GetPiece(position)->GetPlayerId() == (this->current_player % 2) + 1)
+//         { // Oposing piece, continue searching
+//             found_opponent = true;
+//             continue;
+//         }
+//         // Same piece, end search
+//         else return (found_opponent == true);
+//     }
+//     return false;
+// }
+
+uint Game_Reversi::GetOpponentId()
 {
-    bool found_opponent = false;
-    while (IsInsideBoard(position))
-    {
-        position = PosFromDirec(position, static_cast<Direction>(direction));
-
-        // Checking for empty, end search if true
-        if (GetPiece(position) == nullptr)
-            break;
-        if (GetPiece(position)->GetPlayerId() == 0)
-            break;
-
-        if (GetPiece(position)->GetPlayerId() == (this->current_player % 2) + 1)
-        { // Oposing piece, continue searching
-            found_opponent = true;
-            continue;
-        }
-        // Same piece, end search
-        else return (found_opponent == true);
-    }
-    return false;
+    return (this->current_player % 2) + 1;
 }
 
 uint Game_Reversi::Play()
 {
+    std::ofstream output;
+
     while (GetWinner() == 0)
     {
         if(IsDraw()) break;
@@ -42,11 +52,28 @@ uint Game_Reversi::Play()
         while (1)
         {
             std::cout << "Move for player " << this->current_player << " <X Y>: " << std::endl;
-            std::cin >> move.x >> move.y;
+            std::string buffer;    
+
+            (*this->input) >> buffer;
+            move.x = atoi(buffer.c_str());
+
+            (*this->input) >> buffer;
+            move.y = atoi(buffer.c_str());
+        
+            // this->input >> move.x;
+            // this->input >> move.x >> move.y;
+
+            if(move == Vec2{5, 2})
+                printf("A");
 
             Piece* play = new Piece(move, this->current_player);
             if(AddPiece(play) == true)
+            {
+                output.open("./input.txt", std::ios::app);
+                output << move.x << " " << move.y << std::endl;
+                output.close();
                 break;
+            }
             else
             {
                 std::cout << "Invalid Play! [" << move.x << "X " << move.y << "Y]"<< std::endl;
@@ -58,6 +85,11 @@ uint Game_Reversi::Play()
     
     Draw();
     return GetWinner();
+}
+void Game_Reversi::AssignInput(std::istream* new_input)
+{
+    if(new_input != nullptr)
+        this->input = new_input;
 }
 bool Game_Reversi::IsDraw()
 {
@@ -103,14 +135,20 @@ void Game_Reversi::CascadeMove(Piece *start_piece)
     // 0 = North -> 7 = North-West, Clockwise
     for (uint i = 0; i < 8; i++)
     {
-        Vec2 i_pos = start_piece->GetPosition();
-        if(March(i_pos, i) == true)
+        Vec2 i_pos =  PosFromDirec(start_piece->GetPosition(), (Direction) i);
+        if(GetPiece(i_pos) == nullptr)
+            continue;
+        if(GetPiece(i_pos)->GetPlayerId() != GetOpponentId())
+            continue;
+
+        if(MatchUntilStep(i_pos, (Direction )i, 7) == 2)
         {
-            // Go in reverse direction and change pieces
+            // Go in direction and change pieces
             while (1)
             {
-                i_pos = PosFromDirec(i_pos, static_cast<Direction>((i + 4) % 8));
-                if(GetPiece(i_pos) == start_piece)
+                if(GetPiece(i_pos) == nullptr)
+                    break;
+                if(GetPiece(i_pos)->GetPlayerId() == this->current_player)
                     break;
 
                 GetPiece(i_pos)->SetSymbol(start_piece->GetSymbol());
@@ -119,7 +157,9 @@ void Game_Reversi::CascadeMove(Piece *start_piece)
                 if(this->current_player == 1)
                     this->white_count++, this->black_count--;
                 else if(this->current_player == 2)
-                    this->black_count++, this->white_count--;   
+                    this->black_count++, this->white_count--;
+                       
+                i_pos = PosFromDirec(i_pos, (Direction) i);
             }
         }
     }
@@ -147,9 +187,17 @@ uint Game_Reversi::MarkAsPlayable()
         // Checking lines from the current tile
         // 0 = North -> 7 = North-West, Clockwise
         for(uint i = 0; i < 8; i++)
-        {
-            Vec2 i_pos = pos;
-            if(March(i_pos, i) == true)
+        {            
+            Vec2 i_pos = PosFromDirec(pos, (Direction) i);
+            
+            // Check if it's adjacent to an opponent piece
+            if(GetPiece(i_pos) == nullptr)
+                continue;
+            if(GetPiece(i_pos)->GetPlayerId() != GetOpponentId())
+                continue;
+
+            // Search for opponent of this piece, a.k.a current player
+            if(MatchUntilStep(i_pos, (Direction) i, 7) == 2)
             {
                 valid = true;
                 valid_plays++;
@@ -199,6 +247,7 @@ Game_Reversi::Game_Reversi(uint _num_plays)
     this->black_count = this->white_count = 2;
     this->num_plays = _num_plays * 2;
     this->current_player = 1;
+    this->input = &std::cin;
 }
 Game_Reversi::~Game_Reversi()
 {

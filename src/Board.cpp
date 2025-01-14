@@ -167,6 +167,9 @@ uint Board::MatchUntilStep(Vec2 position, Direction direction, uint steps)
         // Checking for empty, end search if true
         if (GetPiece(position) == nullptr)
             return 1;
+        // Also applies for id = 0 pieces
+        if (GetPiece(position)->GetPlayerId() == 0)
+            return 1;
 
          // Oposing piece, end search
         if (GetPiece(position)->GetPlayerId() != base_id)
