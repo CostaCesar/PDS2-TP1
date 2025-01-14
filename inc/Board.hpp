@@ -5,6 +5,7 @@
 #include "Piece.hpp"
 #include "Direction.hpp"
 
+#include <sstream>
 #include <vector>
 
 using std::vector;
@@ -26,6 +27,7 @@ private:
     uint Vec2ToIndex(Vec2 position);
     Vec2 IndexToVec2(uint index);
 
+    std::istream* input;
 
 protected:
     uint num_plays;
@@ -40,9 +42,12 @@ protected:
     
     virtual bool HandleOverlap_Move(Vec2 position, Vec2 new_position);
     virtual bool HandleOverlap_Add(Vec2 position, Piece* new_piece);
+    
+    virtual Vec2 ReadMove();
 
 public:
     Vec2 GetSize();
+    void AssignInput(std::istream* new_input);
 
     virtual void Draw();
     virtual bool MovePiece(Vec2 position, Vec2 new_position);

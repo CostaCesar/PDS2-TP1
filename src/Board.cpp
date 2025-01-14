@@ -147,6 +147,32 @@ void Board::Draw()
     }
 }
 
+Vec2 Board::ReadMove()
+{
+    std::string buffer;    
+    Vec2 output;
+
+    (*this->input) >> buffer;
+    try
+    {
+        output.x = std::stoi(buffer.c_str());
+    }
+    catch(const std::exception& e)
+    {
+        throw e;
+    }
+    (*this->input) >> buffer;
+    try
+    {
+        output.y = std::stoi(buffer.c_str());
+    }
+    catch(const std::exception& e)
+    {
+        throw e;
+    }
+
+    return output;
+}
 // Returns:
 // -2: Reached Board Limit
 // -1: Reached Empty Position
@@ -191,15 +217,20 @@ void Board::NextPlayer()
 {
     this->current_player = (this->current_player % 2) + 1;
 }
-Board::Board()
+void Board::AssignInput(std::istream* new_input)
 {
-    this->board_size = Vec2{0, 0};
+    if(new_input != nullptr)
+        this->input = new_input;
+}
+Board::Board() : Board(Vec2{0, 0})
+{
     this->board = vector<Piece*>();
 }
 Board::Board(Vec2 _size)
 {
     this->board_size = _size;
     this->board = vector<Piece*>(Vec2ToIndex(_size), nullptr);
+    this->input = &std::cin;
 }
 Board::~Board()
 {
