@@ -42,6 +42,18 @@ Piece* Board::GetPiece(Vec2 position)
 
     return this->board[Vec2ToIndex(position)];
 }
+uint Board::GetPosFromChar()
+{
+    std::string buffer;
+
+    *this->input >> buffer;
+    
+    char output = std::toupper(buffer[0]);
+    output = std::max(output, 'A');
+    output = std::min(output, 'Z');
+
+    return output - 'A';    
+}
 bool Board::HandleOverlap_Move(Vec2 position, Vec2 new_position)
 {
     return false;
