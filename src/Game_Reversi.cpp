@@ -135,13 +135,14 @@ void Game_Reversi::CascadeMove(Piece *start_piece)
     // 0 = North -> 7 = North-West, Clockwise
     for (uint i = 0; i < 8; i++)
     {
-        Vec2 i_pos =  PosFromDirec(start_piece->GetPosition(), (Direction) i);
+        Vec2 i_pos = PosFromDirec(start_piece->GetPosition(), (Direction) i);
+        // Check if it's adjacent to an opponent piece
         if(GetPiece(i_pos) == nullptr)
             continue;
         if(GetPiece(i_pos)->GetPlayerId() != GetOpponentId())
             continue;
 
-        if(MatchUntilStep(i_pos, (Direction )i, 7) == 2)
+        if(MatchUntilStep(i_pos, (Direction )i, 7) == MatchReturn::Opponent)
         {
             // Go in direction and change pieces
             while (1)
@@ -190,14 +191,14 @@ uint Game_Reversi::MarkAsPlayable()
         {            
             Vec2 i_pos = PosFromDirec(pos, (Direction) i);
             
-            // Check if it's adjacent to an opponent piece
+            
             if(GetPiece(i_pos) == nullptr)
                 continue;
             if(GetPiece(i_pos)->GetPlayerId() != GetOpponentId())
                 continue;
 
             // Search for opponent of this piece, a.k.a current player
-            if(MatchUntilStep(i_pos, (Direction) i, 7) == 2)
+            if(MatchUntilStep(i_pos, (Direction) i, 7) == MatchReturn::Opponent)
             {
                 valid = true;
                 valid_plays++;

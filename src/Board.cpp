@@ -167,11 +167,11 @@ MatchReturn Board::MatchUntilStep(Vec2 position, Direction direction, uint steps
         if (!IsInsideBoard(position))
             return MatchReturn::Limit;
 
-        if (GetPiece(position)->GetPlayerId() == 0)
-            return MatchReturn::Neutral;
-
         if (GetPiece(position) == nullptr)
             return MatchReturn::Empty;
+            
+        if (GetPiece(position)->GetPlayerId() == 0)
+            return MatchReturn::Neutral;
 
         if (GetPiece(position)->GetPlayerId() != base_id)
             return MatchReturn::Opponent;
