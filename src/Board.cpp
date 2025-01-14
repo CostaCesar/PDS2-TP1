@@ -2,6 +2,7 @@
 #include "Direction.hpp"
 
 #include <iostream>
+#include <limits>
 
 Vec2 Board::PosFromDirec(Vec2 pos, Direction direc)
 {
@@ -152,22 +153,17 @@ Vec2 Board::ReadMove()
     std::string buffer;    
     Vec2 output;
 
-    (*this->input) >> buffer;
     try
     {
+        (*this->input) >> buffer;
         output.x = std::stoi(buffer.c_str());
-    }
-    catch(const std::exception& e)
-    {
-        throw e;
-    }
-    (*this->input) >> buffer;
-    try
-    {
+        (*this->input) >> buffer;
         output.y = std::stoi(buffer.c_str());
     }
     catch(const std::exception& e)
     {
+        // Skip bad line
+        this->input->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         throw e;
     }
 
