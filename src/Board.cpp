@@ -2,6 +2,7 @@
 #include "Direction.hpp"
 
 #include <iostream>
+#include <limits>
 
 Vec2 Board::PosFromDirec(Vec2 pos, Direction direc)
 {
@@ -147,47 +148,85 @@ void Board::Draw()
     }
 }
 
-// @return
-// 0 - Reached Board Limit
-// 1 - Reached Empty Position
-// 2 - Reached Another Player Piece
-// 3 - All Pieces Match
-uint Board::MatchUntilStep(Vec2 position, Direction direction, uint steps)
+Vec2 Board::ReadMove()
 {
-    if(GetPiece(position) == nullptr)
-        return 1;
-    uint base_id = GetPiece(position)->GetPlayerId();
+    std::string buffer;    
+    Vec2 output;
 
+    try
+    {
+        (*this->input) >> buffer;
+        output.x = std::stoi(buffer.c_str());
+        (*this->input) >> buffer;
+        output.y = std::stoi(buffer.c_str());
+    }
+    catch(const std::exception& e)
+    {
+        // Skip bad line
+        this->input->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        throw e;
+    }
+
+    return output;
+}
+// Returns:
+// -2: Reached Board Limit
+// -1: Reached Empty Position
+//  0: Reached Non-Player Piece
+//  1: Reached Opponent Piece
+//  2: Matched all pieces
+MatchReturn Board::MatchUntilStep(Vec2 position, Direction direction, uint steps)
+{
+    // Will not search if starting from empty pos
+    if(GetPiece(position) == nullptr)
+        return MatchReturn::Empty;
+
+    uint base_id = GetPiece(position)->GetPlayerId();
     for(uint i = 0; i < steps; i ++)
     {
         position = PosFromDirec(position, direction);
+
         if (!IsInsideBoard(position))
-            return 0;
+            return MatchReturn::Limit;
 
-        // Checking for empty, end search if true
         if (GetPiece(position) == nullptr)
-            return 1;
+            return MatchReturn::Empty;
+            
+        if (GetPiece(position)->GetPlayerId() == 0)
+            return MatchReturn::Neutral;
 
-         // Oposing piece, end search
         if (GetPiece(position)->GetPlayerId() != base_id)
-            return 2;
+            return MatchReturn::Opponent;
     }
-    // Same piece, end search
-    return 3;
+
+    return MatchReturn::Matched;
 }
 Vec2 Board::GetSize()
 {
     return this->board_size;
 }
-Board::Board()
+uint Board::GetOpponentId()
 {
-    this->board_size = Vec2{0, 0};
+    return (this->current_player % 2) + 1;
+}
+void Board::NextPlayer()
+{
+    this->current_player = (this->current_player % 2) + 1;
+}
+void Board::AssignInput(std::istream* new_input)
+{
+    if(new_input != nullptr)
+        this->input = new_input;
+}
+Board::Board() : Board(Vec2{0, 0})
+{
     this->board = vector<Piece*>();
 }
 Board::Board(Vec2 _size)
 {
     this->board_size = _size;
     this->board = vector<Piece*>(Vec2ToIndex(_size), nullptr);
+    this->input = &std::cin;
 }
 Board::~Board()
 {

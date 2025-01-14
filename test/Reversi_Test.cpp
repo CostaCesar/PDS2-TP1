@@ -1,28 +1,35 @@
 #include "TestHeader.hpp"
+#include <fstream>
 
 #include "Game_Reversi.hpp"
 
 // "./bin/Reversi_Test < ./test/reversi_input.txt"
-TEST_CASE("Reversi Creation")
+TEST_CASE("Reversi")
 {
+    using std::ifstream;
+    ifstream input;
     Board* object = new Game_Reversi();
     REQUIRE(object != nullptr);
-
-    uint winner = object->Play();
-    CHECK(winner == 2);
-
-    // switch (object->Play())
-    // {
-    // case 1:
-    //     std::cout << "# PLAYER 1 WINS #" << std::endl;
-    //     break;
-    // case 2:
-    //     std::cout << "# PLAYER 2 WINS #" << std::endl;
-    //     break;
-    // case 0:
-    //     std::cout << "# DRAW #" << std::endl;
-    //     break;
-    // }
     
+    SUBCASE("Game 1: Black Win")
+    {
+        input.open("./reversi_input.txt");
+        REQUIRE(input.is_open() == true);
+        //object->AssignInput(&input);
+        
+        uint winner = object->Play();
+        CHECK(winner == 2);
+    }
+    SUBCASE("Game 2: Perfetct Game [Draw]")
+    {
+        input.open("reversi_draw.txt");
+        REQUIRE(input.is_open() == true);
+        object->AssignInput(&input);
+
+        uint winner = object->Play();
+        CHECK(winner == 0);
+    }
+
     delete object;
+    input.close();
 }
