@@ -26,7 +26,13 @@ private:
     uint Vec2ToIndex(Vec2 position);
     Vec2 IndexToVec2(uint index);
 
+
 protected:
+    uint num_plays;
+    uint current_player;
+    uint GetOpponentId();
+    virtual void NextPlayer();
+
     Vec2 PosFromDirec(Vec2 pos, Direction direc);
     bool IsInsideBoard(Vec2 position);
     Piece* GetPiece(Vec2 position);
