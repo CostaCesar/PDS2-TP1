@@ -20,14 +20,14 @@ uint Game_Reversi::Play()
         while (1)
         {
             std::cout << "Move for player " << this->current_player << " <X Y>: " << std::endl;
-            std::string buffer;    
-
-            // Reading from input source
-            (*this->input) >> buffer;
-            move.x = atoi(buffer.c_str());
-
-            (*this->input) >> buffer;
-            move.y = atoi(buffer.c_str());
+            
+            try { move = ReadMove(); }
+            catch(const std::exception& e)
+            {
+                std::cout << "Invalid Input!" << std::endl;
+                continue;
+            }
+            
 
             Piece* play = new Piece(move, this->current_player);
             if(AddPiece(play) == true)
