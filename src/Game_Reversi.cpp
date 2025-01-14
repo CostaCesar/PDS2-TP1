@@ -4,35 +4,6 @@
 #include <fstream>
 #include <sstream>
 
-// bool Game_Reversi::March(Vec2 &position, uint direction)
-// {
-//     bool found_opponent = false;
-//     while (IsInsideBoard(position))
-//     {
-//         position = PosFromDirec(position, static_cast<Direction>(direction));
-
-//         // Checking for empty, end search if true
-//         if (GetPiece(position) == nullptr)
-//             break;
-//         if (GetPiece(position)->GetPlayerId() == 0)
-//             break;
-
-//         if (GetPiece(position)->GetPlayerId() == (this->current_player % 2) + 1)
-//         { // Oposing piece, continue searching
-//             found_opponent = true;
-//             continue;
-//         }
-//         // Same piece, end search
-//         else return (found_opponent == true);
-//     }
-//     return false;
-// }
-
-uint Game_Reversi::GetOpponentId()
-{
-    return (this->current_player % 2) + 1;
-}
-
 uint Game_Reversi::Play()
 {
     std::ofstream output;

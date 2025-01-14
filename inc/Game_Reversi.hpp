@@ -28,9 +28,6 @@ private:
 
     uint white_count;
     uint black_count;
-
-    uint num_plays;
-    uint current_player;
     unordered_set<Vec2, Vec2Hash> border_tiles;
 
     bool AddPiece(Piece* new_piece);
@@ -38,8 +35,6 @@ private:
     uint GetWinner() override;
     bool IsDraw() override;
 
-    uint GetOpponentId();
-    //bool March(Vec2 &start_pos, uint direction);
     void CalculateBorders(Vec2 position);
     void CascadeMove(Piece* start_piece);
     uint MarkAsPlayable();
