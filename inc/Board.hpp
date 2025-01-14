@@ -8,6 +8,15 @@
 #include <vector>
 
 using std::vector;
+
+enum class MatchReturn
+{
+    Limit = -2,
+    Empty = -1,
+    Neutral = 0,
+    Opponent = 1,
+    Matched = 2,
+};
 class Board
 {
 private:
@@ -21,7 +30,7 @@ protected:
     Vec2 PosFromDirec(Vec2 pos, Direction direc);
     bool IsInsideBoard(Vec2 position);
     Piece* GetPiece(Vec2 position);
-    uint MatchUntilStep(Vec2 position, Direction direction, uint steps);
+    MatchReturn MatchUntilStep(Vec2 position, Direction direction, uint steps);
     
     virtual bool HandleOverlap_Move(Vec2 position, Vec2 new_position);
     virtual bool HandleOverlap_Add(Vec2 position, Piece* new_piece);

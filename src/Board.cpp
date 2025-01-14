@@ -147,33 +147,37 @@ void Board::Draw()
     }
 }
 
-// @return
-// 0 - Reached Board Limit
-// 1 - Reached Empty Position
-// 2 - Reached Another Player Piece
-// 3 - All Pieces Match
-uint Board::MatchUntilStep(Vec2 position, Direction direction, uint steps)
+// Returns:
+// -2: Reached Board Limit
+// -1: Reached Empty Position
+//  0: Reached Non-Player Piece
+//  1: Reached Opponent Piece
+//  2: Matched all pieces
+MatchReturn Board::MatchUntilStep(Vec2 position, Direction direction, uint steps)
 {
+    // Will not search if starting from empty pos
     if(GetPiece(position) == nullptr)
-        return 1;
-    uint base_id = GetPiece(position)->GetPlayerId();
+        return MatchReturn::Empty;
 
+    uint base_id = GetPiece(position)->GetPlayerId();
     for(uint i = 0; i < steps; i ++)
     {
         position = PosFromDirec(position, direction);
+
         if (!IsInsideBoard(position))
-            return 0;
+            return MatchReturn::Limit;
 
-        // Checking for empty, end search if true
+        if (GetPiece(position)->GetPlayerId() == 0)
+            return MatchReturn::Neutral;
+
         if (GetPiece(position) == nullptr)
-            return 1;
+            return MatchReturn::Empty;
 
-         // Oposing piece, end search
         if (GetPiece(position)->GetPlayerId() != base_id)
-            return 2;
+            return MatchReturn::Opponent;
     }
-    // Same piece, end search
-    return 3;
+
+    return MatchReturn::Matched;
 }
 Vec2 Board::GetSize()
 {
