@@ -32,6 +32,7 @@ private:
 protected:
     uint num_plays;
     uint current_player;
+
     uint GetOpponentId();
     virtual void NextPlayer();
 
@@ -43,8 +44,8 @@ protected:
     virtual bool HandleOverlap_Move(Vec2 position, Vec2 new_position);
     virtual bool HandleOverlap_Add(Vec2 position, Piece* new_piece);
     
+    uint GetPosFromChar();
     virtual Vec2 ReadMove();
-
 public:
     Vec2 GetSize();
     void AssignInput(std::istream* new_input);
