@@ -183,6 +183,14 @@ Vec2 Board::GetSize()
 {
     return this->board_size;
 }
+uint Board::GetOpponentId()
+{
+    return (this->current_player % 2) + 1;
+}
+void Board::NextPlayer()
+{
+    this->current_player = (this->current_player % 2) + 1;
+}
 Board::Board()
 {
     this->board_size = Vec2{0, 0};
