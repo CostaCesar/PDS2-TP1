@@ -1,13 +1,10 @@
 #include "Game_Reversi.hpp"
 #include <iostream>
 
-#include <fstream>
 #include <sstream>
 
 uint Game_Reversi::Play()
 {
-    std::ofstream output;
-
     while (GetWinner() == 0)
     {
         if(IsDraw()) break;
@@ -25,24 +22,16 @@ uint Game_Reversi::Play()
             std::cout << "Move for player " << this->current_player << " <X Y>: " << std::endl;
             std::string buffer;    
 
+            // Reading from input source
             (*this->input) >> buffer;
             move.x = atoi(buffer.c_str());
 
             (*this->input) >> buffer;
             move.y = atoi(buffer.c_str());
-        
-            // this->input >> move.x;
-            // this->input >> move.x >> move.y;
-
-            if(move == Vec2{5, 2})
-                printf("A");
 
             Piece* play = new Piece(move, this->current_player);
             if(AddPiece(play) == true)
             {
-                output.open("./input.txt", std::ios::app);
-                output << move.x << " " << move.y << std::endl;
-                output.close();
                 break;
             }
             else
