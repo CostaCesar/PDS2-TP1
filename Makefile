@@ -24,13 +24,16 @@ TST_PATH := ./test
 # use these
 all: tests
 
-tests: test_board test_reversi
+tests: test_board test_reversi test_puzzle
 	$(BIN_PATH)/Board_Test
 	$(BIN_PATH)/Reversi_Test
+	$(BIN_PATH)/Puzzle_Test
 
 test_board: $(BIN_PATH)/Board_Test 
 
 test_reversi: $(BIN_PATH)/Reversi_Test
+
+test_puzzle: $(BIN_PATH)/Puzzle_Test
 
 clean:
 	rm $(OBJ_PATH)/*.o
@@ -50,6 +53,12 @@ $(OBJ_PATH)/Game_Reversi.o: $(SRC_PATH)/Game_Reversi.cpp $(INC_PATH)/Game_Revers
 
 $(BIN_PATH)/Reversi_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Reversi.o $(TST_PATH)/Reversi_Test.cpp
 	$(CXX) $(CXXFLAGS) $(TST_PATH)/Reversi_Test.cpp $(OBJ_PATH)/Board.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Reversi_Test -I$(INC_PATH)
+
+$(OBJ_PATH)/Game_Puzzle.o: $(SRC_PATH)/Game_Puzzle.cpp $(INC_PATH)/Game_Puzzle.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Game_Puzzle.cpp -o $(OBJ_PATH)/Game_Puzzle.o -I$(INC_PATH)
+
+$(BIN_PATH)/Puzzle_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Puzzle.o $(TST_PATH)/Puzzle_Test.cpp
+	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Puzzle.o $(TST_PATH)/Puzzle_Test.cpp -o $(BIN_PATH)/Puzzle_Test -I$(INC_PATH)
 
 # object bin TEMPLATE:
 # $(OBJ_PATH)/<example>.o: <required targets>
