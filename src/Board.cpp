@@ -42,7 +42,7 @@ Piece* Board::GetPiece(Vec2 position)
 
     return this->board[Vec2ToIndex(position)];
 }
-uint Board::GetPosFromChar()
+uint Board::GetCharFromInput()
 {
     std::string buffer;
 
@@ -53,6 +53,39 @@ uint Board::GetPosFromChar()
     output = std::min(output, 'Z');
 
     return output - 'A';    
+}
+uint Board::GetUintFromInput()
+{
+    std::string buffer;    
+    uint output;
+
+    try
+    {
+        (*this->input) >> buffer;
+        output = std::stoi(buffer.c_str());
+    }
+    catch(const std::exception& e)
+    { throw e; }
+
+    return output;    
+}
+Vec2 Board::ReadMove()
+{
+    Vec2 output;
+
+    try
+    {
+        output.x = GetUintFromInput();
+        output.y = GetUintFromInput();
+    }
+    catch(const std::exception& e)
+    {
+        // Skip bad line
+        this->input->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        throw e;
+    }
+
+    return output;
 }
 bool Board::HandleOverlap_Move(Vec2 position, Vec2 new_position)
 {
@@ -160,27 +193,6 @@ void Board::Draw()
     }
 }
 
-Vec2 Board::ReadMove()
-{
-    std::string buffer;    
-    Vec2 output;
-
-    try
-    {
-        (*this->input) >> buffer;
-        output.x = std::stoi(buffer.c_str());
-        (*this->input) >> buffer;
-        output.y = std::stoi(buffer.c_str());
-    }
-    catch(const std::exception& e)
-    {
-        // Skip bad line
-        this->input->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        throw e;
-    }
-
-    return output;
-}
 // Returns:
 // -2: Reached Board Limit
 // -1: Reached Empty Position
