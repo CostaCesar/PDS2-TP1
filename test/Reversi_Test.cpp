@@ -15,7 +15,7 @@ TEST_CASE("Reversi")
     {
         input.open("./reversi_input.txt");
         REQUIRE(input.is_open() == true);
-        //object->AssignInput(&input);
+        object->AssignInput(&input);
         
         uint winner = object->Play();
         CHECK(winner == 2);
