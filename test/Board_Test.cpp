@@ -16,17 +16,7 @@ public:
     uint Play() override
     {
         return 0;
-    }
-
-    // uint Vec2ToIndex(Vec2 position);
-    // // {
-    // //     return Vec2ToIndex(position);
-    // // }
-    // Vec2 IndexToVec2(uint index);
-    // // {
-    // //     return IndexToVec2(index);
-    // // }
-    
+    }    
     
     BoardTest(uint _x, uint _y)
     : Board(Vec2{_x, _y})
@@ -48,10 +38,6 @@ TEST_CASE("Board Creation")
     Vec2 sizes = alias->GetSize();
     CHECK(sizes.x == 10);
     CHECK(sizes.y == 10);
-    
-    // CHECK(object->Vec2ToIndex(Vec2{3,7}) == 73);
-    // bool reverse = object->IndexToVec2(73) == Vec2{3,7};
-    // CHECK(reverse == true);
 
     Piece* piece_a = new Piece(Vec2{1,1}, 1, 'A');
     CHECK(alias->AddPiece(piece_a) == true);
