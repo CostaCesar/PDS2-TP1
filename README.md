@@ -36,7 +36,7 @@ Utilize a flag **-B** do make para forçar a recompilação
 
 **_Test* são os arquivos de teste gerados pelo make ou pela geração individual de cada target ou pelo comando:
 ```
-make test
+make tests
 ```
 Que também ira executa-los imediatamente
 ## Andamento
