@@ -97,36 +97,41 @@ bool Board::HandleOverlap_Add(Vec2 position, Piece* new_piece)
 }
 bool Board::MovePiece(Vec2 position, Vec2 new_position)
 {
-    if(IsInsideBoard(position) == false)
+    if(!IsInsideBoard(position) || !IsInsideBoard(new_position))
         return false;
-    if(IsInsideBoard(new_position) == false)
+    else if(position == new_position)
+        return true;
+    if(GetPiece(position) == nullptr && GetPiece(new_position) == nullptr)
         return false;
 
-    if(this->board[Vec2ToIndex(position)] == NULL)
+    Piece* buffer = this->board[Vec2ToIndex(new_position)];
+    if((buffer != nullptr) && HandleOverlap_Move(position, new_position) == false)
         return false;
-    if(this->board[Vec2ToIndex(new_position)] != NULL)
-    {
-        return HandleOverlap_Move(position, new_position);
-    }
-    else
-    {
-        this->board[Vec2ToIndex(new_position)] = this->board[Vec2ToIndex(position)];
+
+    this->board[Vec2ToIndex(new_position)] = this->board[Vec2ToIndex(position)];
+    this->board[Vec2ToIndex(position)] = buffer;
+
+    if(this->board[Vec2ToIndex(new_position)])
         this->board[Vec2ToIndex(new_position)]->SetPosition(new_position);
-        this->board[Vec2ToIndex(position)] = NULL;
-    }
+    if(this->board[Vec2ToIndex(position)])
+        this->board[Vec2ToIndex(position)]->SetPosition(position);
+
     return true;
 }
 bool Board::AddPiece(Piece* piece_ptr)
 {
-    if(piece_ptr == NULL)
+    if(piece_ptr == nullptr)
         return false;
 
     Vec2 piece_position = piece_ptr->GetPosition();
     if(IsInsideBoard(piece_position) == false)
         return false;
     
-    if(this->board[Vec2ToIndex(piece_position)] != NULL)
-        return HandleOverlap_Add(piece_position, piece_ptr);
+    if(this->board[Vec2ToIndex(piece_position)] != nullptr
+    && HandleOverlap_Add(piece_position, piece_ptr) == false)
+    {
+        return false;
+    }
 
     this->board[Vec2ToIndex(piece_position)] = piece_ptr;
     return true;
