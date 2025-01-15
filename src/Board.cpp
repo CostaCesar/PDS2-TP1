@@ -80,12 +80,16 @@ Vec2 Board::ReadMove()
     }
     catch(const std::exception& e)
     {
-        // Skip bad line
-        this->input->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        // Flush Bad Stream
+        FlushInput();
         throw e;
     }
 
     return output;
+}
+void Board::FlushInput()
+{
+    this->input->ignore(std::numeric_limits<std::streamsize>::max());
 }
 bool Board::HandleOverlap_Move(Vec2 position, Vec2 new_position)
 {
