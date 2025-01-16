@@ -24,20 +24,22 @@ TST_PATH := ./test
 # use these
 all: tests
 
-tests: test_board test_reversi test_liga4
+tests: test_board test_reversi test_puzzle test_liga4
 	$(BIN_PATH)/Board_Test
 	$(BIN_PATH)/Reversi_Test
+	$(BIN_PATH)/Puzzle_Test
 	$(BIN_PATH)/Liga4_Test
 
 test_board: $(BIN_PATH)/Board_Test 
 
 test_reversi: $(BIN_PATH)/Reversi_Test
 
+test_puzzle: $(BIN_PATH)/Puzzle_Test
+
 test_liga4: $(BIN_PATH)/Liga4_Test
 
 clean:
 	rm $(OBJ_PATH)/*.o
-
 
 # good luck (don't) use these
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
@@ -60,3 +62,17 @@ $(BIN_PATH)/Reversi_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Ga
 
 $(BIN_PATH)/Liga4_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Liga4.o $(TST_PATH)/Liga4_Test.cpp
 	$(CXX) $(CXXFLAGS) $(TST_PATH)/Liga4_Test.cpp $(OBJ_PATH)/Board.o $(OBJ_PATH)/Liga4.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Liga4_Test -I$(INC_PATH)
+
+$(OBJ_PATH)/Game_Puzzle.o: $(SRC_PATH)/Game_Puzzle.cpp $(INC_PATH)/Game_Puzzle.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Game_Puzzle.cpp -o $(OBJ_PATH)/Game_Puzzle.o -I$(INC_PATH)
+
+$(BIN_PATH)/Puzzle_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Puzzle.o $(TST_PATH)/Puzzle_Test.cpp
+	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Puzzle.o $(TST_PATH)/Puzzle_Test.cpp -o $(BIN_PATH)/Puzzle_Test -I$(INC_PATH)
+
+# object bin TEMPLATE:
+# $(OBJ_PATH)/<example>.o: <required targets>
+#	$(CXX) $(CXXFLAGS) -c <required files> -o $(OBJ_PATH)/<example> -I$(INC_PATH)
+
+# final bin TEMPLATE:
+# $(BIN_PATH)/<example>: <required targets>
+#	$(CXX) $(CXXFLAGS) <required files> -o $(BIN_PATH)/<example> -I$(INC_PATH)

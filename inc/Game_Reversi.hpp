@@ -2,6 +2,8 @@
 
 #include "Board.hpp"
 #include <unordered_set>
+#include <iostream>
+
 using std::unordered_set;
 
 // Here because there's a unordered set of Vec2
@@ -22,11 +24,10 @@ private:
     static const char k_player2 = 'O';
     static const char k_available = '.';
 
+    std::istream* input;
+
     uint white_count;
     uint black_count;
-
-    uint num_plays;
-    uint current_player;
     unordered_set<Vec2, Vec2Hash> border_tiles;
 
     bool AddPiece(Piece* new_piece);
@@ -34,13 +35,13 @@ private:
     uint GetWinner() override;
     bool IsDraw() override;
 
-    bool March(Vec2 &start_pos, uint direction);
     void CalculateBorders(Vec2 position);
     void CascadeMove(Piece* start_piece);
     uint MarkAsPlayable();
 
 public:
     uint Play();
+    void AssignInput(std::istream* new_input);
 
     Game_Reversi(uint _num_plays = 30);
     ~Game_Reversi();

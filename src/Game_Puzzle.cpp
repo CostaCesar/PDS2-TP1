@@ -1,0 +1,153 @@
+#include "Game_Puzzle.hpp"
+#include <iostream>
+
+uint Game_Puzzle::Play()
+{
+    Vec2 move;
+    do
+    {
+        Draw();
+
+        while (1)
+        {
+            try { move = ReadMove(); }
+            catch(const std::exception& e)
+            {
+                std::cout << "Invalid Input!" << std::endl;
+                continue;
+            }
+            if(MovePiece(move) == true)
+                break;
+            else
+            {
+                std::cout << "Invalid Play! ";
+                if(move == GetSize())
+                    std::cout << "[No piece with this number]" << std::endl;
+                else std::cout << "[" << move.x << "X " << move.y << "Y]"<< std::endl;
+                continue;
+            }
+        }
+        
+        this->num_plays++;
+    
+    } while (GetWinner() == 0);
+    
+    Draw();
+    return 1;
+}
+bool Game_Puzzle::MovePiece(Vec2 position)
+{
+    if(GetPiece(position) == nullptr)
+        return false;
+
+    for (uint i = 0; i < 4; i++)
+    {
+        if(MatchUntilStep(position, (Direction) (i*2), 1) == MatchReturn::Empty)
+        {
+            Board::MovePiece(position, PosFromDirec(position, (Direction) (i*2)) );
+            return true;
+        }
+    }
+    return false;
+}
+bool Game_Puzzle::AddPiece(Piece* new_piece)
+{
+    if(!Board::AddPiece(new_piece))
+        return false;
+
+    uint id = new_piece->GetPlayerId();
+    if(id > 9)
+        new_piece->SetSymbol('A' + (id - 10));
+
+    return true;
+}
+bool Game_Puzzle::IsDraw()
+{
+    uint inv_count = 0; 
+
+    for (uint i = 0; i < 8; i++)
+    {
+        for (uint j = i + 1; j < 9; j++)
+        {
+            Piece *i_piece = GetPiece(Vec2{i, i});
+            Piece *j_piece = GetPiece(Vec2{j, j});
+
+            if (i_piece == nullptr || j_piece == nullptr)
+                continue;
+            else if(i_piece->GetPlayerId() > j_piece->GetPlayerId())
+               inv_count++;
+        }
+    }
+
+    return (inv_count % 2 == 0);
+}
+uint Game_Puzzle::GetWinner()
+{
+    Vec2 limits = this->GetSize();
+
+    // Dont check if last position is not empty
+    if(GetPiece(Vec2{limits.x - 1, limits.y - 1}) != nullptr)
+        return 0;
+
+    for (uint i = 1; i < limits.x * limits.y - 1; i++)
+    {
+        if(GetPiece(Vec2{i % limits.x, i / limits.x}) < GetPiece(Vec2{(i-1) % limits.x, (i-1) / limits.x}))
+            return false;
+    }
+    
+    return true;
+}
+Vec2 Game_Puzzle::ReadMove()
+{
+    uint id;
+
+    try
+    {
+        id = GetUintFromInput();
+    }
+    catch(const std::exception& e)
+    { throw e; }
+    
+    Vec2 limits = GetSize();
+    for (uint i = 0; i < limits.y; i++)
+    {
+        for (uint j = 0; j < limits.x; j++)
+        {
+            Vec2 position{j, i};
+            if((GetPiece(position) != nullptr)
+            && GetPiece(position)->GetPlayerId() == id)
+            {
+                return position;
+            }
+        }
+    }
+    
+    return limits;
+}
+Game_Puzzle::Game_Puzzle(uint complexity, Vec2 _size)
+    : Board(_size)
+{
+
+    for (uint i = 0; i < _size.y * _size.x - 1; i++)
+    {
+        AddPiece(new Piece(Vec2{i % _size.x, i / _size.x}, i + 1));
+    }
+
+    do
+    {
+        for (uint k = 0; k < complexity; k++)
+        {
+            Vec2 pos_i = Vec2{rand() % _size.x, rand() % _size.y};
+            Vec2 pos_j = Vec2{rand() % _size.x, rand() % _size.y};
+            
+            Board::MovePiece(pos_i, pos_j);
+        }
+    } while (IsDraw() == true);
+    
+    this->num_plays = 0;
+    this->current_player = 1;
+}
+Game_Puzzle::~Game_Puzzle()
+{
+
+}

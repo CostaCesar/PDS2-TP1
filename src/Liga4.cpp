@@ -63,7 +63,7 @@ uint Liga4::GetWinner()
 bool Liga4::CheckWin(uint player, const Vec2& last_move) {
     for (uint i = 0; i < 8; i++)
     {
-        if(MatchUntilStep(last_move, (Direction) i, 3) == 3)
+        if(MatchUntilStep(last_move, (Direction) i, 3) == MatchReturn::Matched)
             return true;
     }
 
