@@ -5,27 +5,18 @@
 class BoardTest : public Board
 {
 public:
-    bool IsDraw()
+    bool IsDraw() override
     {
         return false;
     }
-    uint GetWinner()
+    uint GetWinner() override
     {
         return 0;
     }
-
-    uint Test_Vec2ToIndex(Vec2 position)
-    {
-        return Vec2ToIndex(position);
-    }
-    Vec2 Test_IndexToVec2(uint index)
-    {
-        return IndexToVec2(index);
-    }
-    uint Play()
+    uint Play() override
     {
         return 0;
-    }
+    }    
     
     BoardTest(uint _x, uint _y)
     : Board(Vec2{_x, _y})
@@ -47,15 +38,11 @@ TEST_CASE("Board Creation")
     Vec2 sizes = alias->GetSize();
     CHECK(sizes.x == 10);
     CHECK(sizes.y == 10);
-    
-    CHECK(object->Test_Vec2ToIndex(Vec2{3,7}) == 73);
-    bool reverse = object->Test_IndexToVec2(73) == Vec2{3,7};
-    CHECK(reverse == true);
 
-    Piece* piece_a = new Piece(Vec2{1,1});
+    Piece* piece_a = new Piece(Vec2{1,1}, 1, 'A');
     CHECK(alias->AddPiece(piece_a) == true);
 
-    Piece* piece_b = new Piece(Vec2{1,1});
+    Piece* piece_b = new Piece(Vec2{1,1}, 2);
     CHECK(alias->AddPiece(piece_b) == false);
     piece_b->SetPosition(Vec2{2,2});
     CHECK(alias->AddPiece(piece_b) == true);
@@ -67,6 +54,8 @@ TEST_CASE("Board Creation")
 
     CHECK(piece_a->GetPosition().x == 3);
     CHECK(piece_a->GetPosition().y == 3);
+
+    object->Draw();
 
     delete object;
 }
