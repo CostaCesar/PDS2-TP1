@@ -35,7 +35,14 @@ uint JogoDaVelha::Play(){
 
         while(1){
             cout << "Jogada do jogador" << id1 << ":" << endl;
-            jogada = ReadMove();
+            try{
+                jogada = ReadMove();
+            }
+            catch(const std::exception& e)
+            {
+                cout << "Entrada invalida" << endl;
+                continue;
+            }
             Piece* peca = this->GetPiece(jogada);
             peca = new Piece(jogada, id1 , 'X');
             if (AddPiece(peca)) {
@@ -55,7 +62,14 @@ uint JogoDaVelha::Play(){
 
         while(1){
             cout << "Jogada do jogador" << id2 << ":" << endl;
-            jogada = ReadMove();
+            try{
+                jogada = ReadMove();
+            }
+            catch(const std::exception& e)
+            {
+                cout << "Entrada invalida" << endl;
+                continue;
+            }
             Piece* peca = this->GetPiece(jogada);
             peca = new Piece(jogada, id2 , 'O');
             if (AddPiece(peca)) {
