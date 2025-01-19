@@ -26,11 +26,14 @@ all: tests
 
 tests: test_board test_reversi test_puzzle test_liga4
 	$(BIN_PATH)/Board_Test
+	$(BIN_PATH)/JogoVelha_Test
 	$(BIN_PATH)/Reversi_Test
 	$(BIN_PATH)/Puzzle_Test
 	$(BIN_PATH)/Liga4_Test
 
 test_board: $(BIN_PATH)/Board_Test 
+
+test_velha: $(BIN_PATH)/JogoVelha_Test
 
 test_reversi: $(BIN_PATH)/Reversi_Test
 
@@ -51,8 +54,11 @@ $(OBJ_PATH)/Board.o: $(SRC_PATH)/Board.cpp $(INC_PATH)/Board.hpp $(INC_PATH)/Dir
 $(BIN_PATH)/Board_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(TST_PATH)/Board_Test.cpp
 	$(CXX) $(CXXFLAGS) $(TST_PATH)/Board_Test.cpp $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Board_Test -I$(INC_PATH)
 
-$(BIN_PATH)/JogoVelha.o: $(INC_PATH)/Board.hpp $(SRC_PATH)/Velha.cpp $(INC_PATH)/Velha.hpp
-	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Velha.cpp -o $(OBJ_PATH)/Velha.o -I$(INC_PATH)
+$(OBJ_PATH)/JogoVelha.o: $(INC_PATH)/Board.hpp $(SRC_PATH)/Velha.cpp $(INC_PATH)/Velha.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Velha.cpp -o $(OBJ_PATH)/JogoVelha.o -I$(INC_PATH)
+
+$(BIN_PATH)/JogoVelha_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/JogoVelha.o $(TST_PATH)/JogoVelha_Test.cpp
+	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/JogoVelha.o $(TST_PATH)/JogoVelha_Test.cpp -o $(BIN_PATH)/JogoVelha_Test -I$(INC_PATH)
 
 $(OBJ_PATH)/Game_Reversi.o: $(SRC_PATH)/Game_Reversi.cpp $(INC_PATH)/Game_Reversi.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Game_Reversi.cpp -o $(OBJ_PATH)/Game_Reversi.o -I$(INC_PATH)

@@ -8,14 +8,15 @@
 
 using std::vector;
 class JogoDaVelha:public Board {
-    
+
     public:
 
-        uint GetWinner(Vec2 pos);
-        bool IsDraw();
+        uint GetWinner() override;
+        bool IsDraw() override;
 
         JogoDaVelha():Board(Vec2{3,3}){};
 
-        void JogarVelha(uint id1 , uint id2);
+        uint GetWinnerPos(Vec2 pos);
+        uint Play() override;
 };
 
