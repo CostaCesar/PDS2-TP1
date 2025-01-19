@@ -4,8 +4,6 @@
 
 class Liga4 : public Board {
 private:
-    uint current_player;
-
     uint EmptyRow(uint colummn);
 
 public:

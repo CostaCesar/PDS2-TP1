@@ -32,6 +32,7 @@ uint Liga4::Play() {
         if (CheckWin(current_player, last_move))
             break;
 
+        num_plays--;
         NextPlayer();
     }
 
