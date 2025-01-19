@@ -5,7 +5,7 @@
 class Liga4 : public Board {
 private:
     uint EmptyRow(uint colummn);
-
+    Vec2 ReadMove() override;
 public:
     Liga4(uint rows, uint cols);
     ~Liga4();

@@ -8,7 +8,6 @@ Liga4::Liga4(uint rows, uint cols) : Board(Vec2{rows, cols}) {
 Liga4::~Liga4() {}
 
 uint Liga4::Play() {
-    uint column;
     Vec2 last_move;
 
     uint num_plays = GetSize().x * GetSize().y;
@@ -17,10 +16,20 @@ uint Liga4::Play() {
     {
         Draw();
 
-        std::cin >> column;
-        uint row = EmptyRow(column);
-
-        last_move = Vec2{column, row};
+        while (1)
+        {
+            try
+            {
+                last_move = ReadMove();
+            }
+            catch(const std::exception& e)
+            {
+                std::cout << "Entrada invalida!" << std::endl;
+                continue;
+            }
+            break;
+        }
+        
         Piece* piece = new Piece(last_move, current_player);
 
         if (!AddPiece(piece)) {
@@ -48,6 +57,25 @@ uint Liga4::EmptyRow(uint column) {
     }
 
     return GetSize().y;
+}
+
+Vec2 Liga4::ReadMove()
+{
+    Vec2 output;
+
+    try
+    {
+        output.x = GetUintFromInput();
+    }
+    catch(const std::exception& e)
+    {
+        // Flush Bad Stream
+        FlushInput();
+        throw e;
+    }
+
+    output.y = EmptyRow(output.x);
+    return output;
 }
 
 uint Liga4::GetWinner()
