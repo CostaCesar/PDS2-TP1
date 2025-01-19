@@ -89,7 +89,7 @@ Vec2 Board::ReadMove()
 }
 void Board::FlushInput()
 {
-    this->input->ignore(std::numeric_limits<std::streamsize>::max());
+    this->input->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 bool Board::HandleOverlap_Move(Vec2 position, Vec2 new_position)
 {
