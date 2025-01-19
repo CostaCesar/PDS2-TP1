@@ -7,10 +7,6 @@ Liga4::Liga4(uint rows, uint cols) : Board(Vec2{rows, cols}) {
 
 Liga4::~Liga4() {}
 
-void Liga4::SwitchPlayer() {
-    current_player = (current_player == 1) ? 2 : 1;
-}
-
 uint Liga4::Play() {
     uint column;
     Vec2 last_move;
@@ -36,7 +32,7 @@ uint Liga4::Play() {
         if (CheckWin(current_player, last_move))
             break;
 
-        SwitchPlayer();
+        NextPlayer();
     }
 
     Draw();
@@ -68,16 +64,6 @@ bool Liga4::CheckWin(uint player, const Vec2& last_move) {
     }
 
     return false;
-}
-
-bool Liga4::CheckDirection(uint x, uint y, int dx, int dy, uint player) {
-    for (int i = 1; i < 4; ++i) {
-        if (GetPiece(Vec2{x + i * dx, y + i * dy}) == nullptr ||
-            GetPiece(Vec2{x + i * dx, y + i * dy})->GetPlayerId() != player) {
-            return false;
-        }
-    }
-    return true;
 }
 
 bool Liga4::IsDraw() {

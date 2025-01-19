@@ -6,9 +6,6 @@ class Liga4 : public Board {
 private:
     uint current_player;
 
-
-    void SwitchPlayer();
-    bool CheckDirection(uint x, uint y, int dx, int dy, uint player);
     uint EmptyRow(uint colummn);
 
 public:
