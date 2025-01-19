@@ -7,12 +7,7 @@ Liga4::Liga4(uint rows, uint cols) : Board(Vec2{rows, cols}) {
 
 Liga4::~Liga4() {}
 
-void Liga4::SwitchPlayer() {
-    current_player = (current_player == 1) ? 2 : 1;
-}
-
 uint Liga4::Play() {
-    uint column;
     Vec2 last_move;
 
     uint num_plays = GetSize().x * GetSize().y;
@@ -21,10 +16,20 @@ uint Liga4::Play() {
     {
         Draw();
 
-        std::cin >> column;
-        uint row = EmptyRow(column);
-
-        last_move = Vec2{column, row};
+        while (1)
+        {
+            try
+            {
+                last_move = ReadMove();
+            }
+            catch(const std::exception& e)
+            {
+                std::cout << "Entrada invalida!" << std::endl;
+                continue;
+            }
+            break;
+        }
+        
         Piece* piece = new Piece(last_move, current_player);
 
         if (!AddPiece(piece)) {
@@ -36,7 +41,8 @@ uint Liga4::Play() {
         if (CheckWin(current_player, last_move))
             break;
 
-        SwitchPlayer();
+        num_plays--;
+        NextPlayer();
     }
 
     Draw();
@@ -51,6 +57,25 @@ uint Liga4::EmptyRow(uint column) {
     }
 
     return GetSize().y;
+}
+
+Vec2 Liga4::ReadMove()
+{
+    Vec2 output;
+
+    try
+    {
+        output.x = GetUintFromInput();
+    }
+    catch(const std::exception& e)
+    {
+        // Flush Bad Stream
+        FlushInput();
+        throw e;
+    }
+
+    output.y = EmptyRow(output.x);
+    return output;
 }
 
 uint Liga4::GetWinner()
@@ -68,16 +93,6 @@ bool Liga4::CheckWin(uint player, const Vec2& last_move) {
     }
 
     return false;
-}
-
-bool Liga4::CheckDirection(uint x, uint y, int dx, int dy, uint player) {
-    for (int i = 1; i < 4; ++i) {
-        if (GetPiece(Vec2{x + i * dx, y + i * dy}) == nullptr ||
-            GetPiece(Vec2{x + i * dx, y + i * dy})->GetPlayerId() != player) {
-            return false;
-        }
-    }
-    return true;
 }
 
 bool Liga4::IsDraw() {

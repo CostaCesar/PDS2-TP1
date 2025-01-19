@@ -4,13 +4,8 @@
 
 class Liga4 : public Board {
 private:
-    uint current_player;
-
-
-    void SwitchPlayer();
-    bool CheckDirection(uint x, uint y, int dx, int dy, uint player);
     uint EmptyRow(uint colummn);
-
+    Vec2 ReadMove() override;
 public:
     Liga4(uint rows, uint cols);
     ~Liga4();
