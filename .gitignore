@@ -1,5 +1,5 @@
 .vscode/
-
+*.csv
 tmp/*.o
 bin/*
 !bin/Programa
