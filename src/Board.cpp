@@ -255,11 +255,12 @@ Board::Board() : Board(Vec2{0, 0})
 {
     this->board = vector<Piece*>();
 }
-Board::Board(Vec2 _size)
+Board::Board(Vec2 _size, uint start_player)
 {
     this->board_size = _size;
     this->board = vector<Piece*>(Vec2ToIndex(_size), nullptr);
     this->input = &std::cin;
+    this->current_player = start_player;
 }
 Board::~Board()
 {

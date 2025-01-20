@@ -62,6 +62,6 @@ public:
     virtual uint Play() = 0;
 
     Board();
-    Board(Vec2 _size);
+    Board(Vec2 _size, uint start_player = 1);
     virtual ~Board();
 };
