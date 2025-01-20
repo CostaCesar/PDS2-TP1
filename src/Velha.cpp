@@ -5,63 +5,88 @@
 #include <iostream>
 #include <vector>
 
-uint JogoDaVelha::GetWinner(){
-    for (uint i=0;i<3;i++){
-        if (this->GetPiece(Vec2{0,i})==this->GetPiece(Vec2{1,i})&&this->GetPiece(Vec2{0,i})==this->GetPiece(Vec2{2,i}))
-        {
-            return this->GetPiece(Vec2{0,i})->GetPlayerId();
-        }
-        else if (this->GetPiece(Vec2{i,0})==this->GetPiece(Vec2{i,1})&&this->GetPiece(Vec2{i,0})==this->GetPiece(Vec2{i,2}))
-        {
-            return this->GetPiece(Vec2{i,0})->GetPlayerId();
-        }
-    };
-    if (this->GetPiece(Vec2{0,0})==this->GetPiece(Vec2{1,1})&&this->GetPiece(Vec2{0,0})==this->GetPiece(Vec2{2,2})){
-        return this->GetPiece(Vec2{0,0})->GetPlayerId();
-    }
-    else if(this->GetPiece(Vec2{0,2})==this->GetPiece(Vec2{1,1})&&this->GetPiece(Vec2{0,2})==this->GetPiece(Vec2{2,0})){
-        return this->GetPiece(Vec2{0,2})->GetPlayerId();
-    }
-    else{
-        return 0;
-    }
-}
 
-void JogoDaVelha::JogarVelha(uint id1 , uint id2){
+
+uint JogoDaVelha::GetWinnerPos(Vec2 pos){
+    for (int i=0; i<8; i++){
+        if (this->MatchUntilStep(pos, (Direction) i , 2) == MatchReturn::Matched){
+            return this->GetPiece(pos)->GetPlayerId();
+        }
+    }
+    return 0;
+};
+
+uint JogoDaVelha::GetWinner(){
+    return 0;
+};
+
+bool JogoDaVelha::IsDraw(){
+    return 0;
+};
+
+uint JogoDaVelha::Play(){
 
     using namespace std;
-
+    uint id1 = 1;
+    uint id2 = 2;
     Vec2 jogada;
     uint vencedor = 0;
     for (int i=0;i<4;i++){
 
         while(1){
-            cout << "Jogada do jogador" << id1 << ":";
-            cin >> jogada.x >> jogada.y;
-            if (this->GetPiece(jogada)->GetPlayerId()!=0) {
-                this->GetPiece(jogada)->ChangePlayerId(id1);
+            cout << "Jogada do jogador" << id1 << ":" << endl;
+            try{
+                jogada = ReadMove();
+            }
+            catch(const std::exception& e)
+            {
+                cout << "Entrada invalida" << endl;
+                continue;
+            }
+            Piece* peca = this->GetPiece(jogada);
+            peca = new Piece(jogada, id1 , 'X');
+            if (AddPiece(peca)) {
                 break;
                 }
-            else cout << "Jogada invalida" << endl;
+            
+            else{
+                delete peca;
+                cout << "Jogada invalida" << endl;
+            } 
         }
 
         this->Draw();
 
-        if(i>3) break;
+        if(i>=1) vencedor = GetWinnerPos(jogada);
+        if(i>3 || vencedor != 0) break;
 
         while(1){
-            cout << "Jogada do jogador" << id2 << ":";
-            cin >> jogada.x >> jogada.y;
-            if (this->GetPiece(jogada)->GetPlayerId()!=0) {
-                this->GetPiece(jogada)->ChangePlayerId(id2);
+            cout << "Jogada do jogador" << id2 << ":" << endl;
+            try{
+                jogada = ReadMove();
+            }
+            catch(const std::exception& e)
+            {
+                cout << "Entrada invalida" << endl;
+                continue;
+            }
+            Piece* peca = this->GetPiece(jogada);
+            peca = new Piece(jogada, id2 , 'O');
+            if (AddPiece(peca)) {
                 break;
                 }
-            else cout << "Jogada invalida" << endl;
+            
+            else{
+                delete peca ;
+                cout << "Jogada invalida" << endl;
+            } 
         }
 
         this->Draw();
         
-    };
-    if (vencedor != 0) cout << "O vencedor eh: " << vencedor << endl;
-    else cout << "Foi um empate" << endl;
+        if(i>=1) vencedor = GetWinnerPos(jogada);
+        if(vencedor != 0) break;
+
+    }
+    return vencedor;
 };

@@ -8,25 +8,15 @@
 
 using std::vector;
 class JogoDaVelha:public Board {
-protected:
 
-    bool IsInsideBoard(Vec2 position);
-    Piece* GetPiece(Vec2 position);
-    
-    bool HandleOverlap_Move(Vec2 position, Vec2 new_position);
-    bool HandleOverlap_Add(Vec2 position, Vec2 new_position);
-    bool DeletePiece(Vec2 position);
+    public:
 
-public:
+        uint GetWinner() override;
+        bool IsDraw() override;
 
-    bool AddPiece(Piece* piece_ptr);
-    void Draw();
+        JogoDaVelha():Board(Vec2{3,3}){};
 
-    uint GetWinner();
-    bool IsDraw();
-
-    JogoDaVelha():Board(Vec2{3,3}){};
-
-    void JogarVelha(uint id1 , uint id2);
+        uint GetWinnerPos(Vec2 pos);
+        uint Play() override;
 };
 
