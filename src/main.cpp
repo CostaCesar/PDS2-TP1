@@ -1,8 +1,11 @@
 #include "Register.cpp"
+#include "GameAdmin.cpp"
 #include <iostream>
 #include <string>
 
-using std::cin, std:: string;
+using
+    std::cin,
+    std:: string;
 
 int main() {
     string name, nickname, comando;
@@ -15,7 +18,7 @@ int main() {
     std::cout << "Executar partida: ";
     std::cout << "EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>" << std::endl;
     
-    std::cout << "Finalizar sistema" << std::endl << "FS" << std::endl;
+    std::cout << "Finalizar sistema: FS" << std::endl << std::endl;
     
 
     while(cin >> comando) {
@@ -32,7 +35,6 @@ int main() {
 
             if (!deletePlayer(nickname)) {
                 std::cout << "Jogador " << nickname << " removido com sucesso" << std::endl;
-                continue;
             } else {
                 std::cout << "ERRO: jogador inexistente" << std::endl;
             }
@@ -40,7 +42,27 @@ int main() {
         } else if (comando == "LJ") {
             char sel;
             cin >> sel;
+            listPlayers(sel);
+        
+        } else if (comando == "EP") {
+            char sel;
+            string j1, j2;
 
+            cin >> sel >> j1 >> j2;
+
+            if (!validPlayers(j1, j2)) {
+                std::cout << "ERRO: jogador inexistente." << std::endl;
+            } else if (sel != 'R' || sel != 'J' || sel != 'V') {
+                std::cout << "ERRO: dados incorretos" << std::endl;
+            }
+
+            if (sel == 'R') {
+                jogoReversi(j1,j2);
+            } else if (sel == 'L') {
+                jogoLig4(j1,j2);
+            } else if (sel == 'V') {
+                jogoVelha(j1,j2);
+            }
 
 
         } else if (comando == "FS") {

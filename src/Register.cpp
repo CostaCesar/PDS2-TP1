@@ -1,3 +1,6 @@
+#pragma once
+
+#include <algorithm>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -13,7 +16,72 @@ using
     std::vector;
 
 
-const string NOME_ARQ = "./src/cadastro.csv";
+const string NOME_ARQ = "cadastro.csv";
+
+struct Jogador {
+    string apelido;
+    string nome;
+    int vitoriasReversi;
+    int vitoriasLIg4;
+    int vitoriasVelha;
+    int derrotasReversi;
+    int derrotasLIg4;
+    int derrotasVelha;
+};
+
+void listPlayers(char sel) {
+    ifstream csv;
+    string linha;
+    vector<Jogador> jogadores;
+
+    csv.open(NOME_ARQ, std::fstream::in);
+
+    while (std::getline(csv, linha)) {
+        stringstream ss(linha);
+        string apelido, nome, vR, vL, vV, dR, dL, dV;
+
+        std::getline(ss, apelido, ',');
+        std::getline(ss, nome, ',');
+        std::getline(ss, vR, ',');
+        std::getline(ss, vL, ',');
+        std::getline(ss, vV, ',');
+        std::getline(ss, dR, ',');
+        std::getline(ss, dL, ',');
+        std::getline(ss, dV, ',');
+
+        Jogador jogador;
+        jogador.apelido = apelido;
+        jogador.nome = nome;
+        jogador.vitoriasReversi = std::stoi(vR);
+        jogador.vitoriasLIg4 = std::stoi(vL);
+        jogador.vitoriasVelha = std::stoi(vV);
+        jogador.vitoriasReversi = std::stoi(dR);
+        jogador.vitoriasLIg4 = std::stoi(dL);
+        jogador.vitoriasVelha = std::stoi(dV);
+
+        jogadores.push_back(jogador);
+    }
+
+    if (sel == 'A') {
+        std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
+            return a.apelido < b.apelido;
+        });
+    } else if (sel == 'N') {
+        std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
+            return a.nome < b.nome;
+        });
+    }
+
+    for (const auto& jogador : jogadores) {
+        std::cout << std::endl
+            << "<" << jogador.apelido << "> " << "<" << jogador.nome << ">" << std::endl
+            << "REVERSI - V: " << "<" << jogador.vitoriasReversi << "> D: " << "<" << jogador.vitoriasReversi << ">" << std::endl
+            << "LIG4 - V: " << "<" << jogador.vitoriasLIg4 << "> D: " << "<" << jogador.vitoriasLIg4 << ">" << std::endl
+            << "VELHA - V: " << "<" << jogador.vitoriasVelha << "> D: " << "<" << jogador.vitoriasVelha << ">" << std::endl;
+    }
+
+    csv.close();
+}
 
 int playerExists (string NOME_ARQ, string nickname) {
     ifstream csv(NOME_ARQ);
@@ -34,12 +102,16 @@ int playerExists (string NOME_ARQ, string nickname) {
 }
 
 int registerPlayer(string nickname, string name) {
+    string arquivo = "cadastro.csv"; 
     ofstream csv;
 
-    csv.open(NOME_ARQ, std::fstream::app);
+    csv.open(arquivo, std::fstream::app);
 
-    if (!playerExists (NOME_ARQ, nickname)) {
-        csv << name << "," << nickname << "," << "0" << "," << "0" << "," << "0" << "," << "0" << "0" << "," << "0" << std::endl;
+    if (!playerExists (arquivo, nickname)) {
+        csv << nickname << "," << name << ","
+        << "0" << "," << "0" << ","
+        << "0" << "," << "0" << ","
+        << "0" << "," << "0" << "," << std::endl;
     } else {
         return 1;
     }
@@ -59,11 +131,13 @@ int deletePlayer(string nickname) {
 
     bool valorEncontrado = false;
 
+    // itera ao longo do arquivo csv.
     while (std::getline(csv, linha)) {
         stringstream ss(linha);
         string valor;
         bool linhaContemValor = false;
-
+    
+    // itera ao longo de cada linha buscando pelo apelido.
         while(std::getline(ss, valor, ',')) {
             if (valor == nickname) {
                 linhaContemValor = true;
@@ -72,6 +146,7 @@ int deletePlayer(string nickname) {
             }
         }
 
+    // adiciona a linha sem o valor encontrado a um vetor de linhas
         if (!linhaContemValor) {
             linhas.push_back(linha);
         }
@@ -79,10 +154,12 @@ int deletePlayer(string nickname) {
 
     csv.close();
 
+    // se não encontrar o apelido, retorna o código de erro 1.
     if (!valorEncontrado) {
         return 1;
     }
 
+    // reescreve o arquivo csv com as linhas do vetor de linhas.
     ofstream updated_csv;
     updated_csv.open(NOME_ARQ, std::fstream::trunc);
     
