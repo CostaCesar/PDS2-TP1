@@ -1,5 +1,5 @@
-#include "Register.cpp"
-#include "GameAdmin.cpp"
+#include "Register.hpp"
+#include "Admin.hpp"
 #include <iostream>
 #include <string>
 

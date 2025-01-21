@@ -1,11 +1,12 @@
 #pragma once
 
 #include "Defs.hpp"
-#include "Vec.hpp"
 #include <string>
 #include <map>
 
-using std::map;
+using 
+    std::string,
+    std::map;
 
 class Player 
 {
@@ -26,4 +27,4 @@ public:
     string GetNickname();
 
     Player(string _name, string _nickname);
-}
+};

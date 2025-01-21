@@ -46,8 +46,14 @@ clean:
 	rm $(OBJ_PATH)/*.o
 
 # good luck (don't) use these
-main: $(OBJ_PATH)/Register.o 
-	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp -o $(BIN_PATH)/main
+main: $()$(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o
+	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp -o $(BIN_PATH)/main -I$(INC_PATH)
+
+$(OBJ_PATH)/Register.o: $(SRC_PATH)/Register.cpp $(INC_PATH)/Register.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Register.cpp -o $(OBJ_PATH)/Register.o -I$(INC_PATH)
+
+$(OBJ_PATH)/Admin.o: $(SRC_PATH)/Admin.cpp $(INC_PATH)/Admin.hpp $(OBJ_PATH)/Register.o $(OBJ_PATH)/JogoVelha.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Liga4.o
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Admin.cpp -o $(OBJ_PATH)/Admin.o -I$(INC_PATH)
 
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Piece.cpp -o $(OBJ_PATH)/Piece.o -I$(INC_PATH)
@@ -57,13 +63,6 @@ $(OBJ_PATH)/Board.o: $(SRC_PATH)/Board.cpp $(INC_PATH)/Board.hpp $(INC_PATH)/Dir
 
 $(BIN_PATH)/Board_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(TST_PATH)/Board_Test.cpp
 	$(CXX) $(CXXFLAGS) $(TST_PATH)/Board_Test.cpp $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Board_Test -I$(INC_PATH)
-
-$(OBJ_PATH)/Register.o: $(SRC_PATH)/Register.cpp
-	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Register.cpp -o $(OBJ_PATH)/Register.o -I$(INC_PATH)
-
-$(OBJ_PATH)/GameAdmin.o: $(SRC_PATH)/GameAdmin.cpp $(OBJ_PATH)/Register.o $(OBJ_PATH)/JogoVelha.o
-	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/GameAdmin.cpp -o $(OBJ_PATH)/GameAdmin.o -I$(INC_PATH)
-
 
 $(OBJ_PATH)/JogoVelha.o: $(INC_PATH)/Board.hpp $(SRC_PATH)/Velha.cpp $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Liga4.o $(INC_PATH)/Velha.hpp 
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Velha.cpp -o $(OBJ_PATH)/JogoVelha.o -I$(INC_PATH)

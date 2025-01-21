@@ -1,5 +1,4 @@
-#pragma once
-
+#include "Register.hpp"
 #include <algorithm>
 #include <iostream>
 #include <ostream>
@@ -16,75 +15,11 @@ using
     std::vector;
 
 
-const string NOME_ARQ = "cadastro.csv";
-
-struct Jogador {
-    string apelido;
-    string nome;
-    int vitoriasReversi;
-    int vitoriasLIg4;
-    int vitoriasVelha;
-    int derrotasReversi;
-    int derrotasLIg4;
-    int derrotasVelha;
-};
-
-void listPlayers(char sel) {
+int playerExists (string nickname) {
     ifstream csv;
-    string linha;
-    vector<Jogador> jogadores;
 
     csv.open(NOME_ARQ, std::fstream::in);
 
-    while (std::getline(csv, linha)) {
-        stringstream ss(linha);
-        string apelido, nome, vR, vL, vV, dR, dL, dV;
-
-        std::getline(ss, apelido, ',');
-        std::getline(ss, nome, ',');
-        std::getline(ss, vR, ',');
-        std::getline(ss, vL, ',');
-        std::getline(ss, vV, ',');
-        std::getline(ss, dR, ',');
-        std::getline(ss, dL, ',');
-        std::getline(ss, dV, ',');
-
-        Jogador jogador;
-        jogador.apelido = apelido;
-        jogador.nome = nome;
-        jogador.vitoriasReversi = std::stoi(vR);
-        jogador.vitoriasLIg4 = std::stoi(vL);
-        jogador.vitoriasVelha = std::stoi(vV);
-        jogador.vitoriasReversi = std::stoi(dR);
-        jogador.vitoriasLIg4 = std::stoi(dL);
-        jogador.vitoriasVelha = std::stoi(dV);
-
-        jogadores.push_back(jogador);
-    }
-
-    if (sel == 'A') {
-        std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
-            return a.apelido < b.apelido;
-        });
-    } else if (sel == 'N') {
-        std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
-            return a.nome < b.nome;
-        });
-    }
-
-    for (const auto& jogador : jogadores) {
-        std::cout << std::endl
-            << "<" << jogador.apelido << "> " << "<" << jogador.nome << ">" << std::endl
-            << "REVERSI - V: " << "<" << jogador.vitoriasReversi << "> D: " << "<" << jogador.vitoriasReversi << ">" << std::endl
-            << "LIG4 - V: " << "<" << jogador.vitoriasLIg4 << "> D: " << "<" << jogador.vitoriasLIg4 << ">" << std::endl
-            << "VELHA - V: " << "<" << jogador.vitoriasVelha << "> D: " << "<" << jogador.vitoriasVelha << ">" << std::endl;
-    }
-
-    csv.close();
-}
-
-int playerExists (string NOME_ARQ, string nickname) {
-    ifstream csv(NOME_ARQ);
     string linha;
     
     while (std::getline(csv, linha)) {
@@ -101,13 +36,12 @@ int playerExists (string NOME_ARQ, string nickname) {
     return 0;
 }
 
-int registerPlayer(string nickname, string name) {
-    string arquivo = "cadastro.csv"; 
+int registerPlayer(string nickname, string name) { 
     ofstream csv;
 
-    csv.open(arquivo, std::fstream::app);
+    csv.open(NOME_ARQ, std::fstream::app);
 
-    if (!playerExists (arquivo, nickname)) {
+    if (!playerExists (nickname)) {
         csv << nickname << "," << name << ","
         << "0" << "," << "0" << ","
         << "0" << "," << "0" << ","
@@ -170,4 +104,58 @@ int deletePlayer(string nickname) {
     updated_csv.close();
     
     return 0;
+}
+
+void listPlayers(char sel) {
+    ifstream csv;
+    string linha;
+    vector<Jogador> jogadores;
+
+    csv.open(NOME_ARQ, std::fstream::in);
+
+    while (std::getline(csv, linha)) {
+        stringstream ss(linha);
+        string apelido, nome, vR, vL, vV, dR, dL, dV;
+
+        std::getline(ss, apelido, ',');
+        std::getline(ss, nome, ',');
+        std::getline(ss, vR, ',');
+        std::getline(ss, vL, ',');
+        std::getline(ss, vV, ',');
+        std::getline(ss, dR, ',');
+        std::getline(ss, dL, ',');
+        std::getline(ss, dV, ',');
+
+        Jogador jogador;
+        jogador.apelido = apelido;
+        jogador.nome = nome;
+        jogador.vitoriasReversi = std::stoi(vR);
+        jogador.vitoriasLIg4 = std::stoi(vL);
+        jogador.vitoriasVelha = std::stoi(vV);
+        jogador.vitoriasReversi = std::stoi(dR);
+        jogador.vitoriasLIg4 = std::stoi(dL);
+        jogador.vitoriasVelha = std::stoi(dV);
+
+        jogadores.push_back(jogador);
+    }
+
+    if (sel == 'A') {
+        std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
+            return a.apelido < b.apelido;
+        });
+    } else if (sel == 'N') {
+        std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
+            return a.nome < b.nome;
+        });
+    }
+
+    for (const auto& jogador : jogadores) {
+        std::cout << std::endl
+            << "<" << jogador.apelido << "> " << "<" << jogador.nome << ">" << std::endl
+            << "REVERSI - V: " << "<" << jogador.vitoriasReversi << "> D: " << "<" << jogador.vitoriasReversi << ">" << std::endl
+            << "LIG4 - V: " << "<" << jogador.vitoriasLIg4 << "> D: " << "<" << jogador.vitoriasLIg4 << ">" << std::endl
+            << "VELHA - V: " << "<" << jogador.vitoriasVelha << "> D: " << "<" << jogador.vitoriasVelha << ">" << std::endl;
+    }
+
+    csv.close();
 }
