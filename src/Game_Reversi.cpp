@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include <sstream>
+#include <fstream>
 
 uint Game_Reversi::Play()
 {
@@ -188,12 +189,13 @@ void Game_Reversi::Draw()
     std::cout << this->black_count << " " << this->k_player2 << std::endl;
 }
 
-Game_Reversi::Game_Reversi(uint _num_plays)
-:   Board(Vec2{8, 8}),
+Game_Reversi::Game_Reversi(uint _start_player)
+:   Board(Vec2{8, 8}, _start_player),
     border_tiles
     {   // Intial tiles for borders
         Vec2{2,2}, Vec2{2,3}, Vec2{2,4}, Vec2{2,5},
-        Vec2{3,2}, Vec2{3,5}, Vec2{4,2}, Vec2{4,5},
+        Vec2{3,2},                       Vec2{4,2},
+        Vec2{3,5},                       Vec2{4,5},
         Vec2{5,2}, Vec2{5,3}, Vec2{5,4}, Vec2{5,5}
     }
 {
@@ -206,9 +208,7 @@ Game_Reversi::Game_Reversi(uint _num_plays)
     Board::AddPiece(new Piece(Vec2{4,3}, 2, k_player2));
 
     this->black_count = this->white_count = 2;
-    this->num_plays = _num_plays * 2;
-    this->current_player = 1;
-    this->input = &std::cin;
+    this->num_plays = (GetSize().x * GetSize().y) - 4;
 }
 Game_Reversi::~Game_Reversi()
 {

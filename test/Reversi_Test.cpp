@@ -11,9 +11,18 @@ TEST_CASE("Reversi")
     Board* object = new Game_Reversi();
     REQUIRE(object != nullptr);
     
+    SUBCASE("Game 0: White Win")
+    {
+        input.open("./reversi_white.txt");
+        REQUIRE(input.is_open() == true);
+        object->AssignInput(&input);
+        
+        uint winner = object->Play();
+        CHECK(winner == 1);
+    }
     SUBCASE("Game 1: Black Win")
     {
-        input.open("./reversi_input.txt");
+        input.open("./reversi_black.txt");
         REQUIRE(input.is_open() == true);
         object->AssignInput(&input);
         
