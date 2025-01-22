@@ -43,7 +43,7 @@ public:
     uint Play();
     void AssignInput(std::istream* new_input);
 
-    Game_Reversi(uint _num_plays = 30);
+    Game_Reversi(uint _start_player = 1);
     ~Game_Reversi();
 
 };
