@@ -5,7 +5,7 @@
 class Game_Puzzle : public Board
 {
 private:
-    bool AddPiece(Piece* new_piece);
+    bool AddPiece(Vec2 position, Piece* new_piece);
     bool MovePiece(Vec2 position);
 
     bool IsDraw() override;

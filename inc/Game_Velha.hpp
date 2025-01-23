@@ -7,7 +7,7 @@ class Game_Velha : public Board
 private:
     uint GetWinner() override;
     bool IsDraw() override;
-    bool AddPiece(Piece* new_piece);
+    bool AddPiece(Vec2 position, Piece* new_piece);
     
     bool CheckForWin();
 

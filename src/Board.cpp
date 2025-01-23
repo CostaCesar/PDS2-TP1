@@ -114,29 +114,23 @@ bool Board::MovePiece(Vec2 position, Vec2 new_position)
     this->board[Vec2ToIndex(new_position)] = this->board[Vec2ToIndex(position)];
     this->board[Vec2ToIndex(position)] = buffer;
 
-    if(this->board[Vec2ToIndex(new_position)])
-        this->board[Vec2ToIndex(new_position)]->SetPosition(new_position);
-    if(this->board[Vec2ToIndex(position)])
-        this->board[Vec2ToIndex(position)]->SetPosition(position);
-
     return true;
 }
-bool Board::AddPiece(Piece* piece_ptr)
+bool Board::AddPiece(Vec2 position, Piece* piece_ptr)
 {
     if(piece_ptr == nullptr)
         return false;
 
-    Vec2 piece_position = piece_ptr->GetPosition();
-    if(IsInsideBoard(piece_position) == false)
+    if(IsInsideBoard(position) == false)
         return false;
     
-    if(this->board[Vec2ToIndex(piece_position)] != nullptr
-    && HandleOverlap_Add(piece_position, piece_ptr) == false)
+    if(this->board[Vec2ToIndex(position)] != nullptr
+    && HandleOverlap_Add(position, piece_ptr) == false)
     {
         return false;
     }
 
-    this->board[Vec2ToIndex(piece_position)] = piece_ptr;
+    this->board[Vec2ToIndex(position)] = piece_ptr;
     return true;
 }
 bool Board::DeletePiece(Vec2 position)

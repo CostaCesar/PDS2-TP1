@@ -52,9 +52,9 @@ bool Game_Puzzle::MovePiece(Vec2 position)
     return false;
 }
 
-bool Game_Puzzle::AddPiece(Piece* new_piece)
+bool Game_Puzzle::AddPiece(Vec2 position, Piece* new_piece)
 {
-    if(!Board::AddPiece(new_piece))
+    if(!Board::AddPiece(position, new_piece))
         return false;
 
     uint id = new_piece->GetPlayerId();
@@ -133,7 +133,7 @@ Game_Puzzle::Game_Puzzle(uint complexity, Vec2 _size)
     // Generate pieces
     for (uint i = 0; i < _size.y * _size.x - 1; i++)
     {
-        AddPiece(new Piece(Vec2{i % _size.x, i / _size.x}, i + 1));
+        AddPiece(Vec2{i % _size.x, i / _size.x}, new Piece(i + 1));
     }
 
     // Shuffle pieces & Check if it's playable

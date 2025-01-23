@@ -28,14 +28,14 @@ private:
     uint black_count;
     unordered_set<Vec2, Vec2Hash> border_tiles;
 
-    bool AddPiece(Piece* new_piece);
+    bool AddPiece(Vec2 position, Piece* new_piece);
     void Draw();
 
     uint GetWinner() override;
     bool IsDraw() override;
 
     void CalculateBorders(Vec2 position);
-    void CascadeMove(Piece* start_piece);
+    void CascadeMove(Vec2 position, Piece* start_piece);
     uint MarkAsPlayable();
 
 public:

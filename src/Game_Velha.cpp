@@ -2,14 +2,14 @@
 
 #include <iostream>
 
-bool Game_Velha::AddPiece(Piece* new_piece)
+bool Game_Velha::AddPiece(Vec2 position, Piece* new_piece)
 {
     if(new_piece->GetPlayerId() == 1)
         new_piece->SetSymbol('X');
     else if(new_piece->GetPlayerId() == 2)
         new_piece->SetSymbol('O');
 
-    return Board::AddPiece(new_piece);
+    return Board::AddPiece(position, new_piece);
 }
 
 bool Game_Velha::CheckForWin()
@@ -67,8 +67,8 @@ uint Game_Velha::Play()
                 continue;
             }
 
-            Piece* peca = new Piece(move, this->current_player);
-            if (AddPiece(peca) == true) break;
+            Piece* peca = new Piece(this->current_player);
+            if (AddPiece(move, peca) == true) break;
             else
             {
                 delete peca;

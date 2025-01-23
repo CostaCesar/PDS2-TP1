@@ -11,7 +11,8 @@ Game_Liga4::Game_Liga4(uint rows, uint cols)
 
 Game_Liga4::~Game_Liga4() {}
 
-uint Game_Liga4::Play() {
+uint Game_Liga4::Play()
+{
     Vec2 last_move;
 
     while (this->num_plays > 0)
@@ -29,9 +30,9 @@ uint Game_Liga4::Play() {
             break;
         }
         
-        Piece* piece = new Piece(last_move, this->current_player);
+        Piece* piece = new Piece(this->current_player);
 
-        if (!AddPiece(piece)) {
+        if (!AddPiece(last_move, piece)) {
             std::cout << "ERRO: jogada inválida" << std::endl;
             delete piece;
             continue;
