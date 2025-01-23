@@ -65,8 +65,8 @@ $(OBJ_PATH)/Board_Test.o: $(TST_PATH)/Board_Test.cpp
 	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Board_Test.cpp -o $(OBJ_PATH)/Board_Test.o -I$(INC_PATH)
 
 
-$(OBJ_PATH)/Game_Velha.o: $(SRC_PATH)/Velha.cpp $(INC_PATH)/Velha.hpp
-	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Velha.cpp -o $(OBJ_PATH)/Game_Velha.o -I$(INC_PATH)
+$(OBJ_PATH)/Game_Velha.o: $(SRC_PATH)/Game_Velha.cpp $(INC_PATH)/Game_Velha.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Game_Velha.cpp -o $(OBJ_PATH)/Game_Velha.o -I$(INC_PATH)
 
 $(OBJ_PATH)/Velha_Test.o: $(TST_PATH)/Velha_Test.cpp
 	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Velha_Test.cpp -o $(OBJ_PATH)/Velha_Test.o -I$(INC_PATH)
@@ -79,8 +79,8 @@ $(OBJ_PATH)/Reversi_Test.o: $(TST_PATH)/Reversi_Test.cpp
 	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Reversi_Test.cpp -o $(OBJ_PATH)/Reversi_Test.o -I$(INC_PATH)
 
 
-$(OBJ_PATH)/Game_Liga4.o: $(SRC_PATH)/Liga4.cpp $(INC_PATH)/Liga4.hpp
-	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Liga4.cpp -o $(OBJ_PATH)/Game_Liga4.o -I$(INC_PATH)
+$(OBJ_PATH)/Game_Liga4.o: $(SRC_PATH)/Game_Liga4.cpp $(INC_PATH)/Game_Liga4.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Game_Liga4.cpp -o $(OBJ_PATH)/Game_Liga4.o -I$(INC_PATH)
 
 $(OBJ_PATH)/Liga4_Test.o: $(TST_PATH)/Liga4_Test.cpp 
 	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Liga4_Test.cpp -o $(OBJ_PATH)/Liga4_Test.o -I$(INC_PATH)

@@ -1,13 +1,11 @@
-#include "Vec.hpp"
-#include "Piece.hpp"
-#include "Board.hpp"
-#include "Velha.hpp"
+#include "Game_Velha.hpp"
+
 #include <iostream>
 #include <vector>
 
 
 
-uint JogoDaVelha::GetWinnerPos(Vec2 pos){
+uint Game_Velha::GetWinnerPos(Vec2 pos){
     for (int i=0; i<8; i++){
         if (this->MatchUntilStep(pos, (Direction) i , 2) == MatchReturn::Matched){
             return this->GetPiece(pos)->GetPlayerId();
@@ -16,15 +14,15 @@ uint JogoDaVelha::GetWinnerPos(Vec2 pos){
     return 0;
 };
 
-uint JogoDaVelha::GetWinner(){
+uint Game_Velha::GetWinner(){
     return 0;
 };
 
-bool JogoDaVelha::IsDraw(){
+bool Game_Velha::IsDraw(){
     return 0;
 };
 
-uint JogoDaVelha::Play(){
+uint Game_Velha::Play(){
 
     using namespace std;
     uint id1 = 1;

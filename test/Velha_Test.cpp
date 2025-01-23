@@ -1,10 +1,10 @@
 #include "TestHeader.hpp"
 
-#include "Velha.hpp"
+#include "Game_Velha.hpp"
 
 TEST_CASE("Puzzle Game")
 {
-    Board* obj = new JogoDaVelha();
+    Board* obj = new Game_Velha();
     REQUIRE(obj != nullptr);
 
     obj->Play();
