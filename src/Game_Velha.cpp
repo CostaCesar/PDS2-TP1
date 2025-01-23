@@ -1,90 +1,92 @@
 #include "Game_Velha.hpp"
 
 #include <iostream>
-#include <vector>
 
+bool Game_Velha::AddPiece(Piece* new_piece)
+{
+    if(new_piece->GetPlayerId() == 1)
+        new_piece->SetSymbol('X');
+    else if(new_piece->GetPlayerId() == 2)
+        new_piece->SetSymbol('O');
 
+    return Board::AddPiece(new_piece);
+}
 
-uint Game_Velha::GetWinnerPos(Vec2 pos){
-    for (int i=0; i<8; i++){
-        if (this->MatchUntilStep(pos, (Direction) i , 2) == MatchReturn::Matched){
-            return this->GetPiece(pos)->GetPlayerId();
-        }
+bool Game_Velha::CheckForWin()
+{
+    for (uint i = 0; i < GetSize().x; i++)
+    {
+        // Vertical check
+        if(MatchUntilStep(Vec2{i, 0}, Direction::South, GetSize().x - 1) == MatchReturn::Matched)
+            return true;
+        
+        // Horizontal check
+        if(MatchUntilStep(Vec2{0, i}, Direction::East, GetSize().x - 1) == MatchReturn::Matched)
+            return true;
     }
-    return 0;
-};
+    
+    // Diagonal check
+    if(MatchUntilStep(Vec2{0, 0}, Direction::SouthEast, GetSize().x - 1) == MatchReturn::Matched)
+        return true;
+    else if(MatchUntilStep(Vec2{0, GetSize().x - 1}, Direction::NorthEast, GetSize().x - 1) == MatchReturn::Matched)
+        return true;
 
-uint Game_Velha::GetWinner(){
-    return 0;
-};
+    return false;
+}
 
-bool Game_Velha::IsDraw(){
-    return 0;
-};
+uint Game_Velha::GetWinner()
+{
+    if(IsDraw() == true)
+        return 0;
+    else return current_player;
+}
 
-uint Game_Velha::Play(){
+bool Game_Velha::IsDraw()
+{
+    return this->num_plays == GetSize().x * GetSize().y;
+}
 
-    using namespace std;
-    uint id1 = 1;
-    uint id2 = 2;
-    Vec2 jogada;
-    uint vencedor = 0;
-    for (int i=0;i<4;i++){
+uint Game_Velha::Play()
+{
+    using std::cout;
+    using std::endl;
 
-        while(1){
-            cout << "Jogada do jogador" << id1 << ":" << endl;
-            try{
-                jogada = ReadMove();
-            }
+    Vec2 move;
+
+    while (!IsDraw())
+    {
+        Draw();
+        cout << "Jogada do jogador" << this->current_player << " <X Y>:" << endl;
+        
+        while(1)
+        {
+            try { move = ReadMove(); }
             catch(const std::exception& e)
             {
                 cout << "Entrada invalida" << endl;
                 continue;
             }
-            Piece* peca = this->GetPiece(jogada);
-            peca = new Piece(jogada, id1 , 'X');
-            if (AddPiece(peca)) {
-                break;
-                }
-            
-            else{
+
+            Piece* peca = new Piece(move, this->current_player);
+            if (AddPiece(peca) == true) break;
+            else
+            {
                 delete peca;
                 cout << "Jogada invalida" << endl;
-            } 
+            }
         }
 
-        this->Draw();
+        if(CheckForWin()) break;
 
-        if(i>=1) vencedor = GetWinnerPos(jogada);
-        if(i>3 || vencedor != 0) break;
-
-        while(1){
-            cout << "Jogada do jogador" << id2 << ":" << endl;
-            try{
-                jogada = ReadMove();
-            }
-            catch(const std::exception& e)
-            {
-                cout << "Entrada invalida" << endl;
-                continue;
-            }
-            Piece* peca = this->GetPiece(jogada);
-            peca = new Piece(jogada, id2 , 'O');
-            if (AddPiece(peca)) {
-                break;
-                }
-            
-            else{
-                delete peca ;
-                cout << "Jogada invalida" << endl;
-            } 
-        }
-
-        this->Draw();
-        
-        if(i>=1) vencedor = GetWinnerPos(jogada);
-        if(vencedor != 0) break;
-
+        NextPlayer();
     }
-    return vencedor;
-};
+
+    Draw();
+    return GetWinner();
+}
+
+Game_Velha::Game_Velha()
+    : Board(Vec2{3, 3})
+{
+
+}
