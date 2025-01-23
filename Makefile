@@ -7,16 +7,25 @@ else
     CDEBUG = -g0
 endif
 
+#os detection
+ifeq ($(OS),Windows_NT)
+	RM = del
+	SL = \\
+else
+	RM = rm
+	SL = /
+endif
+
 # tool macros
 CXX ?= g++
 CXXFLAGS := -Wall -std=c++17 $(CDEBUG)
 
 # path macros
-BIN_PATH := ./bin
-OBJ_PATH := ./tmp
-SRC_PATH := ./src
-INC_PATH := ./inc
-TST_PATH := ./test
+BIN_PATH := .$(SL)bin
+OBJ_PATH := .$(SL)tmp
+SRC_PATH := .$(SL)src
+INC_PATH := .$(SL)inc
+TST_PATH := .$(SL)test
 
 # do not search these as files in the workspace
 .PHONY: clean delete all tests run_tests test_board test_reversi test_puzzle test_liga4 test_velha
@@ -50,9 +59,10 @@ test_puzzle: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Puzzle.o $
 
 
 clean:
-	rm $(OBJ_PATH)/*.o
+	$(RM) $(OBJ_PATH)$(SL)*.o
 delete:
-	rm $(BIN_PATH)/*_Test
+	$(RM) $(BIN_PATH)$(SL)*_Test
+	$(RM) $(BIN_PATH)$(SL)*.exe
 
 # good luck (don't) use these
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
