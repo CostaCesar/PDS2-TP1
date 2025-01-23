@@ -19,7 +19,7 @@ INC_PATH := ./inc
 TST_PATH := ./test
 
 # do not search these as files in the workspace
-.PHONY: clean delete all tests run_tests test_board test_reversi
+.PHONY: clean delete all tests run_tests test_board test_reversi test_puzzle test_liga4 test_velha
 
 # use these
 all: tests
@@ -28,7 +28,7 @@ tests: test_board test_reversi test_puzzle test_liga4 test_velha
 
 run_tests: tests
 	$(BIN_PATH)/Board_Test
-	$(BIN_PATH)/JogoVelha_Test
+	$(BIN_PATH)/Velha_Test
 	$(BIN_PATH)/Reversi_Test
 	$(BIN_PATH)/Puzzle_Test
 	$(BIN_PATH)/Liga4_Test
