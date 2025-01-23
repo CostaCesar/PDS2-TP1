@@ -2,8 +2,11 @@
 
 #include <iostream>
 
-Game_Liga4::Game_Liga4(uint rows, uint cols) : Board(Vec2{rows, cols}) {
-    current_player = 1;
+Game_Liga4::Game_Liga4(uint rows, uint cols) 
+    : Board(Vec2{rows, cols})
+{
+    this->num_plays = GetSize().x * GetSize().y;
+    this->current_player = 1;
 }
 
 Game_Liga4::~Game_Liga4() {}
@@ -11,18 +14,13 @@ Game_Liga4::~Game_Liga4() {}
 uint Game_Liga4::Play() {
     Vec2 last_move;
 
-    uint num_plays = GetSize().x * GetSize().y;
-
-    while (num_plays > 0)
+    while (this->num_plays > 0)
     {
         Draw();
 
         while (1)
         {
-            try
-            {
-                last_move = ReadMove();
-            }
+            try { last_move = ReadMove(); }
             catch(const std::exception& e)
             {
                 std::cout << "Entrada invalida!" << std::endl;
@@ -31,7 +29,7 @@ uint Game_Liga4::Play() {
             break;
         }
         
-        Piece* piece = new Piece(last_move, current_player);
+        Piece* piece = new Piece(last_move, this->current_player);
 
         if (!AddPiece(piece)) {
             std::cout << "ERRO: jogada inválida" << std::endl;
@@ -39,10 +37,10 @@ uint Game_Liga4::Play() {
             continue;
         }
 
-        if (CheckWin(current_player, last_move))
+        if (CheckWin(this->current_player, last_move))
             break;
 
-        num_plays--;
+        this->num_plays--;
         NextPlayer();
     }
 
@@ -50,10 +48,13 @@ uint Game_Liga4::Play() {
     return GetWinner();
 }
 
-uint Game_Liga4::EmptyRow(uint column) {
-    for (uint row = GetSize().y ; row > 0; --row) {
-        if (GetPiece(Vec2{column, row-1}) == nullptr) {
-            return row-1;
+uint Game_Liga4::EmptyRow(uint column)
+{
+    for (uint row = GetSize().y; row > 0; --row)
+    {
+        if (GetPiece(Vec2{column, row - 1}) == nullptr)
+        {
+            return row - 1;
         }
     }
 
@@ -86,19 +87,23 @@ uint Game_Liga4::GetWinner()
     else return current_player;
 }
 
-bool Game_Liga4::CheckWin(uint player, const Vec2& last_move) {
+bool Game_Liga4::CheckWin(uint player, const Vec2 &last_move)
+{
     for (uint i = 0; i < 8; i++)
     {
-        if(MatchUntilStep(last_move, (Direction) i, 3) == MatchReturn::Matched)
+        if (MatchUntilStep(last_move, (Direction)i, 3) == MatchReturn::Matched)
             return true;
     }
 
     return false;
 }
 
-bool Game_Liga4::IsDraw() {
-    for (uint x = 0; x < GetSize().x; ++x) {
-        if (GetPiece(Vec2{x, GetSize().y - 1}) == nullptr) {
+bool Game_Liga4::IsDraw()
+{
+    for (uint x = 0; x < GetSize().x; ++x)
+    {
+        if (GetPiece(Vec2{x, GetSize().y - 1}) == nullptr)
+        {
             return false;
         }
     }

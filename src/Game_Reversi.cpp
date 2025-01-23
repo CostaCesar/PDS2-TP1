@@ -2,7 +2,6 @@
 #include <iostream>
 
 #include <sstream>
-#include <fstream>
 
 uint Game_Reversi::Play()
 {
@@ -47,21 +46,19 @@ uint Game_Reversi::Play()
     Draw();
     return GetWinner();
 }
-void Game_Reversi::AssignInput(std::istream* new_input)
-{
-    if(new_input != nullptr)
-        this->input = new_input;
-}
+
 bool Game_Reversi::IsDraw()
 {
     return (this->num_plays == 0 && this->white_count == this->black_count);
 }
+
 uint Game_Reversi::GetWinner()
 {
     if(this->num_plays > 0 || IsDraw())
         return 0;
     else return (this->white_count > this->black_count ? 1 : 2);
 }
+
 bool Game_Reversi::AddPiece(Piece* new_piece)
 {
     // Must be a player move. Call Board::AddPiece() if you otherwise
@@ -90,6 +87,7 @@ bool Game_Reversi::AddPiece(Piece* new_piece)
     CascadeMove(new_piece);
     return true;
 }
+
 void Game_Reversi::CascadeMove(Piece *start_piece)
 {
     // Checking lines from the current tile

@@ -1,5 +1,4 @@
 #include "Board.hpp"
-#include "Direction.hpp"
 
 #include <iostream>
 #include <limits>

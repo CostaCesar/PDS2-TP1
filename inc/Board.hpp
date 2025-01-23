@@ -1,9 +1,7 @@
 #pragma once
 
 #include "Defs.hpp"
-#include "Vec.hpp"
 #include "Piece.hpp"
-#include "Direction.hpp"
 
 #include <sstream>
 #include <vector>

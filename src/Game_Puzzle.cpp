@@ -16,8 +16,8 @@ uint Game_Puzzle::Play()
                 std::cout << "Invalid Input!" << std::endl;
                 continue;
             }
-            if(MovePiece(move) == true)
-                break;
+
+            if(MovePiece(move) == true) break;
             else
             {
                 std::cout << "Invalid Play! ";
@@ -35,6 +35,7 @@ uint Game_Puzzle::Play()
     Draw();
     return 1;
 }
+
 bool Game_Puzzle::MovePiece(Vec2 position)
 {
     if(GetPiece(position) == nullptr)
@@ -50,6 +51,7 @@ bool Game_Puzzle::MovePiece(Vec2 position)
     }
     return false;
 }
+
 bool Game_Puzzle::AddPiece(Piece* new_piece)
 {
     if(!Board::AddPiece(new_piece))
@@ -61,6 +63,7 @@ bool Game_Puzzle::AddPiece(Piece* new_piece)
 
     return true;
 }
+
 bool Game_Puzzle::IsDraw()
 {
     uint inv_count = 0; 
@@ -81,6 +84,7 @@ bool Game_Puzzle::IsDraw()
 
     return (inv_count % 2 == 0);
 }
+
 uint Game_Puzzle::GetWinner()
 {
     Vec2 limits = this->GetSize();
@@ -97,14 +101,12 @@ uint Game_Puzzle::GetWinner()
     
     return true;
 }
+
 Vec2 Game_Puzzle::ReadMove()
 {
     uint id;
 
-    try
-    {
-        id = GetUintFromInput();
-    }
+    try { id = GetUintFromInput(); }
     catch(const std::exception& e)
     { throw e; }
     
@@ -128,11 +130,13 @@ Game_Puzzle::Game_Puzzle(uint complexity, Vec2 _size)
     : Board(_size)
 {
 
+    // Generate pieces
     for (uint i = 0; i < _size.y * _size.x - 1; i++)
     {
         AddPiece(new Piece(Vec2{i % _size.x, i / _size.x}, i + 1));
     }
 
+    // Shuffle pieces & Check if it's playable
     do
     {
         for (uint k = 0; k < complexity; k++)
@@ -147,6 +151,7 @@ Game_Puzzle::Game_Puzzle(uint complexity, Vec2 _size)
     this->num_plays = 0;
     this->current_player = 1;
 }
+
 Game_Puzzle::~Game_Puzzle()
 {
 

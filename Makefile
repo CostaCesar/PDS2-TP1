@@ -24,7 +24,7 @@ TST_PATH := ./test
 # use these
 all: tests
 
-tests: test_board test_reversi test_puzzle test_liga4
+tests: test_board test_reversi test_puzzle test_liga4 test_velha
 
 run_tests: tests
 	$(BIN_PATH)/Board_Test
@@ -55,10 +55,10 @@ delete:
 	rm $(BIN_PATH)/*_Test
 
 # good luck (don't) use these
-$(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp $(INC_PATH)/Vec.hpp
+$(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Piece.cpp -o $(OBJ_PATH)/Piece.o -I$(INC_PATH)
 
-$(OBJ_PATH)/Board.o: $(SRC_PATH)/Board.cpp $(INC_PATH)/Board.hpp $(INC_PATH)/Direction.hpp 
+$(OBJ_PATH)/Board.o: $(SRC_PATH)/Board.cpp $(INC_PATH)/Board.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Board.cpp -o $(OBJ_PATH)/Board.o -I$(INC_PATH)
 
 $(OBJ_PATH)/Board_Test.o: $(TST_PATH)/Board_Test.cpp

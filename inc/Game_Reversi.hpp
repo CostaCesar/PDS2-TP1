@@ -24,14 +24,13 @@ private:
     static const char k_player2 = 'O';
     static const char k_available = '.';
 
-    std::istream* input;
-
     uint white_count;
     uint black_count;
     unordered_set<Vec2, Vec2Hash> border_tiles;
 
     bool AddPiece(Piece* new_piece);
     void Draw();
+
     uint GetWinner() override;
     bool IsDraw() override;
 
