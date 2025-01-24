@@ -21,21 +21,20 @@ class Board
 private:
     Vec2 board_size;
     vector<Piece*> board;
-
-    uint Vec2ToIndex(Vec2 position);
-    Vec2 IndexToVec2(uint index);
-
     std::istream* input;
 
 protected:
-    uint num_plays;
     uint current_player;
+    uint num_plays;
 
     uint GetOpponentId();
     virtual void NextPlayer();
 
+    uint Vec2ToIndex(Vec2 position);
+    Vec2 IndexToVec2(uint index);
     Vec2 PosFromDirec(Vec2 pos, Direction direc);
     bool IsInsideBoard(Vec2 position);
+
     Piece* GetPiece(Vec2 position);
     MatchReturn MatchUntilStep(Vec2 position, Direction direction, uint steps);
     
