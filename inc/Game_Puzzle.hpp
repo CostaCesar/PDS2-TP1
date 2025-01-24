@@ -14,6 +14,6 @@ private:
 
 public:
     uint Play() override;
-    Game_Puzzle(uint complexity, Vec2 _size = Vec2{3, 3});
+    Game_Puzzle(uint complexity, uint seed = time(NULL), Vec2 _size = Vec2{3, 3});
     ~Game_Puzzle();
 };

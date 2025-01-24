@@ -70,19 +70,20 @@ bool Game_Puzzle::IsDraw()
 
     for (uint i = 0; i < 8; i++)
     {
+        Piece *i_piece = GetPiece(IndexToVec2(i));
         for (uint j = i + 1; j < 9; j++)
         {
-            Piece *i_piece = GetPiece(Vec2{i, i});
-            Piece *j_piece = GetPiece(Vec2{j, j});
+            Piece *j_piece = GetPiece(IndexToVec2(j));
 
             if (i_piece == nullptr || j_piece == nullptr)
                 continue;
+
             else if(i_piece->GetPlayerId() > j_piece->GetPlayerId())
                inv_count++;
         }
     }
 
-    return (inv_count % 2 == 0);
+    return (inv_count % 2 == 1);
 }
 
 uint Game_Puzzle::GetWinner()
@@ -93,9 +94,17 @@ uint Game_Puzzle::GetWinner()
     if(GetPiece(Vec2{limits.x - 1, limits.y - 1}) != nullptr)
         return 0;
 
-    for (uint i = 1; i < limits.x * limits.y - 1; i++)
+    for (uint i = 0; i < limits.x * limits.y - 2; i++)
     {
-        if(GetPiece(Vec2{i % limits.x, i / limits.x}) < GetPiece(Vec2{(i-1) % limits.x, (i-1) / limits.x}))
+        Piece *i_piece = GetPiece(IndexToVec2(i));
+        if(i_piece == nullptr)
+            return false;
+
+        Piece *j_piece = GetPiece(IndexToVec2(i+1));
+        if(j_piece == nullptr)
+            return false;
+
+        if(j_piece->GetPlayerId() < i_piece->GetPlayerId())
             return false;
     }
     
@@ -126,10 +135,9 @@ Vec2 Game_Puzzle::ReadMove()
     
     return limits;
 }
-Game_Puzzle::Game_Puzzle(uint complexity, Vec2 _size)
+Game_Puzzle::Game_Puzzle(uint complexity, uint seed, Vec2 _size)
     : Board(_size)
 {
-
     // Generate pieces
     for (uint i = 0; i < _size.y * _size.x - 1; i++)
     {
@@ -137,6 +145,7 @@ Game_Puzzle::Game_Puzzle(uint complexity, Vec2 _size)
     }
 
     // Shuffle pieces & Check if it's playable
+    srand(seed);
     do
     {
         for (uint k = 0; k < complexity; k++)
@@ -147,9 +156,6 @@ Game_Puzzle::Game_Puzzle(uint complexity, Vec2 _size)
             Board::MovePiece(pos_i, pos_j);
         }
     } while (IsDraw() == true);
-    
-    this->num_plays = 0;
-    this->current_player = 1;
 }
 
 Game_Puzzle::~Game_Puzzle()
