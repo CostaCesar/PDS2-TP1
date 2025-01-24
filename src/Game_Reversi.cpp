@@ -9,7 +9,7 @@ uint Game_Reversi::Play()
     {
         if(IsDraw()) break;
 
-        this->current_player = (this->current_player % 2) + 1;
+        NextPlayer();
         
         // No valid plays, skip to next player
         if(MarkAsPlayable() == 0)
@@ -28,7 +28,6 @@ uint Game_Reversi::Play()
                 continue;
             }
             
-
             Piece* play = new Piece(this->current_player);
             if(AddPiece(move, play) == true)
             {

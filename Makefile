@@ -37,9 +37,9 @@ tests: test_board test_reversi test_puzzle test_liga4 test_velha
 
 run_tests: tests
 	$(BIN_PATH)/Board_Test
-	$(BIN_PATH)/Velha_Test
-	$(BIN_PATH)/Reversi_Test
 	$(BIN_PATH)/Puzzle_Test
+	$(BIN_PATH)/Reversi_Test
+	$(BIN_PATH)/Velha_Test
 	$(BIN_PATH)/Liga4_Test
 
 test_board: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Board_Test.o
