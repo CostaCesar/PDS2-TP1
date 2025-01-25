@@ -4,7 +4,7 @@
 
 TEST_CASE("Liga 4")
 {
-    Board* a = new Liga4(8, 8);
+    Board* a = new Liga4(7, 6);
 
     a->Play();
 
