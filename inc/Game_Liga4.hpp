@@ -2,13 +2,13 @@
 
 #include "Board.hpp"
 
-class Liga4 : public Board {
+class Game_Liga4 : public Board {
 private:
     uint EmptyRow(uint colummn);
     Vec2 ReadMove() override;
 public:
-    Liga4(uint rows, uint cols);
-    ~Liga4();
+    Game_Liga4(uint rows, uint cols);
+    ~Game_Liga4();
 
     uint GetWinner() override;
     bool IsDraw() override;

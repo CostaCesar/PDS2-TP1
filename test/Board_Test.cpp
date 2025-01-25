@@ -16,7 +16,11 @@ public:
     uint Play() override
     {
         return 0;
-    }    
+    }
+    Piece* GetPiece(Vec2 pos)
+    {
+        return Board::GetPiece(pos);
+    }
     
     BoardTest(uint _x, uint _y)
     : Board(Vec2{_x, _y})
@@ -39,21 +43,20 @@ TEST_CASE("Board Creation")
     CHECK(sizes.x == 10);
     CHECK(sizes.y == 10);
 
-    Piece* piece_a = new Piece(Vec2{1,1}, 1, 'A');
-    CHECK(alias->AddPiece(piece_a) == true);
+    Piece* piece_a = new Piece(1, 'A');
+    CHECK(alias->AddPiece(Vec2{1,1}, piece_a) == true);
 
-    Piece* piece_b = new Piece(Vec2{1,1}, 2);
-    CHECK(alias->AddPiece(piece_b) == false);
-    piece_b->SetPosition(Vec2{2,2});
-    CHECK(alias->AddPiece(piece_b) == true);
+    Piece* piece_b = new Piece(2);
+    CHECK(alias->AddPiece(Vec2{1,1}, piece_b) == false);
+    CHECK(alias->AddPiece(Vec2{2,2}, piece_b) == true);
 
     CHECK(alias->MovePiece(Vec2{1,1}, Vec2{2,2}) == false);
     CHECK(alias->MovePiece(Vec2{1,1}, Vec2{1,0}) == true);
     CHECK(alias->MovePiece(Vec2{1,1}, Vec2{0,1}) == false);
     CHECK(alias->MovePiece(Vec2{1,0}, Vec2{3,3}) == true);
 
-    CHECK(piece_a->GetPosition().x == 3);
-    CHECK(piece_a->GetPosition().y == 3);
+    CHECK(object->GetPiece(Vec2{3,3}) == piece_a);
+    CHECK(object->GetPiece(Vec2{2,2}) == piece_b);
 
     object->Draw();
 

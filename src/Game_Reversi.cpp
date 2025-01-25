@@ -9,7 +9,7 @@ uint Game_Reversi::Play()
     {
         if(IsDraw()) break;
 
-        this->current_player = (this->current_player % 2) + 1;
+        NextPlayer();
         
         // No valid plays, skip to next player
         if(MarkAsPlayable() == 0)
@@ -28,9 +28,8 @@ uint Game_Reversi::Play()
                 continue;
             }
             
-
-            Piece* play = new Piece(move, this->current_player);
-            if(AddPiece(play) == true)
+            Piece* play = new Piece(this->current_player);
+            if(AddPiece(move, play) == true)
             {
                 break;
             }
@@ -46,22 +45,20 @@ uint Game_Reversi::Play()
     Draw();
     return GetWinner();
 }
-void Game_Reversi::AssignInput(std::istream* new_input)
-{
-    if(new_input != nullptr)
-        this->input = new_input;
-}
+
 bool Game_Reversi::IsDraw()
 {
     return (this->num_plays == 0 && this->white_count == this->black_count);
 }
+
 uint Game_Reversi::GetWinner()
 {
     if(this->num_plays > 0 || IsDraw())
         return 0;
     else return (this->white_count > this->black_count ? 1 : 2);
 }
-bool Game_Reversi::AddPiece(Piece* new_piece)
+
+bool Game_Reversi::AddPiece(Vec2 position, Piece* new_piece)
 {
     // Must be a player move. Call Board::AddPiece() if you otherwise
     if(new_piece->GetPlayerId() == 1)
@@ -71,31 +68,32 @@ bool Game_Reversi::AddPiece(Piece* new_piece)
     else return false;
 
     // Check if is a valid Reversi move
-    Piece* at_board = this->GetPiece(new_piece->GetPosition());
+    Piece* at_board = this->GetPiece(position);
     if(at_board == nullptr)
         return false;
     else if (at_board->GetSymbol() != k_available)
         return false;
 
-    DeletePiece(new_piece->GetPosition());
-    Board::AddPiece(new_piece);
+    DeletePiece(position);
+    Board::AddPiece(position, new_piece);
 
     if(this->current_player == 1)
         this->white_count++;
     else if(this->current_player == 2)
         this->black_count++;
 
-    CalculateBorders(new_piece->GetPosition());
-    CascadeMove(new_piece);
+    CalculateBorders(position);
+    CascadeMove(position, new_piece);
     return true;
 }
-void Game_Reversi::CascadeMove(Piece *start_piece)
+
+void Game_Reversi::CascadeMove(Vec2 position, Piece *start_piece)
 {
     // Checking lines from the current tile
     // 0 = North -> 7 = North-West, Clockwise
     for (uint i = 0; i < 8; i++)
     {
-        Vec2 i_pos = PosFromDirec(start_piece->GetPosition(), (Direction) i);
+        Vec2 i_pos = PosFromDirec(position, (Direction) i);
         // Check if it's adjacent to an opponent piece
         if(GetPiece(i_pos) == nullptr)
             continue;
@@ -165,7 +163,7 @@ uint Game_Reversi::MarkAsPlayable()
 
                 Piece* at_board = GetPiece(pos);
                 if(at_board == nullptr)
-                    Board::AddPiece(new Piece(pos, 0, k_available));
+                    Board::AddPiece(pos, new Piece(0, k_available));
                 else at_board->SetSymbol(k_available);
                 break;
             }
@@ -188,27 +186,26 @@ void Game_Reversi::Draw()
     std::cout << this->black_count << " " << this->k_player2 << std::endl;
 }
 
-Game_Reversi::Game_Reversi(uint _num_plays)
-:   Board(Vec2{8, 8}),
+Game_Reversi::Game_Reversi(uint _start_player)
+:   Board(Vec2{8, 8}, _start_player),
     border_tiles
     {   // Intial tiles for borders
         Vec2{2,2}, Vec2{2,3}, Vec2{2,4}, Vec2{2,5},
-        Vec2{3,2}, Vec2{3,5}, Vec2{4,2}, Vec2{4,5},
+        Vec2{3,2},                       Vec2{4,2},
+        Vec2{3,5},                       Vec2{4,5},
         Vec2{5,2}, Vec2{5,3}, Vec2{5,4}, Vec2{5,5}
     }
 {
     // White Pieces
-    Board::AddPiece(new Piece(Vec2{3,3}, 1, k_player1));
-    Board::AddPiece(new Piece(Vec2{4,4}, 1, k_player1));
+    Board::AddPiece(Vec2{3,3}, new Piece(1, k_player1));
+    Board::AddPiece(Vec2{4,4}, new Piece(1, k_player1));
 
     // Black Pieces
-    Board::AddPiece(new Piece(Vec2{3,4}, 2, k_player2));
-    Board::AddPiece(new Piece(Vec2{4,3}, 2, k_player2));
+    Board::AddPiece(Vec2{3,4}, new Piece(2, k_player2));
+    Board::AddPiece(Vec2{4,3}, new Piece(2, k_player2));
 
     this->black_count = this->white_count = 2;
-    this->num_plays = _num_plays * 2;
-    this->current_player = 1;
-    this->input = &std::cin;
+    this->num_plays = (GetSize().x * GetSize().y) - 4;
 }
 Game_Reversi::~Game_Reversi()
 {

@@ -16,8 +16,8 @@ uint Game_Puzzle::Play()
                 std::cout << "Invalid Input!" << std::endl;
                 continue;
             }
-            if(MovePiece(move) == true)
-                break;
+
+            if(MovePiece(move) == true) break;
             else
             {
                 std::cout << "Invalid Play! ";
@@ -35,6 +35,7 @@ uint Game_Puzzle::Play()
     Draw();
     return 1;
 }
+
 bool Game_Puzzle::MovePiece(Vec2 position)
 {
     if(GetPiece(position) == nullptr)
@@ -50,9 +51,10 @@ bool Game_Puzzle::MovePiece(Vec2 position)
     }
     return false;
 }
-bool Game_Puzzle::AddPiece(Piece* new_piece)
+
+bool Game_Puzzle::AddPiece(Vec2 position, Piece* new_piece)
 {
-    if(!Board::AddPiece(new_piece))
+    if(!Board::AddPiece(position, new_piece))
         return false;
 
     uint id = new_piece->GetPlayerId();
@@ -61,26 +63,29 @@ bool Game_Puzzle::AddPiece(Piece* new_piece)
 
     return true;
 }
+
 bool Game_Puzzle::IsDraw()
 {
     uint inv_count = 0; 
 
     for (uint i = 0; i < 8; i++)
     {
+        Piece *i_piece = GetPiece(IndexToVec2(i));
         for (uint j = i + 1; j < 9; j++)
         {
-            Piece *i_piece = GetPiece(Vec2{i, i});
-            Piece *j_piece = GetPiece(Vec2{j, j});
+            Piece *j_piece = GetPiece(IndexToVec2(j));
 
             if (i_piece == nullptr || j_piece == nullptr)
                 continue;
+
             else if(i_piece->GetPlayerId() > j_piece->GetPlayerId())
                inv_count++;
         }
     }
 
-    return (inv_count % 2 == 0);
+    return (inv_count % 2 == 1);
 }
+
 uint Game_Puzzle::GetWinner()
 {
     Vec2 limits = this->GetSize();
@@ -89,22 +94,28 @@ uint Game_Puzzle::GetWinner()
     if(GetPiece(Vec2{limits.x - 1, limits.y - 1}) != nullptr)
         return 0;
 
-    for (uint i = 1; i < limits.x * limits.y - 1; i++)
+    for (uint i = 0; i < limits.x * limits.y - 2; i++)
     {
-        if(GetPiece(Vec2{i % limits.x, i / limits.x}) < GetPiece(Vec2{(i-1) % limits.x, (i-1) / limits.x}))
+        Piece *i_piece = GetPiece(IndexToVec2(i));
+        if(i_piece == nullptr)
+            return false;
+
+        Piece *j_piece = GetPiece(IndexToVec2(i+1));
+        if(j_piece == nullptr)
+            return false;
+
+        if(j_piece->GetPlayerId() < i_piece->GetPlayerId())
             return false;
     }
     
     return true;
 }
+
 Vec2 Game_Puzzle::ReadMove()
 {
     uint id;
 
-    try
-    {
-        id = GetUintFromInput();
-    }
+    try { id = GetUintFromInput(); }
     catch(const std::exception& e)
     { throw e; }
     
@@ -124,15 +135,17 @@ Vec2 Game_Puzzle::ReadMove()
     
     return limits;
 }
-Game_Puzzle::Game_Puzzle(uint complexity, Vec2 _size)
+Game_Puzzle::Game_Puzzle(uint complexity, uint seed, Vec2 _size)
     : Board(_size)
 {
-
+    // Generate pieces
     for (uint i = 0; i < _size.y * _size.x - 1; i++)
     {
-        AddPiece(new Piece(Vec2{i % _size.x, i / _size.x}, i + 1));
+        AddPiece(Vec2{i % _size.x, i / _size.x}, new Piece(i + 1));
     }
 
+    // Shuffle pieces & Check if it's playable
+    srand(seed);
     do
     {
         for (uint k = 0; k < complexity; k++)
@@ -143,10 +156,8 @@ Game_Puzzle::Game_Puzzle(uint complexity, Vec2 _size)
             Board::MovePiece(pos_i, pos_j);
         }
     } while (IsDraw() == true);
-    
-    this->num_plays = 0;
-    this->current_player = 1;
 }
+
 Game_Puzzle::~Game_Puzzle()
 {
 
