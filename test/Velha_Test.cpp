@@ -2,7 +2,17 @@
 
 #include "Game_Velha.hpp"
 
-TEST_CASE("Puzzle Game")
+TEST_CASE("Jogo da velha")
+{
+    Game_Velha* obj = new Game_Velha();
+    REQUIRE(obj != nullptr);
+
+    obj->Play();
+
+    delete obj;
+}
+
+TEST_CASE("Jogo da velha infinito")
 {
     Game_Velha* obj = new Game_Velha();
     REQUIRE(obj != nullptr);
