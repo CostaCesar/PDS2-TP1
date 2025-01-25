@@ -63,7 +63,7 @@ void playReversi (std::string j1, std::string j2) {
 void playLiga4 (std::string j1, std::string j2) {
     int vencedor;
     
-    Board* obj = new Liga4(8,8);
+    Board* obj = new Game_Liga4(8,8);
     vencedor = obj->Play();
 
     checkWinner(j1, j2, vencedor, LIGA4_INDEX);
@@ -72,7 +72,7 @@ void playLiga4 (std::string j1, std::string j2) {
 void playVelha (string j1, string j2) {
     int vencedor;
     
-    Board* obj = new JogoDaVelha();
+    Board* obj = new Game_Velha();
     vencedor = obj->Play();
 
     checkWinner(j1, j2, vencedor, VELHA_INDEX);
