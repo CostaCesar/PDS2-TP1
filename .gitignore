@@ -1,6 +1,7 @@
 .vscode/
-
+*.csv
 tmp/*.o
 bin/*
 !bin/Programa
 !bin/inputs
+*.csv

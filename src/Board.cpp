@@ -146,6 +146,7 @@ bool Board::DeletePiece(Vec2 position)
 
     return true;
 }
+
 void Board::Draw()
 {
     using std::cout;
@@ -175,8 +176,11 @@ void Board::Draw()
             cout << " ";
             if(this->board[Vec2ToIndex(Vec2{j, i})] == nullptr)
                 cout << " ";
+
             else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetSymbol();
             cout << " ";
+
+            std::cout << "\033[0m";
 
             // Vertical lines
             if(j < this->board_size.x - 1)
