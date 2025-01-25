@@ -1,11 +1,15 @@
-#include "Liga4.hpp"
+#include "Game_Liga4.hpp"
+
 #include <iostream>
 
-Liga4::Liga4(uint rows, uint cols) : Board(Vec2{rows, cols}) {
-    current_player = 1;
+Game_Liga4::Game_Liga4(uint rows, uint cols) 
+    : Board(Vec2{rows, cols})
+{
+    this->num_plays = GetSize().x * GetSize().y;
+    this->current_player = 1;
 }
 
-Liga4::~Liga4() {}
+Game_Liga4::~Game_Liga4() {}
 
 const std::string color_player1 = "\033[91m"; // Vermelho 1
     const std::string color_player2 = "\033[93m"; // Amarelo 2
@@ -63,16 +67,20 @@ uint Liga4::Play() {
     return GetWinner();
 }
 
-uint Liga4::EmptyRow(uint column) {
-    for (uint row = GetSize().y; row > 0; --row) {
-        if (GetPiece(Vec2{column, row-1}) == nullptr) {
-            return row-1;
+uint Game_Liga4::EmptyRow(uint column)
+{
+    for (uint row = GetSize().y; row > 0; --row)
+    {
+        if (GetPiece(Vec2{column, row - 1}) == nullptr)
+        {
+            return row - 1;
         }
     }
     return GetSize().y;
 }
 
-Vec2 Liga4::ReadMove() {
+Vec2 Game_Liga4::ReadMove()
+{
     Vec2 output;
     std::string input_str;
     std::getline(std::cin, input_str);
@@ -96,22 +104,30 @@ Vec2 Liga4::ReadMove() {
     return output;
 }
 
-uint Liga4::GetWinner() {
-    return IsDraw() ? 0 : current_player;
+uint Game_Liga4::GetWinner()
+{
+    if(IsDraw())
+        return 0;
+    else return current_player;
 }
 
-bool Liga4::CheckWin(uint player, const Vec2& last_move) {
-    for (uint i = 0; i < 8; i++) {
-        if (MatchUntilStep(last_move, (Direction)i, 3) == MatchReturn::Matched) {
+bool Game_Liga4::CheckWin(uint player, const Vec2 &last_move)
+{
+    for (uint i = 0; i < 8; i++)
+    {
+        if (MatchUntilStep(last_move, (Direction)i, 3) == MatchReturn::Matched)
             return true;
         }
     }
     return false;
 }
 
-bool Liga4::IsDraw() {
-    for (uint x = 0; x < GetSize().x; ++x) {
-        if (GetPiece(Vec2{x, GetSize().y - 1}) == nullptr) {
+bool Game_Liga4::IsDraw()
+{
+    for (uint x = 0; x < GetSize().x; ++x)
+    {
+        if (GetPiece(Vec2{x, GetSize().y - 1}) == nullptr)
+        {
             return false;
         }
     }

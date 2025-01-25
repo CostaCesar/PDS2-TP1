@@ -15,6 +15,8 @@ Ou escolha manualmente uma seleção dentre os seguintes target:
 - test_board
 - test_reversi
 - test_puzzle
+- test_liga4
+- test_velha
 
 Se precisa fazer o debug desses binários:
 ```
@@ -22,6 +24,12 @@ make DEBUG=1 <sua_seleção>
 ```
 
 Utilize a flag **-B** do make para forçar a recompilação
+
+Para limpexa do projeto:
+```
+make clean     # remove todos os objetos em ./temp
+make delete    # remove todos os binarios em ./bin
+```
 
 ## Estrutura do repositório
 - **bin:** Arquivos binários finais (Windows & Linux)
@@ -38,7 +46,6 @@ Utilize a flag **-B** do make para forçar a recompilação
 ```
 make tests
 ```
-Que também ira executa-los imediatamente
 ## Andamento
 
 - **Tabuleiro base:** Caio César Moraes Costa

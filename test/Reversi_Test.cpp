@@ -3,17 +3,29 @@
 
 #include "Game_Reversi.hpp"
 
-// "./bin/Reversi_Test < ./test/reversi_input.txt"
 TEST_CASE("Reversi")
 {
-    using std::ifstream;
-    ifstream input;
+    std::ifstream input;
+    std::string path = INPUT_DIR;
+
     Board* object = new Game_Reversi();
     REQUIRE(object != nullptr);
-    
+
+
+    SUBCASE("Game 0: White Win")
+    {
+        path += "./reversi_white.txt";
+        input.open(path);
+        REQUIRE(input.is_open() == true);
+        object->AssignInput(&input);
+        
+        uint winner = object->Play();
+        CHECK(winner == 1);
+    }
     SUBCASE("Game 1: Black Win")
     {
-        input.open("./reversi_input.txt");
+        path += "./reversi_black.txt";
+        input.open(path);
         REQUIRE(input.is_open() == true);
         object->AssignInput(&input);
         
@@ -22,7 +34,8 @@ TEST_CASE("Reversi")
     }
     SUBCASE("Game 2: Perfetct Game [Draw]")
     {
-        input.open("reversi_draw.txt");
+        path += "./reversi_draw.txt";
+        input.open(path);
         REQUIRE(input.is_open() == true);
         object->AssignInput(&input);
 
