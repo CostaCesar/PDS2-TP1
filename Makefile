@@ -31,11 +31,9 @@ TST_PATH := .$(SL)test
 .PHONY: clean delete all tests run_tests test_board test_reversi test_puzzle test_liga4 test_velha
 
 # use these
-all: tests
+all: main tests
 
-tests: test_board test_reversi test_puzzle test_liga4 test_velha
-
-run_tests: tests
+tests: test_board test_reversi test_puzzle test_liga4
 	$(BIN_PATH)/Board_Test
 	$(BIN_PATH)/Puzzle_Test
 	$(BIN_PATH)/Reversi_Test
@@ -58,25 +56,35 @@ test_puzzle: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Puzzle.o $
 	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Puzzle_Test.o $(OBJ_PATH)/Game_Puzzle.o $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Puzzle_Test
 
 
+
 clean:
-	$(RM) $(OBJ_PATH)$(SL)*.o
-delete:
-	$(RM) $(BIN_PATH)$(SL)*_Test
-	$(RM) $(BIN_PATH)$(SL)*.exe
+	rm $(OBJ_PATH)/*.o
+
+
+main: $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Liga4.o $(OBJ_PATH)/JogoVelha.o
+	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Liga4.o $(OBJ_PATH)/JogoVelha.o -o $(BIN_PATH)/main -I$(INC_PATH)
 
 # good luck (don't) use these
+
+$(OBJ_PATH)/Register.o: $(SRC_PATH)/Register.cpp $(INC_PATH)/Register.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Register.cpp -o $(OBJ_PATH)/Register.o -I$(INC_PATH)
+
+$(OBJ_PATH)/Admin.o: $(SRC_PATH)/Admin.cpp $(INC_PATH)/Admin.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Admin.cpp -o $(OBJ_PATH)/Admin.o -I$(INC_PATH)
+
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Piece.cpp -o $(OBJ_PATH)/Piece.o -I$(INC_PATH)
 
 $(OBJ_PATH)/Board.o: $(SRC_PATH)/Board.cpp $(INC_PATH)/Board.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Board.cpp -o $(OBJ_PATH)/Board.o -I$(INC_PATH)
 
-$(OBJ_PATH)/Board_Test.o: $(TST_PATH)/Board_Test.cpp
-	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Board_Test.cpp -o $(OBJ_PATH)/Board_Test.o -I$(INC_PATH)
-
+$(BIN_PATH)/Board_Test: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(TST_PATH)/Board_Test.cpp
+	$(CXX) $(CXXFLAGS) $(TST_PATH)/Board_Test.cpp $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Board_Test -I$(INC_PATH)
 
 $(OBJ_PATH)/Game_Velha.o: $(SRC_PATH)/Game_Velha.cpp $(INC_PATH)/Game_Velha.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Game_Velha.cpp -o $(OBJ_PATH)/Game_Velha.o -I$(INC_PATH)
+$(OBJ_PATH)/JogoVelha.o: $(INC_PATH)/Board.hpp $(SRC_PATH)/Velha.cpp $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Liga4.o $(INC_PATH)/Velha.hpp 
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Velha.cpp -o $(OBJ_PATH)/JogoVelha.o -I$(INC_PATH)
 
 $(OBJ_PATH)/Velha_Test.o: $(TST_PATH)/Velha_Test.cpp
 	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Velha_Test.cpp -o $(OBJ_PATH)/Velha_Test.o -I$(INC_PATH)
