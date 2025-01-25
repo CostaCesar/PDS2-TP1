@@ -7,6 +7,10 @@ Liga4::Liga4(uint rows, uint cols) : Board(Vec2{rows, cols}) {
 
 Liga4::~Liga4() {}
 
+const std::string color_player1 = "\033[91m"; // Vermelho 1
+    const std::string color_player2 = "\033[93m"; // Azul 2
+    const std::string reset_color = "\033[0m";    // Resetando a cor
+
 uint Liga4::Play() {
     Vec2 last_move;
     uint num_plays = GetSize().x * GetSize().y;
@@ -18,7 +22,9 @@ uint Liga4::Play() {
             system("clear");
         #endif
 
-        std::cout << "Player " << current_player << '\n' << std::endl;
+      std::cout << (current_player == 1 ? color_player1 : color_player2) 
+          << "Jogador " << current_player << reset_color << std::endl;
+
         Draw();
 
         bool valid_move = false;
