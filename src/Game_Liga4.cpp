@@ -15,7 +15,7 @@ const std::string color_player1 = "\033[91m"; // Vermelho 1
     const std::string color_player2 = "\033[93m"; // Amarelo 2
     const std::string reset_color = "\033[0m";    // Resetando a cor
 
-uint Liga4::Play() {
+uint Game_Liga4::Play() {
     Vec2 last_move;
     uint num_plays = GetSize().x * GetSize().y;
 
@@ -42,9 +42,9 @@ uint Liga4::Play() {
         }
 
         char symbol = (current_player == 1) ? 'X' : 'O';
-        Piece* piece = new Piece(last_move, current_player, symbol);
+        Piece* piece = new Piece(current_player, symbol);
 
-        if (!AddPiece(piece)) {
+        if (!AddPiece(last_move, piece)) {
             delete piece;
             continue;
         }
@@ -115,7 +115,7 @@ bool Game_Liga4::CheckWin(uint player, const Vec2 &last_move)
 {
     for (uint i = 0; i < 8; i++)
     {
-        if (MatchUntilStep(last_move, (Direction)i, 3) == MatchReturn::Matched)
+        if (MatchUntilStep(last_move, (Direction)i, 3) == MatchReturn::Matched){
             return true;
         }
     }
