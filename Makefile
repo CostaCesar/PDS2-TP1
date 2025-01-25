@@ -11,9 +11,11 @@ endif
 ifeq ($(OS),Windows_NT)
 	RM = del
 	SL = \\
+	DOXYGEN = doxygen.exe
 else
 	RM = rm
 	SL = /
+	DOXYGEN = doxygen
 endif
 
 # tool macros
@@ -28,12 +30,15 @@ INC_PATH := .$(SL)inc
 TST_PATH := .$(SL)test
 
 # do not search these as files in the workspace
-.PHONY: clean delete all tests run_tests test_board test_reversi test_puzzle test_liga4 test_velha
+.PHONY: clean delete all tests run_tests doc test_board test_reversi test_puzzle test_liga4 test_velha
 
 # use these
 all: tests
 
 tests: test_board test_reversi test_puzzle test_liga4 test_velha
+
+doc:
+	./doxygen/$(DOXYGEN)
 
 run_tests: tests
 	$(BIN_PATH)/Board_Test

@@ -1,3 +1,4 @@
+# Detalhes
 ## Integrantes
 - Caio César Moraes Costa
 - Rafic Alves Magalhães Farah Leão
@@ -34,6 +35,7 @@ make delete    # remove todos os binarios em ./bin
 ## Estrutura do repositório
 - **bin:** Arquivos binários finais (Windows & Linux)
     - **/data:** Arquivos de dados gerados pelo programa
+    - **/input:** Arquivos de entrada de dados para os testes
 - **inc:** Arquivos de cabeçalho (.h e .hpp)
 - **src:** Arquivos de código fonte (.cpp)
 - **tmp:** Arquivos de cache para compilação (.o gerados pelo *make*)
