@@ -45,14 +45,16 @@ test_liga4: $(BIN_PATH)/Liga4_Test
 clean:
 	rm $(OBJ_PATH)/*.o
 
+
+main: $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Liga4.o $(OBJ_PATH)/JogoVelha.o
+	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Liga4.o $(OBJ_PATH)/JogoVelha.o -o $(BIN_PATH)/main -I$(INC_PATH)
+
 # good luck (don't) use these
-main: $()$(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o
-	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp -o $(BIN_PATH)/main -I$(INC_PATH)
 
 $(OBJ_PATH)/Register.o: $(SRC_PATH)/Register.cpp $(INC_PATH)/Register.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Register.cpp -o $(OBJ_PATH)/Register.o -I$(INC_PATH)
 
-$(OBJ_PATH)/Admin.o: $(SRC_PATH)/Admin.cpp $(INC_PATH)/Admin.hpp $(OBJ_PATH)/Register.o $(OBJ_PATH)/JogoVelha.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Liga4.o
+$(OBJ_PATH)/Admin.o: $(SRC_PATH)/Admin.cpp $(INC_PATH)/Admin.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Admin.cpp -o $(OBJ_PATH)/Admin.o -I$(INC_PATH)
 
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp

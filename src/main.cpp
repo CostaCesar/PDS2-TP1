@@ -25,18 +25,18 @@ int main() {
         if (comando == "CJ") {
             cin >> nickname >> name;
             if (!registerPlayer(nickname, name)) {
-                std::cout << "Jogador " << nickname << " cadastrado com sucesso" << std::endl;
+                std::cout << "Jogador " << nickname << " cadastrado com sucesso" << std::endl << std::endl;
             } else {
-                std::cout << "ERRO: jogador repetido" << std::endl;
+                std::cout << "ERRO: jogador repetido" << std::endl << std::endl;
             }
 
         } else if (comando == "RJ") {
             cin >> nickname;
 
             if (!deletePlayer(nickname)) {
-                std::cout << "Jogador " << nickname << " removido com sucesso" << std::endl;
+                std::cout << "Jogador " << nickname << " removido com sucesso" << std::endl << std::endl;
             } else {
-                std::cout << "ERRO: jogador inexistente" << std::endl;
+                std::cout << "ERRO: jogador inexistente" << std::endl << std::endl;
             }
 
         } else if (comando == "LJ") {
@@ -50,18 +50,26 @@ int main() {
 
             cin >> sel >> j1 >> j2;
 
-            if (!validPlayers(j1, j2)) {
-                std::cout << "ERRO: jogador inexistente." << std::endl;
-            } else if (sel != 'R' || sel != 'J' || sel != 'V') {
-                std::cout << "ERRO: dados incorretos" << std::endl;
-            }
+            if (
+                (!validPlayers(j1, j2)) &&
+                (sel != 'R' && sel != 'L' && sel != 'V')
+                ) {
+                std::cout << "ERRO: Jogo e jogador inexistentes." << std::endl << std::endl;
+            
+            } else if (!validPlayers(j1, j2)) {
+                std::cout << "ERRO: Jogador inexistente." << std::endl << std::endl;
 
-            if (sel == 'R') {
-                jogoReversi(j1,j2);
-            } else if (sel == 'L') {
-                jogoLig4(j1,j2);
-            } else if (sel == 'V') {
-                jogoVelha(j1,j2);
+            } else if (sel != 'R' && sel != 'L' && sel != 'V') {
+                std::cout << "ERRO: Jogo inexistente." << std::endl << std::endl;
+                
+            } else {
+                if (sel == 'R') {
+                    playReversi(j1,j2);
+                } else if (sel == 'L') {
+                    playLiga4(j1,j2);
+                } else if (sel == 'V') {
+                    playVelha(j1,j2);
+                }
             }
 
 

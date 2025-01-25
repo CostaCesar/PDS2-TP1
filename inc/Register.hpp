@@ -15,13 +15,13 @@ using
 const string NOME_ARQ = "cadastro.csv";
 
 struct Jogador {
-    string apelido;
-    string nome;
+    string nickname;
+    string name;
     int vitoriasReversi;
-    int vitoriasLIg4;
-    int vitoriasVelha;
     int derrotasReversi;
-    int derrotasLIg4;
+    int vitoriasLiga4;
+    int derrotasLiga4;
+    int vitoriasVelha;
     int derrotasVelha;
 };
 
@@ -33,3 +33,5 @@ int registerPlayer (string nickname, string name);
 int deletePlayer (string nickname);
 
 void listPlayers (char sel);
+
+void updateScore(string winnerNickname, string looserNickname, int jogo);
