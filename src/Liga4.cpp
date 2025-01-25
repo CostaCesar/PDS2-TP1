@@ -8,7 +8,7 @@ Liga4::Liga4(uint rows, uint cols) : Board(Vec2{rows, cols}) {
 Liga4::~Liga4() {}
 
 const std::string color_player1 = "\033[91m"; // Vermelho 1
-    const std::string color_player2 = "\033[93m"; // Azul 2
+    const std::string color_player2 = "\033[93m"; // Amarelo 2
     const std::string reset_color = "\033[0m";    // Resetando a cor
 
 uint Liga4::Play() {
