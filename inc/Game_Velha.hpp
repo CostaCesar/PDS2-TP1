@@ -13,6 +13,7 @@ private:
 
 public:
     uint Play() override;
+    uint Play_Infinity();
     Game_Velha();
 };
 

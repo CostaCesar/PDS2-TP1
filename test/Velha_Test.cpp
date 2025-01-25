@@ -4,10 +4,10 @@
 
 TEST_CASE("Puzzle Game")
 {
-    Board* obj = new Game_Velha();
+    Game_Velha* obj = new Game_Velha();
     REQUIRE(obj != nullptr);
 
-    obj->Play();
+    obj->Play_Infinity();
 
     delete obj;
 }
