@@ -1,6 +1,4 @@
 #include "TestHeader.hpp"
-#include <fstream>
-
 #include "Game_Reversi.hpp"
 
 TEST_CASE("Reversi")
@@ -43,11 +41,6 @@ TEST_CASE("Reversi")
         CHECK(winner == 0);
     }
 
-    SUBCASE("GAME 3: Player inputs")
-    {
-        uint winner = object->Play();
-        CHECK(winner == 0);
-    }
 
     delete object;
     input.close();

@@ -86,6 +86,10 @@ Vec2 Board::ReadMove()
 
     return output;
 }
+bool Board::IsReadingFromCin()
+{
+    return (this->input == &std::cin);
+}
 void Board::FlushInput()
 {
     this->input->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -179,8 +183,6 @@ void Board::Draw()
 
             else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetSymbol();
             cout << " ";
-
-            std::cout << "\033[0m";
 
             // Vertical lines
             if(j < this->board_size.x - 1)

@@ -4,15 +4,15 @@
 
 class Game_Velha : public Board
 {
-private:
+protected:
     uint GetWinner() override;
     bool IsDraw() override;
     bool AddPiece(Vec2 position, Piece* new_piece);
     
-    bool CheckForWin();
+    bool CheckForWin(Vec2 pos);
 
 public:
-    uint Play() override;
+    virtual uint Play() override;
     Game_Velha();
 };
 

@@ -1,20 +1,20 @@
 #include "TestHeader.hpp"
 #include <fstream>
 
-#include "Game_Velha.hpp"
+#include "Game_Velha_Infinity.hpp"
 
-TEST_CASE("Jogo da velha")
+TEST_CASE("Jogo da velha infinito")
 {
     std::ifstream input;
     std::string path = INPUT_DIR;
 
-    Board* object = new Game_Velha();
+    Board* object = new Game_Velha_Infinity();
     REQUIRE(object != nullptr);
 
 
     SUBCASE("Game 0: X Win")
     {
-        path += "./velha_x.txt";
+        path += "./velha_infinity_x.txt";
         input.open(path);
         REQUIRE(input.is_open() == true);
         object->AssignInput(&input);
@@ -24,23 +24,13 @@ TEST_CASE("Jogo da velha")
     }
     SUBCASE("Game 1: O Win")
     {
-        path += "./velha_o.txt";
+        path += "./velha_infinity_o.txt";
         input.open(path);
         REQUIRE(input.is_open() == true);
         object->AssignInput(&input);
         
         uint winner = object->Play();
         CHECK(winner == 2);
-    }
-    SUBCASE("Game 2: Perfetct Game [Draw]")
-    {
-        path += "./velha_draw.txt";
-        input.open(path);
-        REQUIRE(input.is_open() == true);
-        object->AssignInput(&input);
-
-        uint winner = object->Play();
-        CHECK(winner == 0);
     }
 
     delete object;
