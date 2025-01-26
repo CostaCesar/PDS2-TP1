@@ -8,6 +8,8 @@ uint Game_Velha_Infinity::Play()
     using std::cout;
     using std::endl;
 
+    this->num_plays = 0;
+
     Vec2 move;
     std::list<Vec2> last_moves[2];
 
@@ -38,7 +40,8 @@ uint Game_Velha_Infinity::Play()
             DeletePiece(last_moves[this->current_player-1].front());
             last_moves[this->current_player-1].pop_front();
         }
-        if(CheckForWin()) break;
+        if(CheckForWin(move)) break;
+        this->num_plays+=1;
         NextPlayer();
     }
 
