@@ -3,7 +3,7 @@
 #include <iostream>
 #include <list>
 
-uint Game_Velha::Play()
+uint Game_Velha_Infinity::Play()
 {
     using std::cout;
     using std::endl;
@@ -47,7 +47,7 @@ uint Game_Velha::Play()
 }
 
 Game_Velha_Infinity::Game_Velha_Infinity()
-    : Game_Velha_Infinity()
+    : Game_Velha()
 {
 
 }

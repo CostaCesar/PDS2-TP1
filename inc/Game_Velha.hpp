@@ -12,8 +12,7 @@ private:
     bool CheckForWin();
 
 public:
-    uint Play() override;
-    uint Play_Infinity();
+    virtual uint Play() override;
     Game_Velha();
 };
 

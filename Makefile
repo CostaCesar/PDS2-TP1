@@ -45,6 +45,7 @@ run_tests: tests
 	$(BIN_PATH)/Puzzle_Test
 	$(BIN_PATH)/Reversi_Test
 	$(BIN_PATH)/Velha_Test
+	$(BIN_PATH)/Velha_Infinity_Test
 	$(BIN_PATH)/Liga4_Test
 
 test_board: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Board_Test.o
@@ -62,6 +63,8 @@ test_liga4: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Liga4.o $(O
 test_puzzle: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Puzzle.o $(OBJ_PATH)/Puzzle_Test.o
 	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Puzzle_Test.o $(OBJ_PATH)/Game_Puzzle.o $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Puzzle_Test
 
+test_velha_infinity: $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Velha.o $(OBJ_PATH)/Game_Velha_Infinity.o $(OBJ_PATH)/Velha_Infinity_Test.o
+	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Velha_Infinity_Test.o $(OBJ_PATH)/Game_Velha_Infinity.o $(OBJ_PATH)/Board.o $(OBJ_PATH)/Game_Velha.o $(OBJ_PATH)/Piece.o -o $(BIN_PATH)/Velha_Infinity_Test
 
 clean:
 	$(RM) $(OBJ_PATH)$(SL)*.o
@@ -81,6 +84,7 @@ $(OBJ_PATH)/Admin.o: $(SRC_PATH)/Admin.cpp $(INC_PATH)/Admin.hpp
 
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Piece.cpp -o $(OBJ_PATH)/Piece.o -I$(INC_PATH)
+
 
 $(OBJ_PATH)/Board.o: $(SRC_PATH)/Board.cpp $(INC_PATH)/Board.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Board.cpp -o $(OBJ_PATH)/Board.o -I$(INC_PATH)
@@ -115,6 +119,14 @@ $(OBJ_PATH)/Game_Puzzle.o: $(SRC_PATH)/Game_Puzzle.cpp $(INC_PATH)/Game_Puzzle.h
 
 $(OBJ_PATH)/Puzzle_Test.o: $(TST_PATH)/Puzzle_Test.cpp
 	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Puzzle_Test.cpp -o $(OBJ_PATH)/Puzzle_Test.o -I$(INC_PATH)
+
+
+$(OBJ_PATH)/Game_Velha_Infinity.o: $(SRC_PATH)/Game_Velha_Infinity.cpp $(INC_PATH)/Game_Velha_Infinity.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Game_Velha_Infinity.cpp -o $(OBJ_PATH)/Game_Velha_Infinity.o -I$(INC_PATH)
+
+$(OBJ_PATH)/Velha_Infinity_Test.o: $(TST_PATH)/Velha_Infinity_Test.cpp
+	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Velha_Infinity_Test.cpp -o $(OBJ_PATH)/Velha_Infinity_Test.o -I$(INC_PATH)
+
 
 # object bin TEMPLATE:
 # $(OBJ_PATH)/<example>.o: <required targets>
