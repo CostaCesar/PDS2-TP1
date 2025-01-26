@@ -1,5 +1,4 @@
 #include "TestHeader.hpp"
-
 #include "Board.hpp"
 
 class BoardTest : public Board
