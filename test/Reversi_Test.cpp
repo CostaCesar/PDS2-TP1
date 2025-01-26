@@ -43,7 +43,7 @@ TEST_CASE("Reversi")
         CHECK(winner == 0);
     }
 
-    SUBCASE("GAME 3: Player inputs")
+    SUBCASE("Game 3: Player inputs")
     {
         uint winner = object->Play();
         CHECK(winner == 0);
