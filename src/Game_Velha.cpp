@@ -1,7 +1,6 @@
 #include "Game_Velha.hpp"
 
 #include <iostream>
-#include <list>
 
 bool Game_Velha::AddPiece(Vec2 position, Piece* new_piece)
 {
@@ -57,7 +56,7 @@ uint Game_Velha::Play()
     while (!IsDraw())
     {
         Draw();
-        cout << "Jogada do jogador" << this->current_player << " <X Y>:" << endl;
+        cout << "Jogada do jogador " << this->current_player << " <X Y>:" << endl;
         
         while(1)
         {
@@ -79,49 +78,6 @@ uint Game_Velha::Play()
 
         if(CheckForWin()) break;
 
-        NextPlayer();
-    }
-
-    Draw();
-    return GetWinner();
-}
-
-uint Game_Velha::Play_Infinity()
-{
-    using std::cout;
-    using std::endl;
-
-    Vec2 move;
-    std::list<Vec2> last_moves[2];
-
-    while (!IsDraw())
-    {
-        Draw();
-        cout << "Jogada do jogador" << this->current_player << " <X Y>:" << endl;
-        
-        while(1)
-        {
-            try { move = ReadMove(); }
-            catch(const std::exception& e)
-            {
-                cout << "Entrada invalida" << endl;
-                continue;
-            }
-
-            Piece* peca = new Piece(this->current_player);
-            if (AddPiece(move, peca) == true) break;
-            else
-            {
-                delete peca;
-                cout << "Jogada invalida" << endl;
-            }
-        }
-        last_moves[this->current_player-1].push_back(move);
-        if(last_moves[this->current_player-1].size()>3){
-            DeletePiece(last_moves[this->current_player-1].front());
-            last_moves[this->current_player-1].pop_front();
-        }
-        if(CheckForWin()) break;
         NextPlayer();
     }
 
