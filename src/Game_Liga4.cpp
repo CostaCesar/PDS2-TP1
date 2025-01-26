@@ -33,7 +33,7 @@ uint Game_Liga4::Play()
         }
 
         std::cout << (current_player == 1 ? color_player1 : color_player2)
-                  << "Jogador " << current_player << reset_color << std::endl;
+                  << "\nJogador " << current_player << "\n" << reset_color << std::endl;
 
         Draw();
 
