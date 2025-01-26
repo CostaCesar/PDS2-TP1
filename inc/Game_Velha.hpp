@@ -9,7 +9,7 @@ protected:
     bool IsDraw() override;
     bool AddPiece(Vec2 position, Piece* new_piece);
     
-    bool CheckForWin();
+    bool CheckForWin(Vec2 pos);
 
 public:
     virtual uint Play() override;

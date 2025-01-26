@@ -12,7 +12,7 @@ bool Game_Velha::AddPiece(Vec2 position, Piece* new_piece)
     return Board::AddPiece(position, new_piece);
 }
 
-bool Game_Velha::CheckForWin()
+bool Game_Velha::CheckForWin(Vec2 pos)
 {
     for (uint i = 0; i < GetSize().x; i++)
     {
