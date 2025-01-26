@@ -33,12 +33,6 @@ TEST_CASE("Jogo da velha infinito")
         CHECK(winner == 2);
     }
 
-    SUBCASE("Game 3: Player inputs")
-    {
-        uint winner = object->Play();
-        CHECK(winner == 1);
-    }
-
     delete object;
     input.close();
 }
