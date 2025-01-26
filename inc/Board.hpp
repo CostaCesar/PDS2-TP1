@@ -44,6 +44,7 @@ protected:
     uint GetCharFromInput();
     uint GetUintFromInput();
     virtual Vec2 ReadMove();
+    bool IsReadingFromCin();
 
 public:
     Vec2 GetSize();

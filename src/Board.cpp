@@ -86,6 +86,10 @@ Vec2 Board::ReadMove()
 
     return output;
 }
+bool Board::IsReadingFromCin()
+{
+    return (this->input == &std::cin);
+}
 void Board::FlushInput()
 {
     this->input->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
