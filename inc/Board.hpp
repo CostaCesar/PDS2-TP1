@@ -193,6 +193,7 @@ protected:
         Outros jogos podem sobreescreve-la para a leitura no formato apropriado
     */
     virtual Vec2 ReadMove();
+    bool IsReadingFromCin();
 
 public:
     /*! @fn GetSize()

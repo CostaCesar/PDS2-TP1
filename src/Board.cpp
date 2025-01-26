@@ -86,6 +86,10 @@ Vec2 Board::ReadMove()
 
     return output;
 }
+bool Board::IsReadingFromCin()
+{
+    return (this->input == &std::cin);
+}
 void Board::FlushInput()
 {
     this->input->ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -146,6 +150,7 @@ bool Board::DeletePiece(Vec2 position)
 
     return true;
 }
+
 void Board::Draw()
 {
     using std::cout;
@@ -175,6 +180,7 @@ void Board::Draw()
             cout << " ";
             if(this->board[Vec2ToIndex(Vec2{j, i})] == nullptr)
                 cout << " ";
+
             else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetSymbol();
             cout << " ";
 

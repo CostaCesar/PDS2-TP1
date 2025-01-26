@@ -33,7 +33,7 @@ TST_PATH := .$(SL)test
 .PHONY: clean delete all tests run_tests doc test_board test_reversi test_puzzle test_liga4 test_velha
 
 # use these
-all: tests
+all: main tests
 
 tests: test_board test_reversi test_puzzle test_liga4 test_velha
 
@@ -69,7 +69,16 @@ delete:
 	$(RM) $(BIN_PATH)$(SL)*_Test
 	$(RM) $(BIN_PATH)$(SL)*.exe
 
+main: $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Game_Liga4.o $(OBJ_PATH)/Game_Velha.o
+	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o $(OBJ_PATH)/Board.o $(OBJ_PATH)/Piece.o $(OBJ_PATH)/Game_Reversi.o $(OBJ_PATH)/Game_Liga4.o $(OBJ_PATH)/Game_Velha.o -o $(BIN_PATH)/main -I$(INC_PATH)
+
 # good luck (don't) use these
+$(OBJ_PATH)/Register.o: $(SRC_PATH)/Register.cpp $(INC_PATH)/Register.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Register.cpp -o $(OBJ_PATH)/Register.o -I$(INC_PATH)
+
+$(OBJ_PATH)/Admin.o: $(SRC_PATH)/Admin.cpp $(INC_PATH)/Admin.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Admin.cpp -o $(OBJ_PATH)/Admin.o -I$(INC_PATH)
+
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Piece.cpp -o $(OBJ_PATH)/Piece.o -I$(INC_PATH)
 
