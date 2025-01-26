@@ -1,8 +1,7 @@
 #include "Game_Liga4.hpp"
-
 #include <iostream>
 
-Game_Liga4::Game_Liga4(uint rows, uint cols)
+Game_Liga4::Game_Liga4(uint rows, uint cols) 
     : Board(Vec2{rows, cols})
 {
     this->num_plays = GetSize().x * GetSize().y;
@@ -19,9 +18,8 @@ uint Game_Liga4::Play()
 {
     system("");
     Vec2 last_move;
-    uint num_plays = GetSize().x * GetSize().y;
 
-    while (num_plays > 0)
+    while (this->num_plays > 0)
     {
         if(IsReadingFromCin())
         {
@@ -66,7 +64,8 @@ uint Game_Liga4::Play()
             break;
         }
 
-        num_plays--;
+        this->num_plays--;
+
         if (IsDraw())
         {
             std::cout << "\n\nEmpate" << std::endl;
@@ -132,12 +131,5 @@ bool Game_Liga4::CheckWin(uint player, const Vec2 &last_move)
 
 bool Game_Liga4::IsDraw()
 {
-    for (uint x = 0; x < GetSize().x; ++x)
-    {
-        if (GetPiece(Vec2{x, GetSize().y - 1}) == nullptr)
-        {
-            return false;
-        }
-    }
-    return true;
+    return this->num_plays == 0;
 }

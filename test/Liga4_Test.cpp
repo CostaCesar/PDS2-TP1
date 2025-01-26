@@ -13,7 +13,7 @@ TEST_CASE("Liga 4")
 
     SUBCASE("Game 1: Vertical Win")
     {
-        obj = new Game_Liga4(9, 7);
+        obj = new Game_Liga4(7, 6);
         obj->AssignInput(&input);
         CHECK(obj->Play() == 1);
     }
@@ -22,7 +22,7 @@ TEST_CASE("Liga 4")
     input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     SUBCASE("Game 2: Horizontal Win")
     {
-        obj = new Game_Liga4(9, 7);
+        obj = new Game_Liga4(7, 6);
         obj->AssignInput(&input);
         CHECK(obj->Play() == 1);
     }
@@ -31,7 +31,7 @@ TEST_CASE("Liga 4")
     input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     SUBCASE("Game 3: Diagonal Win")
     {
-        obj = new Game_Liga4(9, 7);
+        obj = new Game_Liga4(7, 6);
         obj->AssignInput(&input);
         CHECK(obj->Play() == 2);
     }
