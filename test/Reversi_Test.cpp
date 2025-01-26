@@ -1,6 +1,4 @@
 #include "TestHeader.hpp"
-#include <fstream>
-
 #include "Game_Reversi.hpp"
 
 TEST_CASE("Reversi")

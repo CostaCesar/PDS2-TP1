@@ -1,7 +1,5 @@
 #include "TestHeader.hpp"
-
 #include "Game_Puzzle.hpp"
-#include <fstream>
 
 TEST_CASE("Puzzle Game")
 {

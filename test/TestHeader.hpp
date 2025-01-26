@@ -1,4 +1,8 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#pragma once
+
 #include "doctest.h"
 
 #define INPUT_DIR "./bin/inputs/"
+
+#include <fstream>
+#include <limits>
