@@ -180,8 +180,6 @@ void Board::Draw()
             else cout << this->board[Vec2ToIndex(Vec2{j, i})]->GetSymbol();
             cout << " ";
 
-            std::cout << "\033[0m";
-
             // Vertical lines
             if(j < this->board_size.x - 1)
                 cout << '|';
