@@ -5,3 +5,4 @@ bin/*
 !bin/Programa
 !bin/inputs
 *.csv
+todo.txt
