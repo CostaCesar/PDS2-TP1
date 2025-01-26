@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../struct_vec2.html#a01a7ce47fc4857a76c2deaab618cbc93',1,'Vec2']]]
+  ['west_0',['West',['../_defs_8hpp.html#a224b9163917ac32fc95a60d8c1eec3aaabf495fc048d8d44b7f32536df5cf3930',1,'Defs.hpp']]]
 ];

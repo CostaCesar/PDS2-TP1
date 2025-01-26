@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['player_5fid_0',['player_id',['../class_piece.html#a6e8fcabe251c3ad52cdff88eed7ef885',1,'Piece']]]
+  ['input_0',['input',['../class_board.html#a5271d387b6211575f893abb5ca3892c2',1,'Board']]]
 ];
