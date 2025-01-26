@@ -7,7 +7,9 @@ var hierarchy =
       [ "Game_Reversi", "class_game___reversi.html", null ],
       [ "Game_Velha", "class_game___velha.html", null ]
     ] ],
+    [ "Jogador", "struct_jogador.html", null ],
     [ "Piece", "class_piece.html", null ],
+    [ "Player", "class_player.html", null ],
     [ "Vec2", "struct_vec2.html", null ],
     [ "Vec2Hash", "struct_vec2_hash.html", null ]
 ];

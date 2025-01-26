@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eboard_0',['~Board',['../class_board.html#af73f45730119a1fd8f6670f53f959e68',1,'Board']]]
+  ['y_0',['y',['../struct_vec2.html#a01a7ce47fc4857a76c2deaab618cbc93',1,'Vec2']]]
 ];

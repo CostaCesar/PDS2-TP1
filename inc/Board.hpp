@@ -90,6 +90,7 @@ protected:
     uint GetOpponentId();
 
     /*! @fn NextPlayer()
+        @brief Troca de jogador
         @details Avança <current_player> para o próximo jogador
     */
     virtual void NextPlayer();
@@ -193,6 +194,14 @@ protected:
         Outros jogos podem sobreescreve-la para a leitura no formato apropriado
     */
     virtual Vec2 ReadMove();
+
+    /*! @fn IsReadingFromCin()
+        @brief Checa a origem do input
+        @return true se o input é &std::cin, falso em caso contrário
+
+        @details Essa função permite as classes herdeiras saberem se estão rodando em um ambiente de arquivos (testes)
+        ou no programa do usuário (lendo entradas de std::cin)
+    */
     bool IsReadingFromCin();
 
 public:
@@ -202,6 +211,7 @@ public:
     Vec2 GetSize();
 
     /*! @fn AssignInput(std::istream* new_input)
+        @brief Atribui o input do Board para uma istream escolhida
         @param new_input Ponteiro para uma stream de entrada
         @details Permite o tabuleiro utilizar outras formas de input, como arquivos
     */

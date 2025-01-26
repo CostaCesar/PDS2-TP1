@@ -138,6 +138,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a464fa871d6a7f84f1c08580e19e2d6f8" id="r_a464fa871d6a7f84f1c08580e19e2d6f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a464fa871d6a7f84f1c08580e19e2d6f8">GetSize</a> ()</td></tr>
 <tr class="separator:a464fa871d6a7f84f1c08580e19e2d6f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c0298947fb986c91c6cc3e56156d521" id="r_a2c0298947fb986c91c6cc3e56156d521"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c0298947fb986c91c6cc3e56156d521">AssignInput</a> (std::istream *new_input)</td></tr>
+<tr class="memdesc:a2c0298947fb986c91c6cc3e56156d521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atribui o input do <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a> para uma istream escolhida.  <br /></td></tr>
 <tr class="separator:a2c0298947fb986c91c6cc3e56156d521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16c1b9c7b28ffc46dc83ed2bfdd24a70" id="r_a16c1b9c7b28ffc46dc83ed2bfdd24a70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16c1b9c7b28ffc46dc83ed2bfdd24a70">FlushInput</a> ()</td></tr>
 <tr class="memdesc:a16c1b9c7b28ffc46dc83ed2bfdd24a70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpa a stream de input.  <br /></td></tr>
@@ -178,6 +179,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a19854a79d09534ddb94da9348d681044" id="r_a19854a79d09534ddb94da9348d681044"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19854a79d09534ddb94da9348d681044">GetOpponentId</a> ()</td></tr>
 <tr class="separator:a19854a79d09534ddb94da9348d681044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a760cdef9db9965a67d3ea863e6d6e24d" id="r_a760cdef9db9965a67d3ea863e6d6e24d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a760cdef9db9965a67d3ea863e6d6e24d">NextPlayer</a> ()</td></tr>
+<tr class="memdesc:a760cdef9db9965a67d3ea863e6d6e24d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Troca de jogador.  <br /></td></tr>
 <tr class="separator:a760cdef9db9965a67d3ea863e6d6e24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade1638558589c4333687aea5e00f85ef" id="r_ade1638558589c4333687aea5e00f85ef"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade1638558589c4333687aea5e00f85ef">Vec2ToIndex</a> (<a class="el" href="struct_vec2.html">Vec2</a> position)</td></tr>
 <tr class="memdesc:ade1638558589c4333687aea5e00f85ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converte a posição <a class="el" href="struct_vec2.html" title="Estrutura para armazenar 2 valores inteiros positivos. Pode representar posição, tamanho,...">Vec2</a> para o indice no tabuleiro.  <br /></td></tr>
@@ -212,6 +214,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a44af1d0a4e89489da01f7d37506a6e32" id="r_a44af1d0a4e89489da01f7d37506a6e32"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44af1d0a4e89489da01f7d37506a6e32">ReadMove</a> ()</td></tr>
 <tr class="memdesc:a44af1d0a4e89489da01f7d37506a6e32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faz a leitura de um movimento do jogador atual.  <br /></td></tr>
 <tr class="separator:a44af1d0a4e89489da01f7d37506a6e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e343ee543daff8063f38d408d4d11c3" id="r_a8e343ee543daff8063f38d408d4d11c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e343ee543daff8063f38d408d4d11c3">IsReadingFromCin</a> ()</td></tr>
+<tr class="memdesc:a8e343ee543daff8063f38d408d4d11c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checa a origem do input.  <br /></td></tr>
+<tr class="separator:a8e343ee543daff8063f38d408d4d11c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -288,7 +293,7 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">_size</td><td>Dimensões do tabuleiro </td></tr>
-    <tr><td class="paramname">start_player</td><td>[1] Jogador incial na partida </td></tr>
+    <tr><td class="paramname">start_player</td><td>[1] <a class="el" href="struct_jogador.html">Jogador</a> incial na partida </td></tr>
   </table>
   </dd>
 </dl>
@@ -382,6 +387,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Atribui o input do <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a> para uma istream escolhida. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">new_input</td><td>Ponteiro para uma stream de entrada</td></tr>
@@ -833,6 +840,35 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a8e343ee543daff8063f38d408d4d11c3" name="a8e343ee543daff8063f38d408d4d11c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e343ee543daff8063f38d408d4d11c3">&#9670;&#160;</a></span>IsReadingFromCin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Board::IsReadingFromCin </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checa a origem do input. </p>
+<dl class="section return"><dt>Returns</dt><dd>true se o input é &amp;std::cin, falso em caso contrário</dd></dl>
+<p>Essa função permite as classes herdeiras saberem se estão rodando em um ambiente de arquivos (testes) ou no programa do usuário (lendo entradas de std::cin) </p>
+
+</div>
+</div>
 <a id="abd0e7b44b4f81cfaa73baf2f07ccef05" name="abd0e7b44b4f81cfaa73baf2f07ccef05"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abd0e7b44b4f81cfaa73baf2f07ccef05">&#9670;&#160;</a></span>MatchUntilStep()</h2>
 
@@ -941,6 +977,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Troca de jogador. </p>
 <p>Avança &lt;current_player&gt; para o próximo jogador </p>
 
 </div>
@@ -1165,7 +1203,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Fonte da entrada de dados para o tabuleiro. </p>
-<p>O valor comum é std::cin (terminal do usuário), mas alguns casos requerem ler as entradas de arquivos como nos testes das classes. Nesse caso, deve ser reatribuida através de <a class="el" href="#a2c0298947fb986c91c6cc3e56156d521">AssignInput()</a> </p>
+<p>O valor comum é std::cin (terminal do usuário), mas alguns casos requerem ler as entradas de arquivos como nos testes das classes. Nesse caso, deve ser reatribuida através de <a class="el" href="#a2c0298947fb986c91c6cc3e56156d521" title="Atribui o input do Board para uma istream escolhida.">AssignInput()</a> </p>
 
 </div>
 </div>

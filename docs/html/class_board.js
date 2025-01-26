@@ -19,6 +19,7 @@ var class_board =
     [ "IndexToVec2", "class_board.html#a8bb79d2a539509f2c959fe00b69816b9", null ],
     [ "IsDraw", "class_board.html#adcac52fd91d06e5f6262a63971f70700", null ],
     [ "IsInsideBoard", "class_board.html#a73857e3ecff5fb575e7fc328ff44f541", null ],
+    [ "IsReadingFromCin", "class_board.html#a8e343ee543daff8063f38d408d4d11c3", null ],
     [ "MatchUntilStep", "class_board.html#abd0e7b44b4f81cfaa73baf2f07ccef05", null ],
     [ "MovePiece", "class_board.html#a67801c638c12103338dbb7d01e1d8e21", null ],
     [ "NextPlayer", "class_board.html#a760cdef9db9965a67d3ea863e6d6e24d", null ],
