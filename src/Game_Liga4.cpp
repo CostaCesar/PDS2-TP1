@@ -60,7 +60,7 @@ uint Game_Liga4::Play()
 
         if (CheckWin(current_player, last_move))
         {
-            std::cout << "\n\nPlayer " << current_player << " venceu!" << std::endl;
+            std::cout << "\n\nPlayer " << current_player << " venceu!\n" << std::endl;
             break;
         }
 

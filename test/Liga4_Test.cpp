@@ -1,5 +1,4 @@
 #include "TestHeader.hpp"
-
 #include "Game_Liga4.hpp"
 
 TEST_CASE("Liga 4")
