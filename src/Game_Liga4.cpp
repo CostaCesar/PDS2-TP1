@@ -23,11 +23,14 @@ uint Game_Liga4::Play()
 
     while (num_plays > 0)
     {
-        #if defined(_WIN32) || defined(_WIN64)
-            system("cls");
-        #else
-            system("clear");
-        #endif
+        if(IsReadingFromCin())
+        {
+            #if defined(_WIN32) || defined(_WIN64)
+                system("cls");
+            #else
+                system("clear");
+            #endif
+        }
 
         std::cout << (current_player == 1 ? color_player1 : color_player2)
                   << "Jogador " << current_player << reset_color << std::endl;
