@@ -4,7 +4,7 @@
 
 class Game_Velha : public Board
 {
-private:
+protected:
     uint GetWinner() override;
     bool IsDraw() override;
     bool AddPiece(Vec2 position, Piece* new_piece);
