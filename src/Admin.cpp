@@ -10,8 +10,7 @@
 #include <vector>
 
 using 
-    std::cout;
-    std::endl;
+    std::cout
     std::string,
     std::vector;
 
@@ -19,27 +18,30 @@ using
 void checkWinner (string j1, string j2, int vencedor, int jogo) {
     switch(vencedor) {
         case 0:
-            cout <<  endl << " EMPATE!" << endl <<  endl;
+            cout << std::endl << " EMPATE!" << std::endl <<  std::endl;
             break;
         case 1:
             updateScore(j1, j2, jogo);
-            cout <<  endl << j1 << " GANHOU!" << endl <<  endl;
+            cout << std::endl << j1 << " GANHOU!" << std::endl <<  std::endl;
             break;
         case 2:
             updateScore(j2, j1, jogo);
-            cout <<  endl << j2 << " GANHOU!" << endl <<  endl;
+            cout << std::endl << j2 << " GANHOU!" << std::endl <<  std::endl;
             break;
     }
 }
 
 void checkWinner (string j1,  int vencedor, int jogo) {
+    string admin = "admin";
+
     switch(vencedor) {
         case 0:
-            cout <<  endl << "MAIS SORTE NA PRÓXIMA!" << endl <<  endl;
+            updateScore(admin, j1, jogo);
+            cout << std::endl << "MAIS SORTE NA PRÓXIMA!" << std::endl <<  std::endl;
             break;
         case 1:
-            updateScore(j1, j2, jogo);
-            cout <<  endl << j1 << "GANHOU!" << endl <<  endl;
+            updateScore(j1,admin, jogo);
+            cout << std::endl << j1 << "GANHOU!" << std::endl <<  std::endl;
             break;
 }
 

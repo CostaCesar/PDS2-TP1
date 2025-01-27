@@ -46,7 +46,7 @@ int registerPlayer(string nickname, string name) {
 
     csv.open(NOME_ARQ, std::fstream::app);
 
-    if (playerExists (nickname)) {
+    if (!playerExists(nickname) && nickname != "admin") {
         csv << nickname << "," << name << ","
         << "0" << "," << "0" << ","
         << "0" << "," << "0" << ","
@@ -169,81 +169,11 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
     while (std::getline(csv, linha)) {
         std::stringstream ss(linha);
         std::string nickname, name;
-        int reversiV, reversiD, liga4V, liga4D, velhaV, velhaD;
         
-        // Ler os campos da linha
-        if (std::getline(ss, nickname, ',') &&
-            std::getline(ss, name, ',') &&
-            ss >> reversiV && ss.ignore(1) &&
-            ss >> reversiD && ss.ignore(1) &&
-            ss >> liga4V && ss.ignore(1) &&
-            ss >> liga4D && ss.ignore(1) &&
-            ss >> velhaV && ss.ignore(1) &&
-            ss >> velhaD) {
-
-            // Se o nickname corresponde, incrementar o campo correspondente
-            if (nickname == winnerNickname) {
-                switch (jogo) {
-                    case 1: reversiV++; break;
-                    case 2: liga4V++; break;
-                    case 3: velhaV++; break;
-                    }
-            } else if (nickname == looserNickname) {
-                switch (jogo) {
-                    case 1: reversiD++; break;
-                    case 2: liga4D++; break;
-                    case 3: velhaD++; break;
-                }
-            }
-
-            // Reescrever a linha com os dados atualizados
-            std::ostringstream newLinha;
-            newLinha
-                << nickname << ","
-                << name << ","
-                << reversiV << ","
-                << reversiD << ","
-                << liga4V << "," 
-                << liga4D << ","
-                << velhaV << ","
-                << velhaD;
-                
-            linhas.push_back(newLinha.str());
-
-        } else {
-            // Se houver erro ao processar a linha, mantê-la como está
-            linhas.push_back(linha);
-        }
-    }
-
-    csv.close();
-
-    // Reescrever o arquivo com os dados atualizados
-    ofstream updated_csv;
-    updated_csv.open(NOME_ARQ, std::fstream::trunc);
-
-    for (string linha : linhas) {
-        updated_csv << linha << "\n";
-    }
-
-    updated_csv.close();
-}
-
-void updateScore(string nickname, int jogo) {
-    ifstream csv;
-    vector<string> linhas;
-    string linha;
-
-    csv.open(NOME_ARQ, std::fstream::in);
-
-    // Ler o arquivo linha por linha
-    while (std::getline(csv, linha)) {
-        std::stringstream ss(linha);
-        std::string nickname, name;
-        int 
+        int
             reversiV, reversiD,
             liga4V, liga4D,
-            velhaV, velhaD
+            velhaV, velhaD,
             puzzleV, puzzleD,
             infinityV, infinityD;
         
@@ -255,7 +185,11 @@ void updateScore(string nickname, int jogo) {
             ss >> liga4V && ss.ignore(1) &&
             ss >> liga4D && ss.ignore(1) &&
             ss >> velhaV && ss.ignore(1) &&
-            ss >> velhaD) {
+            ss >> velhaD && ss.ignore(1) &&
+            ss >> puzzleV && ss.ignore(1) &&
+            ss >> puzzleD && ss.ignore(1) &&
+            ss >> infinityV && ss.ignore(1) &&
+            ss >> infinityD) {
 
             // Se o nickname corresponde, incrementar o campo correspondente
             if (nickname == winnerNickname) {
@@ -263,12 +197,16 @@ void updateScore(string nickname, int jogo) {
                     case 1: reversiV++; break;
                     case 2: liga4V++; break;
                     case 3: velhaV++; break;
+                    case 4: puzzleV++; break;
+                    case 5: infinityV++; break;
                     }
             } else if (nickname == looserNickname) {
                 switch (jogo) {
                     case 1: reversiD++; break;
                     case 2: liga4D++; break;
                     case 3: velhaD++; break;
+                    case 3: puzzleD++; break;
+                    case 5: infinityD++; break;
                 }
             }
 
@@ -282,7 +220,11 @@ void updateScore(string nickname, int jogo) {
                 << liga4V << "," 
                 << liga4D << ","
                 << velhaV << ","
-                << velhaD;
+                << velhaD << ","
+                << puzzleV << ","
+                << puzzleD << ","
+                << infinityV << ","
+                << infinityD;
                 
             linhas.push_back(newLinha.str());
 
