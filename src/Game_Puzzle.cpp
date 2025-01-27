@@ -1,4 +1,5 @@
 #include "Game_Puzzle.hpp"
+#include "Random.hpp"
 #include <iostream>
 
 uint Game_Puzzle::Play()
@@ -145,17 +146,18 @@ Game_Puzzle::Game_Puzzle(uint complexity, uint seed, Vec2 _size)
     }
 
     // Shuffle pieces & Check if it's playable
-    srand(seed);
+    Random::SetRandomSeed(seed);
     do
     {
         for (uint k = 0; k < complexity; k++)
         {
-            Vec2 pos_i = Vec2{rand() % _size.x, rand() % _size.y};
-            Vec2 pos_j = Vec2{rand() % _size.x, rand() % _size.y};
+            Vec2 pos_i = Vec2{Random::GetRandomNum() % _size.x, rand() % _size.y};
+            Vec2 pos_j = Vec2{Random::GetRandomNum() % _size.x, rand() % _size.y};
             
             Board::MovePiece(pos_i, pos_j);
         }
-    } while (IsDraw() == true);
+
+    } while ((IsDraw() == true) && (GetWinner() != 0));
 }
 
 Game_Puzzle::~Game_Puzzle()
