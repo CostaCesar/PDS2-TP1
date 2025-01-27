@@ -124,7 +124,7 @@ void listPlayers(char sel) {
 
         if (
             std::getline(ss, jogador.nickname, ',') &&
-            std::getline(ss, jogador.nickname, ',') &&
+            std::getline(ss, jogador.name, ',') &&
             ss >> jogador.vitoriasReversi && ss.ignore(1) &&
             ss >> jogador.derrotasReversi && ss.ignore(1) &&
             ss >> jogador.vitoriasLiga4 && ss.ignore(1) &&
@@ -206,7 +206,7 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
                 << liga4V << "," 
                 << liga4D << ","
                 << velhaV << ","
-                << liga4D;
+                << velhaD;
                 
             linhas.push_back(newLinha.str());
 

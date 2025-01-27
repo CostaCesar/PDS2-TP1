@@ -3,6 +3,7 @@
 #include "Game_Reversi.hpp"
 #include "Game_Liga4.hpp"
 #include "Game_Velha.hpp"
+#include "Game_Puzzle.hpp"
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -27,15 +28,15 @@ const int VELHA_INDEX = 3;
 void checkWinner(std::string j1, std::string j2, int vencedor, int jogo) {
     switch(vencedor) {
         case 0:
-            std::cout <<  std::endl << "EMPATE!" << std::endl << std:: endl;
+            std::cout <<  std::endl << " EMPATE!" << std::endl << std:: endl;
             break;
         case 1:
             updateScore(j1, j2, jogo);
-            std::cout <<  std::endl << j1 << "GANHOU!" << std::endl << std:: endl;
+            std::cout <<  std::endl << j1 << " GANHOU!" << std::endl << std:: endl;
             break;
         case 2:
             updateScore(j2, j1, jogo);
-            std::cout <<  std::endl << j2 << "GANHOU!" << std::endl << std:: endl;
+            std::cout <<  std::endl << j2 << " GANHOU!" << std::endl << std:: endl;
             break;
     }
 }
@@ -76,4 +77,8 @@ void playVelha (string j1, string j2) {
     vencedor = obj->Play();
 
     checkWinner(j1, j2, vencedor, VELHA_INDEX);
+}
+
+void playPuzzle (string j1) {
+    
 }
