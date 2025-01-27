@@ -11,6 +11,7 @@ private:
     bool IsDraw() override;
     uint GetWinner() override;
     Vec2 ReadMove() override;
+    bool HandleOverlap_Move(Vec2 position, Vec2 new_position) override;
 
 public:
     uint Play() override;
