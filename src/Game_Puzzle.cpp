@@ -1,4 +1,5 @@
 #include "Game_Puzzle.hpp"
+#include "Random.hpp"
 #include <iostream>
 
 uint Game_Puzzle::Play()
@@ -52,6 +53,11 @@ bool Game_Puzzle::MovePiece(Vec2 position)
     return false;
 }
 
+bool Game_Puzzle::HandleOverlap_Move(Vec2 position, Vec2 new_position)
+{
+    return true;
+}
+
 bool Game_Puzzle::AddPiece(Vec2 position, Piece* new_piece)
 {
     if(!Board::AddPiece(position, new_piece))
@@ -98,17 +104,17 @@ uint Game_Puzzle::GetWinner()
     {
         Piece *i_piece = GetPiece(IndexToVec2(i));
         if(i_piece == nullptr)
-            return false;
+            return 0;
 
         Piece *j_piece = GetPiece(IndexToVec2(i+1));
         if(j_piece == nullptr)
-            return false;
+            return 0;
 
         if(j_piece->GetPlayerId() < i_piece->GetPlayerId())
-            return false;
+            return 0;
     }
     
-    return true;
+    return 1;
 }
 
 Vec2 Game_Puzzle::ReadMove()
@@ -145,17 +151,18 @@ Game_Puzzle::Game_Puzzle(uint complexity, uint seed, Vec2 _size)
     }
 
     // Shuffle pieces & Check if it's playable
-    srand(seed);
+    Random::SetRandomSeed(seed);
     do
     {
         for (uint k = 0; k < complexity; k++)
         {
-            Vec2 pos_i = Vec2{rand() % _size.x, rand() % _size.y};
-            Vec2 pos_j = Vec2{rand() % _size.x, rand() % _size.y};
+            Vec2 pos_i = Vec2{Random::GetRandomNum() % _size.x, Random::GetRandomNum()  % _size.y};
+            Vec2 pos_j = Vec2{Random::GetRandomNum() % _size.x, Random::GetRandomNum()  % _size.y};
             
             Board::MovePiece(pos_i, pos_j);
         }
-    } while (IsDraw() == true);
+
+    } while ((IsDraw() == true) || (GetWinner() == 1));
 }
 
 Game_Puzzle::~Game_Puzzle()
