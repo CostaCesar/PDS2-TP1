@@ -4,44 +4,60 @@
 #include "Game_Liga4.hpp"
 #include "Game_Velha.hpp"
 #include "Game_Puzzle.hpp"
+
 #include <iostream>
-#include <ostream>
 #include <string>
+#include <vector>
 
-/* 
-=====
-
-indice para seleção de jogos em funções correspondentes
-
-1: Reversi
-2: Liga4
-3: Jogo da Velha
-
-=====
-*/
-
-const int REVERSI_INDEX = 1;
-const int LIGA4_INDEX = 2;
-const int VELHA_INDEX = 3;
+using 
+    std::cout;
+    std::endl;
+    std::string,
+    std::vector;
 
 
-void checkWinner(std::string j1, std::string j2, int vencedor, int jogo) {
+void checkWinner (string j1, string j2, int vencedor, int jogo) {
     switch(vencedor) {
         case 0:
-            std::cout <<  std::endl << " EMPATE!" << std::endl << std:: endl;
+            cout <<  endl << " EMPATE!" << endl <<  endl;
             break;
         case 1:
             updateScore(j1, j2, jogo);
-            std::cout <<  std::endl << j1 << " GANHOU!" << std::endl << std:: endl;
+            cout <<  endl << j1 << " GANHOU!" << endl <<  endl;
             break;
         case 2:
             updateScore(j2, j1, jogo);
-            std::cout <<  std::endl << j2 << " GANHOU!" << std::endl << std:: endl;
+            cout <<  endl << j2 << " GANHOU!" << endl <<  endl;
             break;
     }
 }
 
-int validPlayers (std::string j1, std::string j2) {
+void checkWinner (string j1,  int vencedor, int jogo) {
+    switch(vencedor) {
+        case 0:
+            cout <<  endl << "MAIS SORTE NA PRÓXIMA!" << endl <<  endl;
+            break;
+        case 1:
+            updateScore(j1, j2, jogo);
+            cout <<  endl << j1 << "GANHOU!" << endl <<  endl;
+            break;
+}
+
+int validGame (char game) {
+    char g;
+    
+    vector<char> games = {'R','L','V','P','I'}
+
+    for (g : games) {
+        if (g == game) {
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
+int validPlayers (string j1, string j2) {
     
     // se os dois jogadores existem, retorna 0
     if (!playerExists(j1) && !playerExists(j2)) {
@@ -51,23 +67,23 @@ int validPlayers (std::string j1, std::string j2) {
     return 0;
 }
 
-void playReversi (std::string j1, std::string j2) {
+void playReversi (string j1, string j2) {
    int vencedor;
     
     Board* obj = new Game_Reversi();
     vencedor = obj->Play();
 
-    checkWinner(j1, j2, vencedor, REVERSI_INDEX);
+    checkWinner(j1, j2, vencedor, INDEX["REVERSI"]);
 }
 
 
-void playLiga4 (std::string j1, std::string j2) {
+void playLiga4 (string j1, string j2) {
     int vencedor;
     
     Board* obj = new Game_Liga4(8,8);
     vencedor = obj->Play();
 
-    checkWinner(j1, j2, vencedor, LIGA4_INDEX);
+    checkWinner(j1, j2, vencedor, INDEX["LIGA4"]);
 }
 
 void playVelha (string j1, string j2) {
@@ -76,9 +92,23 @@ void playVelha (string j1, string j2) {
     Board* obj = new Game_Velha();
     vencedor = obj->Play();
 
-    checkWinner(j1, j2, vencedor, VELHA_INDEX);
+    checkWinner(j1, j2, vencedor, INDEX["VELHA"]);
 }
 
 void playPuzzle (string j1) {
+    int vencedor;
+
+    Board* obj = new Game_Puzzle();
+    vencedor = obj->Play();
+
+    checkWinner(j1, vencedor,, INDEX["PUZZLE"])
+}
+
+void playInfinity (string j1, string j2) {
+    int vencedor;
     
+    Board* obj = new Game_Velha_Infinity();
+    vencedor = obj->Play();
+
+    checkWinner(j1, j2, vencedor, INDEX["INFINITY"]);
 }

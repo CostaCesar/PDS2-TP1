@@ -5,7 +5,7 @@
 
 using
     std::cin,
-    std:: string;
+    std::string;
 
 int main() {
     string name, nickname, comando;
@@ -50,28 +50,35 @@ int main() {
 
             cin >> sel >> j1 >> j2;
 
-            if (
-                (!validPlayers(j1, j2)) &&
-                (sel != 'R' && sel != 'L' && sel != 'V')
-                ) {
+            if ((!validPlayers(j1, j2)) &&
+                !validGame(sel)) {
                 std::cout << "ERRO: Jogo e jogador inexistentes." << std::endl << std::endl;
             
             } else if (!validPlayers(j1, j2)) {
                 std::cout << "ERRO: Jogador inexistente." << std::endl << std::endl;
 
-            } else if (sel != 'R' && sel != 'L' && sel != 'V') {
+            } else if (!validGame(sel)) {
                 std::cout << "ERRO: Jogo inexistente." << std::endl << std::endl;
-                
+
             } else {
-                if (sel == 'R') {
-                    playReversi(j1,j2);
-                } else if (sel == 'L') {
-                    playLiga4(j1,j2);
-                } else if (sel == 'V') {
-                    playVelha(j1,j2);
+                switch(sel) {
+                    case 'R':
+                        playReversi(j1,j2);
+                        break;
+                    case 'L':
+                        playLiga4(j1,j2);
+                        break;
+                    case 'V':
+                        playVelha(j1,j2);
+                        break;
+                    case 'P':
+                        playPuzzle(j1);
+                        break;
+                    case 'I':
+                        playInfinity(j1,j2);
+                        break;
                 }
             }
-
 
         } else if (comando == "FS") {
             return 0;
