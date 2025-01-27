@@ -4,6 +4,8 @@ tmp/*.o
 bin/*
 !bin/Programa
 !bin/inputs
+
+doxygen/
 *.csv
 todo.txt
 doxygen/

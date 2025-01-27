@@ -38,12 +38,12 @@ lib_test test_board test_reversi test_puzzle test_liga4 test_velha
 all: main tests
 
 main: manager board velha liga4 reversi $(SRC_PATH)/main.cpp
-	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp $(MANAGER) $(BOARD) $(LIGA4) $(VELHA)  $(REVERSI) -o $(BIN_PATH)/main -I$(INC_PATH)
+	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp $(MANAGER) $(BOARD) $(LIGA4) $(VELHA) $(RANDOM) $(REVERSI) -o $(BIN_PATH)/main -I$(INC_PATH)
 
 tests: lib_test board puzzle liga4 reversi velha velha_inf $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Reversi_Test.o \
 $(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o $(OBJ_PATH)/Velha_Infinity_Test.o
 	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Reversi_Test.o $(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o \
-	$(OBJ_PATH)/Velha_Infinity_Test.o $(BOARD) $(PUZZLE) $(LIGA4) $(VELHA) $(VELHA_INF) $(REVERSI) -o $(BIN_PATH)/Full_Test
+	$(OBJ_PATH)/Velha_Infinity_Test.o $(BOARD) $(PUZZLE) $(LIGA4) $(VELHA) $(VELHA_INF) $(REVERSI) $(RANDOM) -o $(BIN_PATH)/Full_Test
 
 	$(BIN_PATH)/Full_Test
 
@@ -64,8 +64,8 @@ test_liga4: lib_test board liga4 $(OBJ_PATH)/Liga4_Test.o
 	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Liga4_Test.o $(BOARD) $(LIGA4) -o $(BIN_PATH)/Liga4_Test
 	$(BIN_PATH)/Liga4_Test
 
-test_puzzle: lib_test board puzzle $(OBJ_PATH)/Puzzle_Test.o
-	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Puzzle_Test.o $(BOARD) $(PUZZLE) -o $(BIN_PATH)/Puzzle_Test
+test_puzzle: lib_test board puzzle lib_random $(OBJ_PATH)/Puzzle_Test.o
+	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Puzzle_Test.o $(BOARD) $(PUZZLE) $(RANDOM) -o $(BIN_PATH)/Puzzle_Test
 	$(BIN_PATH)/Puzzle_Test
 
 test_velha_infinity: lib_test board velha velha_inf $(OBJ_PATH)/Velha_Infinity_Test.o
@@ -83,6 +83,10 @@ delete:
 
 # good luck (don't) use these
 lib_test: $(OBJ_PATH)/Lib_Test.o
+
+lib_random: $(SRC_PATH)/Random.cpp $(INC_PATH)/Random.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Random.cpp -o $(OBJ_PATH)/Random.o -I$(INC_PATH)
+RANDOM = $(OBJ_PATH)/Random.o
 
 $(OBJ_PATH)/Lib_Test.o: $(TST_PATH)/TestHeader.cpp $(TST_PATH)/TestHeader.hpp 
 	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/TestHeader.cpp -o $(OBJ_PATH)/Lib_Test.o -I$(INC_PATH)
