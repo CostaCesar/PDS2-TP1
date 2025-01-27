@@ -205,7 +205,7 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
                     case 1: reversiD++; break;
                     case 2: liga4D++; break;
                     case 3: velhaD++; break;
-                    case 3: puzzleD++; break;
+                    case 4: puzzleD++; break;
                     case 5: infinityD++; break;
                 }
             }
