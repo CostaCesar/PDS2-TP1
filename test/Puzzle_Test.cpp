@@ -23,7 +23,7 @@ TEST_CASE("Puzzle Game")
     SUBCASE("Game 2")
     {
         obj = new Game_Puzzle(500, 420);
-        //obj->AssignInput(&input);
+        obj->AssignInput(&input);
         CHECK(obj->Play() == 1);
     }
 
@@ -32,7 +32,7 @@ TEST_CASE("Puzzle Game")
     SUBCASE("Game 3")
     {
         obj = new Game_Puzzle(400, 101);
-        //obj->AssignInput(&input);
+        obj->AssignInput(&input);
         CHECK(obj->Play() == 1);
     }
 
