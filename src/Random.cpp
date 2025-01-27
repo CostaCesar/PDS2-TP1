@@ -4,8 +4,10 @@ uint Random::next_number = 1;
 
 uint Random::GetRandomNum()
 {
-    Random::next_number *= (1103515245 + 12345);
-    return (uint) (next_number/65536) % 32768;
+    next_number ^= (next_number << 21);
+    next_number ^= (next_number >> 30);
+    next_number ^= (next_number << 4);
+    return next_number;
 }
 
 void Random::SetRandomSeed(uint seed)

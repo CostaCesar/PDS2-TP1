@@ -14,7 +14,7 @@ TEST_CASE("Puzzle Game")
     SUBCASE("Game 1")
     {
         obj = new Game_Puzzle(500, 100);
-        //obj->AssignInput(&input);
+        obj->AssignInput(&input);
         CHECK(obj->Play() == 1);
     }
 
