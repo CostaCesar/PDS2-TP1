@@ -17,7 +17,7 @@ int main() {
     std::cout << "Listar jogadores: LJ [A|N]" << std::endl;
     
     std::cout << "Executar partida: ";
-    std::cout << "EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>" << std::endl;
+    std::cout << "EP <Jogo: (R|L|V|P|I)> <Apelido Jogador 1> <Apelido Jogador 2>" << std::endl;
     
     std::cout << "Finalizar sistema: FS" << std::endl << std::endl;
     

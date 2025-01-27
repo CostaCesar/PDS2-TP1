@@ -1,10 +1,11 @@
 #include "Register.hpp"
-#include <algorithm>
+
 #include <iostream>
-#include <ostream>
 #include <string>
+#include <ostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 #include <vector>
 
 using
@@ -50,7 +51,11 @@ int registerPlayer(string nickname, string name) {
         csv << nickname << "," << name << ","
         << "0" << "," << "0" << ","
         << "0" << "," << "0" << ","
-        << "0" << "," << "0" << "," << std::endl;
+        << "0" << "," << "0" << ","
+        << "0" << "," << "0" << ","
+        << "0" << "," << "0" << ","
+        << std::endl;
+        
     } else {
         return 1;
     }
@@ -130,7 +135,10 @@ void listPlayers(char sel) {
             ss >> jogador.vitoriasLiga4 && ss.ignore(1) &&
             ss >> jogador.derrotasLiga4 && ss.ignore(1) &&
             ss >> jogador.vitoriasVelha && ss.ignore(1) &&
-            ss >> jogador.derrotasVelha) 
+            ss >> jogador.vitoriasPuzzle && ss.ignore(1) &&
+            ss >> jogador.derrotasPuzzle && ss.ignore(1) &&
+            ss >> jogador.vitoriasInfinity && ss.ignore(1) &&
+            ss >> jogador.derrotasInfinity && ss.ignore(1) &&) 
         {
             jogadores.push_back(jogador);
         }
@@ -152,6 +160,9 @@ void listPlayers(char sel) {
             << "REVERSI - V: " << "<" << jogador.vitoriasReversi << "> D: " << "<" << jogador.derrotasReversi << ">" << std::endl
             << "LIG4 - V: " << "<" << jogador.vitoriasLiga4 << "> D: " << "<" << jogador.derrotasLiga4 << ">" << std::endl
             << "VELHA - V: " << "<" << jogador.vitoriasVelha << "> D: " << "<" << jogador.derrotasVelha << ">" << std::endl
+            << "PUZZLE - V: " << "<" << jogador.vitoriasPuzzle << "> D: " << "<" << jogador.derrotasPuzzle << ">" << std::endl
+            << "VELHA INFINITO - V: " << "<" << jogador.vitoriasInfinity << "> D: " << "<" << jogador.derrotasInfinity << ">" << std::endl
+
             << std::endl;
     }
 

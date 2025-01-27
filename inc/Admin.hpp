@@ -2,20 +2,9 @@
 
 #include "Register.hpp"
 #include <string>
-#include <map>
 
-using
-    std::string,
-    std::map;
+using std::string;
 
-
-const map<string, int> INDEX = {
-    {"REVERSI", 1},
-    {"LIGA4",2},
-    {"VELHA",3},
-    {"PUZZLE",4},
-    {"INFINITY",5},
-    };
 
 void checkWinner (string j1, string j2, int vencedor, int jogo);
 void checkWinner (string j1, int vencedor, int jogo);

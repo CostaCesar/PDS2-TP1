@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -35,4 +36,4 @@ int deletePlayer (string nickname);
 void listPlayers (char sel);
 
 void updateScore(string winnerNickname, string looserNickname, int jogo);
-void updateScore(string nickname, int jogo)
+void updateScore(string nickname, int jogo);

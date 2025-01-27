@@ -1,5 +1,6 @@
 #include "Admin.hpp"
 #include "Register.hpp"
+#include "Random.hpp"
 #include "Game_Reversi.hpp"
 #include "Game_Liga4.hpp"
 #include "Game_Velha.hpp"
@@ -9,26 +10,37 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
+#include <ctime>
+#include <algorithm>
 
 using 
     std::cout,
-    std::endl,
     std::string,
+    std::map,
     std::vector;
+
+map<string, int> INDEX= {
+    {"REVERSI", 1},
+    {"LIGA4",2},
+    {"VELHA",3},
+    {"PUZZLE",4},
+    {"INFINITY",5},
+};
 
 
 void checkWinner (string j1, string j2, int vencedor, int jogo) {
     switch(vencedor) {
         case 0:
-            cout << endl << " EMPATE!" << endl << endl;
+            cout << std::endl << " EMPATE!" << std::endl <<  std::endl;
             break;
         case 1:
             updateScore(j1, j2, jogo);
-            cout << endl << j1 << " GANHOU!" << endl << endl;
+            cout << std::endl << j1 << " GANHOU!" << std::endl <<  std::endl;
             break;
         case 2:
             updateScore(j2, j1, jogo);
-            cout << endl << j2 << " GANHOU!" << endl << endl;
+            cout << std::endl << j2 << " GANHOU!" << std::endl <<  std::endl;
             break;
     }
 }
@@ -39,11 +51,11 @@ void checkWinner (string j1,  int vencedor, int jogo) {
     switch(vencedor) {
         case 0:
             updateScore(admin, j1, jogo);
-            cout << endl << "MAIS SORTE NA PRÓXIMA!" << endl << endl;
+            cout << std::endl << "MAIS SORTE NA PRÓXIMA!" << std::endl <<  std::endl;
             break;
         case 1:
             updateScore(j1,admin, jogo);
-            cout << endl << j1 << "GANHOU!" << endl << endl;
+            cout << std::endl << j1 << "GANHOU!" << std::endl <<  std::endl;
             break;
     }
 }
@@ -51,10 +63,10 @@ void checkWinner (string j1,  int vencedor, int jogo) {
 int validGame (char game) {
     vector<char> games = {'R','L','V','P','I'};
 
-    for (char g : games) {
-        if (g == game) {
-            return 0;
-        }
+    auto it = std::find(games.begin(), games.end(), game);
+
+    if (it == games.end()) {
+        return 0;
     }
 
     return 1;
@@ -101,10 +113,10 @@ void playVelha (string j1, string j2) {
 void playPuzzle (string j1) {
     int vencedor;
 
-    Board* obj = new Game_Puzzle();
+    Board* obj = new Game_Puzzle(500,100);
     vencedor = obj->Play();
 
-    checkWinner(j1, vencedor,, INDEX["PUZZLE"])
+    checkWinner(j1, vencedor, INDEX["PUZZLE"]);
 }
 
 void playInfinity (string j1, string j2) {
