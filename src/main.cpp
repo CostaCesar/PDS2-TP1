@@ -1,5 +1,6 @@
 #include "Register.hpp"
 #include "Admin.hpp"
+
 #include <iostream>
 #include <string>
 
@@ -15,7 +16,7 @@ int main() {
     std::cout << "Listar jogadores: LJ [A|N]" << std::endl;
     
     std::cout << "Executar partida: ";
-    std::cout << "EP <Jogo: (R|L|V)> <Apelido Jogador 1> <Apelido Jogador 2>" << std::endl;
+    std::cout << "EP <Jogo: (R|L|V|P|I)> <Apelido Jogador 1> <Apelido Jogador 2>" << std::endl;
     
     std::cout << "Finalizar sistema: FS" << std::endl << std::endl;
     
@@ -23,7 +24,7 @@ int main() {
     while(cin >> comando) {
         if (comando == "CJ") {
             cin >> nickname >> name;
-            if (!registerPlayer(nickname, name)) {
+            if (!registerPlayer(nickname, name, NOME_ARQ)) {
                 std::cout << "Jogador " << nickname << " cadastrado com sucesso" << std::endl << std::endl;
             } else {
                 std::cout << "ERRO: jogador repetido" << std::endl << std::endl;
@@ -32,7 +33,7 @@ int main() {
         } else if (comando == "RJ") {
             cin >> nickname;
 
-            if (!deletePlayer(nickname)) {
+            if (!deletePlayer(nickname, NOME_ARQ)) {
                 std::cout << "Jogador " << nickname << " removido com sucesso" << std::endl << std::endl;
             } else {
                 std::cout << "ERRO: jogador inexistente" << std::endl << std::endl;
@@ -41,7 +42,7 @@ int main() {
         } else if (comando == "LJ") {
             char sel;
             cin >> sel;
-            listPlayers(sel);
+            listPlayers(sel, NOME_ARQ);
         
         } else if (comando == "EP") {
             char sel;
@@ -49,28 +50,35 @@ int main() {
 
             cin >> sel >> j1 >> j2;
 
-            if (
-                (!validPlayers(j1, j2)) &&
-                (sel != 'R' && sel != 'L' && sel != 'V')
-                ) {
+            if ((!validPlayers(j1, j2, NOME_ARQ)) &&
+                !validGame(sel)) {
                 std::cout << "ERRO: Jogo e jogador inexistentes." << std::endl << std::endl;
             
-            } else if (!validPlayers(j1, j2)) {
+            } else if (!validPlayers(j1, j2, NOME_ARQ)) {
                 std::cout << "ERRO: Jogador inexistente." << std::endl << std::endl;
 
-            } else if (sel != 'R' && sel != 'L' && sel != 'V') {
+            } else if (!validGame(sel)) {
                 std::cout << "ERRO: Jogo inexistente." << std::endl << std::endl;
-                
+
             } else {
-                if (sel == 'R') {
-                    playReversi(j1,j2);
-                } else if (sel == 'L') {
-                    playLiga4(j1,j2);
-                } else if (sel == 'V') {
-                    playVelha(j1,j2);
+                switch(sel) {
+                    case 'R':
+                        playReversi(j1,j2);
+                        break;
+                    case 'L':
+                        playLiga4(j1,j2);
+                        break;
+                    case 'V':
+                        playVelha(j1,j2);
+                        break;
+                    case 'P':
+                        playPuzzle(j1);
+                        break;
+                    case 'I':
+                        playInfinity(j1,j2);
+                        break;
                 }
             }
-
 
         } else if (comando == "FS") {
             return 0;

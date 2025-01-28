@@ -1,10 +1,8 @@
 .vscode/
-*.csv
+cadastro.csv
 tmp/*.o
 bin/*
 !bin/Programa
 !bin/inputs
-
 doxygen/
-*.csv
-doxygen/
+todo.txt

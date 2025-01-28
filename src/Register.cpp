@@ -1,24 +1,25 @@
 #include "Register.hpp"
-#include <algorithm>
+
 #include <iostream>
-#include <ostream>
 #include <string>
+#include <ostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 #include <vector>
+#include <cctype>
 
-using
-    std::ofstream,
-    std::ifstream,
-    std::string,
-    std::stringstream,
-    std::vector;
+using std::ofstream;
+using std::ifstream;
+using std::string;
+using std::stringstream;
+using std::vector;
 
 
-int playerExists (string nickname) {
+int playerExists (string nickname, string arquivo) {
     ifstream csv;
 
-    csv.open(NOME_ARQ, std::fstream::in);
+    csv.open(arquivo, std::fstream::in);
 
     string linha;
     
@@ -28,29 +29,36 @@ int playerExists (string nickname) {
         string valor;
         
         // itera ao logo de todos os campos do csv
-        // se o nickname foi encontrado, retorna 0
+        // se o nickname foi encontrado, retorna 1
         while (std::getline(ss, valor, ',')) {
             if (valor == nickname) {
                 csv.close();
-                return 0;
+                return 1;
             }
         }
     }
     
     csv.close();
-    return 1;
+    return 0;
 }
 
-int registerPlayer(string nickname, string name) { 
+int registerPlayer(string nickname, string name, string arquivo) { 
     ofstream csv;
 
-    csv.open(NOME_ARQ, std::fstream::app);
+    csv.open(arquivo, std::fstream::app);
 
-    if (playerExists (nickname)) {
+    name[0] = std::toupper(name[0]);
+    nickname[0] = std::toupper(nickname[0]);
+
+    if (!playerExists(nickname, NOME_ARQ) && nickname != "admin") {
         csv << nickname << "," << name << ","
         << "0" << "," << "0" << ","
         << "0" << "," << "0" << ","
-        << "0" << "," << "0" << "," << std::endl;
+        << "0" << "," << "0" << ","
+        << "0" << "," << "0" << ","
+        << "0" << "," << "0" << ","
+        << std::endl;
+
     } else {
         return 1;
     }
@@ -60,10 +68,10 @@ int registerPlayer(string nickname, string name) {
     return 0;
 }
 
-int deletePlayer(string nickname) {
+int deletePlayer(string nickname, string arquivo) {
     ifstream csv;
 
-    csv.open(NOME_ARQ, std::fstream::in);
+    csv.open(arquivo, std::fstream::in);
     
     vector<string> linhas;
     string linha;
@@ -100,7 +108,7 @@ int deletePlayer(string nickname) {
 
     // reescreve o arquivo csv com as linhas do vetor de linhas.
     ofstream updated_csv;
-    updated_csv.open(NOME_ARQ, std::fstream::trunc);
+    updated_csv.open(arquivo, std::fstream::trunc);
     
     for (auto updated_linha : linhas) {
         updated_csv << updated_linha << std::endl;
@@ -111,26 +119,29 @@ int deletePlayer(string nickname) {
     return 0;
 }
 
-void listPlayers(char sel) {
+void listPlayers(char sel, string arquivo) {
     ifstream csv;
     string linha;
     vector<Jogador> jogadores;
 
-    csv.open(NOME_ARQ, std::fstream::in);
+    csv.open(arquivo, std::fstream::in);
 
     while (std::getline(csv, linha)) {
         stringstream ss(linha);
         Jogador jogador;
 
-        if (
-            std::getline(ss, jogador.nickname, ',') &&
-            std::getline(ss, jogador.nickname, ',') &&
+        if (std::getline(ss, jogador.nickname, ',') &&
+            std::getline(ss, jogador.name, ',') &&
             ss >> jogador.vitoriasReversi && ss.ignore(1) &&
             ss >> jogador.derrotasReversi && ss.ignore(1) &&
             ss >> jogador.vitoriasLiga4 && ss.ignore(1) &&
             ss >> jogador.derrotasLiga4 && ss.ignore(1) &&
             ss >> jogador.vitoriasVelha && ss.ignore(1) &&
-            ss >> jogador.derrotasVelha) 
+            ss >> jogador.derrotasVelha && ss.ignore(1) &&
+            ss >> jogador.vitoriasPuzzle && ss.ignore(1) &&
+            ss >> jogador.derrotasPuzzle && ss.ignore(1) &&
+            ss >> jogador.vitoriasInfinity && ss.ignore(1) &&
+            ss >> jogador.derrotasInfinity) 
         {
             jogadores.push_back(jogador);
         }
@@ -152,24 +163,28 @@ void listPlayers(char sel) {
             << "REVERSI - V: " << "<" << jogador.vitoriasReversi << "> D: " << "<" << jogador.derrotasReversi << ">" << std::endl
             << "LIG4 - V: " << "<" << jogador.vitoriasLiga4 << "> D: " << "<" << jogador.derrotasLiga4 << ">" << std::endl
             << "VELHA - V: " << "<" << jogador.vitoriasVelha << "> D: " << "<" << jogador.derrotasVelha << ">" << std::endl
+            << "PUZZLE - V: " << "<" << jogador.vitoriasPuzzle << "> D: " << "<" << jogador.derrotasPuzzle << ">" << std::endl
+            << "VELHA INFINITO - V: " << "<" << jogador.vitoriasInfinity << "> D: " << "<" << jogador.derrotasInfinity << ">" << std::endl
+
             << std::endl;
     }
 
     csv.close();
 }
 
-void updateScore(string winnerNickname, string looserNickname, int jogo) {
+void updateScore(string winnerNickname, string looserNickname, int jogo, string arquivo) {
     ifstream csv;
     vector<string> linhas;
     string linha;
 
-    csv.open(NOME_ARQ, std::fstream::in);
+    csv.open(arquivo, std::fstream::in);
 
     // Ler o arquivo linha por linha
     while (std::getline(csv, linha)) {
         std::stringstream ss(linha);
         std::string nickname, name;
-        int reversiV, reversiD, liga4V, liga4D, velhaV, velhaD;
+        
+        int reversiV, reversiD, liga4V, liga4D, velhaV, velhaD, puzzleV, puzzleD, infinityV, infinityD;
         
         // Ler os campos da linha
         if (std::getline(ss, nickname, ',') &&
@@ -179,7 +194,11 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
             ss >> liga4V && ss.ignore(1) &&
             ss >> liga4D && ss.ignore(1) &&
             ss >> velhaV && ss.ignore(1) &&
-            ss >> velhaD) {
+            ss >> velhaD && ss.ignore(1) &&
+            ss >> puzzleV && ss.ignore(1) &&
+            ss >> puzzleD && ss.ignore(1) &&
+            ss >> infinityV && ss.ignore(1) &&
+            ss >> infinityD) {
 
             // Se o nickname corresponde, incrementar o campo correspondente
             if (nickname == winnerNickname) {
@@ -187,12 +206,16 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
                     case 1: reversiV++; break;
                     case 2: liga4V++; break;
                     case 3: velhaV++; break;
+                    case 4: puzzleV++; break;
+                    case 5: infinityV++; break;
                     }
             } else if (nickname == looserNickname) {
                 switch (jogo) {
                     case 1: reversiD++; break;
                     case 2: liga4D++; break;
                     case 3: velhaD++; break;
+                    case 4: puzzleD++; break;
+                    case 5: infinityD++; break;
                 }
             }
 
@@ -206,7 +229,11 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
                 << liga4V << "," 
                 << liga4D << ","
                 << velhaV << ","
-                << liga4D;
+                << velhaD << ","
+                << puzzleV << ","
+                << puzzleD << ","
+                << infinityV << ","
+                << infinityD;
                 
             linhas.push_back(newLinha.str());
 
@@ -220,7 +247,7 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
 
     // Reescrever o arquivo com os dados atualizados
     ofstream updated_csv;
-    updated_csv.open(NOME_ARQ, std::fstream::trunc);
+    updated_csv.open(arquivo, std::fstream::trunc);
 
     for (string linha : linhas) {
         updated_csv << linha << "\n";
