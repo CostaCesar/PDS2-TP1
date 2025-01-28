@@ -54,7 +54,7 @@ void checkWinner (string j1,  int vencedor, int jogo) {
             break;
         case 1:
             updateScore(j1,admin, jogo, NOME_ARQ);
-            cout << std::endl << j1 << "GANHOU!" << std::endl <<  std::endl;
+            cout << std::endl << j1 << " GANHOU!" << std::endl <<  std::endl;
             break;
     }
 }
@@ -85,7 +85,7 @@ void playReversi (string j1, string j2) {
    int vencedor;
     
     Board* obj = new Game_Reversi();
-    vencedor = obj->Play();
+    vencedor = obj->Play(j1, j2);
 
     checkWinner(j1, j2, vencedor, INDEX["REVERSI"]);
 }
@@ -95,7 +95,7 @@ void playLiga4 (string j1, string j2) {
     int vencedor;
     
     Board* obj = new Game_Liga4(8,8);
-    vencedor = obj->Play();
+    vencedor = obj->Play(j1, j2);
 
     checkWinner(j1, j2, vencedor, INDEX["LIGA4"]);
 }
@@ -104,7 +104,7 @@ void playVelha (string j1, string j2) {
     int vencedor;
     
     Board* obj = new Game_Velha();
-    vencedor = obj->Play();
+    vencedor = obj->Play(j1, j2);
 
     checkWinner(j1, j2, vencedor, INDEX["VELHA"]);
 }
@@ -113,7 +113,7 @@ void playPuzzle (string j1) {
     int vencedor;
 
     Board* obj = new Game_Puzzle(500);
-    vencedor = obj->Play();
+    vencedor = obj->Play(j1);
 
     checkWinner(j1, vencedor, INDEX["PUZZLE"]);
 }
@@ -122,7 +122,7 @@ void playInfinity (string j1, string j2) {
     int vencedor;
     
     Board* obj = new Game_Velha_Infinity();
-    vencedor = obj->Play();
+    vencedor = obj->Play(j1, j2);
 
     checkWinner(j1, j2, vencedor, INDEX["INFINITY"]);
 }

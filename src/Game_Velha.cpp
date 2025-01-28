@@ -51,7 +51,7 @@ bool Game_Velha::IsDraw()
     return this->num_plays == GetSize().x * GetSize().y;
 }
 
-uint Game_Velha::Play()
+uint Game_Velha::Play(std::string player1, std::string player2)
 {
     using std::cout;
     using std::endl;
@@ -62,15 +62,16 @@ uint Game_Velha::Play()
 
     while (!IsDraw())
     {
+        cout << endl;
         Draw();
-        cout << "Jogada do jogador " << this->current_player << " <X Y>:" << endl;
+        cout << "\nTurno de " << (current_player == 1 ? player1 : player2) << " <X Y>: ";
         
         while(1)
         {
             try { move = ReadMove(); }
             catch(const std::exception& e)
             {
-                cout << "Entrada invalida" << endl;
+                cout << endl << "Entrada invalida" << endl;
                 continue;
             }
 
@@ -79,14 +80,20 @@ uint Game_Velha::Play()
             else
             {
                 delete peca;
-                cout << "Jogada invalida" << endl;
+                cout << endl << "Jogada invalida" << endl;
             }
         }
+
+        cout << endl;
+        ResetScreen();
+
         if(CheckForWin(move)) break;
-        this->num_plays+=1;
+        
+        this->num_plays++;
         NextPlayer();
     }
 
+    cout << endl;
     Draw();
     return GetWinner();
 }

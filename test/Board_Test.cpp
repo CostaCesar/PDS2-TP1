@@ -12,7 +12,7 @@ public:
     {
         return 0;
     }
-    uint Play() override
+    uint Play(std::string a, std::string b) override
     {
         return 0;
     }

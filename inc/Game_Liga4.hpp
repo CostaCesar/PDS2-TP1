@@ -81,10 +81,13 @@ public:
      * @fn Play()
      * @brief Inicia o jogo e alterna entre os jogadores alguém venca seja ou termine em empate.
      * 
+     * @param player1 [Jogador 1] Apelido do primeiro jogador
+     * @param player2 [Jogador 2] Apelido do segundo jogador
+     * 
      * @details Imprime o board e os nomes do jogadores com sua respectiva cor, caso a entrada seja por cin ele limpa a tela toda rodada.
      * Quando um jogador vence, o método imprime a mensagem de vitória e o jogo termina. Se o jogo terminar sem vencedor, imprime Empate
      * 
      * @return uint O identificador do vencedor (1 ou 2) ou 0 em caso de empate.
      */
-    uint Play() override;
+    uint Play(std::string player1, std::string player2) override;
 };

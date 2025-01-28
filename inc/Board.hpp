@@ -207,12 +207,23 @@ protected:
     /*! @fn AssertEmptyInput();
         @brief Garante que o input foi lido completamente
 
-        @details Se a entrada for completamente lida, input->peek() deve retornar \n.
+        @details Se a entrada for completamente lida, input->peek() deve retornar '\n'.
         Se houver algum caracter no input não lido, o método lança uma exceção.
 
         @throws invalid_argument: Quando o input não foi completamente lido
     */
     void AssertEmptyInput();
+
+    /*! @fn ResetScreen();
+        @brief Limpa a tela do terminal
+
+        @details Como os comandos de limpeza diferem entre sistemas (cls X clear), esse
+        método abstrai essa avaliação.
+
+        A limpeza só ocorre com a entrada vindo de std::cin. Nos testes, como é vantajoso
+        ver a saida, esse método não faz a limpeza
+    */
+    void ResetScreen();
 
 public:
     /*! @fn GetSize()
@@ -296,12 +307,17 @@ public:
 
     /*! @fn Play()
         @brief Realiza a partida do jogo
+        @param player1 [Jogador 1] Apelido do primeiro jogador
+        @param player2 [Jogador 2] Apelido do segundo jogador
         @return 0 em caso de empate. Senão, O ID do jogador que venceu é retornado
         @details Essa é a principal função da classe Board.
 
         @warning Essa função deve ser sobreescrita para que a classe seja válida
     */
-    virtual uint Play() = 0;
+    virtual uint Play(
+        std::string player1 = "Jogador 1",
+        std::string player2 = "Jogador 2"
+    ) = 0;
 
     /*! @fn Board()
         @brief Construtor padrão do Board

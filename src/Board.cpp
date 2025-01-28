@@ -92,6 +92,16 @@ void Board::AssertEmptyInput()
     if(this->input->peek() != '\n')
         throw std::invalid_argument("Entrada sobrecarregada");
 }
+void Board::ResetScreen()
+{
+    if (!IsReadingFromCin()) return;
+
+    #if defined(_WIN32) || defined(_WIN64)
+        system("cls");
+    #else
+        system("clear");
+    #endif 
+}
 bool Board::IsReadingFromCin()
 {
     return (this->input == &std::cin);
@@ -207,12 +217,6 @@ void Board::Draw()
     }
 }
 
-// Returns:
-// -2: Reached Board Limit
-// -1: Reached Empty Position
-//  0: Reached Non-Player Piece
-//  1: Reached Opponent Piece
-//  2: Matched all pieces
 MatchReturn Board::MatchUntilStep(Vec2 position, Direction direction, uint steps)
 {
     // Will not search if starting from empty pos
@@ -220,7 +224,7 @@ MatchReturn Board::MatchUntilStep(Vec2 position, Direction direction, uint steps
         return MatchReturn::Empty;
 
     uint base_id = GetPiece(position)->GetPlayerId();
-    for(uint i = 0; i < steps; i ++)
+    for(uint i = 0; i < steps; i ++)// Returns:
     {
         position = PosFromDirec(position, direction);
 

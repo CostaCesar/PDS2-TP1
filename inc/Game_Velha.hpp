@@ -52,9 +52,12 @@ public:
      * Imprime um tabuleiro com as posições respectivas para cada jogada e admite uma entrada que representa a jogada de cada jogador alternando entre dois jogadores.
      * Quando o jogo acaba, seja pela vitoria de um jogador ou por empate, ele imprime a variavel que representa o resultado do jogo.
      * 
+     * @param player1 [Jogador 1] Apelido do primeiro jogador
+     * @param player2 [Jogador 2] Apelido do segundo jogador
+     * 
      * @return uint 1 ou 2 para a vitoria do jogador respectivo e 0 para empate.
      */
-    virtual uint Play() override;
+    virtual uint Play(std::string player1, std::string player2) override;
 
      /**
      * @brief Construtor da classe `Game_Velha`.

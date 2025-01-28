@@ -14,58 +14,50 @@ const std::string color_player1 = "\033[91m"; // Vermelho 1
 const std::string color_player2 = "\033[93m"; // Amarelo 2
 const std::string reset_color = "\033[0m";    // Resetando a cor
 
-uint Game_Liga4::Play() {
+uint Game_Liga4::Play(std::string player1, std::string player2)
+{
     Vec2 last_move;
-    uint invalid_move_count = 0;
 
-    while (this->num_plays > 0) {
-        std::cout << (current_player == 1 ? color_player1 : color_player2) 
-                  << "\nJogador " << current_player << reset_color << "\n" << std::endl;
+    while (this->num_plays > 0)
+    {
+        std::cout << (current_player == 1 ? color_player1 : color_player2) << "\n";
+        std::cout << "Turno de " << (current_player == 1 ? player1 : player2);
+        std::cout << reset_color << "\n" << std::endl;
 
         Draw();
 
-        bool valid_move = false;
-        while (!valid_move) {
-            try {
+        while (1)
+        {
+            try
+            {
+                std::cout << "\nJogada <Coluna>: ";
                 last_move = ReadMove();
-                valid_move = true;
-            } catch (const std::exception& e) {
-                std::cout << "ERRO: " << e.what() << std::endl;
-                invalid_move_count++;
-
-                if (invalid_move_count >= 15) {
-                    std::cerr << color_player1 << "\nERRO: Entrada incorreta muitas vezes ou numero insuficiente de jogadas\n" << reset_color << std::endl;
-                    return 0;
-                }
+            } 
+            catch (const std::exception& e)
+            {
+                std::cout << "\nERRO: " << e.what() << std::endl;
+                continue;
             }
+            std::cout << std::endl;
+
+            char symbol = (current_player == 1) ? 'X' : 'O';
+            Piece* piece = new Piece(current_player, symbol);
+            if (AddPiece(last_move, piece) == true)
+                break;
+            else delete piece;
         }
 
-        char symbol = (current_player == 1) ? 'X' : 'O';
-        Piece* piece = new Piece(current_player, symbol);
+        ResetScreen();
 
-        if (!AddPiece(last_move, piece)) {
-            delete piece;
-            continue;
-        }
-
-        if (IsReadingFromCin()){
-            #if defined(_WIN32) || defined(_WIN64)
-                system("cls");
-            #else
-                system("clear");
-            #endif 
-        }
-
-        if (CheckWin(current_player, last_move)) {
-            std::cout << (current_player == 1 ? color_player1 : color_player2) 
-                      << "Jogador " << current_player << " venceu!" << reset_color << "\n" << std::endl;
+        if (CheckWin(current_player, last_move))
             break;
-        }
 
         num_plays--;
         NextPlayer();
     }
 
+    std::cout << std::endl;
+    Draw();
     return GetWinner();
 }
 
@@ -102,7 +94,6 @@ Vec2 Game_Liga4::ReadMove() {
 uint Game_Liga4::GetWinner() {
     if (IsDraw())
         std::cout << "Empate!\n" << std::endl;
-    Draw();
     return IsDraw() ? 0 : current_player;
 }
 

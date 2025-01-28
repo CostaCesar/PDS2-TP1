@@ -82,9 +82,12 @@ public:
      * @brief Método principal da classe. Executa o jogo até a condição de vitória (veja GetWinner()) ou até a
      * desistência do jogador (entrada = 9) .
      * 
+     * @param player1 [Jogador 1] Apelido do primeiro jogador
+     * @param player2 [Jogador 2] Apelido do segundo jogador
+     * 
      * @return uint 1 se o jogo foi completado com sucesso, 0 para qualquer outro caso.
      */
-    uint Play() override;
+    uint Play(std::string player1, std::string player2) override;
 
     /**
      * @fn Game_Puzzle(uint complexity, uint seed = time(NULL), Vec2 _size = Vec2{3, 3})

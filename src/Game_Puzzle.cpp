@@ -2,7 +2,7 @@
 #include "Random.hpp"
 #include <iostream>
 
-uint Game_Puzzle::Play()
+uint Game_Puzzle::Play(std::string player1, std::string player2)
 {
     Vec2 move;
     do
@@ -11,30 +11,39 @@ uint Game_Puzzle::Play()
 
         while (1)
         {
-            try { move = ReadMove(); }
+            try 
+            { 
+                std::cout << std::endl << "Sua jogada, " << player1 << " <Numero>: ";
+                move = ReadMove();
+            }
             catch(const std::domain_error& end)
             {
-                std::cout << "Game Abandoned" << std::endl;
+                std::cout << std::endl << "Jogo abandonado" << std::endl;
                 return 0;
             }
             catch(const std::exception& e)
             {
-                std::cout << "Invalid Input!" << std::endl;
+                std::cout << std::endl << "Entrada invalida" << std::endl;
                 continue;
             }
+
+            std::cout << std::endl;
 
             if(MovePiece(move) == true) break;
             else
             {
-                std::cout << "Invalid Play! ";
+                std::cout << "Jogada inválida! ";
                 if(move == GetSize())
-                    std::cout << "[No piece with this number]" << std::endl;
+                    std::cout << "[Nenhuma peça com esse numero]" << std::endl;
                 else std::cout << "[" << move.x << "X " << move.y << "Y]"<< std::endl;
                 continue;
             }
         }
         
         this->num_plays++;
+        std::cout << std::endl;
+        
+        ResetScreen();
     
     } while (GetWinner() == 0);
     

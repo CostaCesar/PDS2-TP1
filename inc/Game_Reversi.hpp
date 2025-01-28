@@ -142,9 +142,12 @@ public:
      * Se não houverem jogadas disponíveis para o jogador atual (MarkAsPlayable() retornando 0), o outro jogador ganha a vez para progredir o jogo
      * O jogo acaba quando o tabuleiro é completamente preenchido, então contando as quantidades de peças
      * 
+     * @param player1 [Jogador 1] Apelido do primeiro jogador
+     * @param player2 [Jogador 2] Apelido do segundo jogador
+     * 
      * @return ID do jogador que venceu, ou 0 em caso de empate 
      */
-    uint Play();
+    uint Play(std::string player1, std::string player2) override;
 
     /**
      * @fn  Game_Reversi(uint _start_player = 1)

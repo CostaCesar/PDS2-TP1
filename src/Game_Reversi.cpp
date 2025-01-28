@@ -3,7 +3,7 @@
 
 #include <sstream>
 
-uint Game_Reversi::Play()
+uint Game_Reversi::Play(std::string player1, std::string player2)
 {
     while (GetWinner() == 0)
     {
@@ -19,12 +19,12 @@ uint Game_Reversi::Play()
         Vec2 move;
         while (1)
         {
-            std::cout << "Move for player " << this->current_player << " <X Y>: " << std::endl;
+            std::cout << "Turno de " << (current_player == 1 ? player1 : player2) << " <X Y>: ";
             
             try { move = ReadMove(); }
             catch(const std::exception& e)
             {
-                std::cout << "Invalid Input!" << std::endl;
+                std::cout << std::endl << "Entrada invalida!" << std::endl;
                 continue;
             }
             
@@ -35,11 +35,15 @@ uint Game_Reversi::Play()
             }
             else
             {
-                std::cout << "Invalid Play! [" << move.x << "X " << move.y << "Y]"<< std::endl;
+                std::cout << std::endl << "Jogada invalida [" << move.x << "X " << move.y << "Y]"<< std::endl;
                 delete play;
             }
         }
+
+        std::cout << std::endl;
         this->num_plays--;
+
+        ResetScreen();
     }
     
     Draw();

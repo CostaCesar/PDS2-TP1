@@ -3,7 +3,7 @@
 #include <iostream>
 #include <list>
 
-uint Game_Velha_Infinity::Play()
+uint Game_Velha_Infinity::Play(std::string player1, std::string player2)
 {
     using std::cout;
     using std::endl;
@@ -16,14 +16,14 @@ uint Game_Velha_Infinity::Play()
     while (!IsDraw())
     {
         Draw();
-        cout << "Jogada do jogador " << this->current_player << " <X Y>:" << endl;
+        cout << "\nTurno de " << (current_player == 1 ? player1 : player2) << " <X Y>:" << endl;
         
         while(1)
         {
             try { move = ReadMove(); }
             catch(const std::exception& e)
             {
-                cout << "Entrada invalida" << endl;
+                cout << endl << "Entrada invalida" << endl;
                 continue;
             }
 
@@ -32,14 +32,19 @@ uint Game_Velha_Infinity::Play()
             else
             {
                 delete peca;
-                cout << "Jogada invalida" << endl;
+                cout << endl << "Jogada invalida" << endl;
             }
         }
+        cout << endl;
+
         last_moves[this->current_player-1].push_back(move);
         if(last_moves[this->current_player-1].size()>3){
             DeletePiece(last_moves[this->current_player-1].front());
             last_moves[this->current_player-1].pop_front();
         }
+
+        ResetScreen();
+
         if(CheckForWin(move)) break;
         this->num_plays+=1;
         NextPlayer();
