@@ -204,6 +204,16 @@ protected:
     */
     bool IsReadingFromCin();
 
+    /*! @fn AssertEmptyInput();
+        @brief Garante que o input foi lido completamente
+
+        @details Se a entrada for completamente lida, input->peek() deve retornar \n.
+        Se houver algum caracter no input não lido, o método lança uma exceção.
+
+        @throws invalid_argument: Quando o input não foi completamente lido
+    */
+    void AssertEmptyInput();
+
 public:
     /*! @fn GetSize()
         @return Vec2: A dimensão do tabuleiro
