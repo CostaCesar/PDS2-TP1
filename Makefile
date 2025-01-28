@@ -35,12 +35,12 @@ board velha reversi puzzle velha_inf \
 lib_test test_board test_reversi test_puzzle test_liga4 test_velha
 
 # executables
-all: main tests
+all: tests main
 
 main: manager board velha liga4 reversi $(SRC_PATH)/main.cpp
 	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp $(MANAGER) $(BOARD) $(LIGA4) $(VELHA) $(RANDOM) $(REVERSI) -o $(BIN_PATH)/main -I$(INC_PATH)
 
-tests: lib_test board puzzle liga4 reversi velha velha_inf $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Reversi_Test.o \
+tests: lib_test lib_random board puzzle liga4 reversi velha velha_inf $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Reversi_Test.o \
 $(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o $(OBJ_PATH)/Velha_Infinity_Test.o
 	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Reversi_Test.o $(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o \
 	$(OBJ_PATH)/Velha_Infinity_Test.o $(BOARD) $(PUZZLE) $(LIGA4) $(VELHA) $(VELHA_INF) $(REVERSI) $(RANDOM) -o $(BIN_PATH)/Full_Test
