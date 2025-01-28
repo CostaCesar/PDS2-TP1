@@ -3,9 +3,8 @@
 #include <iostream>
 #include <string>
 
-using
-    std::cin,
-    std:: string;
+using std::cin;
+using std::string;
 
 int main() {
     string name, nickname, comando;
