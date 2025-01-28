@@ -14,11 +14,10 @@
 #include <ctime>
 #include <algorithm>
 
-using 
-    std::cout,
-    std::string,
-    std::map,
-    std::vector;
+using std::cout;
+using std::string; 
+using std::map;
+using std::vector;
 
 map<string, int> INDEX= {
     {"REVERSI", 1},
@@ -35,11 +34,11 @@ void checkWinner (string j1, string j2, int vencedor, int jogo) {
             cout << std::endl << " EMPATE!" << std::endl <<  std::endl;
             break;
         case 1:
-            updateScore(j1, j2, jogo);
+            updateScore(j1, j2, jogo, NOME_ARQ);
             cout << std::endl << j1 << " GANHOU!" << std::endl <<  std::endl;
             break;
         case 2:
-            updateScore(j2, j1, jogo);
+            updateScore(j2, j1, jogo, NOME_ARQ);
             cout << std::endl << j2 << " GANHOU!" << std::endl <<  std::endl;
             break;
     }
@@ -50,11 +49,11 @@ void checkWinner (string j1,  int vencedor, int jogo) {
 
     switch(vencedor) {
         case 0:
-            updateScore(admin, j1, jogo);
+            updateScore(admin, j1, jogo, NOME_ARQ);
             cout << std::endl << "MAIS SORTE NA PRÓXIMA!" << std::endl <<  std::endl;
             break;
         case 1:
-            updateScore(j1,admin, jogo);
+            updateScore(j1,admin, jogo, NOME_ARQ);
             cout << std::endl << j1 << "GANHOU!" << std::endl <<  std::endl;
             break;
     }
@@ -72,10 +71,10 @@ int validGame (char game) {
     return 1;
 }
 
-int validPlayers (string j1, string j2) {
+int validPlayers (string j1, string j2, string arquivo) {
     
     // se os dois jogadores existem, retorna 1
-    if (playerExists(j1) && playerExists(j2)) {
+    if (playerExists(j1, arquivo) && playerExists(j2, arquivo)) {
         return 1;
     }
     

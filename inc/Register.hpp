@@ -30,13 +30,12 @@ struct Jogador {
 };
 
 
-int playerExists (string nickname);
+int playerExists (string nickname, string arquivo);
 
-int registerPlayer (string nickname, string name);
+int registerPlayer (string nickname, string name, string arquivo);
 
-int deletePlayer (string nickname);
+int deletePlayer (string nickname, string arquivo);
 
-void listPlayers (char sel);
+void listPlayers (char sel, string arquivo);
 
-void updateScore(string winnerNickname, string looserNickname, int jogo);
-void updateScore(string nickname, int jogo);
+void updateScore(string winnerNickname, string looserNickname, int jogo, string arquivo);

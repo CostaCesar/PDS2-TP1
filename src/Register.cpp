@@ -16,10 +16,10 @@ using std::stringstream;
 using std::vector;
 
 
-int playerExists (string nickname) {
+int playerExists (string nickname, string arquivo) {
     ifstream csv;
 
-    csv.open(NOME_ARQ, std::fstream::in);
+    csv.open(arquivo, std::fstream::in);
 
     string linha;
     
@@ -42,15 +42,15 @@ int playerExists (string nickname) {
     return 0;
 }
 
-int registerPlayer(string nickname, string name) { 
+int registerPlayer(string nickname, string name, string arquivo) { 
     ofstream csv;
 
-    csv.open(NOME_ARQ, std::fstream::app);
+    csv.open(arquivo, std::fstream::app);
 
     name[0] = std::toupper(name[0]);
     nickname[0] = std::toupper(nickname[0]);
 
-    if (!playerExists(nickname) && nickname != "admin") {
+    if (!playerExists(nickname, NOME_ARQ) && nickname != "admin") {
         csv << nickname << "," << name << ","
         << "0" << "," << "0" << ","
         << "0" << "," << "0" << ","
@@ -68,10 +68,10 @@ int registerPlayer(string nickname, string name) {
     return 0;
 }
 
-int deletePlayer(string nickname) {
+int deletePlayer(string nickname, string arquivo) {
     ifstream csv;
 
-    csv.open(NOME_ARQ, std::fstream::in);
+    csv.open(arquivo, std::fstream::in);
     
     vector<string> linhas;
     string linha;
@@ -108,7 +108,7 @@ int deletePlayer(string nickname) {
 
     // reescreve o arquivo csv com as linhas do vetor de linhas.
     ofstream updated_csv;
-    updated_csv.open(NOME_ARQ, std::fstream::trunc);
+    updated_csv.open(arquivo, std::fstream::trunc);
     
     for (auto updated_linha : linhas) {
         updated_csv << updated_linha << std::endl;
@@ -119,12 +119,12 @@ int deletePlayer(string nickname) {
     return 0;
 }
 
-void listPlayers(char sel) {
+void listPlayers(char sel, string arquivo) {
     ifstream csv;
     string linha;
     vector<Jogador> jogadores;
 
-    csv.open(NOME_ARQ, std::fstream::in);
+    csv.open(arquivo, std::fstream::in);
 
     while (std::getline(csv, linha)) {
         stringstream ss(linha);
@@ -172,24 +172,19 @@ void listPlayers(char sel) {
     csv.close();
 }
 
-void updateScore(string winnerNickname, string looserNickname, int jogo) {
+void updateScore(string winnerNickname, string looserNickname, int jogo, string arquivo) {
     ifstream csv;
     vector<string> linhas;
     string linha;
 
-    csv.open(NOME_ARQ, std::fstream::in);
+    csv.open(arquivo, std::fstream::in);
 
     // Ler o arquivo linha por linha
     while (std::getline(csv, linha)) {
         std::stringstream ss(linha);
         std::string nickname, name;
         
-        int
-            reversiV, reversiD,
-            liga4V, liga4D,
-            velhaV, velhaD,
-            puzzleV, puzzleD,
-            infinityV, infinityD;
+        int reversiV, reversiD, liga4V, liga4D, velhaV, velhaD, puzzleV, puzzleD, infinityV, infinityD;
         
         // Ler os campos da linha
         if (std::getline(ss, nickname, ',') &&
@@ -252,7 +247,7 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
 
     // Reescrever o arquivo com os dados atualizados
     ofstream updated_csv;
-    updated_csv.open(NOME_ARQ, std::fstream::trunc);
+    updated_csv.open(arquivo, std::fstream::trunc);
 
     for (string linha : linhas) {
         updated_csv << linha << "\n";

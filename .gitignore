@@ -1,5 +1,5 @@
 .vscode/
-*.csv
+cadastro.csv
 tmp/*.o
 bin/*
 !bin/Programa
@@ -7,8 +7,5 @@ bin/*
 
 doxygen/
 *.csv
-<<<<<<< HEAD
 doxygen/
-=======
 todo.txt
->>>>>>> Sistema-Usuario

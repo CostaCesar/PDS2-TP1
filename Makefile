@@ -40,10 +40,10 @@ all: tests main
 main: manager board velha liga4 reversi puzzle velha_inf $(SRC_PATH)/main.cpp
 	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp $(MANAGER) $(BOARD) $(LIGA4) $(VELHA) $(RANDOM) $(REVERSI) $(PUZZLE) $(VELHA_INF) -o $(BIN_PATH)/main -I$(INC_PATH)
 
-tests: lib_test lib_random board puzzle liga4 reversi velha velha_inf $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Reversi_Test.o \
-$(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o $(OBJ_PATH)/Velha_Infinity_Test.o
+tests: lib_test lib_random board puzzle liga4 reversi velha velha_inf $(OBJ_PATH)/Velha_Test.o $(MANAGER_TEST) \
+$(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o $(OBJ_PATH)/Velha_Infinity_Test.o $(MANAGER_TEST)
 	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Reversi_Test.o $(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o \
-	$(OBJ_PATH)/Velha_Infinity_Test.o $(BOARD) $(PUZZLE) $(LIGA4) $(VELHA) $(VELHA_INF) $(REVERSI) $(RANDOM) -o $(BIN_PATH)/Full_Test
+	$(OBJ_PATH)/Velha_Infinity_Test.o $(OBJ_PATH)/Register_Test.o $(BOARD) $(PUZZLE) $(LIGA4) $(VELHA) $(VELHA_INF) $(REVERSI) $(RANDOM) $(MANAGER) -o $(BIN_PATH)/Full_Test
 
 	$(BIN_PATH)/Full_Test
 
@@ -72,6 +72,14 @@ test_velha_infinity: lib_test board velha velha_inf $(OBJ_PATH)/Velha_Infinity_T
 	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Velha_Infinity_Test.o $(BOARD) $(VELHA) $(VELHA_INF) -o $(BIN_PATH)/Velha_Infinity_Test
 	$(BIN_PATH)/Velha_Infinity_Test
 
+test_register: lib_test manager $(OBJ_PATH)/Register_Test.o
+	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Register_Test.o $(OBJ_PATH)/Register.o -o $(BIN_PATH)/Register_Test
+	$(BIN_PATH)/Register_Test
+
+test_admin: lib_test manager $(OBJ_PATH)/Admin_Test.o board puzzle liga4 reversi velha velha_inf
+	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Admin_Test.o $(MANAGER) $(BOARD) $(LIGA4) $(VELHA) $(RANDOM) $(REVERSI) $(PUZZLE) $(VELHA_INF) -o $(BIN_PATH)/Admin_Test
+	$(BIN_PATH)/Admin_Test
+
 # util
 doc:
 	./doxygen/$(DOXYGEN)
@@ -95,11 +103,18 @@ $(OBJ_PATH)/Lib_Test.o: $(TST_PATH)/TestHeader.cpp $(TST_PATH)/TestHeader.hpp
 $(OBJ_PATH)/Register.o: $(SRC_PATH)/Register.cpp $(INC_PATH)/Register.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Register.cpp -o $(OBJ_PATH)/Register.o -I$(INC_PATH)
 
+$(OBJ_PATH)/Register_Test.o: $(TST_PATH)/Register_Test.cpp
+	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Register_Test.cpp -o $(OBJ_PATH)/Register_Test.o -I$(INC_PATH)
+
 $(OBJ_PATH)/Admin.o: $(SRC_PATH)/Admin.cpp $(INC_PATH)/Admin.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_PATH)/Admin.cpp -o $(OBJ_PATH)/Admin.o -I$(INC_PATH)
 
+$(OBJ_PATH)/Admin_Test.o: $(TST_PATH)/Admin_Test.cpp
+	$(CXX) $(CXXFLAGS) -c $(TST_PATH)/Admin_Test.cpp -o $(OBJ_PATH)/Admin_Test.o -I$(INC_PATH)
+
 manager: $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o
 MANAGER = $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o
+MANAGER_TEST = $(OBJ_PATH)/Register_Test.o $(OBJ_PATH)/Admin_Test.o
 
 
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
