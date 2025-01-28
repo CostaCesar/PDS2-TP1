@@ -57,9 +57,10 @@ int main() {
                 if (!playerExists(j1, NOME_ARQ)) {
                     std::cout << "ERRO: Jogador inexistente." << std::endl << std::endl;
                     continue;
-                } else {
-                    playPuzzle(j1);
                 }
+
+                playPuzzle(j1);
+            
             } else {
                 cin >> j1 >> j2;
                 if ((!validPlayers(j1, j2, NOME_ARQ)) &&
@@ -90,7 +91,7 @@ int main() {
                 }
             }
             printMenu();
-            
+
         } else if (comando == "FS") {
             return 0;
         }
