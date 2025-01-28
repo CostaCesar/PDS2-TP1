@@ -17,6 +17,12 @@ using std::string;
     @warning Ao implementar novos jogos, atente-se ao ID do jogo.
 */
 
+/*! @fn printMenu()
+    @brief Imprime as opções de execução.
+    
+*/
+void printMenu();
+
 /*!
     @fn checkWinner (string j1, string j2, int vencedor, int jogo);
     @brief Verifica o vencedor de uma partida e chama a função updateScore().

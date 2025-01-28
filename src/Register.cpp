@@ -15,7 +15,6 @@ using std::string;
 using std::stringstream;
 using std::vector;
 
-
 int playerExists (string nickname, string arquivo) {
     ifstream csv;
 
@@ -58,7 +57,7 @@ int registerPlayer(string nickname, string name, string arquivo) {
         << "0" << "," << "0" << ","
         << "0" << "," << "0" << ","
         << std::endl;
-        
+
         csv.close();
         return 1;
 
@@ -119,12 +118,18 @@ int deletePlayer(string nickname, string arquivo) {
     return 0;
 }
 
-void listPlayers(char sel, string arquivo) {
+int listPlayers(char sel, string arquivo) {
     ifstream csv;
     string linha;
     vector<Jogador> jogadores;
 
     csv.open(arquivo, std::fstream::in);
+    csv >> std::ws;
+
+    if (csv.peek() == ifstream::traits_type::eof()) {
+        std::cout << "Nenhum jogador foi cadastrado." << std::endl << std::endl;
+        return 0;
+    }
 
     while (std::getline(csv, linha)) {
         stringstream ss(linha);
@@ -170,6 +175,8 @@ void listPlayers(char sel, string arquivo) {
     }
 
     csv.close();
+
+    return 1;
 }
 
 void updateScore(string winnerNickname, string looserNickname, int jogo, string arquivo) {

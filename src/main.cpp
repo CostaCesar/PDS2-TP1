@@ -9,18 +9,9 @@ using std::string;
 
 int main() {
     string name, nickname, comando;
-    
-    std::cout << "digite uma das opções abaixo:" << std::endl;
-    std::cout << std::endl << "Cadastrar jogador: CJ <Apelido> <Nome>" << std::endl;
-    std::cout << "Remover jogador: RJ <Apelido>" << std::endl;
-    std::cout << "Listar jogadores: LJ [A|N]" << std::endl;
-    
-    std::cout << "Executar partida: ";
-    std::cout << "EP <Jogo: (R|L|V|P|I)> <Apelido Jogador 1> <Apelido Jogador 2>" << std::endl;
-    
-    std::cout << "Finalizar sistema: FS" << std::endl << std::endl;
-    
 
+    printMenu();
+    
     while(cin >> comando) {
         if (comando == "CJ") {
             cin >> nickname >> name;
@@ -43,7 +34,7 @@ int main() {
             char sel;
             cin >> sel;
             listPlayers(sel, NOME_ARQ);
-        
+            
         } else if (comando == "EP") {
             char sel;
             string j1, j2;
@@ -78,6 +69,7 @@ int main() {
                         playInfinity(j1,j2);
                         break;
                 }
+                printMenu();
             }
 
         } else if (comando == "FS") {
