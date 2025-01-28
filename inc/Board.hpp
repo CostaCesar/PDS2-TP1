@@ -204,6 +204,16 @@ protected:
     */
     bool IsReadingFromCin();
 
+    /*! @fn AssertEmptyInput();
+        @brief Garante que o input foi lido completamente
+
+        @details Se a entrada for completamente lida, input->peek() deve retornar \n.
+        Se houver algum caracter no input não lido, o método lança uma exceção.
+
+        @throws invalid_argument: Quando o input não foi completamente lido
+    */
+    void AssertEmptyInput();
+
 public:
     /*! @fn GetSize()
         @return Vec2: A dimensão do tabuleiro
@@ -266,7 +276,7 @@ public:
     virtual bool DeletePiece(Vec2 position);
     
     /*! @fn GetWinner()
-        @brief Obtem o joagador que venceu
+        @brief Obtem o jogador que venceu
         @return 
             - 0: Nehum jogador - Jogo em andamento OU Empate (veja IsDraw())
             - X: ID do jogador que venceu 

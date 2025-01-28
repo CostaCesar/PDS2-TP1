@@ -12,6 +12,11 @@ uint Game_Puzzle::Play()
         while (1)
         {
             try { move = ReadMove(); }
+            catch(const std::domain_error& end)
+            {
+                std::cout << "Game Abandoned" << std::endl;
+                return 0;
+            }
             catch(const std::exception& e)
             {
                 std::cout << "Invalid Input!" << std::endl;
@@ -121,9 +126,18 @@ Vec2 Game_Puzzle::ReadMove()
 {
     uint id;
 
-    try { id = GetUintFromInput(); }
+    try { 
+        id = GetUintFromInput();
+        AssertEmptyInput();
+    }
     catch(const std::exception& e)
-    { throw e; }
+    { 
+        FlushInput();
+        throw e;
+    }
+
+    if(id == 9) // Desistencia
+        throw std::domain_error("Desistiu");
     
     Vec2 limits = GetSize();
     for (uint i = 0; i < limits.y; i++)

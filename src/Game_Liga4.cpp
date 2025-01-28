@@ -82,6 +82,7 @@ Vec2 Game_Liga4::ReadMove() {
 
     try {
         output.x = GetUintFromInput();
+        AssertEmptyInput();
     }
     catch (const std::exception& e) {
         FlushInput();

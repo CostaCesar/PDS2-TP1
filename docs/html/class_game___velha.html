@@ -107,26 +107,36 @@ $(function(){initNavTree('class_game___velha.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="class_game___velha-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Game_Velha Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe que representa o jogo da velha, que herda de <code><a class="el" href="class_board.html" title="Tabuleiro base.">Board</a></code>.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_game___velha_8hpp_source.html">Game_Velha.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Game_Velha:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="class_game___velha.png" usemap="#Game_5FVelha_map" alt=""/>
   <map id="Game_5FVelha_map" name="Game_5FVelha_map">
-<area href="class_board.html" title="Tabuleiro base." alt="Board" shape="rect" coords="0,0,84,24"/>
+<area href="class_board.html" title="Tabuleiro base." alt="Board" shape="rect" coords="0,0,128,24"/>
+<area href="class_game___velha___infinity.html" title="Classe que representa o jogo &quot;Jogo da velha infinito&quot;, que herda de Game_Velha." alt="Game_Velha_Infinity" shape="rect" coords="0,112,128,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa06e4824c60ba72463d90816673d0578" id="r_aa06e4824c60ba72463d90816673d0578"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa06e4824c60ba72463d90816673d0578">Play</a> () override</td></tr>
-<tr class="memdesc:aa06e4824c60ba72463d90816673d0578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza a partida do jogo.  <br /></td></tr>
+<tr class="memitem:aa06e4824c60ba72463d90816673d0578" id="r_aa06e4824c60ba72463d90816673d0578"><td class="memItemLeft" align="right" valign="top">virtual uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa06e4824c60ba72463d90816673d0578">Play</a> () override</td></tr>
+<tr class="memdesc:aa06e4824c60ba72463d90816673d0578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executa a partida de Jogo da Velha.  <br /></td></tr>
 <tr class="separator:aa06e4824c60ba72463d90816673d0578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a32182afa1c3f075dcbdab29794522b" id="r_a7a32182afa1c3f075dcbdab29794522b"><td class="memItemLeft" align="right" valign="top"><a id="a7a32182afa1c3f075dcbdab29794522b" name="a7a32182afa1c3f075dcbdab29794522b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Game_Velha</b> ()</td></tr>
+<tr class="memdesc:a7a32182afa1c3f075dcbdab29794522b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor da classe <code><a class="el" href="class_game___velha.html" title="Classe que representa o jogo da velha, que herda de Board.">Game_Velha</a></code>. <br /></td></tr>
+<tr class="separator:a7a32182afa1c3f075dcbdab29794522b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_board')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a464fa871d6a7f84f1c08580e19e2d6f8 inherit pub_methods_class_board" id="r_a464fa871d6a7f84f1c08580e19e2d6f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a464fa871d6a7f84f1c08580e19e2d6f8">GetSize</a> ()</td></tr>
 <tr class="separator:a464fa871d6a7f84f1c08580e19e2d6f8 inherit pub_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,23 +165,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af73f45730119a1fd8f6670f53f959e68 inherit pub_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destrutor do board.  <br /></td></tr>
 <tr class="separator:af73f45730119a1fd8f6670f53f959e68 inherit pub_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
 <tr class="memitem:a9ca1210cabba922ec05bd080c57b283c" id="r_a9ca1210cabba922ec05bd080c57b283c"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ca1210cabba922ec05bd080c57b283c">GetWinner</a> () override</td></tr>
-<tr class="memdesc:a9ca1210cabba922ec05bd080c57b283c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtem o joagador que venceu.  <br /></td></tr>
+<tr class="memdesc:a9ca1210cabba922ec05bd080c57b283c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o vencedor da partida.  <br /></td></tr>
 <tr class="separator:a9ca1210cabba922ec05bd080c57b283c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4f4c1bd271d3bfbe574a96804e24dcd" id="r_af4f4c1bd271d3bfbe574a96804e24dcd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4f4c1bd271d3bfbe574a96804e24dcd">IsDraw</a> () override</td></tr>
-<tr class="memdesc:af4f4c1bd271d3bfbe574a96804e24dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determina se o jogo empatou ou não.  <br /></td></tr>
+<tr class="memdesc:af4f4c1bd271d3bfbe574a96804e24dcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna se houve um empate na partida.  <br /></td></tr>
 <tr class="separator:af4f4c1bd271d3bfbe574a96804e24dcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab18f98bf9580f75d4630bc224438f00d" id="r_ab18f98bf9580f75d4630bc224438f00d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab18f98bf9580f75d4630bc224438f00d">AddPiece</a> (<a class="el" href="struct_vec2.html">Vec2</a> position, <a class="el" href="class_piece.html">Piece</a> *new_piece)</td></tr>
-<tr class="memdesc:ab18f98bf9580f75d4630bc224438f00d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adiciona uma peça no tabuleiro em uma dada posição.  <br /></td></tr>
+<tr class="memdesc:ab18f98bf9580f75d4630bc224438f00d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adiciona uma peça ao endereço de memoria dentro do tabuleiro.  <br /></td></tr>
 <tr class="separator:ab18f98bf9580f75d4630bc224438f00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3531783f837c7cae59c5dc4edfb3cce" id="r_af3531783f837c7cae59c5dc4edfb3cce"><td class="memItemLeft" align="right" valign="top"><a id="af3531783f837c7cae59c5dc4edfb3cce" name="af3531783f837c7cae59c5dc4edfb3cce"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>CheckForWin</b> ()</td></tr>
-<tr class="separator:af3531783f837c7cae59c5dc4edfb3cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="memitem:ade71f9e1a40354c0e087058ce3afa30d" id="r_ade71f9e1a40354c0e087058ce3afa30d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade71f9e1a40354c0e087058ce3afa30d">CheckForWin</a> (<a class="el" href="struct_vec2.html">Vec2</a> pos)</td></tr>
+<tr class="memdesc:ade71f9e1a40354c0e087058ce3afa30d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se houve um vencedor apartir de uma dada posição do tabuleiro (observando coluna, linha e diagonal relativa).  <br /></td></tr>
+<tr class="separator:ade71f9e1a40354c0e087058ce3afa30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_board')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a19854a79d09534ddb94da9348d681044 inherit pro_methods_class_board" id="r_a19854a79d09534ddb94da9348d681044"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a19854a79d09534ddb94da9348d681044">GetOpponentId</a> ()</td></tr>
 <tr class="separator:a19854a79d09534ddb94da9348d681044 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -214,6 +221,12 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a8e343ee543daff8063f38d408d4d11c3 inherit pro_methods_class_board" id="r_a8e343ee543daff8063f38d408d4d11c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a8e343ee543daff8063f38d408d4d11c3">IsReadingFromCin</a> ()</td></tr>
 <tr class="memdesc:a8e343ee543daff8063f38d408d4d11c3 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checa a origem do input.  <br /></td></tr>
 <tr class="separator:a8e343ee543daff8063f38d408d4d11c3 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board" id="r_af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#af95c6b7cebbe6facdb0d57ab71fd1ea0">AssertEmptyInput</a> ()</td></tr>
+<tr class="memdesc:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Garante que o input foi lido completamente.  <br /></td></tr>
+<tr class="separator:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_board')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a6709b97683753e2d69b72f3d19cd31ec inherit pro_attribs_class_board" id="r_a6709b97683753e2d69b72f3d19cd31ec"><td class="memItemLeft" align="right" valign="top">
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>current_player</b></td></tr>
@@ -224,7 +237,9 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 <tr class="memdesc:a1c1970c2a3c03fccd17b10de35f7e0ed inherit pro_attribs_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número de jogadas realizadas no tabuleiro. <br /></td></tr>
 <tr class="separator:a1c1970c2a3c03fccd17b10de35f7e0ed inherit pro_attribs_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe que representa o jogo da velha, que herda de <code><a class="el" href="class_board.html" title="Tabuleiro base.">Board</a></code>. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab18f98bf9580f75d4630bc224438f00d" name="ab18f98bf9580f75d4630bc224438f00d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab18f98bf9580f75d4630bc224438f00d">&#9670;&#160;</a></span>AddPiece()</h2>
 
@@ -242,29 +257,61 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_piece.html">Piece</a> *</td>          <td class="paramname"><span class="paramname"><em>piece_ptr</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_piece.html">Piece</a> *</td>          <td class="paramname"><span class="paramname"><em>new_piece</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Adiciona uma peça no tabuleiro em uma dada posição. </p>
+<p>Adiciona uma peça ao endereço de memoria dentro do tabuleiro. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">position</td><td>Posição da peça a ser adicionada </td></tr>
-    <tr><td class="paramname">piece_ptr</td><td>Ponteiro da peça a ser adicionada </td></tr>
+    <tr><td class="paramname">position</td><td>Coluna onde a peça será colocada. </td></tr>
+    <tr><td class="paramname">new_piece</td><td>Obejto "piece" a ser introduzido no endereço. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se a peça foi adicionada com sucesso, false em caso contrário</dd></dl>
-<p>A adição da peça quando ela se sobrepõe a outra é controlado pelo <a class="el" href="class_board.html#af7fbe03da573b9807a4ef80f559c6d49" title="Tratador do caso em que uma peça se sobrepõe a outra na adição de uma peça ao tabuleiro.">HandleOverlap_Add()</a></p>
-<dl class="section note"><dt>Note</dt><dd>Essa função pode ser sobreescrita </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True caso a ação tenha sido efetuada, caso contrario Falso. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_board.html#a2fe1b2fb65c6169c15bd3554235911cb">Board</a>.</p>
+
+</div>
+</div>
+<a id="ade71f9e1a40354c0e087058ce3afa30d" name="ade71f9e1a40354c0e087058ce3afa30d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade71f9e1a40354c0e087058ce3afa30d">&#9670;&#160;</a></span>CheckForWin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Game_Velha::CheckForWin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_vec2.html">Vec2</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verifica se houve um vencedor apartir de uma dada posição do tabuleiro (observando coluna, linha e diagonal relativa). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>Posição de origem de verificação. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True caso houve uma vitoria, caso contrario Falso. </dd></dl>
 
 </div>
 </div>
@@ -286,18 +333,13 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel private">private</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Obtem o joagador que venceu. </p>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>0: Nehum jogador - Jogo em andamento OU Empate (veja <a class="el" href="#af4f4c1bd271d3bfbe574a96804e24dcd" title="Determina se o jogo empatou ou não.">IsDraw()</a>)</li>
-<li>X: ID do jogador que venceu</li>
-</ul>
-</dd></dl>
-<p>A função pode ser chamada após o jogo ter sido jogado. A função não é capaz de diferenciar entre jogo em andamento ou empate </p><dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
+<p>Retorna o vencedor da partida. </p>
+<dl class="section return"><dt>Returns</dt><dd>uint ID do jogador vencedor. </dd></dl>
 
 <p>Implements <a class="el" href="class_board.html#a81ee595fb7d477197d8ed175095498eb">Board</a>.</p>
 
@@ -321,14 +363,13 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel private">private</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Determina se o jogo empatou ou não. </p>
-<dl class="section return"><dt>Returns</dt><dd>true se ocorreu um empate, false em caso contrário</dd></dl>
-<p>A função pode ser chamada após o jogo ter sido jogado. </p><dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
+<p>Retorna se houve um empate na partida. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool True para empate, caso contrario Falso. </dd></dl>
 
 <p>Implements <a class="el" href="class_board.html#adcac52fd91d06e5f6262a63971f70700">Board</a>.</p>
 
@@ -357,12 +398,13 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Realiza a partida do jogo. </p>
-<dl class="section return"><dt>Returns</dt><dd>0 em caso de empate. Senão, O ID do jogador que venceu é retornado</dd></dl>
-<p>Essa é a principal função da classe <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a>.</p>
-<dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
+<p>Executa a partida de Jogo da Velha. </p>
+<p>Imprime um tabuleiro com as posições respectivas para cada jogada e admite uma entrada que representa a jogada de cada jogador alternando entre dois jogadores. Quando o jogo acaba, seja pela vitoria de um jogador ou por empate, ele imprime a variavel que representa o resultado do jogo.</p>
+<dl class="section return"><dt>Returns</dt><dd>uint 1 ou 2 para a vitoria do jogador respectivo e 0 para empate. </dd></dl>
 
 <p>Implements <a class="el" href="class_board.html#a205ca7334d613880b33c8eaf1d8e5766">Board</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_game___velha___infinity.html#a402cd9fe5f1512b58721c4679194f447">Game_Velha_Infinity</a>.</p>
 
 </div>
 </div>

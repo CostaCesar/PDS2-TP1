@@ -6,3 +6,5 @@
 
 #include <fstream>
 #include <limits>
+
+void NextCase(std::istream& input);

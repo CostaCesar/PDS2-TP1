@@ -112,6 +112,11 @@ $(function(){initNavTree('class_game___liga4.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Game_Liga4 Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe que representa o jogo "Conecta 4" (Liga 4), que herda de <code><a class="el" href="class_board.html" title="Tabuleiro base.">Board</a></code>.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_game___liga4_8hpp_source.html">Game_Liga4.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Game_Liga4:</div>
 <div class="dyncontent">
@@ -124,20 +129,24 @@ Inheritance diagram for Game_Liga4:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a56b5c1f78d83ca99cb5f0f88d52fe1c7" id="r_a56b5c1f78d83ca99cb5f0f88d52fe1c7"><td class="memItemLeft" align="right" valign="top"><a id="a56b5c1f78d83ca99cb5f0f88d52fe1c7" name="a56b5c1f78d83ca99cb5f0f88d52fe1c7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Game_Liga4</b> (uint rows, uint cols)</td></tr>
+<tr class="memitem:a56b5c1f78d83ca99cb5f0f88d52fe1c7" id="r_a56b5c1f78d83ca99cb5f0f88d52fe1c7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56b5c1f78d83ca99cb5f0f88d52fe1c7">Game_Liga4</a> (uint rows, uint cols)</td></tr>
+<tr class="memdesc:a56b5c1f78d83ca99cb5f0f88d52fe1c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor da classe <code><a class="el" href="class_game___liga4.html" title="Classe que representa o jogo &quot;Conecta 4&quot; (Liga 4), que herda de Board.">Game_Liga4</a></code>.  <br /></td></tr>
 <tr class="separator:a56b5c1f78d83ca99cb5f0f88d52fe1c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9096cb6658e0f475295ca93ba2a18c" id="r_a3a9096cb6658e0f475295ca93ba2a18c"><td class="memItemLeft" align="right" valign="top"><a id="a3a9096cb6658e0f475295ca93ba2a18c" name="a3a9096cb6658e0f475295ca93ba2a18c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Game_Liga4</b> ()</td></tr>
+<tr class="memdesc:a3a9096cb6658e0f475295ca93ba2a18c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destrutor da classe <code><a class="el" href="class_game___liga4.html" title="Classe que representa o jogo &quot;Conecta 4&quot; (Liga 4), que herda de Board.">Game_Liga4</a></code>. <br /></td></tr>
+<tr class="separator:a3a9096cb6658e0f475295ca93ba2a18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16ec2bb256eeff18a621b5b2cf692f4c" id="r_a16ec2bb256eeff18a621b5b2cf692f4c"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16ec2bb256eeff18a621b5b2cf692f4c">GetWinner</a> () override</td></tr>
-<tr class="memdesc:a16ec2bb256eeff18a621b5b2cf692f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtem o joagador que venceu.  <br /></td></tr>
+<tr class="memdesc:a16ec2bb256eeff18a621b5b2cf692f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna o vencedor do jogo ou 0 em caso de empate.  <br /></td></tr>
 <tr class="separator:a16ec2bb256eeff18a621b5b2cf692f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af276814481c114cbf171e504f10a5322" id="r_af276814481c114cbf171e504f10a5322"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af276814481c114cbf171e504f10a5322">IsDraw</a> () override</td></tr>
-<tr class="memdesc:af276814481c114cbf171e504f10a5322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determina se o jogo empatou ou não.  <br /></td></tr>
+<tr class="memdesc:af276814481c114cbf171e504f10a5322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se o jogo terminou em empate. Método trivial.  <br /></td></tr>
 <tr class="separator:af276814481c114cbf171e504f10a5322"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb207eac2dc141ee36587139a20fff52" id="r_aeb207eac2dc141ee36587139a20fff52"><td class="memItemLeft" align="right" valign="top"><a id="aeb207eac2dc141ee36587139a20fff52" name="aeb207eac2dc141ee36587139a20fff52"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>CheckWin</b> (uint player_ID, const <a class="el" href="struct_vec2.html">Vec2</a> &amp;last_move)</td></tr>
+<tr class="memitem:aeb207eac2dc141ee36587139a20fff52" id="r_aeb207eac2dc141ee36587139a20fff52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb207eac2dc141ee36587139a20fff52">CheckWin</a> (uint player_ID, const <a class="el" href="struct_vec2.html">Vec2</a> &amp;last_move)</td></tr>
+<tr class="memdesc:aeb207eac2dc141ee36587139a20fff52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se o jogador venceu o jogo.  <br /></td></tr>
 <tr class="separator:aeb207eac2dc141ee36587139a20fff52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a635d1654d20e261fe4360a910eb6a49a" id="r_a635d1654d20e261fe4360a910eb6a49a"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a635d1654d20e261fe4360a910eb6a49a">Play</a> () override</td></tr>
-<tr class="memdesc:a635d1654d20e261fe4360a910eb6a49a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza a partida do jogo.  <br /></td></tr>
+<tr class="memdesc:a635d1654d20e261fe4360a910eb6a49a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicia o jogo e alterna entre os jogadores alguém venca seja ou termine em empate.  <br /></td></tr>
 <tr class="separator:a635d1654d20e261fe4360a910eb6a49a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_board')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a464fa871d6a7f84f1c08580e19e2d6f8 inherit pub_methods_class_board" id="r_a464fa871d6a7f84f1c08580e19e2d6f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a464fa871d6a7f84f1c08580e19e2d6f8">GetSize</a> ()</td></tr>
@@ -172,11 +181,11 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>CheckWin</b> (uint pl
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:aebddf83eca5ca9922906f38176e70317" id="r_aebddf83eca5ca9922906f38176e70317"><td class="memItemLeft" align="right" valign="top"><a id="aebddf83eca5ca9922906f38176e70317" name="aebddf83eca5ca9922906f38176e70317"></a>
-uint&#160;</td><td class="memItemRight" valign="bottom"><b>EmptyRow</b> (uint colummn)</td></tr>
-<tr class="separator:aebddf83eca5ca9922906f38176e70317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9143ddad2338890894b9b3a35672a335" id="r_a9143ddad2338890894b9b3a35672a335"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9143ddad2338890894b9b3a35672a335">EmptyRow</a> (uint column)</td></tr>
+<tr class="memdesc:a9143ddad2338890894b9b3a35672a335"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna a linha vazia mais próxima para uma coluna, 'gravidade'.  <br /></td></tr>
+<tr class="separator:a9143ddad2338890894b9b3a35672a335"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a333f7909eea34d17f86bd8c84222bddb" id="r_a333f7909eea34d17f86bd8c84222bddb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a333f7909eea34d17f86bd8c84222bddb">ReadMove</a> () override</td></tr>
-<tr class="memdesc:a333f7909eea34d17f86bd8c84222bddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Faz a leitura de um movimento do jogador atual.  <br /></td></tr>
+<tr class="memdesc:a333f7909eea34d17f86bd8c84222bddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le a jogada.  <br /></td></tr>
 <tr class="separator:a333f7909eea34d17f86bd8c84222bddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -220,6 +229,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a8e343ee543daff8063f38d408d4d11c3 inherit pro_methods_class_board" id="r_a8e343ee543daff8063f38d408d4d11c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a8e343ee543daff8063f38d408d4d11c3">IsReadingFromCin</a> ()</td></tr>
 <tr class="memdesc:a8e343ee543daff8063f38d408d4d11c3 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checa a origem do input.  <br /></td></tr>
 <tr class="separator:a8e343ee543daff8063f38d408d4d11c3 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board" id="r_af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#af95c6b7cebbe6facdb0d57ab71fd1ea0">AssertEmptyInput</a> ()</td></tr>
+<tr class="memdesc:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Garante que o input foi lido completamente.  <br /></td></tr>
+<tr class="separator:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_board')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a6709b97683753e2d69b72f3d19cd31ec inherit pro_attribs_class_board" id="r_a6709b97683753e2d69b72f3d19cd31ec"><td class="memItemLeft" align="right" valign="top">
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>current_player</b></td></tr>
@@ -230,7 +242,106 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 <tr class="memdesc:a1c1970c2a3c03fccd17b10de35f7e0ed inherit pro_attribs_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número de jogadas realizadas no tabuleiro. <br /></td></tr>
 <tr class="separator:a1c1970c2a3c03fccd17b10de35f7e0ed inherit pro_attribs_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe que representa o jogo "Conecta 4" (Liga 4), que herda de <code><a class="el" href="class_board.html" title="Tabuleiro base.">Board</a></code>. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a56b5c1f78d83ca99cb5f0f88d52fe1c7" name="a56b5c1f78d83ca99cb5f0f88d52fe1c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56b5c1f78d83ca99cb5f0f88d52fe1c7">&#9670;&#160;</a></span>Game_Liga4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game_Liga4::Game_Liga4 </td>
+          <td>(</td>
+          <td class="paramtype">uint</td>          <td class="paramname"><span class="paramname"><em>rows</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint</td>          <td class="paramname"><span class="paramname"><em>cols</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construtor da classe <code><a class="el" href="class_game___liga4.html" title="Classe que representa o jogo &quot;Conecta 4&quot; (Liga 4), que herda de Board.">Game_Liga4</a></code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rows</td><td>Número de linhas do tabuleiro. </td></tr>
+    <tr><td class="paramname">cols</td><td>Número de colunas do tabuleiro. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aeb207eac2dc141ee36587139a20fff52" name="aeb207eac2dc141ee36587139a20fff52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb207eac2dc141ee36587139a20fff52">&#9670;&#160;</a></span>CheckWin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Game_Liga4::CheckWin </td>
+          <td>(</td>
+          <td class="paramtype">uint</td>          <td class="paramname"><span class="paramname"><em>player_ID</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_vec2.html">Vec2</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>last_move</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica se o jogador venceu o jogo. </p>
+<p>O jogo é vencido quando um dos jogadores faz uma linha de 4 peças em qualquer direção</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player_ID</td><td>Identificador do jogador (1 ou 2). </td></tr>
+    <tr><td class="paramname">last_move</td><td>Última jogada realizada. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool Retorna <code>true</code> se o jogador venceu ou<code>false</code> se ele perdeu. </dd></dl>
+
+</div>
+</div>
+<a id="a9143ddad2338890894b9b3a35672a335" name="a9143ddad2338890894b9b3a35672a335"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9143ddad2338890894b9b3a35672a335">&#9670;&#160;</a></span>EmptyRow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint Game_Liga4::EmptyRow </td>
+          <td>(</td>
+          <td class="paramtype">uint</td>          <td class="paramname"><span class="paramname"><em>column</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna a linha vazia mais próxima para uma coluna, 'gravidade'. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">column</td><td>Coluna onde a peça será colocada. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>uint Primeira linha desocupada da coluna respectiva. </dd></dl>
+
+</div>
+</div>
 <a id="a16ec2bb256eeff18a621b5b2cf692f4c" name="a16ec2bb256eeff18a621b5b2cf692f4c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a16ec2bb256eeff18a621b5b2cf692f4c">&#9670;&#160;</a></span>GetWinner()</h2>
 
@@ -254,13 +365,8 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Obtem o joagador que venceu. </p>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>0: Nehum jogador - Jogo em andamento OU Empate (veja <a class="el" href="#af276814481c114cbf171e504f10a5322" title="Determina se o jogo empatou ou não.">IsDraw()</a>)</li>
-<li>X: ID do jogador que venceu</li>
-</ul>
-</dd></dl>
-<p>A função pode ser chamada após o jogo ter sido jogado. A função não é capaz de diferenciar entre jogo em andamento ou empate </p><dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
+<p>Retorna o vencedor do jogo ou 0 em caso de empate. </p>
+<dl class="section return"><dt>Returns</dt><dd>uint Identificador do vencedor (1 ou 2) ou 0 em caso de empate. </dd></dl>
 
 <p>Implements <a class="el" href="class_board.html#a81ee595fb7d477197d8ed175095498eb">Board</a>.</p>
 
@@ -289,9 +395,9 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Determina se o jogo empatou ou não. </p>
-<dl class="section return"><dt>Returns</dt><dd>true se ocorreu um empate, false em caso contrário</dd></dl>
-<p>A função pode ser chamada após o jogo ter sido jogado. </p><dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
+<p>Verifica se o jogo terminou em empate. Método trivial. </p>
+<p>Ocorre um empate quando o tabuleiro foi totalmente preenchido sem nenhum vencedor</p>
+<dl class="section return"><dt>Returns</dt><dd>bool Retorna <code>true</code> se o jogo foi um empate, caso contrário <code>false</code>. </dd></dl>
 
 <p>Implements <a class="el" href="class_board.html#adcac52fd91d06e5f6262a63971f70700">Board</a>.</p>
 
@@ -320,10 +426,9 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Realiza a partida do jogo. </p>
-<dl class="section return"><dt>Returns</dt><dd>0 em caso de empate. Senão, O ID do jogador que venceu é retornado</dd></dl>
-<p>Essa é a principal função da classe <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a>.</p>
-<dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
+<p>Inicia o jogo e alterna entre os jogadores alguém venca seja ou termine em empate. </p>
+<p>Imprime o board e os nomes do jogadores com sua respectiva cor, caso a entrada seja por cin ele limpa a tela toda rodada. Quando um jogador vence, o método imprime a mensagem de vitória e o jogo termina. Se o jogo terminar sem vencedor, imprime Empate</p>
+<dl class="section return"><dt>Returns</dt><dd>uint O identificador do vencedor (1 ou 2) ou 0 em caso de empate. </dd></dl>
 
 <p>Implements <a class="el" href="class_board.html#a205ca7334d613880b33c8eaf1d8e5766">Board</a>.</p>
 
@@ -352,15 +457,9 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Faz a leitura de um movimento do jogador atual. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_vec2.html" title="Estrutura para armazenar 2 valores inteiros positivos. Pode representar posição, tamanho,...">Vec2</a>: Posição escolhida</dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">invalid_argument,Caso</td><td>o valor lido seja inválido</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Essa função lê 2 números inteiros positivos por padrão, X Y (veja <a class="el" href="class_board.html#ac1a1d61663ea7887b3dc8f504f78def1" title="Faz a leitura de um numero inteiro positivo do input.">GetUintFromInput()</a>). Outros jogos podem sobreescreve-la para a leitura no formato apropriado </p>
+<p>Le a jogada. </p>
+<p>A jogada é feita atravez da coluan em que a peça deve ser posicionada, com a linha sendo determinada via gravidade.</p>
+<dl class="section return"><dt>Returns</dt><dd>Coordenada da jogada. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_board.html#a44af1d0a4e89489da01f7d37506a6e32">Board</a>.</p>
 
