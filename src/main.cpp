@@ -24,7 +24,7 @@ int main() {
     while(cin >> comando) {
         if (comando == "CJ") {
             cin >> nickname >> name;
-            if (!registerPlayer(nickname, name, NOME_ARQ)) {
+            if (registerPlayer(nickname, name, NOME_ARQ)) {
                 std::cout << "Jogador " << nickname << " cadastrado com sucesso" << std::endl << std::endl;
             } else {
                 std::cout << "ERRO: jogador repetido" << std::endl << std::endl;

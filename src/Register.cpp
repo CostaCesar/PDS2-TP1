@@ -58,13 +58,13 @@ int registerPlayer(string nickname, string name, string arquivo) {
         << "0" << "," << "0" << ","
         << "0" << "," << "0" << ","
         << std::endl;
-
-    } else {
+        
+        csv.close();
         return 1;
+
     }
 
     csv.close();
-
     return 0;
 }
 
