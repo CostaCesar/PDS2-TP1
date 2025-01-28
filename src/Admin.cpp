@@ -74,12 +74,12 @@ int validGame (char game) {
 
 int validPlayers (string j1, string j2) {
     
-    // se os dois jogadores existem, retorna 0
+    // se os dois jogadores existem, retorna 1
     if (playerExists(j1) && playerExists(j2)) {
-        return 0;
+        return 1;
     }
     
-    return 1;
+    return 0;
 }
 
 void playReversi (string j1, string j2) {
@@ -113,7 +113,7 @@ void playVelha (string j1, string j2) {
 void playPuzzle (string j1) {
     int vencedor;
 
-    Board* obj = new Game_Puzzle(500,100);
+    Board* obj = new Game_Puzzle(500);
     vencedor = obj->Play();
 
     checkWinner(j1, vencedor, INDEX["PUZZLE"]);

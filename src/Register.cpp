@@ -137,7 +137,7 @@ void listPlayers(char sel) {
             ss >> jogador.vitoriasPuzzle && ss.ignore(1) &&
             ss >> jogador.derrotasPuzzle && ss.ignore(1) &&
             ss >> jogador.vitoriasInfinity && ss.ignore(1) &&
-            ss >> jogador.derrotasInfinity && ss.ignore(1)) 
+            ss >> jogador.derrotasInfinity) 
         {
             jogadores.push_back(jogador);
         }
@@ -145,7 +145,7 @@ void listPlayers(char sel) {
 
     if (sel == 'A') {
         std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
-            return a.nickname < b.nickname;
+            return a.name < b.name;
         });
     } else if (sel == 'N') {
         std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
