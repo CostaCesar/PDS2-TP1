@@ -10,25 +10,20 @@ TEST_CASE("Puzzle Game")
     std::ifstream input(path);
     REQUIRE(input.is_open() == true);
 
-
     SUBCASE("Game 1")
     {
         obj = new Game_Puzzle(500, 100);
         obj->AssignInput(&input);
         CHECK(obj->Play() == 1);
     }
-
-    input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    NextCase(input);
     SUBCASE("Game 2")
     {
         obj = new Game_Puzzle(500, 420);
         obj->AssignInput(&input);
         CHECK(obj->Play() == 1);
     }
-
-    input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    NextCase(input);
     SUBCASE("Game 3")
     {
         obj = new Game_Puzzle(400, 101);

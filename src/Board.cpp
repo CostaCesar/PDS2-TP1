@@ -76,6 +76,7 @@ Vec2 Board::ReadMove()
     {
         output.x = GetUintFromInput();
         output.y = GetUintFromInput();
+        AssertEmptyInput();
     }
     catch(const std::exception& e)
     {
@@ -85,6 +86,11 @@ Vec2 Board::ReadMove()
     }
 
     return output;
+}
+void Board::AssertEmptyInput()
+{
+    if(this->input->peek() != '\n')
+        throw std::invalid_argument("Entrada sobrecarregada");
 }
 bool Board::IsReadingFromCin()
 {

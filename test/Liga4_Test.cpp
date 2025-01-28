@@ -16,18 +16,14 @@ TEST_CASE("Liga 4")
         obj->AssignInput(&input);
         CHECK(obj->Play() == 1);
     }
-
-    input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    NextCase(input);
     SUBCASE("Game 2: Horizontal Win")
     {
         obj = new Game_Liga4(7, 6);
         obj->AssignInput(&input);
         CHECK(obj->Play() == 1);
     }
-
-    input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    input.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    NextCase(input);
     SUBCASE("Game 3: Diagonal Win")
     {
         obj = new Game_Liga4(7, 6);

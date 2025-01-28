@@ -121,9 +121,15 @@ Vec2 Game_Puzzle::ReadMove()
 {
     uint id;
 
-    try { id = GetUintFromInput(); }
+    try { 
+        id = GetUintFromInput();
+        AssertEmptyInput();
+    }
     catch(const std::exception& e)
-    { throw e; }
+    { 
+        FlushInput();
+        throw e;
+    }
     
     Vec2 limits = GetSize();
     for (uint i = 0; i < limits.y; i++)
