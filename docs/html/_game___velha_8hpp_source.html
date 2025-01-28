@@ -108,32 +108,38 @@ $(function(){initNavTree('_game___velha_8hpp_source.html',''); initResizable(tru
   <div class="headertitle"><div class="title">Game_Velha.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="_game___velha_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="_board_8hpp.html">Board.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="class_game___velha.html">    5</a></span><span class="keyword">class </span>Game_Velha : <span class="keyword">public</span> <a class="code hl_function" href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board</a></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    uint <a class="code hl_function" href="class_game___velha.html#a9ca1210cabba922ec05bd080c57b283c">GetWinner</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___velha.html#af4f4c1bd271d3bfbe574a96804e24dcd">IsDraw</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___velha.html#ab18f98bf9580f75d4630bc224438f00d">AddPiece</a>(<a class="code hl_class" href="struct_vec2.html">Vec2</a> position, <a class="code hl_class" href="class_piece.html">Piece</a>* new_piece);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">bool</span> CheckForWin();</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    uint <a class="code hl_function" href="class_game___velha.html#aa06e4824c60ba72463d90816673d0578">Play</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Game_Velha();</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_game___velha.html">   13</a></span><span class="keyword">class </span><a class="code hl_function" href="class_game___velha.html#a7a32182afa1c3f075dcbdab29794522b">Game_Velha</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board</a></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    uint <a class="code hl_function" href="class_game___velha.html#a9ca1210cabba922ec05bd080c57b283c">GetWinner</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___velha.html#af4f4c1bd271d3bfbe574a96804e24dcd">IsDraw</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___velha.html#ab18f98bf9580f75d4630bc224438f00d">AddPiece</a>(<a class="code hl_class" href="struct_vec2.html">Vec2</a> position, <a class="code hl_class" href="class_piece.html">Piece</a>* new_piece);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___velha.html#ade71f9e1a40354c0e087058ce3afa30d">CheckForWin</a>(<a class="code hl_class" href="struct_vec2.html">Vec2</a> pos);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">virtual</span> uint <a class="code hl_function" href="class_game___velha.html#aa06e4824c60ba72463d90816673d0578">Play</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_function" href="class_game___velha.html#a7a32182afa1c3f075dcbdab29794522b">Game_Velha</a>();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="ttc" id="a_board_8hpp_html"><div class="ttname"><a href="_board_8hpp.html">Board.hpp</a></div><div class="ttdoc">Estrutura de um tabuleiro genérico.</div></div>
-<div class="ttc" id="aclass_board_html_a9ee491d4fea680cf69b033374a9fdfcb"><div class="ttname"><a href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board::Board</a></div><div class="ttdeci">Board()</div><div class="ttdoc">Construtor padrão do Board.</div><div class="ttdef"><b>Definition</b> Board.cpp:253</div></div>
-<div class="ttc" id="aclass_game___velha_html_a9ca1210cabba922ec05bd080c57b283c"><div class="ttname"><a href="class_game___velha.html#a9ca1210cabba922ec05bd080c57b283c">Game_Velha::GetWinner</a></div><div class="ttdeci">uint GetWinner() override</div><div class="ttdoc">Obtem o joagador que venceu.</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:37</div></div>
-<div class="ttc" id="aclass_game___velha_html_aa06e4824c60ba72463d90816673d0578"><div class="ttname"><a href="class_game___velha.html#aa06e4824c60ba72463d90816673d0578">Game_Velha::Play</a></div><div class="ttdeci">uint Play() override</div><div class="ttdoc">Realiza a partida do jogo.</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:49</div></div>
-<div class="ttc" id="aclass_game___velha_html_ab18f98bf9580f75d4630bc224438f00d"><div class="ttname"><a href="class_game___velha.html#ab18f98bf9580f75d4630bc224438f00d">Game_Velha::AddPiece</a></div><div class="ttdeci">bool AddPiece(Vec2 position, Piece *new_piece)</div><div class="ttdoc">Adiciona uma peça no tabuleiro em uma dada posição.</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:5</div></div>
-<div class="ttc" id="aclass_game___velha_html_af4f4c1bd271d3bfbe574a96804e24dcd"><div class="ttname"><a href="class_game___velha.html#af4f4c1bd271d3bfbe574a96804e24dcd">Game_Velha::IsDraw</a></div><div class="ttdeci">bool IsDraw() override</div><div class="ttdoc">Determina se o jogo empatou ou não.</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:44</div></div>
+<div class="ttc" id="aclass_board_html_a9ee491d4fea680cf69b033374a9fdfcb"><div class="ttname"><a href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board::Board</a></div><div class="ttdeci">Board()</div><div class="ttdoc">Construtor padrão do Board.</div><div class="ttdef"><b>Definition</b> Board.cpp:259</div></div>
+<div class="ttc" id="aclass_game___velha_html_a7a32182afa1c3f075dcbdab29794522b"><div class="ttname"><a href="class_game___velha.html#a7a32182afa1c3f075dcbdab29794522b">Game_Velha::Game_Velha</a></div><div class="ttdeci">Game_Velha()</div><div class="ttdoc">Construtor da classe Game_Velha.</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:94</div></div>
+<div class="ttc" id="aclass_game___velha_html_a9ca1210cabba922ec05bd080c57b283c"><div class="ttname"><a href="class_game___velha.html#a9ca1210cabba922ec05bd080c57b283c">Game_Velha::GetWinner</a></div><div class="ttdeci">uint GetWinner() override</div><div class="ttdoc">Retorna o vencedor da partida.</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:42</div></div>
+<div class="ttc" id="aclass_game___velha_html_aa06e4824c60ba72463d90816673d0578"><div class="ttname"><a href="class_game___velha.html#aa06e4824c60ba72463d90816673d0578">Game_Velha::Play</a></div><div class="ttdeci">virtual uint Play() override</div><div class="ttdoc">Executa a partida de Jogo da Velha.</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:54</div></div>
+<div class="ttc" id="aclass_game___velha_html_ab18f98bf9580f75d4630bc224438f00d"><div class="ttname"><a href="class_game___velha.html#ab18f98bf9580f75d4630bc224438f00d">Game_Velha::AddPiece</a></div><div class="ttdeci">bool AddPiece(Vec2 position, Piece *new_piece)</div><div class="ttdoc">Adiciona uma peça ao endereço de memoria dentro do tabuleiro.</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:5</div></div>
+<div class="ttc" id="aclass_game___velha_html_ade71f9e1a40354c0e087058ce3afa30d"><div class="ttname"><a href="class_game___velha.html#ade71f9e1a40354c0e087058ce3afa30d">Game_Velha::CheckForWin</a></div><div class="ttdeci">bool CheckForWin(Vec2 pos)</div><div class="ttdoc">Verifica se houve um vencedor apartir de uma dada posição do tabuleiro (observando coluna,...</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:15</div></div>
+<div class="ttc" id="aclass_game___velha_html_af4f4c1bd271d3bfbe574a96804e24dcd"><div class="ttname"><a href="class_game___velha.html#af4f4c1bd271d3bfbe574a96804e24dcd">Game_Velha::IsDraw</a></div><div class="ttdeci">bool IsDraw() override</div><div class="ttdoc">Retorna se houve um empate na partida.</div><div class="ttdef"><b>Definition</b> Game_Velha.cpp:49</div></div>
 <div class="ttc" id="aclass_piece_html"><div class="ttname"><a href="class_piece.html">Piece</a></div><div class="ttdoc">Peça de tabuleiro.</div><div class="ttdef"><b>Definition</b> Piece.hpp:23</div></div>
 <div class="ttc" id="astruct_vec2_html"><div class="ttname"><a href="struct_vec2.html">Vec2</a></div><div class="ttdoc">Estrutura para armazenar 2 valores inteiros positivos. Pode representar posição, tamanho,...</div><div class="ttdef"><b>Definition</b> Defs.hpp:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -141,7 +147,7 @@ $(function(){initNavTree('_game___velha_8hpp_source.html',''); initResizable(tru
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><b>Game_Velha.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="_game___velha_8hpp.html">Game_Velha.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

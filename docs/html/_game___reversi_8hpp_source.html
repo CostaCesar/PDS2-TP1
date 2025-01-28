@@ -108,67 +108,84 @@ $(function(){initNavTree('_game___reversi_8hpp_source.html',''); initResizable(t
   <div class="headertitle"><div class="title">Game_Reversi.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="_game___reversi_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="_board_8hpp.html">Board.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span>std::unordered_set;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// Here because there&#39;s a unordered set of Vec2</span></div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="struct_vec2_hash.html">   10</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_vec2_hash.html">Vec2Hash</a></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">size_t</span> operator()(<span class="keyword">const</span> <a class="code hl_class" href="struct_vec2.html">Vec2</a>&amp; vec)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">size_t</span> xHash = std::hash&lt;int&gt;()(vec.<a class="code hl_variable" href="struct_vec2.html#a77c5fccb1f85a68f1e76579241267dbe">x</a>);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">size_t</span> yHash = std::hash&lt;int&gt;()(vec.<a class="code hl_variable" href="struct_vec2.html#a01a7ce47fc4857a76c2deaab618cbc93">y</a>) &lt;&lt; 1;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">return</span> xHash ^ yHash;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    }</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
-</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Here because there&#39;s a unordered set of Vec2</span></div>
 <div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_game___reversi.html">   20</a></span><span class="keyword">class </span>Game_Reversi : <span class="keyword">public</span> <a class="code hl_function" href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="struct_vec2_hash.html">   20</a></span><span class="keyword">struct </span><a class="code hl_class" href="struct_vec2_hash.html">Vec2Hash</a></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> k_player1 = <span class="charliteral">&#39;#&#39;</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> k_player2 = <span class="charliteral">&#39;O&#39;</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> k_available = <span class="charliteral">&#39;.&#39;</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    uint white_count;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    uint black_count;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    unordered_set&lt;Vec2, Vec2Hash&gt; border_tiles;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___reversi.html#acea142e779c5cb222ed65715f4d27814">AddPiece</a>(<a class="code hl_class" href="struct_vec2.html">Vec2</a> position, <a class="code hl_class" href="class_piece.html">Piece</a>* new_piece);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game___reversi.html#aacb78ddac8c9924917004a1c748d3022">Draw</a>();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    uint <a class="code hl_function" href="class_game___reversi.html#abcab6f80a58b9a7f7f6c9ab2100fdc34">GetWinner</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___reversi.html#a4b9c6367e2e73af834f7b89657739979">IsDraw</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> CalculateBorders(<a class="code hl_class" href="struct_vec2.html">Vec2</a> position);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> CascadeMove(<a class="code hl_class" href="struct_vec2.html">Vec2</a> position, <a class="code hl_class" href="class_piece.html">Piece</a>* start_piece);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    uint MarkAsPlayable();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    uint <a class="code hl_function" href="class_game___reversi.html#ad4f19277195ee5ae99f552a1b20e374d">Play</a>();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> AssignInput(std::istream* new_input);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    Game_Reversi(uint _start_player = 1);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    ~Game_Reversi();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">size_t</span> operator()(<span class="keyword">const</span> <a class="code hl_class" href="struct_vec2.html">Vec2</a>&amp; vec)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">size_t</span> xHash = std::hash&lt;int&gt;()(vec.<a class="code hl_variable" href="struct_vec2.html#a77c5fccb1f85a68f1e76579241267dbe">x</a>);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordtype">size_t</span> yHash = std::hash&lt;int&gt;()(vec.<a class="code hl_variable" href="struct_vec2.html#a01a7ce47fc4857a76c2deaab618cbc93">y</a>) &lt;&lt; 1;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">return</span> xHash ^ yHash;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
+</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="class_game___reversi.html">   34</a></span><span class="keyword">class </span><a class="code hl_function" href="class_game___reversi.html#a4962625e6e597d824f939f8a7b0dfdfb">Game_Reversi</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board</a></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_game___reversi.html#ad95bc252daf94eb8577459b65805370c">   37</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="class_game___reversi.html#ad95bc252daf94eb8577459b65805370c">k_player1</a> = <span class="charliteral">&#39;#&#39;</span>;   </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_game___reversi.html#a9e52fb9b7d6002f7923d992d726384fa">   38</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="class_game___reversi.html#a9e52fb9b7d6002f7923d992d726384fa">k_player2</a> = <span class="charliteral">&#39;O&#39;</span>; </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="class_game___reversi.html#aa7555695fd3e57a3d0a08d45342fe9f5">   39</a></span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="class_game___reversi.html#aa7555695fd3e57a3d0a08d45342fe9f5">k_available</a> = <span class="charliteral">&#39;.&#39;</span>; </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_game___reversi.html#adbaa40098fe33ebfba388a6db5a1b59d">   45</a></span>    uint <a class="code hl_variable" href="class_game___reversi.html#adbaa40098fe33ebfba388a6db5a1b59d">white_count</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_game___reversi.html#a81509057e96d1cf38d868ad1af9d2bee">   51</a></span>    uint <a class="code hl_variable" href="class_game___reversi.html#a81509057e96d1cf38d868ad1af9d2bee">black_count</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    unordered_set&lt;Vec2, Vec2Hash&gt; border_tiles;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___reversi.html#acea142e779c5cb222ed65715f4d27814">AddPiece</a>(<a class="code hl_class" href="struct_vec2.html">Vec2</a> position, <a class="code hl_class" href="class_piece.html">Piece</a>* new_piece);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game___reversi.html#aacb78ddac8c9924917004a1c748d3022">Draw</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    uint <a class="code hl_function" href="class_game___reversi.html#abcab6f80a58b9a7f7f6c9ab2100fdc34">GetWinner</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___reversi.html#a4b9c6367e2e73af834f7b89657739979">IsDraw</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game___reversi.html#adcb466b56d57239c9f29186548b46ab6">CalculateBorders</a>(<a class="code hl_class" href="struct_vec2.html">Vec2</a> position);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_game___reversi.html#a16ae28b3679fa1166bc5b8885475e66d">CascadeMove</a>(<a class="code hl_class" href="struct_vec2.html">Vec2</a> position, <a class="code hl_class" href="class_piece.html">Piece</a>* start_piece);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    uint <a class="code hl_function" href="class_game___reversi.html#a471c37eb3ce6824e036e49fe8f26c30c">MarkAsPlayable</a>();</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    uint <a class="code hl_function" href="class_game___reversi.html#ad4f19277195ee5ae99f552a1b20e374d">Play</a>();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <a class="code hl_function" href="class_game___reversi.html#a4962625e6e597d824f939f8a7b0dfdfb">Game_Reversi</a>(uint _start_player = 1);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <a class="code hl_function" href="class_game___reversi.html#ab1a2a274ea8376e31b979a5d4f3186e1">~Game_Reversi</a>();</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>};</div>
 </div>
 <div class="ttc" id="a_board_8hpp_html"><div class="ttname"><a href="_board_8hpp.html">Board.hpp</a></div><div class="ttdoc">Estrutura de um tabuleiro genérico.</div></div>
-<div class="ttc" id="aclass_board_html_a9ee491d4fea680cf69b033374a9fdfcb"><div class="ttname"><a href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board::Board</a></div><div class="ttdeci">Board()</div><div class="ttdoc">Construtor padrão do Board.</div><div class="ttdef"><b>Definition</b> Board.cpp:253</div></div>
-<div class="ttc" id="aclass_game___reversi_html_a4b9c6367e2e73af834f7b89657739979"><div class="ttname"><a href="class_game___reversi.html#a4b9c6367e2e73af834f7b89657739979">Game_Reversi::IsDraw</a></div><div class="ttdeci">bool IsDraw() override</div><div class="ttdoc">Determina se o jogo empatou ou não.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:49</div></div>
-<div class="ttc" id="aclass_game___reversi_html_aacb78ddac8c9924917004a1c748d3022"><div class="ttname"><a href="class_game___reversi.html#aacb78ddac8c9924917004a1c748d3022">Game_Reversi::Draw</a></div><div class="ttdeci">void Draw()</div><div class="ttdoc">Imprime o tabuleiro e seus detalhes.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:179</div></div>
-<div class="ttc" id="aclass_game___reversi_html_abcab6f80a58b9a7f7f6c9ab2100fdc34"><div class="ttname"><a href="class_game___reversi.html#abcab6f80a58b9a7f7f6c9ab2100fdc34">Game_Reversi::GetWinner</a></div><div class="ttdeci">uint GetWinner() override</div><div class="ttdoc">Obtem o joagador que venceu.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:54</div></div>
-<div class="ttc" id="aclass_game___reversi_html_acea142e779c5cb222ed65715f4d27814"><div class="ttname"><a href="class_game___reversi.html#acea142e779c5cb222ed65715f4d27814">Game_Reversi::AddPiece</a></div><div class="ttdeci">bool AddPiece(Vec2 position, Piece *new_piece)</div><div class="ttdoc">Adiciona uma peça no tabuleiro em uma dada posição.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:61</div></div>
+<div class="ttc" id="aclass_board_html_a9ee491d4fea680cf69b033374a9fdfcb"><div class="ttname"><a href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board::Board</a></div><div class="ttdeci">Board()</div><div class="ttdoc">Construtor padrão do Board.</div><div class="ttdef"><b>Definition</b> Board.cpp:259</div></div>
+<div class="ttc" id="aclass_game___reversi_html_a16ae28b3679fa1166bc5b8885475e66d"><div class="ttname"><a href="class_game___reversi.html#a16ae28b3679fa1166bc5b8885475e66d">Game_Reversi::CascadeMove</a></div><div class="ttdeci">void CascadeMove(Vec2 position, Piece *start_piece)</div><div class="ttdoc">Calcula o resultado de uma jogada.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:90</div></div>
+<div class="ttc" id="aclass_game___reversi_html_a471c37eb3ce6824e036e49fe8f26c30c"><div class="ttname"><a href="class_game___reversi.html#a471c37eb3ce6824e036e49fe8f26c30c">Game_Reversi::MarkAsPlayable</a></div><div class="ttdeci">uint MarkAsPlayable()</div><div class="ttdoc">Calcula quantos movimentos são possiveis em uma determinada jogada.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:139</div></div>
+<div class="ttc" id="aclass_game___reversi_html_a4962625e6e597d824f939f8a7b0dfdfb"><div class="ttname"><a href="class_game___reversi.html#a4962625e6e597d824f939f8a7b0dfdfb">Game_Reversi::Game_Reversi</a></div><div class="ttdeci">Game_Reversi(uint _start_player=1)</div><div class="ttdoc">Construtor da classe Game_Reversi.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:189</div></div>
+<div class="ttc" id="aclass_game___reversi_html_a4b9c6367e2e73af834f7b89657739979"><div class="ttname"><a href="class_game___reversi.html#a4b9c6367e2e73af834f7b89657739979">Game_Reversi::IsDraw</a></div><div class="ttdeci">bool IsDraw() override</div><div class="ttdoc">Verifica se houve um empate.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:49</div></div>
+<div class="ttc" id="aclass_game___reversi_html_a81509057e96d1cf38d868ad1af9d2bee"><div class="ttname"><a href="class_game___reversi.html#a81509057e96d1cf38d868ad1af9d2bee">Game_Reversi::black_count</a></div><div class="ttdeci">uint black_count</div><div class="ttdoc">Contagem das peças no tabuleiro do jogador 2.</div><div class="ttdef"><b>Definition</b> Game_Reversi.hpp:51</div></div>
+<div class="ttc" id="aclass_game___reversi_html_a9e52fb9b7d6002f7923d992d726384fa"><div class="ttname"><a href="class_game___reversi.html#a9e52fb9b7d6002f7923d992d726384fa">Game_Reversi::k_player2</a></div><div class="ttdeci">static const char k_player2</div><div class="ttdef"><b>Definition</b> Game_Reversi.hpp:38</div></div>
+<div class="ttc" id="aclass_game___reversi_html_aa7555695fd3e57a3d0a08d45342fe9f5"><div class="ttname"><a href="class_game___reversi.html#aa7555695fd3e57a3d0a08d45342fe9f5">Game_Reversi::k_available</a></div><div class="ttdeci">static const char k_available</div><div class="ttdef"><b>Definition</b> Game_Reversi.hpp:39</div></div>
+<div class="ttc" id="aclass_game___reversi_html_aacb78ddac8c9924917004a1c748d3022"><div class="ttname"><a href="class_game___reversi.html#aacb78ddac8c9924917004a1c748d3022">Game_Reversi::Draw</a></div><div class="ttdeci">void Draw()</div><div class="ttdoc">Desenha o Tabuleiro na saida.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:179</div></div>
+<div class="ttc" id="aclass_game___reversi_html_ab1a2a274ea8376e31b979a5d4f3186e1"><div class="ttname"><a href="class_game___reversi.html#ab1a2a274ea8376e31b979a5d4f3186e1">Game_Reversi::~Game_Reversi</a></div><div class="ttdeci">~Game_Reversi()</div><div class="ttdoc">Destrutor da classe Game_Reversi.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:210</div></div>
+<div class="ttc" id="aclass_game___reversi_html_abcab6f80a58b9a7f7f6c9ab2100fdc34"><div class="ttname"><a href="class_game___reversi.html#abcab6f80a58b9a7f7f6c9ab2100fdc34">Game_Reversi::GetWinner</a></div><div class="ttdeci">uint GetWinner() override</div><div class="ttdoc">Verifica qual jogador está vencendo.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:54</div></div>
+<div class="ttc" id="aclass_game___reversi_html_acea142e779c5cb222ed65715f4d27814"><div class="ttname"><a href="class_game___reversi.html#acea142e779c5cb222ed65715f4d27814">Game_Reversi::AddPiece</a></div><div class="ttdeci">bool AddPiece(Vec2 position, Piece *new_piece)</div><div class="ttdoc">Adiciona uma piece em um dado endereço de memoria do board.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:61</div></div>
 <div class="ttc" id="aclass_game___reversi_html_ad4f19277195ee5ae99f552a1b20e374d"><div class="ttname"><a href="class_game___reversi.html#ad4f19277195ee5ae99f552a1b20e374d">Game_Reversi::Play</a></div><div class="ttdeci">uint Play()</div><div class="ttdoc">Realiza a partida do jogo.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:6</div></div>
+<div class="ttc" id="aclass_game___reversi_html_ad95bc252daf94eb8577459b65805370c"><div class="ttname"><a href="class_game___reversi.html#ad95bc252daf94eb8577459b65805370c">Game_Reversi::k_player1</a></div><div class="ttdeci">static const char k_player1</div><div class="ttdef"><b>Definition</b> Game_Reversi.hpp:37</div></div>
+<div class="ttc" id="aclass_game___reversi_html_adbaa40098fe33ebfba388a6db5a1b59d"><div class="ttname"><a href="class_game___reversi.html#adbaa40098fe33ebfba388a6db5a1b59d">Game_Reversi::white_count</a></div><div class="ttdeci">uint white_count</div><div class="ttdoc">Contagem das peças no tabuleiro do jogador 1.</div><div class="ttdef"><b>Definition</b> Game_Reversi.hpp:45</div></div>
+<div class="ttc" id="aclass_game___reversi_html_adcb466b56d57239c9f29186548b46ab6"><div class="ttname"><a href="class_game___reversi.html#adcb466b56d57239c9f29186548b46ab6">Game_Reversi::CalculateBorders</a></div><div class="ttdeci">void CalculateBorders(Vec2 position)</div><div class="ttdoc">Calcula as bordas em relação às peças colocadas e salva na variavel da classe.</div><div class="ttdef"><b>Definition</b> Game_Reversi.cpp:127</div></div>
 <div class="ttc" id="aclass_piece_html"><div class="ttname"><a href="class_piece.html">Piece</a></div><div class="ttdoc">Peça de tabuleiro.</div><div class="ttdef"><b>Definition</b> Piece.hpp:23</div></div>
-<div class="ttc" id="astruct_vec2_hash_html"><div class="ttname"><a href="struct_vec2_hash.html">Vec2Hash</a></div><div class="ttdef"><b>Definition</b> Game_Reversi.hpp:11</div></div>
+<div class="ttc" id="astruct_vec2_hash_html"><div class="ttname"><a href="struct_vec2_hash.html">Vec2Hash</a></div><div class="ttdoc">Classe que implementa um hash para o Vec2.</div><div class="ttdef"><b>Definition</b> Game_Reversi.hpp:21</div></div>
 <div class="ttc" id="astruct_vec2_html"><div class="ttname"><a href="struct_vec2.html">Vec2</a></div><div class="ttdoc">Estrutura para armazenar 2 valores inteiros positivos. Pode representar posição, tamanho,...</div><div class="ttdef"><b>Definition</b> Defs.hpp:32</div></div>
 <div class="ttc" id="astruct_vec2_html_a01a7ce47fc4857a76c2deaab618cbc93"><div class="ttname"><a href="struct_vec2.html#a01a7ce47fc4857a76c2deaab618cbc93">Vec2::y</a></div><div class="ttdeci">uint y</div><div class="ttdoc">Representa a direção vertical.</div><div class="ttdef"><b>Definition</b> Defs.hpp:41</div></div>
 <div class="ttc" id="astruct_vec2_html_a77c5fccb1f85a68f1e76579241267dbe"><div class="ttname"><a href="struct_vec2.html#a77c5fccb1f85a68f1e76579241267dbe">Vec2::x</a></div><div class="ttdeci">uint x</div><div class="ttdoc">Representa a direção horizontal.</div><div class="ttdef"><b>Definition</b> Defs.hpp:36</div></div>
@@ -177,7 +194,7 @@ $(function(){initNavTree('_game___reversi_8hpp_source.html',''); initResizable(t
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><b>Game_Reversi.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="_game___reversi_8hpp.html">Game_Reversi.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

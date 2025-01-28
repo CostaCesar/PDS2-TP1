@@ -4,6 +4,7 @@ var class_board =
     [ "Board", "class_board.html#afd84b7f975ebe7875770a354027a2116", null ],
     [ "~Board", "class_board.html#af73f45730119a1fd8f6670f53f959e68", null ],
     [ "AddPiece", "class_board.html#a2fe1b2fb65c6169c15bd3554235911cb", null ],
+    [ "AssertEmptyInput", "class_board.html#af95c6b7cebbe6facdb0d57ab71fd1ea0", null ],
     [ "AssignInput", "class_board.html#a2c0298947fb986c91c6cc3e56156d521", null ],
     [ "DeletePiece", "class_board.html#a7506e555df8078583b2354358b3ca571", null ],
     [ "Draw", "class_board.html#a4a9b7e7f2e1519bf0c6bed0e9a9ba201", null ],

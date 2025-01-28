@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['neutral_0',['Neutral',['../_board_8hpp.html#a0e7bc19b5e3c7d77622ac040c420aaecae9bb5320b3890b6747c91b5a71ae5a01',1,'Board.hpp']]],
-  ['nextplayer_1',['NextPlayer',['../class_board.html#a760cdef9db9965a67d3ea863e6d6e24d',1,'Board']]],
-  ['north_2',['North',['../_defs_8hpp.html#a224b9163917ac32fc95a60d8c1eec3aaa601560b94fbb188919dd1d36c8ab70a4',1,'Defs.hpp']]],
-  ['northeast_3',['NorthEast',['../_defs_8hpp.html#a224b9163917ac32fc95a60d8c1eec3aaa7254edb19370d28e3466c971d2f8a03e',1,'Defs.hpp']]],
-  ['northwest_4',['NorthWest',['../_defs_8hpp.html#a224b9163917ac32fc95a60d8c1eec3aaa142cbe82227bdec147eff3a629dd366b',1,'Defs.hpp']]],
-  ['num_5fplays_5',['num_plays',['../class_board.html#a1c1970c2a3c03fccd17b10de35f7e0ed',1,'Board']]]
+  ['markasplayable_0',['MarkAsPlayable',['../class_game___reversi.html#a471c37eb3ce6824e036e49fe8f26c30c',1,'Game_Reversi']]],
+  ['matched_1',['Matched',['../_board_8hpp.html#a0e7bc19b5e3c7d77622ac040c420aaecab65b6f388bb1788248938a5cff5bad1d',1,'Board.hpp']]],
+  ['matchreturn_2',['MatchReturn',['../_board_8hpp.html#a0e7bc19b5e3c7d77622ac040c420aaec',1,'Board.hpp']]],
+  ['matchuntilstep_3',['MatchUntilStep',['../class_board.html#abd0e7b44b4f81cfaa73baf2f07ccef05',1,'Board']]],
+  ['movepiece_4',['MovePiece',['../class_board.html#a67801c638c12103338dbb7d01e1d8e21',1,'Board::MovePiece()'],['../class_game___puzzle.html#a89a1864bd7a749f9b0aea2988653f0b6',1,'Game_Puzzle::MovePiece()']]]
 ];

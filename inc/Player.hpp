@@ -4,9 +4,8 @@
 #include <string>
 #include <map>
 
-using 
-    std::string,
-    std::map;
+using std::string;
+using std::map;
 
 class Player 
 {

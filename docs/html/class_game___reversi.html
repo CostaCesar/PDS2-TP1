@@ -114,6 +114,11 @@ $(function(){initNavTree('class_game___reversi.html',''); initResizable(true); }
   <div class="headertitle"><div class="title">Game_Reversi Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe que representa o jogo Reversi, que herda de <code><a class="el" href="class_board.html" title="Tabuleiro base.">Board</a></code>.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_game___reversi_8hpp_source.html">Game_Reversi.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Game_Reversi:</div>
 <div class="dyncontent">
@@ -129,12 +134,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad4f19277195ee5ae99f552a1b20e374d" id="r_ad4f19277195ee5ae99f552a1b20e374d"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4f19277195ee5ae99f552a1b20e374d">Play</a> ()</td></tr>
 <tr class="memdesc:ad4f19277195ee5ae99f552a1b20e374d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza a partida do jogo.  <br /></td></tr>
 <tr class="separator:ad4f19277195ee5ae99f552a1b20e374d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b953934756e9c9b39e8e10bab98955f" id="r_a2b953934756e9c9b39e8e10bab98955f"><td class="memItemLeft" align="right" valign="top"><a id="a2b953934756e9c9b39e8e10bab98955f" name="a2b953934756e9c9b39e8e10bab98955f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AssignInput</b> (std::istream *new_input)</td></tr>
-<tr class="separator:a2b953934756e9c9b39e8e10bab98955f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4962625e6e597d824f939f8a7b0dfdfb" id="r_a4962625e6e597d824f939f8a7b0dfdfb"><td class="memItemLeft" align="right" valign="top"><a id="a4962625e6e597d824f939f8a7b0dfdfb" name="a4962625e6e597d824f939f8a7b0dfdfb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Game_Reversi</b> (uint _start_player=1)</td></tr>
+<tr class="memitem:a4962625e6e597d824f939f8a7b0dfdfb" id="r_a4962625e6e597d824f939f8a7b0dfdfb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4962625e6e597d824f939f8a7b0dfdfb">Game_Reversi</a> (uint _start_player=1)</td></tr>
+<tr class="memdesc:a4962625e6e597d824f939f8a7b0dfdfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor da classe <a class="el" href="class_game___reversi.html" title="Classe que representa o jogo Reversi, que herda de Board.">Game_Reversi</a>.  <br /></td></tr>
 <tr class="separator:a4962625e6e597d824f939f8a7b0dfdfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1a2a274ea8376e31b979a5d4f3186e1" id="r_ab1a2a274ea8376e31b979a5d4f3186e1"><td class="memItemLeft" align="right" valign="top"><a id="ab1a2a274ea8376e31b979a5d4f3186e1" name="ab1a2a274ea8376e31b979a5d4f3186e1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Game_Reversi</b> ()</td></tr>
+<tr class="memdesc:ab1a2a274ea8376e31b979a5d4f3186e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destrutor da classe <a class="el" href="class_game___reversi.html" title="Classe que representa o jogo Reversi, que herda de Board.">Game_Reversi</a>. <br /></td></tr>
+<tr class="separator:ab1a2a274ea8376e31b979a5d4f3186e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_board')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a464fa871d6a7f84f1c08580e19e2d6f8 inherit pub_methods_class_board" id="r_a464fa871d6a7f84f1c08580e19e2d6f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_vec2.html">Vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a464fa871d6a7f84f1c08580e19e2d6f8">GetSize</a> ()</td></tr>
 <tr class="separator:a464fa871d6a7f84f1c08580e19e2d6f8 inherit pub_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,34 +169,35 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>AssignInput</b> (std:
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:acea142e779c5cb222ed65715f4d27814" id="r_acea142e779c5cb222ed65715f4d27814"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acea142e779c5cb222ed65715f4d27814">AddPiece</a> (<a class="el" href="struct_vec2.html">Vec2</a> position, <a class="el" href="class_piece.html">Piece</a> *new_piece)</td></tr>
-<tr class="memdesc:acea142e779c5cb222ed65715f4d27814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adiciona uma peça no tabuleiro em uma dada posição.  <br /></td></tr>
+<tr class="memdesc:acea142e779c5cb222ed65715f4d27814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adiciona uma piece em um dado endereço de memoria do board.  <br /></td></tr>
 <tr class="separator:acea142e779c5cb222ed65715f4d27814"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacb78ddac8c9924917004a1c748d3022" id="r_aacb78ddac8c9924917004a1c748d3022"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacb78ddac8c9924917004a1c748d3022">Draw</a> ()</td></tr>
-<tr class="memdesc:aacb78ddac8c9924917004a1c748d3022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imprime o tabuleiro e seus detalhes.  <br /></td></tr>
+<tr class="memdesc:aacb78ddac8c9924917004a1c748d3022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desenha o Tabuleiro na saida.  <br /></td></tr>
 <tr class="separator:aacb78ddac8c9924917004a1c748d3022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcab6f80a58b9a7f7f6c9ab2100fdc34" id="r_abcab6f80a58b9a7f7f6c9ab2100fdc34"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcab6f80a58b9a7f7f6c9ab2100fdc34">GetWinner</a> () override</td></tr>
-<tr class="memdesc:abcab6f80a58b9a7f7f6c9ab2100fdc34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtem o joagador que venceu.  <br /></td></tr>
+<tr class="memdesc:abcab6f80a58b9a7f7f6c9ab2100fdc34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica qual jogador está vencendo.  <br /></td></tr>
 <tr class="separator:abcab6f80a58b9a7f7f6c9ab2100fdc34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b9c6367e2e73af834f7b89657739979" id="r_a4b9c6367e2e73af834f7b89657739979"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b9c6367e2e73af834f7b89657739979">IsDraw</a> () override</td></tr>
-<tr class="memdesc:a4b9c6367e2e73af834f7b89657739979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determina se o jogo empatou ou não.  <br /></td></tr>
+<tr class="memdesc:a4b9c6367e2e73af834f7b89657739979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se houve um empate.  <br /></td></tr>
 <tr class="separator:a4b9c6367e2e73af834f7b89657739979"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcb466b56d57239c9f29186548b46ab6" id="r_adcb466b56d57239c9f29186548b46ab6"><td class="memItemLeft" align="right" valign="top"><a id="adcb466b56d57239c9f29186548b46ab6" name="adcb466b56d57239c9f29186548b46ab6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>CalculateBorders</b> (<a class="el" href="struct_vec2.html">Vec2</a> position)</td></tr>
+<tr class="memitem:adcb466b56d57239c9f29186548b46ab6" id="r_adcb466b56d57239c9f29186548b46ab6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcb466b56d57239c9f29186548b46ab6">CalculateBorders</a> (<a class="el" href="struct_vec2.html">Vec2</a> position)</td></tr>
+<tr class="memdesc:adcb466b56d57239c9f29186548b46ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula as bordas em relação às peças colocadas e salva na variavel da classe.  <br /></td></tr>
 <tr class="separator:adcb466b56d57239c9f29186548b46ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16ae28b3679fa1166bc5b8885475e66d" id="r_a16ae28b3679fa1166bc5b8885475e66d"><td class="memItemLeft" align="right" valign="top"><a id="a16ae28b3679fa1166bc5b8885475e66d" name="a16ae28b3679fa1166bc5b8885475e66d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>CascadeMove</b> (<a class="el" href="struct_vec2.html">Vec2</a> position, <a class="el" href="class_piece.html">Piece</a> *start_piece)</td></tr>
+<tr class="memitem:a16ae28b3679fa1166bc5b8885475e66d" id="r_a16ae28b3679fa1166bc5b8885475e66d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16ae28b3679fa1166bc5b8885475e66d">CascadeMove</a> (<a class="el" href="struct_vec2.html">Vec2</a> position, <a class="el" href="class_piece.html">Piece</a> *start_piece)</td></tr>
+<tr class="memdesc:a16ae28b3679fa1166bc5b8885475e66d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula o resultado de uma jogada.  <br /></td></tr>
 <tr class="separator:a16ae28b3679fa1166bc5b8885475e66d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a471c37eb3ce6824e036e49fe8f26c30c" id="r_a471c37eb3ce6824e036e49fe8f26c30c"><td class="memItemLeft" align="right" valign="top"><a id="a471c37eb3ce6824e036e49fe8f26c30c" name="a471c37eb3ce6824e036e49fe8f26c30c"></a>
-uint&#160;</td><td class="memItemRight" valign="bottom"><b>MarkAsPlayable</b> ()</td></tr>
+<tr class="memitem:a471c37eb3ce6824e036e49fe8f26c30c" id="r_a471c37eb3ce6824e036e49fe8f26c30c"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a471c37eb3ce6824e036e49fe8f26c30c">MarkAsPlayable</a> ()</td></tr>
+<tr class="memdesc:a471c37eb3ce6824e036e49fe8f26c30c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula quantos movimentos são possiveis em uma determinada jogada.  <br /></td></tr>
 <tr class="separator:a471c37eb3ce6824e036e49fe8f26c30c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:adbaa40098fe33ebfba388a6db5a1b59d" id="r_adbaa40098fe33ebfba388a6db5a1b59d"><td class="memItemLeft" align="right" valign="top"><a id="adbaa40098fe33ebfba388a6db5a1b59d" name="adbaa40098fe33ebfba388a6db5a1b59d"></a>
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>white_count</b></td></tr>
+<tr class="memdesc:adbaa40098fe33ebfba388a6db5a1b59d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contagem das peças no tabuleiro do jogador 1. <br /></td></tr>
 <tr class="separator:adbaa40098fe33ebfba388a6db5a1b59d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81509057e96d1cf38d868ad1af9d2bee" id="r_a81509057e96d1cf38d868ad1af9d2bee"><td class="memItemLeft" align="right" valign="top"><a id="a81509057e96d1cf38d868ad1af9d2bee" name="a81509057e96d1cf38d868ad1af9d2bee"></a>
-uint&#160;</td><td class="memItemRight" valign="bottom"><b>black_count</b></td></tr>
+<tr class="memitem:a81509057e96d1cf38d868ad1af9d2bee" id="r_a81509057e96d1cf38d868ad1af9d2bee"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81509057e96d1cf38d868ad1af9d2bee">black_count</a></td></tr>
+<tr class="memdesc:a81509057e96d1cf38d868ad1af9d2bee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contagem das peças no tabuleiro do jogador 2.  <br /></td></tr>
 <tr class="separator:a81509057e96d1cf38d868ad1af9d2bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a11353b106de6ca59995979aba695bc" id="r_a4a11353b106de6ca59995979aba695bc"><td class="memItemLeft" align="right" valign="top"><a id="a4a11353b106de6ca59995979aba695bc" name="a4a11353b106de6ca59995979aba695bc"></a>
 unordered_set&lt; <a class="el" href="struct_vec2.html">Vec2</a>, <a class="el" href="struct_vec2_hash.html">Vec2Hash</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>border_tiles</b></td></tr>
@@ -198,14 +205,11 @@ unordered_set&lt; <a class="el" href="struct_vec2.html">Vec2</a>, <a class="el" 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:ad95bc252daf94eb8577459b65805370c" id="r_ad95bc252daf94eb8577459b65805370c"><td class="memItemLeft" align="right" valign="top"><a id="ad95bc252daf94eb8577459b65805370c" name="ad95bc252daf94eb8577459b65805370c"></a>
-static const char&#160;</td><td class="memItemRight" valign="bottom"><b>k_player1</b> = '#'</td></tr>
+<tr class="memitem:ad95bc252daf94eb8577459b65805370c" id="r_ad95bc252daf94eb8577459b65805370c"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad95bc252daf94eb8577459b65805370c">k_player1</a> = '#'</td></tr>
 <tr class="separator:ad95bc252daf94eb8577459b65805370c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e52fb9b7d6002f7923d992d726384fa" id="r_a9e52fb9b7d6002f7923d992d726384fa"><td class="memItemLeft" align="right" valign="top"><a id="a9e52fb9b7d6002f7923d992d726384fa" name="a9e52fb9b7d6002f7923d992d726384fa"></a>
-static const char&#160;</td><td class="memItemRight" valign="bottom"><b>k_player2</b> = 'O'</td></tr>
+<tr class="memitem:a9e52fb9b7d6002f7923d992d726384fa" id="r_a9e52fb9b7d6002f7923d992d726384fa"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e52fb9b7d6002f7923d992d726384fa">k_player2</a> = 'O'</td></tr>
 <tr class="separator:a9e52fb9b7d6002f7923d992d726384fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7555695fd3e57a3d0a08d45342fe9f5" id="r_aa7555695fd3e57a3d0a08d45342fe9f5"><td class="memItemLeft" align="right" valign="top"><a id="aa7555695fd3e57a3d0a08d45342fe9f5" name="aa7555695fd3e57a3d0a08d45342fe9f5"></a>
-static const char&#160;</td><td class="memItemRight" valign="bottom"><b>k_available</b> = '.'</td></tr>
+<tr class="memitem:aa7555695fd3e57a3d0a08d45342fe9f5" id="r_aa7555695fd3e57a3d0a08d45342fe9f5"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7555695fd3e57a3d0a08d45342fe9f5">k_available</a> = '.'</td></tr>
 <tr class="separator:aa7555695fd3e57a3d0a08d45342fe9f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -252,6 +256,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a8e343ee543daff8063f38d408d4d11c3 inherit pro_methods_class_board" id="r_a8e343ee543daff8063f38d408d4d11c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a8e343ee543daff8063f38d408d4d11c3">IsReadingFromCin</a> ()</td></tr>
 <tr class="memdesc:a8e343ee543daff8063f38d408d4d11c3 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checa a origem do input.  <br /></td></tr>
 <tr class="separator:a8e343ee543daff8063f38d408d4d11c3 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board" id="r_af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#af95c6b7cebbe6facdb0d57ab71fd1ea0">AssertEmptyInput</a> ()</td></tr>
+<tr class="memdesc:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Garante que o input foi lido completamente.  <br /></td></tr>
+<tr class="separator:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_board')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a6709b97683753e2d69b72f3d19cd31ec inherit pro_attribs_class_board" id="r_a6709b97683753e2d69b72f3d19cd31ec"><td class="memItemLeft" align="right" valign="top">
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>current_player</b></td></tr>
@@ -262,6 +269,34 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 <tr class="memdesc:a1c1970c2a3c03fccd17b10de35f7e0ed inherit pro_attribs_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número de jogadas realizadas no tabuleiro. <br /></td></tr>
 <tr class="separator:a1c1970c2a3c03fccd17b10de35f7e0ed inherit pro_attribs_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Classe que representa o jogo Reversi, que herda de <code><a class="el" href="class_board.html" title="Tabuleiro base.">Board</a></code>. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4962625e6e597d824f939f8a7b0dfdfb" name="a4962625e6e597d824f939f8a7b0dfdfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4962625e6e597d824f939f8a7b0dfdfb">&#9670;&#160;</a></span>Game_Reversi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game_Reversi::Game_Reversi </td>
+          <td>(</td>
+          <td class="paramtype">uint</td>          <td class="paramname"><span class="paramname"><em>_start_player</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construtor da classe <a class="el" href="class_game___reversi.html" title="Classe que representa o jogo Reversi, que herda de Board.">Game_Reversi</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_start_player</td><td>[1] Declara qual o jogador inicial. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="acea142e779c5cb222ed65715f4d27814" name="acea142e779c5cb222ed65715f4d27814"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acea142e779c5cb222ed65715f4d27814">&#9670;&#160;</a></span>AddPiece()</h2>
@@ -280,7 +315,7 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_piece.html">Piece</a> *</td>          <td class="paramname"><span class="paramname"><em>piece_ptr</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_piece.html">Piece</a> *</td>          <td class="paramname"><span class="paramname"><em>new_piece</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -290,19 +325,90 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Adiciona uma peça no tabuleiro em uma dada posição. </p>
+<p>Adiciona uma piece em um dado endereço de memoria do board. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">position</td><td>Posição da peça a ser adicionada </td></tr>
-    <tr><td class="paramname">piece_ptr</td><td>Ponteiro da peça a ser adicionada </td></tr>
+    <tr><td class="paramname">position</td><td>posição relativa no tabuleiro onde a peça sera adicionada. </td></tr>
+    <tr><td class="paramname">new_piece</td><td>Ponteiro da peça a ser adicionada. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true se a peça foi adicionada com sucesso, false em caso contrário</dd></dl>
-<p>A adição da peça quando ela se sobrepõe a outra é controlado pelo <a class="el" href="class_board.html#af7fbe03da573b9807a4ef80f559c6d49" title="Tratador do caso em que uma peça se sobrepõe a outra na adição de uma peça ao tabuleiro.">HandleOverlap_Add()</a></p>
-<dl class="section note"><dt>Note</dt><dd>Essa função pode ser sobreescrita </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True caso a operação serja efetivada, False caso contrario. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="class_board.html#a2fe1b2fb65c6169c15bd3554235911cb">Board</a>.</p>
+
+</div>
+</div>
+<a id="adcb466b56d57239c9f29186548b46ab6" name="adcb466b56d57239c9f29186548b46ab6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcb466b56d57239c9f29186548b46ab6">&#9670;&#160;</a></span>CalculateBorders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game_Reversi::CalculateBorders </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_vec2.html">Vec2</a></td>          <td class="paramname"><span class="paramname"><em>position</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calcula as bordas em relação às peças colocadas e salva na variavel da classe. </p>
+<p>Quando uma jogada é realizada, essa função atualiza as bordas, deletando a posição agora ocupada e procurando por posiç~eos vazias adjacentes a ela</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Posição relativa no tabuleiro onde a borda será calculada. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a16ae28b3679fa1166bc5b8885475e66d" name="a16ae28b3679fa1166bc5b8885475e66d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16ae28b3679fa1166bc5b8885475e66d">&#9670;&#160;</a></span>CascadeMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game_Reversi::CascadeMove </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_vec2.html">Vec2</a></td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_piece.html">Piece</a> *</td>          <td class="paramname"><span class="paramname"><em>start_piece</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calcula o resultado de uma jogada. </p>
+<p>Realiza uma sequencia de movimentos "convertendo" as peça do oponente até alcançar outra peças do jogador que fez a jogada O resutlado é um efeito de raio nas 8 direções (veja <a class="el" href="_defs_8hpp.html#a224b9163917ac32fc95a60d8c1eec3aa" title="Direções no tabuleiro, começando a partir do Norte, rodando no sentido horário.">Direction</a>)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>posição de origem do movimento. </td></tr>
+    <tr><td class="paramname">start_piece</td><td>peça inicial de onde começa o movimento. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -329,8 +435,8 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Imprime o tabuleiro e seus detalhes. </p>
-<dl class="section note"><dt>Note</dt><dd>Essa função pode ser sobreescrita </dd></dl>
+<p>Desenha o Tabuleiro na saida. </p>
+<p>Também imprime a quantidade de peças no tabuleiro de cada jogador </p>
 
 <p>Reimplemented from <a class="el" href="class_board.html#a4a9b7e7f2e1519bf0c6bed0e9a9ba201">Board</a>.</p>
 
@@ -359,13 +465,9 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Obtem o joagador que venceu. </p>
-<dl class="section return"><dt>Returns</dt><dd><ul>
-<li>0: Nehum jogador - Jogo em andamento OU Empate (veja <a class="el" href="#a4b9c6367e2e73af834f7b89657739979" title="Determina se o jogo empatou ou não.">IsDraw()</a>)</li>
-<li>X: ID do jogador que venceu</li>
-</ul>
-</dd></dl>
-<p>A função pode ser chamada após o jogo ter sido jogado. A função não é capaz de diferenciar entre jogo em andamento ou empate </p><dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
+<p>Verifica qual jogador está vencendo. </p>
+<p>Essa função só é relevante quando o tabuleiro está totalmente preenchido Caso contrário, 0 sempre será retornado, pois o jogo está em andamento</p>
+<dl class="section return"><dt>Returns</dt><dd>uint ID do jogador que está vencendo. 0 indica que não há vencendor </dd></dl>
 
 <p>Implements <a class="el" href="class_board.html#a81ee595fb7d477197d8ed175095498eb">Board</a>.</p>
 
@@ -394,11 +496,40 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </table>
 </div><div class="memdoc">
 
-<p>Determina se o jogo empatou ou não. </p>
-<dl class="section return"><dt>Returns</dt><dd>true se ocorreu um empate, false em caso contrário</dd></dl>
-<p>A função pode ser chamada após o jogo ter sido jogado. </p><dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
+<p>Verifica se houve um empate. </p>
+<p>O empate ocorre quando o tabuleiro está totalmente preenchido, mas a quantidade de peças do jogadores é igual</p>
+<dl class="section return"><dt>Returns</dt><dd>bool True caso seja um empate, caso contrario False. </dd></dl>
 
 <p>Implements <a class="el" href="class_board.html#adcac52fd91d06e5f6262a63971f70700">Board</a>.</p>
+
+</div>
+</div>
+<a id="a471c37eb3ce6824e036e49fe8f26c30c" name="a471c37eb3ce6824e036e49fe8f26c30c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a471c37eb3ce6824e036e49fe8f26c30c">&#9670;&#160;</a></span>MarkAsPlayable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint Game_Reversi::MarkAsPlayable </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calcula quantos movimentos são possiveis em uma determinada jogada. </p>
+<p>Um movimento é possivel quando existe uma direção a partir daquela posição em que existe outra peça desse jogador. Quando o movimento for realizado (veja <a class="el" href="#a16ae28b3679fa1166bc5b8885475e66d" title="Calcula o resultado de uma jogada.">CascadeMove()</a>), as peças do oponente na direção serão convertidas</p>
+<dl class="section return"><dt>Returns</dt><dd>uint número de movimentos possiveis. </dd></dl>
 
 </div>
 </div>
@@ -431,6 +562,102 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 <dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
 
 <p>Implements <a class="el" href="class_board.html#a205ca7334d613880b33c8eaf1d8e5766">Board</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a81509057e96d1cf38d868ad1af9d2bee" name="a81509057e96d1cf38d868ad1af9d2bee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81509057e96d1cf38d868ad1af9d2bee">&#9670;&#160;</a></span>black_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint Game_Reversi::black_count</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Contagem das peças no tabuleiro do jogador 2. </p>
+<p>Guarda as posições da borda em relação às peças colocadas no tabuleiro.</p>
+<p>As bordas são as posições vazias adjacentes a pelo menos 1 peça de qualquer jogador. Elas são geradas para facilitar o calculo das posições em que cada jogador pode jogar Para evitar a repetição de posições, o unordered_set é utilizado, através de <a class="el" href="struct_vec2_hash.html" title="Classe que implementa um hash para o Vec2.">Vec2Hash</a> </p>
+
+</div>
+</div>
+<a id="aa7555695fd3e57a3d0a08d45342fe9f5" name="aa7555695fd3e57a3d0a08d45342fe9f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7555695fd3e57a3d0a08d45342fe9f5">&#9670;&#160;</a></span>k_available</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char Game_Reversi::k_available = '.'</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Define um simbolo para espaço vazio no borad </p>
+
+</div>
+</div>
+<a id="ad95bc252daf94eb8577459b65805370c" name="ad95bc252daf94eb8577459b65805370c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad95bc252daf94eb8577459b65805370c">&#9670;&#160;</a></span>k_player1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char Game_Reversi::k_player1 = '#'</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Define um simbolo para o jogador 1 </p>
+
+</div>
+</div>
+<a id="a9e52fb9b7d6002f7923d992d726384fa" name="a9e52fb9b7d6002f7923d992d726384fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e52fb9b7d6002f7923d992d726384fa">&#9670;&#160;</a></span>k_player2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char Game_Reversi::k_player2 = 'O'</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Define um simbolo para o jogador 2 </p>
 
 </div>
 </div>

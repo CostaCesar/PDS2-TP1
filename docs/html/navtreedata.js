@@ -30,7 +30,12 @@ var NAVTREE =
       [ "Fazendo o Build", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
       [ "Estrutura do repositório", "md__r_e_a_d_m_e.html#autotoc_md3", null ],
       [ "Terminologia", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
-      [ "Andamento", "md__r_e_a_d_m_e.html#autotoc_md5", null ]
+      [ "Andamento", "md__r_e_a_d_m_e.html#autotoc_md5", null ],
+      [ "Lig4", "md__r_e_a_d_m_e.html#autotoc_md6", [
+        [ "Visão Geral", "md__r_e_a_d_m_e.html#autotoc_md7", null ],
+        [ "Dificuldades", "md__r_e_a_d_m_e.html#autotoc_md8", null ],
+        [ "Extras da Classe", "md__r_e_a_d_m_e.html#autotoc_md9", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
