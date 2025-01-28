@@ -9,12 +9,11 @@
 #include <vector>
 #include <cctype>
 
-using
-    std::ofstream,
-    std::ifstream,
-    std::string,
-    std::stringstream,
-    std::vector;
+using std::ofstream;
+using std::ifstream;
+using std::string;
+using std::stringstream;
+using std::vector;
 
 
 int playerExists (string nickname) {
