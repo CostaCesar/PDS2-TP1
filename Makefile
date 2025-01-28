@@ -19,7 +19,7 @@ endif
 
 # tool macros
 CXX ?= g++
-CXXFLAGS := -Wall -std=c++17 $(CDEBUG)
+CXXFLAGS := -Wall -std=c++11 $(CDEBUG)
 
 # path macros
 BIN_PATH := .$(SL)bin

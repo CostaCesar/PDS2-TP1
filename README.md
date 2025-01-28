@@ -1,3 +1,7 @@
+# Requisitos
+- g++ (capaz de compilar c++11)
+- doxygen (opcional, para gerar a documentação)
+
 # Detalhes
 ## Integrantes
 - Caio César Moraes Costa

@@ -5,12 +5,11 @@
 #include <sstream>
 #include <vector>
 
-using
-    std::ofstream,
-    std::ifstream,
-    std::string,
-    std::stringstream,
-    std::vector;
+using std::ofstream;
+using std::ifstream;
+using std::string;
+using std::stringstream;
+using std::vector;
 
 const string NOME_ARQ = "cadastro.csv";
 
