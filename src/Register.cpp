@@ -1,11 +1,13 @@
 #include "Register.hpp"
-#include <algorithm>
+
 #include <iostream>
-#include <ostream>
 #include <string>
+#include <ostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 #include <vector>
+#include <cctype>
 
 using
     std::ofstream,
@@ -28,17 +30,17 @@ int playerExists (string nickname) {
         string valor;
         
         // itera ao logo de todos os campos do csv
-        // se o nickname foi encontrado, retorna 0
+        // se o nickname foi encontrado, retorna 1
         while (std::getline(ss, valor, ',')) {
             if (valor == nickname) {
                 csv.close();
-                return 0;
+                return 1;
             }
         }
     }
     
     csv.close();
-    return 1;
+    return 0;
 }
 
 int registerPlayer(string nickname, string name) { 
@@ -46,11 +48,18 @@ int registerPlayer(string nickname, string name) {
 
     csv.open(NOME_ARQ, std::fstream::app);
 
-    if (playerExists (nickname)) {
+    name[0] = std::toupper(name[0]);
+    nickname[0] = std::toupper(nickname[0]);
+
+    if (!playerExists(nickname) && nickname != "admin") {
         csv << nickname << "," << name << ","
         << "0" << "," << "0" << ","
         << "0" << "," << "0" << ","
-        << "0" << "," << "0" << "," << std::endl;
+        << "0" << "," << "0" << ","
+        << "0" << "," << "0" << ","
+        << "0" << "," << "0" << ","
+        << std::endl;
+
     } else {
         return 1;
     }
@@ -122,15 +131,18 @@ void listPlayers(char sel) {
         stringstream ss(linha);
         Jogador jogador;
 
-        if (
-            std::getline(ss, jogador.nickname, ',') &&
+        if (std::getline(ss, jogador.nickname, ',') &&
             std::getline(ss, jogador.name, ',') &&
             ss >> jogador.vitoriasReversi && ss.ignore(1) &&
             ss >> jogador.derrotasReversi && ss.ignore(1) &&
             ss >> jogador.vitoriasLiga4 && ss.ignore(1) &&
             ss >> jogador.derrotasLiga4 && ss.ignore(1) &&
             ss >> jogador.vitoriasVelha && ss.ignore(1) &&
-            ss >> jogador.derrotasVelha) 
+            ss >> jogador.derrotasVelha && ss.ignore(1) &&
+            ss >> jogador.vitoriasPuzzle && ss.ignore(1) &&
+            ss >> jogador.derrotasPuzzle && ss.ignore(1) &&
+            ss >> jogador.vitoriasInfinity && ss.ignore(1) &&
+            ss >> jogador.derrotasInfinity) 
         {
             jogadores.push_back(jogador);
         }
@@ -152,6 +164,9 @@ void listPlayers(char sel) {
             << "REVERSI - V: " << "<" << jogador.vitoriasReversi << "> D: " << "<" << jogador.derrotasReversi << ">" << std::endl
             << "LIG4 - V: " << "<" << jogador.vitoriasLiga4 << "> D: " << "<" << jogador.derrotasLiga4 << ">" << std::endl
             << "VELHA - V: " << "<" << jogador.vitoriasVelha << "> D: " << "<" << jogador.derrotasVelha << ">" << std::endl
+            << "PUZZLE - V: " << "<" << jogador.vitoriasPuzzle << "> D: " << "<" << jogador.derrotasPuzzle << ">" << std::endl
+            << "VELHA INFINITO - V: " << "<" << jogador.vitoriasInfinity << "> D: " << "<" << jogador.derrotasInfinity << ">" << std::endl
+
             << std::endl;
     }
 
@@ -169,7 +184,13 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
     while (std::getline(csv, linha)) {
         std::stringstream ss(linha);
         std::string nickname, name;
-        int reversiV, reversiD, liga4V, liga4D, velhaV, velhaD;
+        
+        int
+            reversiV, reversiD,
+            liga4V, liga4D,
+            velhaV, velhaD,
+            puzzleV, puzzleD,
+            infinityV, infinityD;
         
         // Ler os campos da linha
         if (std::getline(ss, nickname, ',') &&
@@ -179,7 +200,11 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
             ss >> liga4V && ss.ignore(1) &&
             ss >> liga4D && ss.ignore(1) &&
             ss >> velhaV && ss.ignore(1) &&
-            ss >> velhaD) {
+            ss >> velhaD && ss.ignore(1) &&
+            ss >> puzzleV && ss.ignore(1) &&
+            ss >> puzzleD && ss.ignore(1) &&
+            ss >> infinityV && ss.ignore(1) &&
+            ss >> infinityD) {
 
             // Se o nickname corresponde, incrementar o campo correspondente
             if (nickname == winnerNickname) {
@@ -187,12 +212,16 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
                     case 1: reversiV++; break;
                     case 2: liga4V++; break;
                     case 3: velhaV++; break;
+                    case 4: puzzleV++; break;
+                    case 5: infinityV++; break;
                     }
             } else if (nickname == looserNickname) {
                 switch (jogo) {
                     case 1: reversiD++; break;
                     case 2: liga4D++; break;
                     case 3: velhaD++; break;
+                    case 4: puzzleD++; break;
+                    case 5: infinityD++; break;
                 }
             }
 
@@ -206,7 +235,11 @@ void updateScore(string winnerNickname, string looserNickname, int jogo) {
                 << liga4V << "," 
                 << liga4D << ","
                 << velhaV << ","
-                << velhaD;
+                << velhaD << ","
+                << puzzleV << ","
+                << puzzleD << ","
+                << infinityV << ","
+                << infinityD;
                 
             linhas.push_back(newLinha.str());
 

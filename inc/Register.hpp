@@ -1,5 +1,6 @@
 #pragma once
 
+
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -22,6 +23,10 @@ struct Jogador {
     int derrotasLiga4;
     int vitoriasVelha;
     int derrotasVelha;
+    int vitoriasPuzzle;
+    int derrotasPuzzle;
+    int vitoriasInfinity;
+    int derrotasInfinity;
 };
 
 
@@ -34,3 +39,4 @@ int deletePlayer (string nickname);
 void listPlayers (char sel);
 
 void updateScore(string winnerNickname, string looserNickname, int jogo);
+void updateScore(string nickname, int jogo);
