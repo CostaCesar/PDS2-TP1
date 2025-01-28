@@ -108,38 +108,49 @@ $(function(){initNavTree('_game___liga4_8hpp_source.html',''); initResizable(tru
   <div class="headertitle"><div class="title">Game_Liga4.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="_game___liga4_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="_board_8hpp.html">Board.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="class_game___liga4.html">    5</a></span><span class="keyword">class </span>Game_Liga4 : <span class="keyword">public</span> <a class="code hl_function" href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board</a> {</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    uint EmptyRow(uint colummn);</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <a class="code hl_class" href="struct_vec2.html">Vec2</a> <a class="code hl_function" href="class_game___liga4.html#a333f7909eea34d17f86bd8c84222bddb">ReadMove</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    Game_Liga4(uint rows, uint cols);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    ~Game_Liga4();</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    uint <a class="code hl_function" href="class_game___liga4.html#a16ec2bb256eeff18a621b5b2cf692f4c">GetWinner</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___liga4.html#af276814481c114cbf171e504f10a5322">IsDraw</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">bool</span> CheckWin(uint player_ID, <span class="keyword">const</span> <a class="code hl_class" href="struct_vec2.html">Vec2</a>&amp; last_move);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    uint <a class="code hl_function" href="class_game___liga4.html#a635d1654d20e261fe4360a910eb6a49a">Play</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_game___liga4.html">   13</a></span><span class="keyword">class </span><a class="code hl_function" href="class_game___liga4.html#a56b5c1f78d83ca99cb5f0f88d52fe1c7">Game_Liga4</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    uint <a class="code hl_function" href="class_game___liga4.html#a9143ddad2338890894b9b3a35672a335">EmptyRow</a>(uint column);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_class" href="struct_vec2.html">Vec2</a> <a class="code hl_function" href="class_game___liga4.html#a333f7909eea34d17f86bd8c84222bddb">ReadMove</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_function" href="class_game___liga4.html#a56b5c1f78d83ca99cb5f0f88d52fe1c7">Game_Liga4</a>(uint rows, uint cols);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_function" href="class_game___liga4.html#a3a9096cb6658e0f475295ca93ba2a18c">~Game_Liga4</a>();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    uint <a class="code hl_function" href="class_game___liga4.html#a16ec2bb256eeff18a621b5b2cf692f4c">GetWinner</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___liga4.html#af276814481c114cbf171e504f10a5322">IsDraw</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_game___liga4.html#aeb207eac2dc141ee36587139a20fff52">CheckWin</a>(uint player_ID, <span class="keyword">const</span> <a class="code hl_class" href="struct_vec2.html">Vec2</a>&amp; last_move);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    uint <a class="code hl_function" href="class_game___liga4.html#a635d1654d20e261fe4360a910eb6a49a">Play</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>};</div>
 </div>
 <div class="ttc" id="a_board_8hpp_html"><div class="ttname"><a href="_board_8hpp.html">Board.hpp</a></div><div class="ttdoc">Estrutura de um tabuleiro genérico.</div></div>
-<div class="ttc" id="aclass_board_html_a9ee491d4fea680cf69b033374a9fdfcb"><div class="ttname"><a href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board::Board</a></div><div class="ttdeci">Board()</div><div class="ttdoc">Construtor padrão do Board.</div><div class="ttdef"><b>Definition</b> Board.cpp:253</div></div>
-<div class="ttc" id="aclass_game___liga4_html_a16ec2bb256eeff18a621b5b2cf692f4c"><div class="ttname"><a href="class_game___liga4.html#a16ec2bb256eeff18a621b5b2cf692f4c">Game_Liga4::GetWinner</a></div><div class="ttdeci">uint GetWinner() override</div><div class="ttdoc">Obtem o joagador que venceu.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:114</div></div>
-<div class="ttc" id="aclass_game___liga4_html_a333f7909eea34d17f86bd8c84222bddb"><div class="ttname"><a href="class_game___liga4.html#a333f7909eea34d17f86bd8c84222bddb">Game_Liga4::ReadMove</a></div><div class="ttdeci">Vec2 ReadMove() override</div><div class="ttdoc">Faz a leitura de um movimento do jogador atual.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:95</div></div>
-<div class="ttc" id="aclass_game___liga4_html_a635d1654d20e261fe4360a910eb6a49a"><div class="ttname"><a href="class_game___liga4.html#a635d1654d20e261fe4360a910eb6a49a">Game_Liga4::Play</a></div><div class="ttdeci">uint Play() override</div><div class="ttdoc">Realiza a partida do jogo.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:18</div></div>
-<div class="ttc" id="aclass_game___liga4_html_af276814481c114cbf171e504f10a5322"><div class="ttname"><a href="class_game___liga4.html#af276814481c114cbf171e504f10a5322">Game_Liga4::IsDraw</a></div><div class="ttdeci">bool IsDraw() override</div><div class="ttdoc">Determina se o jogo empatou ou não.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:133</div></div>
+<div class="ttc" id="aclass_board_html_a9ee491d4fea680cf69b033374a9fdfcb"><div class="ttname"><a href="class_board.html#a9ee491d4fea680cf69b033374a9fdfcb">Board::Board</a></div><div class="ttdeci">Board()</div><div class="ttdoc">Construtor padrão do Board.</div><div class="ttdef"><b>Definition</b> Board.cpp:259</div></div>
+<div class="ttc" id="aclass_game___liga4_html_a16ec2bb256eeff18a621b5b2cf692f4c"><div class="ttname"><a href="class_game___liga4.html#a16ec2bb256eeff18a621b5b2cf692f4c">Game_Liga4::GetWinner</a></div><div class="ttdeci">uint GetWinner() override</div><div class="ttdoc">Retorna o vencedor do jogo ou 0 em caso de empate.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:102</div></div>
+<div class="ttc" id="aclass_game___liga4_html_a333f7909eea34d17f86bd8c84222bddb"><div class="ttname"><a href="class_game___liga4.html#a333f7909eea34d17f86bd8c84222bddb">Game_Liga4::ReadMove</a></div><div class="ttdeci">Vec2 ReadMove() override</div><div class="ttdoc">Le a jogada.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:80</div></div>
+<div class="ttc" id="aclass_game___liga4_html_a3a9096cb6658e0f475295ca93ba2a18c"><div class="ttname"><a href="class_game___liga4.html#a3a9096cb6658e0f475295ca93ba2a18c">Game_Liga4::~Game_Liga4</a></div><div class="ttdeci">~Game_Liga4()</div><div class="ttdoc">Destrutor da classe Game_Liga4.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:11</div></div>
+<div class="ttc" id="aclass_game___liga4_html_a56b5c1f78d83ca99cb5f0f88d52fe1c7"><div class="ttname"><a href="class_game___liga4.html#a56b5c1f78d83ca99cb5f0f88d52fe1c7">Game_Liga4::Game_Liga4</a></div><div class="ttdeci">Game_Liga4(uint rows, uint cols)</div><div class="ttdoc">Construtor da classe Game_Liga4.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:4</div></div>
+<div class="ttc" id="aclass_game___liga4_html_a635d1654d20e261fe4360a910eb6a49a"><div class="ttname"><a href="class_game___liga4.html#a635d1654d20e261fe4360a910eb6a49a">Game_Liga4::Play</a></div><div class="ttdeci">uint Play() override</div><div class="ttdoc">Inicia o jogo e alterna entre os jogadores alguém venca seja ou termine em empate.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:17</div></div>
+<div class="ttc" id="aclass_game___liga4_html_a9143ddad2338890894b9b3a35672a335"><div class="ttname"><a href="class_game___liga4.html#a9143ddad2338890894b9b3a35672a335">Game_Liga4::EmptyRow</a></div><div class="ttdeci">uint EmptyRow(uint column)</div><div class="ttdoc">Retorna a linha vazia mais próxima para uma coluna, &#39;gravidade&#39;.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:72</div></div>
+<div class="ttc" id="aclass_game___liga4_html_aeb207eac2dc141ee36587139a20fff52"><div class="ttname"><a href="class_game___liga4.html#aeb207eac2dc141ee36587139a20fff52">Game_Liga4::CheckWin</a></div><div class="ttdeci">bool CheckWin(uint player_ID, const Vec2 &amp;last_move)</div><div class="ttdoc">Verifica se o jogador venceu o jogo.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:109</div></div>
+<div class="ttc" id="aclass_game___liga4_html_af276814481c114cbf171e504f10a5322"><div class="ttname"><a href="class_game___liga4.html#af276814481c114cbf171e504f10a5322">Game_Liga4::IsDraw</a></div><div class="ttdeci">bool IsDraw() override</div><div class="ttdoc">Verifica se o jogo terminou em empate. Método trivial.</div><div class="ttdef"><b>Definition</b> Game_Liga4.cpp:117</div></div>
 <div class="ttc" id="astruct_vec2_html"><div class="ttname"><a href="struct_vec2.html">Vec2</a></div><div class="ttdoc">Estrutura para armazenar 2 valores inteiros positivos. Pode representar posição, tamanho,...</div><div class="ttdef"><b>Definition</b> Defs.hpp:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><b>Game_Liga4.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="_game___liga4_8hpp.html">Game_Liga4.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

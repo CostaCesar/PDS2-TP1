@@ -2,6 +2,10 @@
 
 #include "Board.hpp"
 
+/*! @file Game_Velha.hpp 
+    @brief Estrutura do Jogo da Velha (Tic Tac Toe)
+*/
+
 /**
  * @class Game_Velha
  * @brief Classe que representa o jogo da velha, que herda de `Board`.
@@ -19,7 +23,7 @@ protected:
     /**
      * @brief Retorna se houve um empate na partida.
      * 
-     * @return bool Verdadeiro para empate, caso contrario Falso.
+     * @return bool True para empate, caso contrario Falso.
      */
     bool IsDraw() override;
 
@@ -28,7 +32,7 @@ protected:
      * 
      * @param position Coluna onde a peça será colocada.
      * @param new_piece Obejto "piece" a ser introduzido no endereço.
-     * @return bool Verdadeiro caso a ação tenha sido efetuada, caso contrario Falso.
+     * @return bool True caso a ação tenha sido efetuada, caso contrario Falso.
      */
     bool AddPiece(Vec2 position, Piece* new_piece);
     
@@ -36,7 +40,7 @@ protected:
      * @brief Verifica se houve um vencedor apartir de uma dada posição do tabuleiro (observando coluna, linha  e diagonal relativa).
      * 
      * @param pos Posição de origem de verificação.
-     * @return bool Verdadeiro caso houve uma vitoria, caso contrario Falso.
+     * @return bool True caso houve uma vitoria, caso contrario Falso.
      */
     bool CheckForWin(Vec2 pos);
 

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../struct_vec2.html#a01a7ce47fc4857a76c2deaab618cbc93',1,'Vec2']]]
+  ['white_5fcount_0',['white_count',['../class_game___reversi.html#adbaa40098fe33ebfba388a6db5a1b59d',1,'Game_Reversi']]]
 ];

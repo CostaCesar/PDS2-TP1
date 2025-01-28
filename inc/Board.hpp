@@ -276,7 +276,7 @@ public:
     virtual bool DeletePiece(Vec2 position);
     
     /*! @fn GetWinner()
-        @brief Obtem o joagador que venceu
+        @brief Obtem o jogador que venceu
         @return 
             - 0: Nehum jogador - Jogo em andamento OU Empate (veja IsDraw())
             - X: ID do jogador que venceu 
