@@ -24,6 +24,10 @@ struct Jogador {
     int derrotasLiga4;
     int vitoriasVelha;
     int derrotasVelha;
+    int vitoriasPuzzle;
+    int derrotasPuzzle;
+    int vitoriasInfinity;
+    int derrotasInfinity;
 };
 
 

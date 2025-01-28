@@ -75,11 +75,11 @@ int validGame (char game) {
 int validPlayers (string j1, string j2) {
     
     // se os dois jogadores existem, retorna 0
-    if (!playerExists(j1) && !playerExists(j2)) {
-        return 1;
+    if (playerExists(j1) && playerExists(j2)) {
+        return 0;
     }
     
-    return 0;
+    return 1;
 }
 
 void playReversi (string j1, string j2) {

@@ -29,17 +29,17 @@ int playerExists (string nickname) {
         string valor;
         
         // itera ao logo de todos os campos do csv
-        // se o nickname foi encontrado, retorna 0
+        // se o nickname foi encontrado, retorna 1
         while (std::getline(ss, valor, ',')) {
             if (valor == nickname) {
                 csv.close();
-                return 0;
+                return 1;
             }
         }
     }
     
     csv.close();
-    return 1;
+    return 0;
 }
 
 int registerPlayer(string nickname, string name) { 
@@ -55,7 +55,7 @@ int registerPlayer(string nickname, string name) {
         << "0" << "," << "0" << ","
         << "0" << "," << "0" << ","
         << std::endl;
-        
+
     } else {
         return 1;
     }
@@ -127,8 +127,7 @@ void listPlayers(char sel) {
         stringstream ss(linha);
         Jogador jogador;
 
-        if (
-            std::getline(ss, jogador.nickname, ',') &&
+        if (std::getline(ss, jogador.nickname, ',') &&
             std::getline(ss, jogador.name, ',') &&
             ss >> jogador.vitoriasReversi && ss.ignore(1) &&
             ss >> jogador.derrotasReversi && ss.ignore(1) &&
@@ -138,7 +137,7 @@ void listPlayers(char sel) {
             ss >> jogador.vitoriasPuzzle && ss.ignore(1) &&
             ss >> jogador.derrotasPuzzle && ss.ignore(1) &&
             ss >> jogador.vitoriasInfinity && ss.ignore(1) &&
-            ss >> jogador.derrotasInfinity && ss.ignore(1) &&) 
+            ss >> jogador.derrotasInfinity && ss.ignore(1)) 
         {
             jogadores.push_back(jogador);
         }
