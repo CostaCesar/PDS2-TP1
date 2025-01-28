@@ -17,7 +17,8 @@ using std::vector;
 
 const string NOME_ARQ = "cadastro.csv";
 
-/*! Estrutura auxiliar utilizada para facilitar a listagem de jogadores.
+/*! @struct Jogador
+    Estrutura auxiliar utilizada para facilitar a listagem de jogadores.
     @warning Ao implementar novos jogos, atente-se ao formato da struct Jogador.
  */
 

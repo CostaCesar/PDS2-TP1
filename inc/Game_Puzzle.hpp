@@ -2,7 +2,7 @@
 
 #include "Board.hpp"
 
-/*! @file Puzzle.hpp 
+/*! @file Game_Puzzle.hpp 
     @brief Estrutura do Jogo do 8
 */
 
