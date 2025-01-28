@@ -4,7 +4,8 @@
 
 TEST_CASE("Registro de Jogadores")
 {
-    std::string test_arq = "test.csv";
+    std::string test_arq = INPUT_DIR"test.csv";
+    
     SUBCASE("Jogador existe")
     {
         CHECK(playerExists("Doe", test_arq) == 1);
