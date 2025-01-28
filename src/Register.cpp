@@ -7,6 +7,7 @@
 #include <sstream>
 #include <algorithm>
 #include <vector>
+#include <cctype>
 
 using
     std::ofstream,
@@ -46,6 +47,9 @@ int registerPlayer(string nickname, string name) {
     ofstream csv;
 
     csv.open(NOME_ARQ, std::fstream::app);
+
+    name[0] = std::toupper(name[0]);
+    nickname[0] = std::toupper(nickname[0]);
 
     if (!playerExists(nickname) && nickname != "admin") {
         csv << nickname << "," << name << ","
@@ -145,7 +149,7 @@ void listPlayers(char sel) {
 
     if (sel == 'A') {
         std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
-            return a.name < b.name;
+            return a.nickname < b.nickname;
         });
     } else if (sel == 'N') {
         std::sort(jogadores.begin(), jogadores.end(), [](const Jogador& a, const Jogador& b) {
