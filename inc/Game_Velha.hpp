@@ -48,6 +48,7 @@ public:
     /**
      * @brief Executa a partida de Jogo da Velha
      * 
+     * @details O jogo consiste em, existem dois tipos de peças representando cada jogador "X" e "O", cada jogador pode colocar uma peça por vez no tabuleiro (3x3), vence quem conseguir completar uma linha ou uma coluna ou uma diagonal completa (de tamnho 3) com suas respéctivas peças.
      * Imprime um tabuleiro com as posições respectivas para cada jogada e admite uma entrada que representa a jogada de cada jogador alternando entre dois jogadores.
      * Quando o jogo acaba, seja pela vitoria de um jogador ou por empate, ele imprime a variavel que representa o resultado do jogo.
      * 
