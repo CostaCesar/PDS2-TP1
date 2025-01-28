@@ -40,11 +40,8 @@ all: tests main
 main: manager board velha liga4 reversi puzzle velha_inf $(SRC_PATH)/main.cpp
 	$(CXX) $(CXXFLAGS) $(SRC_PATH)/main.cpp $(MANAGER) $(BOARD) $(LIGA4) $(VELHA) $(RANDOM) $(REVERSI) $(PUZZLE) $(VELHA_INF) -o $(BIN_PATH)/main -I$(INC_PATH)
 
-tests: lib_test lib_random board puzzle liga4 reversi velha velha_inf $(OBJ_PATH)/Velha_Test.o $(MANAGER_TEST) \
-$(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o $(OBJ_PATH)/Velha_Infinity_Test.o $(MANAGER_TEST)
-	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Reversi_Test.o $(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o \
-	$(OBJ_PATH)/Velha_Infinity_Test.o $(OBJ_PATH)/Register_Test.o $(BOARD) $(PUZZLE) $(LIGA4) $(VELHA) $(VELHA_INF) $(REVERSI) $(RANDOM) $(MANAGER) -o $(BIN_PATH)/Full_Test
-
+tests: lib_test lib_random board puzzle liga4 reversi velha velha_inf manager all_tests
+	$(CXX) $(CXXFLAGS) $(OBJ_PATH)/Lib_Test.o $(ALL_TESTS) $(BOARD) $(PUZZLE) $(LIGA4) $(VELHA) $(VELHA_INF) $(REVERSI) $(RANDOM) $(MANAGER) -o $(BIN_PATH)/Full_Test
 	$(BIN_PATH)/Full_Test
 
 
@@ -90,6 +87,12 @@ delete:
 	$(RM) $(BIN_PATH)$(SL)*.exe
 
 # good luck (don't) use these
+all_tests: $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Register_Test.o $(OBJ_PATH)/Admin_Test.o \
+$(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o $(OBJ_PATH)/Velha_Infinity_Test.o $(OBJ_PATH)/Reversi_Test.o
+
+ALL_TESTS = $(OBJ_PATH)/Velha_Test.o $(OBJ_PATH)/Reversi_Test.o $(OBJ_PATH)/Liga4_Test.o $(OBJ_PATH)/Puzzle_Test.o \
+$(OBJ_PATH)/Velha_Infinity_Test.o $(OBJ_PATH)/Register_Test.o $(OBJ_PATH)/Register_Test.o $(OBJ_PATH)/Admin_Test.o
+
 lib_test: $(OBJ_PATH)/Lib_Test.o
 
 lib_random: $(SRC_PATH)/Random.cpp $(INC_PATH)/Random.hpp
@@ -114,7 +117,6 @@ $(OBJ_PATH)/Admin_Test.o: $(TST_PATH)/Admin_Test.cpp
 
 manager: $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o
 MANAGER = $(OBJ_PATH)/Register.o $(OBJ_PATH)/Admin.o
-MANAGER_TEST = $(OBJ_PATH)/Register_Test.o $(OBJ_PATH)/Admin_Test.o
 
 
 $(OBJ_PATH)/Piece.o: $(SRC_PATH)/Piece.cpp $(INC_PATH)/Piece.hpp
