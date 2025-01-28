@@ -24,6 +24,9 @@ public:
      * @brief Executa a partida de Jogo da Velha infinito
      * 
      * @details <FAVOR DESCREVA COMO SE JOGA>
+     * Imprime um tabuleiro com as posições respectivas para cada jogada e admite uma entrada que representa a jogada de cada jogador alternando entre dois jogadores.
+     * Quando o jogo acaba, seja pela vitoria de um jogador ou por empate, ele imprime a variavel que representa o resultado do jogo.
+     * A diferença do jogo classico é que cada jogador pode ter até no maximo 3 peças no tabuleiro por vez, ou seja a cada 3 jogadas, a primeira peça é deletada.
      * 
      * @return uint 1 ou 2 para a vitoria do jogador respectivo e 0 para empate.
      */
@@ -32,6 +35,8 @@ public:
     /**
      * @fn Game_Velha_Infinity()
      * @brief Construtor da classe `Game_Velha_Infinity`.
+     * @brief Construtor da classe `Game_Velha_Infinity`.
+     * 
      */
     Game_Velha_Infinity();
 };
