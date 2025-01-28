@@ -1,3 +1,4 @@
+# Detalhes
 ## Integrantes
 - Caio César Moraes Costa
 - Rafic Alves Magalhães Farah Leão
@@ -34,6 +35,7 @@ make delete    # remove todos os binarios em ./bin
 ## Estrutura do repositório
 - **bin:** Arquivos binários finais (Windows & Linux)
     - **/data:** Arquivos de dados gerados pelo programa
+    - **/input:** Arquivos de entrada de dados para os testes
 - **inc:** Arquivos de cabeçalho (.h e .hpp)
 - **src:** Arquivos de código fonte (.cpp)
 - **tmp:** Arquivos de cache para compilação (.o gerados pelo *make*)
@@ -54,3 +56,19 @@ make tests
 - **Reversi:** Caio César Moraes Costa
 - **Sistema de jogador**: Rafic Alves Magalhães Farah Leão
 - **Puzzle (Jogo do 8):** Caio César Moraes Costa
+
+# Lig4
+
+## Visão Geral
+A classe implementa a lógica necessária para jogar Lig4(Connect 4)
+Permite a customização do tamanho do Board
+Aceita tanto a entrada padrão quanto a input
+Utiliza funcionalidades do Board para implementar a lógica da classe o que demonstra um uso de técnicas de POO
+
+## Dificuldades
+A principal dificuldade da implentação da classe foi a possibilidade de ler um arquivo de texto como entrada(fazer os testes)
+Intepretar completamente as requisições do TP foi um desafio também
+
+## Extras da Classe
+Apresenta cores para cada jogador
+Limpa o tabuleiro no stdin, tornando o jogo dinâmico
