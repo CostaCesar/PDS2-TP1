@@ -129,9 +129,9 @@ Inheritance diagram for Game_Puzzle:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5ce4074d22f2d668150c6a8b731b372a" id="r_a5ce4074d22f2d668150c6a8b731b372a"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ce4074d22f2d668150c6a8b731b372a">Play</a> () override</td></tr>
-<tr class="memdesc:a5ce4074d22f2d668150c6a8b731b372a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método principal da classe. Executa o jogo até a condição de vitória (veja <a class="el" href="#ab0c90a3d18e81655a22eb4eb92c1e8d1" title="Verifica se o tabuleiro está organizado na posição de vitória.">GetWinner()</a>) ou até a desistência do jogador (entrada = 9) .  <br /></td></tr>
-<tr class="separator:a5ce4074d22f2d668150c6a8b731b372a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a278ab042398dd26009d74e5fd67f2125" id="r_a278ab042398dd26009d74e5fd67f2125"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a278ab042398dd26009d74e5fd67f2125">Play</a> (std::string player1, std::string player2) override</td></tr>
+<tr class="memdesc:a278ab042398dd26009d74e5fd67f2125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Método principal da classe. Executa o jogo até a condição de vitória (veja <a class="el" href="#ab0c90a3d18e81655a22eb4eb92c1e8d1" title="Verifica se o tabuleiro está organizado na posição de vitória.">GetWinner()</a>) ou até a desistência do jogador (entrada = 9) .  <br /></td></tr>
+<tr class="separator:a278ab042398dd26009d74e5fd67f2125"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae7cb831d874ab398d7346346a815328" id="r_aae7cb831d874ab398d7346346a815328"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae7cb831d874ab398d7346346a815328">Game_Puzzle</a> (uint complexity, uint seed=time(NULL), <a class="el" href="struct_vec2.html">Vec2</a> _size=<a class="el" href="struct_vec2.html">Vec2</a>{3, 3})</td></tr>
 <tr class="memdesc:aae7cb831d874ab398d7346346a815328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor para o Puzzle.  <br /></td></tr>
 <tr class="separator:aae7cb831d874ab398d7346346a815328"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -229,6 +229,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board" id="r_af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#af95c6b7cebbe6facdb0d57ab71fd1ea0">AssertEmptyInput</a> ()</td></tr>
 <tr class="memdesc:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Garante que o input foi lido completamente.  <br /></td></tr>
 <tr class="separator:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board" id="r_a406ed26276c3688bab297cf211f58906"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a406ed26276c3688bab297cf211f58906">ResetScreen</a> ()</td></tr>
+<tr class="memdesc:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpa a tela do terminal.  <br /></td></tr>
+<tr class="separator:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_board')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a6709b97683753e2d69b72f3d19cd31ec inherit pro_attribs_class_board" id="r_a6709b97683753e2d69b72f3d19cd31ec"><td class="memItemLeft" align="right" valign="top">
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>current_player</b></td></tr>
@@ -452,8 +455,8 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 
 </div>
 </div>
-<a id="a5ce4074d22f2d668150c6a8b731b372a" name="a5ce4074d22f2d668150c6a8b731b372a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ce4074d22f2d668150c6a8b731b372a">&#9670;&#160;</a></span>Play()</h2>
+<a id="a278ab042398dd26009d74e5fd67f2125" name="a278ab042398dd26009d74e5fd67f2125"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a278ab042398dd26009d74e5fd67f2125">&#9670;&#160;</a></span>Play()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -464,8 +467,12 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
         <tr>
           <td class="memname">uint Game_Puzzle::Play </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player2</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -476,9 +483,16 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </div><div class="memdoc">
 
 <p>Método principal da classe. Executa o jogo até a condição de vitória (veja <a class="el" href="#ab0c90a3d18e81655a22eb4eb92c1e8d1" title="Verifica se o tabuleiro está organizado na posição de vitória.">GetWinner()</a>) ou até a desistência do jogador (entrada = 9) . </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player1</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 1] Apelido do primeiro jogador </td></tr>
+    <tr><td class="paramname">player2</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 2] Apelido do segundo jogador</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>uint 1 se o jogo foi completado com sucesso, 0 para qualquer outro caso. </dd></dl>
 
-<p>Implements <a class="el" href="class_board.html#a205ca7334d613880b33c8eaf1d8e5766">Board</a>.</p>
+<p>Implements <a class="el" href="class_board.html#a9b0cb32145ea4ea98b58d69ab05dd2ce">Board</a>.</p>
 
 </div>
 </div>

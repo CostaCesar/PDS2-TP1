@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['board_2ehpp_0',['Board.hpp',['../_board_8hpp.html',1,'']]]
+  ['admin_2ehpp_0',['Admin.hpp',['../_admin_8hpp.html',1,'']]]
 ];

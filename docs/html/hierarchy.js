@@ -11,7 +11,6 @@ var hierarchy =
     ] ],
     [ "Jogador", "struct_jogador.html", null ],
     [ "Piece", "class_piece.html", null ],
-    [ "Player", "class_player.html", null ],
     [ "Random", "class_random.html", null ],
     [ "Vec2", "struct_vec2.html", null ],
     [ "Vec2Hash", "struct_vec2_hash.html", null ]

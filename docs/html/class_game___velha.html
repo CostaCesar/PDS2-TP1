@@ -130,9 +130,9 @@ Inheritance diagram for Game_Velha:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa06e4824c60ba72463d90816673d0578" id="r_aa06e4824c60ba72463d90816673d0578"><td class="memItemLeft" align="right" valign="top">virtual uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa06e4824c60ba72463d90816673d0578">Play</a> () override</td></tr>
-<tr class="memdesc:aa06e4824c60ba72463d90816673d0578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executa a partida de Jogo da Velha.  <br /></td></tr>
-<tr class="separator:aa06e4824c60ba72463d90816673d0578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3415fb7963dac76d20a31e796e75fc9" id="r_ae3415fb7963dac76d20a31e796e75fc9"><td class="memItemLeft" align="right" valign="top">virtual uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3415fb7963dac76d20a31e796e75fc9">Play</a> (std::string player1, std::string player2) override</td></tr>
+<tr class="memdesc:ae3415fb7963dac76d20a31e796e75fc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executa a partida de Jogo da Velha.  <br /></td></tr>
+<tr class="separator:ae3415fb7963dac76d20a31e796e75fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a32182afa1c3f075dcbdab29794522b" id="r_a7a32182afa1c3f075dcbdab29794522b"><td class="memItemLeft" align="right" valign="top"><a id="a7a32182afa1c3f075dcbdab29794522b" name="a7a32182afa1c3f075dcbdab29794522b"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Game_Velha</b> ()</td></tr>
 <tr class="memdesc:a7a32182afa1c3f075dcbdab29794522b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor da classe <code><a class="el" href="class_game___velha.html" title="Classe que representa o jogo da velha, que herda de Board.">Game_Velha</a></code>. <br /></td></tr>
@@ -224,6 +224,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board" id="r_af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#af95c6b7cebbe6facdb0d57ab71fd1ea0">AssertEmptyInput</a> ()</td></tr>
 <tr class="memdesc:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Garante que o input foi lido completamente.  <br /></td></tr>
 <tr class="separator:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board" id="r_a406ed26276c3688bab297cf211f58906"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a406ed26276c3688bab297cf211f58906">ResetScreen</a> ()</td></tr>
+<tr class="memdesc:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpa a tela do terminal.  <br /></td></tr>
+<tr class="separator:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -375,8 +378,8 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 
 </div>
 </div>
-<a id="aa06e4824c60ba72463d90816673d0578" name="aa06e4824c60ba72463d90816673d0578"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa06e4824c60ba72463d90816673d0578">&#9670;&#160;</a></span>Play()</h2>
+<a id="ae3415fb7963dac76d20a31e796e75fc9" name="ae3415fb7963dac76d20a31e796e75fc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3415fb7963dac76d20a31e796e75fc9">&#9670;&#160;</a></span>Play()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -387,8 +390,12 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
         <tr>
           <td class="memname">uint Game_Velha::Play </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player2</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -399,12 +406,19 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </div><div class="memdoc">
 
 <p>Executa a partida de Jogo da Velha. </p>
-<p>Imprime um tabuleiro com as posições respectivas para cada jogada e admite uma entrada que representa a jogada de cada jogador alternando entre dois jogadores. Quando o jogo acaba, seja pela vitoria de um jogador ou por empate, ele imprime a variavel que representa o resultado do jogo.</p>
+<p>O jogo consiste em, existem dois tipos de peças representando cada jogador "X" e "O", cada jogador pode colocar uma peça por vez no tabuleiro (3x3), vence quem conseguir completar uma linha ou uma coluna ou uma diagonal completa (de tamnho 3) com suas respéctivas peças. Imprime um tabuleiro com as posições respectivas para cada jogada e admite uma entrada que representa a jogada de cada jogador alternando entre dois jogadores. Quando o jogo acaba, seja pela vitoria de um jogador ou por empate, ele imprime a variavel que representa o resultado do jogo.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player1</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 1] Apelido do primeiro jogador </td></tr>
+    <tr><td class="paramname">player2</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 2] Apelido do segundo jogador</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>uint 1 ou 2 para a vitoria do jogador respectivo e 0 para empate. </dd></dl>
 
-<p>Implements <a class="el" href="class_board.html#a205ca7334d613880b33c8eaf1d8e5766">Board</a>.</p>
+<p>Implements <a class="el" href="class_board.html#a9b0cb32145ea4ea98b58d69ab05dd2ce">Board</a>.</p>
 
-<p>Reimplemented in <a class="el" href="class_game___velha___infinity.html#a402cd9fe5f1512b58721c4679194f447">Game_Velha_Infinity</a>.</p>
+<p>Reimplemented in <a class="el" href="class_game___velha___infinity.html#a313c00fc7e53b815b4d5e89a7e4c86e9">Game_Velha_Infinity</a>.</p>
 
 </div>
 </div>

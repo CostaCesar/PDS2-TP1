@@ -6,5 +6,6 @@ var searchData=
   ['board_2ehpp_3',['Board.hpp',['../_board_8hpp.html',1,'']]],
   ['board_5fsize_4',['board_size',['../class_board.html#ad6b0dd110170ea209058ae7d73bb8165',1,'Board']]],
   ['boardtest_5',['BoardTest',['../class_board_test.html',1,'']]],
-  ['build_6',['Fazendo o Build',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]]
+  ['build_6',['Fazendo o Build',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]],
+  ['by_20leo_7',['Lig4 (by Leo)',['../md__r_e_a_d_m_e.html#autotoc_md9',1,'']]]
 ];

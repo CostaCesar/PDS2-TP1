@@ -7,6 +7,6 @@ var class_game___puzzle =
     [ "HandleOverlap_Move", "class_game___puzzle.html#af762fe560cce09cfd61b7ae694a93c60", null ],
     [ "IsDraw", "class_game___puzzle.html#a0437bbb99405db6d1eac98ae33bbbd18", null ],
     [ "MovePiece", "class_game___puzzle.html#a89a1864bd7a749f9b0aea2988653f0b6", null ],
-    [ "Play", "class_game___puzzle.html#a5ce4074d22f2d668150c6a8b731b372a", null ],
+    [ "Play", "class_game___puzzle.html#a278ab042398dd26009d74e5fd67f2125", null ],
     [ "ReadMove", "class_game___puzzle.html#af2e5a69542634f32aba68e18e2c49204", null ]
 ];

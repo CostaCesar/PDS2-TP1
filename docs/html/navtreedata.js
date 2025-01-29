@@ -25,16 +25,21 @@
 var NAVTREE =
 [
   [ "PDS2-TP1: Arcade", "index.html", [
-    [ "Detalhes", "md__r_e_a_d_m_e.html", [
-      [ "Integrantes", "md__r_e_a_d_m_e.html#autotoc_md1", null ],
-      [ "Fazendo o Build", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
-      [ "Estrutura do repositório", "md__r_e_a_d_m_e.html#autotoc_md3", null ],
-      [ "Terminologia", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
-      [ "Andamento", "md__r_e_a_d_m_e.html#autotoc_md5", null ],
-      [ "Lig4", "md__r_e_a_d_m_e.html#autotoc_md6", [
-        [ "Visão Geral", "md__r_e_a_d_m_e.html#autotoc_md7", null ],
-        [ "Dificuldades", "md__r_e_a_d_m_e.html#autotoc_md8", null ],
-        [ "Extras da Classe", "md__r_e_a_d_m_e.html#autotoc_md9", null ]
+    [ "Requisitos", "md__r_e_a_d_m_e.html", [
+      [ "Detalhes", "md__r_e_a_d_m_e.html#autotoc_md1", [
+        [ "Integrantes", "md__r_e_a_d_m_e.html#autotoc_md2", null ],
+        [ "Fazendo o Build", "md__r_e_a_d_m_e.html#autotoc_md3", null ],
+        [ "Documentação", "md__r_e_a_d_m_e.html#autotoc_md4", null ],
+        [ "Estrutura do repositório", "md__r_e_a_d_m_e.html#autotoc_md5", null ],
+        [ "Terminologia", "md__r_e_a_d_m_e.html#autotoc_md6", null ],
+        [ "Distribuição", "md__r_e_a_d_m_e.html#autotoc_md7", null ]
+      ] ],
+      [ "Informações extra", "md__r_e_a_d_m_e.html#autotoc_md8", [
+        [ "Lig4 (by Leo)", "md__r_e_a_d_m_e.html#autotoc_md9", [
+          [ "Visão Geral", "md__r_e_a_d_m_e.html#autotoc_md10", null ],
+          [ "Dificuldades", "md__r_e_a_d_m_e.html#autotoc_md11", null ],
+          [ "Extras da Classe", "md__r_e_a_d_m_e.html#autotoc_md12", null ]
+        ] ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -51,6 +56,7 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
         [ "Enumerations", "globals_enum.html", null ]
       ] ]
     ] ]
@@ -59,7 +65,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_admin_8hpp_source.html"
+"_admin_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -9,7 +9,7 @@ var class_game___reversi =
     [ "GetWinner", "class_game___reversi.html#abcab6f80a58b9a7f7f6c9ab2100fdc34", null ],
     [ "IsDraw", "class_game___reversi.html#a4b9c6367e2e73af834f7b89657739979", null ],
     [ "MarkAsPlayable", "class_game___reversi.html#a471c37eb3ce6824e036e49fe8f26c30c", null ],
-    [ "Play", "class_game___reversi.html#ad4f19277195ee5ae99f552a1b20e374d", null ],
+    [ "Play", "class_game___reversi.html#a901ce3ff37e753bcf0e851b4915c9ad7", null ],
     [ "black_count", "class_game___reversi.html#a81509057e96d1cf38d868ad1af9d2bee", null ],
     [ "k_available", "class_game___reversi.html#aa7555695fd3e57a3d0a08d45342fe9f5", null ],
     [ "k_player1", "class_game___reversi.html#ad95bc252daf94eb8577459b65805370c", null ],

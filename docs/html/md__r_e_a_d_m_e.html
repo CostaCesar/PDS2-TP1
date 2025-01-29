@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PDS2-TP1: Arcade: Detalhes</title>
+<title>PDS2-TP1: Arcade: Requisitos</title>
 <link rel="icon" href="logo.png" type="image/x-icon" />
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -105,38 +105,52 @@ $(function(){initNavTree('md__r_e_a_d_m_e.html',''); initResizable(true); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Detalhes</div></div>
+  <div class="headertitle"><div class="title">Requisitos</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+<ul>
+<li>g++ (capaz de compilar c++11)</li>
+<li>doxygen (opcional, para gerar a documentação)</li>
+</ul>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Integrantes</h1>
+Detalhes</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Integrantes</h2>
 <ul>
 <li>Caio César Moraes Costa</li>
 <li>Rafic Alves Magalhães Farah Leão</li>
 <li>Leonardo Barreto Gaiao</li>
 <li>Vinicius de Alcantara Garrido</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Fazendo o Build</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Fazendo o Build</h2>
 <p>Rode esse comando para gerar o programa principal e os testes:</p>
 <div class="fragment"><div class="line">make all</div>
+</div><!-- fragment --><p>Ou rode eles como targets separados </p><div class="fragment"><div class="line">make main</div>
+<div class="line">make tests</div>
 </div><!-- fragment --><p>Ou escolha manualmente uma seleção dentre os seguintes target:</p><ul>
 <li>test_board</li>
 <li>test_reversi</li>
 <li>test_puzzle</li>
 <li>test_liga4</li>
 <li>test_velha</li>
+<li>test_velha_infity</li>
 </ul>
 <p>Se precisa fazer o debug desses binários: </p><div class="fragment"><div class="line">make DEBUG=1 &lt;sua_seleção&gt;</div>
 </div><!-- fragment --><p>Utilize a flag <b>-B</b> do make para forçar a recompilação</p>
 <p>Para limpexa do projeto: </p><div class="fragment"><div class="line">make clean     # remove todos os objetos em ./temp</div>
 <div class="line">make delete    # remove todos os binarios em ./bin</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
-Estrutura do repositório</h1>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+Documentação</h2>
+<p>Para acessar a documentação completa do código, abra o arquivo em <b>./docs/html/index.html</b>.</p>
+<p>A documentação vem inclusa no projeto, mas pode ser regerado através de:</p>
+<div class="fragment"><div class="line">make doc</div>
+</div><!-- fragment --><p>*O comando acima precisa que <a href="https://doxygen.nl/index.html"><b>doxygen</b></a> esteja presente na pasta **./doxygen***</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Estrutura do repositório</h2>
 <ul>
 <li><b>bin:</b> Arquivos binários finais (Windows &amp; Linux)<ul>
-<li>**/data:** Arquivos de dados gerados pelo programa</li>
 <li>**/input:** Arquivos de entrada de dados para os testes</li>
 </ul>
 </li>
@@ -144,31 +158,36 @@ Estrutura do repositório</h1>
 <li><b>src:</b> Arquivos de código fonte (.cpp)</li>
 <li><b>tmp:</b> Arquivos de cache para compilação (.o gerados pelo <em>make</em>)</li>
 <li><b>test:</b> Arquivos de código que testam o programa (testes escritos em C++)</li>
+<li><b>cadastro.csv</b> Arquivo gerado pelo main com as informações dos jogadores</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Terminologia</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Terminologia</h2>
 <p><em>dummy-file</em> é um arquivo vazio, criado para forçar a estrutura de diretório no repositório. Serão apagados quando o projeto estiver concluido</p>
 <p>**_Test* são os arquivos de teste gerados pelo make ou pela geração individual de cada target ou pelo comando: </p><div class="fragment"><div class="line">make tests</div>
-</div><!-- fragment --> <h1><a class="anchor" id="autotoc_md5"></a>
-Andamento</h1>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md7"></a>
+Distribuição</h2>
 <ul>
 <li><b>Tabuleiro base:</b> Caio César Moraes Costa</li>
 <li><b>Jogo da velha:</b> Vinicius de Alcantara Garrido</li>
+<li><b>Jogo da velha infinito:</b> Vinicius de Alcantara Garrido</li>
 <li><b>Lig4:</b> Leonardo Barreto Gaiao</li>
 <li><b>Reversi:</b> Caio César Moraes Costa</li>
-<li><b>Sistema de jogador</b>: Rafic Alves Magalhães Farah Leão</li>
 <li><b>Puzzle (Jogo do 8):</b> Caio César Moraes Costa</li>
+<li><b>Sistema de jogador</b>: Rafic Alves Magalhães Farah Leão</li>
+<li><b>Programa final</b>: Rafic Alves Magalhães Farah Leão</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md6"></a>
-Lig4</h1>
-<h2><a class="anchor" id="autotoc_md7"></a>
-Visão Geral</h2>
-<p>A classe implementa a lógica necessária para jogar Lig4(Connect 4) Permite a customização do tamanho do <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a> Aceita tanto a entrada padrão quanto a input Utiliza funcionalidades do <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a> para implementar a lógica da classe o que demonstra um uso de técnicas de POO</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
-Dificuldades</h2>
-<p>A principal dificuldade da implentação da classe foi a possibilidade de ler um arquivo de texto como entrada(fazer os testes) Intepretar completamente as requisições do TP foi um desafio também</p>
+<h1><a class="anchor" id="autotoc_md8"></a>
+Informações extra</h1>
 <h2><a class="anchor" id="autotoc_md9"></a>
-Extras da Classe</h2>
+Lig4 (by Leo)</h2>
+<h3><a class="anchor" id="autotoc_md10"></a>
+Visão Geral</h3>
+<p>A classe implementa a lógica necessária para jogar Lig4(Connect 4) Permite a customização do tamanho do <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a> Aceita tanto a entrada padrão quanto a input Utiliza funcionalidades do <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a> para implementar a lógica da classe o que demonstra um uso de técnicas de POO</p>
+<h3><a class="anchor" id="autotoc_md11"></a>
+Dificuldades</h3>
+<p>A principal dificuldade da implentação da classe foi a possibilidade de ler um arquivo de texto como entrada(fazer os testes) Intepretar completamente as requisições do TP foi um desafio também</p>
+<h3><a class="anchor" id="autotoc_md12"></a>
+Extras da Classe</h3>
 <p>Apresenta cores para cada jogador Limpa o tabuleiro no stdin, tornando o jogo dinâmico </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

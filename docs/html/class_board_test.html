@@ -129,9 +129,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8b7a68daa89d10ded137b3d46a2d294" id="r_ae8b7a68daa89d10ded137b3d46a2d294"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8b7a68daa89d10ded137b3d46a2d294">GetWinner</a> () override</td></tr>
 <tr class="memdesc:ae8b7a68daa89d10ded137b3d46a2d294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtem o jogador que venceu.  <br /></td></tr>
 <tr class="separator:ae8b7a68daa89d10ded137b3d46a2d294"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a622c4d0194327fa627eff2b04bd7412d" id="r_a622c4d0194327fa627eff2b04bd7412d"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a622c4d0194327fa627eff2b04bd7412d">Play</a> () override</td></tr>
-<tr class="memdesc:a622c4d0194327fa627eff2b04bd7412d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza a partida do jogo.  <br /></td></tr>
-<tr class="separator:a622c4d0194327fa627eff2b04bd7412d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac45799e2f8ff2647d324bd7619064a3a" id="r_ac45799e2f8ff2647d324bd7619064a3a"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac45799e2f8ff2647d324bd7619064a3a">Play</a> (std::string a, std::string b) override</td></tr>
+<tr class="memdesc:ac45799e2f8ff2647d324bd7619064a3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza a partida do jogo.  <br /></td></tr>
+<tr class="separator:ac45799e2f8ff2647d324bd7619064a3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbabc595e0f1b4850f2c0516c7e8dbb7" id="r_adbabc595e0f1b4850f2c0516c7e8dbb7"><td class="memItemLeft" align="right" valign="top"><a id="adbabc595e0f1b4850f2c0516c7e8dbb7" name="adbabc595e0f1b4850f2c0516c7e8dbb7"></a>
 <a class="el" href="class_piece.html">Piece</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetPiece</b> (<a class="el" href="struct_vec2.html">Vec2</a> pos)</td></tr>
 <tr class="separator:adbabc595e0f1b4850f2c0516c7e8dbb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,6 +216,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board" id="r_af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#af95c6b7cebbe6facdb0d57ab71fd1ea0">AssertEmptyInput</a> ()</td></tr>
 <tr class="memdesc:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Garante que o input foi lido completamente.  <br /></td></tr>
 <tr class="separator:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board" id="r_a406ed26276c3688bab297cf211f58906"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a406ed26276c3688bab297cf211f58906">ResetScreen</a> ()</td></tr>
+<tr class="memdesc:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpa a tela do terminal.  <br /></td></tr>
+<tr class="separator:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_board')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a6709b97683753e2d69b72f3d19cd31ec inherit pro_attribs_class_board" id="r_a6709b97683753e2d69b72f3d19cd31ec"><td class="memItemLeft" align="right" valign="top">
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>current_player</b></td></tr>
@@ -293,8 +296,8 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 
 </div>
 </div>
-<a id="a622c4d0194327fa627eff2b04bd7412d" name="a622c4d0194327fa627eff2b04bd7412d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a622c4d0194327fa627eff2b04bd7412d">&#9670;&#160;</a></span>Play()</h2>
+<a id="ac45799e2f8ff2647d324bd7619064a3a" name="ac45799e2f8ff2647d324bd7619064a3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45799e2f8ff2647d324bd7619064a3a">&#9670;&#160;</a></span>Play()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -305,8 +308,12 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
         <tr>
           <td class="memname">uint BoardTest::Play </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player2</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -317,11 +324,18 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 </div><div class="memdoc">
 
 <p>Realiza a partida do jogo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player1</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 1] Apelido do primeiro jogador </td></tr>
+    <tr><td class="paramname">player2</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 2] Apelido do segundo jogador </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>0 em caso de empate. Senão, O ID do jogador que venceu é retornado</dd></dl>
 <p>Essa é a principal função da classe <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a>.</p>
 <dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
 
-<p>Implements <a class="el" href="class_board.html#a205ca7334d613880b33c8eaf1d8e5766">Board</a>.</p>
+<p>Implements <a class="el" href="class_board.html#a9b0cb32145ea4ea98b58d69ab05dd2ce">Board</a>.</p>
 
 </div>
 </div>

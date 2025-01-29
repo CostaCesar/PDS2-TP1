@@ -131,9 +131,9 @@ Inheritance diagram for Game_Reversi:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad4f19277195ee5ae99f552a1b20e374d" id="r_ad4f19277195ee5ae99f552a1b20e374d"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4f19277195ee5ae99f552a1b20e374d">Play</a> ()</td></tr>
-<tr class="memdesc:ad4f19277195ee5ae99f552a1b20e374d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza a partida do jogo.  <br /></td></tr>
-<tr class="separator:ad4f19277195ee5ae99f552a1b20e374d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a901ce3ff37e753bcf0e851b4915c9ad7" id="r_a901ce3ff37e753bcf0e851b4915c9ad7"><td class="memItemLeft" align="right" valign="top">uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a901ce3ff37e753bcf0e851b4915c9ad7">Play</a> (std::string player1, std::string player2) override</td></tr>
+<tr class="memdesc:a901ce3ff37e753bcf0e851b4915c9ad7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza a partida do jogo.  <br /></td></tr>
+<tr class="separator:a901ce3ff37e753bcf0e851b4915c9ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4962625e6e597d824f939f8a7b0dfdfb" id="r_a4962625e6e597d824f939f8a7b0dfdfb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4962625e6e597d824f939f8a7b0dfdfb">Game_Reversi</a> (uint _start_player=1)</td></tr>
 <tr class="memdesc:a4962625e6e597d824f939f8a7b0dfdfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor da classe <a class="el" href="class_game___reversi.html" title="Classe que representa o jogo Reversi, que herda de Board.">Game_Reversi</a>.  <br /></td></tr>
 <tr class="separator:a4962625e6e597d824f939f8a7b0dfdfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -259,6 +259,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board" id="r_af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#af95c6b7cebbe6facdb0d57ab71fd1ea0">AssertEmptyInput</a> ()</td></tr>
 <tr class="memdesc:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Garante que o input foi lido completamente.  <br /></td></tr>
 <tr class="separator:af95c6b7cebbe6facdb0d57ab71fd1ea0 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board" id="r_a406ed26276c3688bab297cf211f58906"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_board.html#a406ed26276c3688bab297cf211f58906">ResetScreen</a> ()</td></tr>
+<tr class="memdesc:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpa a tela do terminal.  <br /></td></tr>
+<tr class="separator:a406ed26276c3688bab297cf211f58906 inherit pro_methods_class_board"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_board"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_board')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_board.html">Board</a></td></tr>
 <tr class="memitem:a6709b97683753e2d69b72f3d19cd31ec inherit pro_attribs_class_board" id="r_a6709b97683753e2d69b72f3d19cd31ec"><td class="memItemLeft" align="right" valign="top">
 uint&#160;</td><td class="memItemRight" valign="bottom"><b>current_player</b></td></tr>
@@ -533,8 +536,8 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
 
 </div>
 </div>
-<a id="ad4f19277195ee5ae99f552a1b20e374d" name="ad4f19277195ee5ae99f552a1b20e374d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4f19277195ee5ae99f552a1b20e374d">&#9670;&#160;</a></span>Play()</h2>
+<a id="a901ce3ff37e753bcf0e851b4915c9ad7" name="a901ce3ff37e753bcf0e851b4915c9ad7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a901ce3ff37e753bcf0e851b4915c9ad7">&#9670;&#160;</a></span>Play()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -545,23 +548,34 @@ uint&#160;</td><td class="memItemRight" valign="bottom"><b>num_plays</b></td></t
         <tr>
           <td class="memname">uint Game_Reversi::Play </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player2</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Realiza a partida do jogo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player1</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 1] Apelido do primeiro jogador </td></tr>
+    <tr><td class="paramname">player2</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 2] Apelido do segundo jogador </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>0 em caso de empate. Senão, O ID do jogador que venceu é retornado</dd></dl>
 <p>Essa é a principal função da classe <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a>.</p>
 <dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
 
-<p>Implements <a class="el" href="class_board.html#a205ca7334d613880b33c8eaf1d8e5766">Board</a>.</p>
+<p>Implements <a class="el" href="class_board.html#a9b0cb32145ea4ea98b58d69ab05dd2ce">Board</a>.</p>
 
 </div>
 </div>

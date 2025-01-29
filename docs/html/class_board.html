@@ -162,9 +162,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adcac52fd91d06e5f6262a63971f70700" id="r_adcac52fd91d06e5f6262a63971f70700"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcac52fd91d06e5f6262a63971f70700">IsDraw</a> ()=0</td></tr>
 <tr class="memdesc:adcac52fd91d06e5f6262a63971f70700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determina se o jogo empatou ou não.  <br /></td></tr>
 <tr class="separator:adcac52fd91d06e5f6262a63971f70700"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a205ca7334d613880b33c8eaf1d8e5766" id="r_a205ca7334d613880b33c8eaf1d8e5766"><td class="memItemLeft" align="right" valign="top">virtual uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a205ca7334d613880b33c8eaf1d8e5766">Play</a> ()=0</td></tr>
-<tr class="memdesc:a205ca7334d613880b33c8eaf1d8e5766"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza a partida do jogo.  <br /></td></tr>
-<tr class="separator:a205ca7334d613880b33c8eaf1d8e5766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b0cb32145ea4ea98b58d69ab05dd2ce" id="r_a9b0cb32145ea4ea98b58d69ab05dd2ce"><td class="memItemLeft" align="right" valign="top">virtual uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b0cb32145ea4ea98b58d69ab05dd2ce">Play</a> (std::string player1=&quot;Jogador 1&quot;, std::string player2=&quot;Jogador 2&quot;)=0</td></tr>
+<tr class="memdesc:a9b0cb32145ea4ea98b58d69ab05dd2ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza a partida do jogo.  <br /></td></tr>
+<tr class="separator:a9b0cb32145ea4ea98b58d69ab05dd2ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ee491d4fea680cf69b033374a9fdfcb" id="r_a9ee491d4fea680cf69b033374a9fdfcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ee491d4fea680cf69b033374a9fdfcb">Board</a> ()</td></tr>
 <tr class="memdesc:a9ee491d4fea680cf69b033374a9fdfcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construtor padrão do <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a>.  <br /></td></tr>
 <tr class="separator:a9ee491d4fea680cf69b033374a9fdfcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,6 +221,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:af95c6b7cebbe6facdb0d57ab71fd1ea0" id="r_af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af95c6b7cebbe6facdb0d57ab71fd1ea0">AssertEmptyInput</a> ()</td></tr>
 <tr class="memdesc:af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Garante que o input foi lido completamente.  <br /></td></tr>
 <tr class="separator:af95c6b7cebbe6facdb0d57ab71fd1ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406ed26276c3688bab297cf211f58906" id="r_a406ed26276c3688bab297cf211f58906"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a406ed26276c3688bab297cf211f58906">ResetScreen</a> ()</td></tr>
+<tr class="memdesc:a406ed26276c3688bab297cf211f58906"><td class="mdescLeft">&#160;</td><td class="mdescRight">Limpa a tela do terminal.  <br /></td></tr>
+<tr class="separator:a406ed26276c3688bab297cf211f58906"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -251,7 +254,7 @@ Private Attributes</h2></td></tr>
 <p>Todo tabuleiro que herda de <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a> deve implementar as seguintes funções abstratas:</p><ul>
 <li><a class="el" href="#a81ee595fb7d477197d8ed175095498eb" title="Obtem o jogador que venceu.">GetWinner()</a></li>
 <li><a class="el" href="#adcac52fd91d06e5f6262a63971f70700" title="Determina se o jogo empatou ou não.">IsDraw()</a></li>
-<li><a class="el" href="#a205ca7334d613880b33c8eaf1d8e5766" title="Realiza a partida do jogo.">Play()</a> </li>
+<li><a class="el" href="#a9b0cb32145ea4ea98b58d69ab05dd2ce" title="Realiza a partida do jogo.">Play()</a> </li>
 </ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9ee491d4fea680cf69b033374a9fdfcb" name="a9ee491d4fea680cf69b033374a9fdfcb"></a>
@@ -401,8 +404,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Garante que o input foi lido completamente. </p>
-<p>Se a entrada for completamente lida, input-&gt;peek() deve retornar <br  />
-. Se houver algum caracter no input não lido, o método lança uma exceção.</p>
+<p>Se a entrada for completamente lida, input-&gt;peek() deve retornar '<br  />
+'. Se houver algum caracter no input não lido, o método lança uma exceção.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">invalid_argument</td><td>Quando o input não foi completamente lido </td></tr>
@@ -1024,8 +1027,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a205ca7334d613880b33c8eaf1d8e5766" name="a205ca7334d613880b33c8eaf1d8e5766"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a205ca7334d613880b33c8eaf1d8e5766">&#9670;&#160;</a></span>Play()</h2>
+<a id="a9b0cb32145ea4ea98b58d69ab05dd2ce" name="a9b0cb32145ea4ea98b58d69ab05dd2ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b0cb32145ea4ea98b58d69ab05dd2ce">&#9670;&#160;</a></span>Play()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1036,8 +1039,12 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual uint Board::Play </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player1</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;Jogador&#160;1&quot;</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>player2</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;Jogador&#160;2&quot;</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -1048,11 +1055,18 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Realiza a partida do jogo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player1</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 1] Apelido do primeiro jogador </td></tr>
+    <tr><td class="paramname">player2</td><td>[<a class="el" href="struct_jogador.html">Jogador</a> 2] Apelido do segundo jogador </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>0 em caso de empate. Senão, O ID do jogador que venceu é retornado</dd></dl>
 <p>Essa é a principal função da classe <a class="el" href="class_board.html" title="Tabuleiro base.">Board</a>.</p>
 <dl class="section warning"><dt>Warning</dt><dd>Essa função deve ser sobreescrita para que a classe seja válida </dd></dl>
 
-<p>Implemented in <a class="el" href="class_board_test.html#a622c4d0194327fa627eff2b04bd7412d">BoardTest</a>, <a class="el" href="class_game___liga4.html#a635d1654d20e261fe4360a910eb6a49a">Game_Liga4</a>, <a class="el" href="class_game___puzzle.html#a5ce4074d22f2d668150c6a8b731b372a">Game_Puzzle</a>, <a class="el" href="class_game___reversi.html#ad4f19277195ee5ae99f552a1b20e374d">Game_Reversi</a>, <a class="el" href="class_game___velha.html#aa06e4824c60ba72463d90816673d0578">Game_Velha</a>, and <a class="el" href="class_game___velha___infinity.html#a402cd9fe5f1512b58721c4679194f447">Game_Velha_Infinity</a>.</p>
+<p>Implemented in <a class="el" href="class_board_test.html#ac45799e2f8ff2647d324bd7619064a3a">BoardTest</a>, <a class="el" href="class_game___liga4.html#a70db19f66f30a94ac41ae26c9f1746a0">Game_Liga4</a>, <a class="el" href="class_game___puzzle.html#a278ab042398dd26009d74e5fd67f2125">Game_Puzzle</a>, <a class="el" href="class_game___reversi.html#a901ce3ff37e753bcf0e851b4915c9ad7">Game_Reversi</a>, <a class="el" href="class_game___velha.html#ae3415fb7963dac76d20a31e796e75fc9">Game_Velha</a>, and <a class="el" href="class_game___velha___infinity.html#a313c00fc7e53b815b4d5e89a7e4c86e9">Game_Velha_Infinity</a>.</p>
 
 </div>
 </div>
@@ -1130,6 +1144,35 @@ Private Attributes</h2></td></tr>
 <p>Essa função lê 2 números inteiros positivos por padrão, X Y (veja <a class="el" href="#ac1a1d61663ea7887b3dc8f504f78def1" title="Faz a leitura de um numero inteiro positivo do input.">GetUintFromInput()</a>). Outros jogos podem sobreescreve-la para a leitura no formato apropriado </p>
 
 <p>Reimplemented in <a class="el" href="class_game___liga4.html#a333f7909eea34d17f86bd8c84222bddb">Game_Liga4</a>, and <a class="el" href="class_game___puzzle.html#af2e5a69542634f32aba68e18e2c49204">Game_Puzzle</a>.</p>
+
+</div>
+</div>
+<a id="a406ed26276c3688bab297cf211f58906" name="a406ed26276c3688bab297cf211f58906"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a406ed26276c3688bab297cf211f58906">&#9670;&#160;</a></span>ResetScreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Board::ResetScreen </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Limpa a tela do terminal. </p>
+<p>Como os comandos de limpeza diferem entre sistemas (cls X clear), esse método abstrai essa avaliação.</p>
+<p>A limpeza só ocorre com a entrada vindo de std::cin. Nos testes, como é vantajoso ver a saida, esse método não faz a limpeza </p>
 
 </div>
 </div>

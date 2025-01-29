@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['setplayerid_0',['SetPlayerId',['../class_piece.html#a1b3d1dc1ab3bb3a5c4ced4dfb6820e9f',1,'Piece']]],
-  ['setrandomseed_1',['SetRandomSeed',['../class_random.html#ac81c84057f5072d6c3e4502aa243f2b4',1,'Random']]],
-  ['setsymbol_2',['SetSymbol',['../class_piece.html#a3794297e13f766cbc6230451f888d76e',1,'Piece']]]
+  ['readmove_0',['ReadMove',['../class_board.html#a44af1d0a4e89489da01f7d37506a6e32',1,'Board::ReadMove()'],['../class_game___liga4.html#a333f7909eea34d17f86bd8c84222bddb',1,'Game_Liga4::ReadMove()'],['../class_game___puzzle.html#af2e5a69542634f32aba68e18e2c49204',1,'Game_Puzzle::ReadMove()']]],
+  ['registerplayer_1',['registerPlayer',['../_register_8hpp.html#a50c7026faef3812b451d08badfc34a8e',1,'Register.cpp']]],
+  ['resetscreen_2',['ResetScreen',['../class_board.html#a406ed26276c3688bab297cf211f58906',1,'Board']]]
 ];

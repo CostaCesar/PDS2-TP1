@@ -9,7 +9,6 @@ var annotated_dup =
     [ "Game_Velha_Infinity", "class_game___velha___infinity.html", "class_game___velha___infinity" ],
     [ "Jogador", "struct_jogador.html", null ],
     [ "Piece", "class_piece.html", "class_piece" ],
-    [ "Player", "class_player.html", null ],
     [ "Random", "class_random.html", "class_random" ],
     [ "Vec2", "struct_vec2.html", "struct_vec2" ],
     [ "Vec2Hash", "struct_vec2_hash.html", null ]
