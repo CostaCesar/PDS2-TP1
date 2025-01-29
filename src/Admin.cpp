@@ -27,6 +27,17 @@ map<string, int> INDEX= {
     {"INFINITY",5},
 };
 
+void printMenu() {
+    cout << "digite uma das opçoes abaixo:" << std::endl;
+    cout << std::endl << "Cadastrar jogador: CJ <Apelido> <Nome>" << std::endl;
+    cout << "Remover jogador: RJ <Apelido>" << std::endl;
+    cout << "Listar jogadores: LJ [A|N]" << std::endl;
+    
+    cout << "Executar partida: ";
+    cout << "EP <Jogo: (R|L|V|P|I)> <Apelido Jogador 1> <Apelido Jogador 2>" << std::endl;
+    
+    cout << "Finalizar sistema: FS" << std::endl << std::endl;
+}
 
 void checkWinner (string j1, string j2, int vencedor, int jogo) {
     switch(vencedor) {

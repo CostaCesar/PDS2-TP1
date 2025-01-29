@@ -67,8 +67,10 @@ int deletePlayer(string nickname, string arquivo);
     @brief Lista os jogadores no arquivo .csv passado por ordem alfabetica de apelido ou nome.
     @param sel Pode ser A ou N. Caso seja A, lista os jogadores por apelido. Caso seja N, lista os jogadores por nome.
     @param arquivo Arquivo .csv com dados dos jogadores.
+
+    @return Caso o arquivo .csv esteja vazio, retorna 1;
 */
-void listPlayers(char sel, string arquivo);
+int listPlayers(char sel, string arquivo);
 
 /*! @fn updateScore(string winnerNickname, string looserNickname, int jogo, string arquivo)
     @brief Atualiza a pontuação dos jogadores participantes de uma partida.
@@ -81,6 +83,7 @@ void listPlayers(char sel, string arquivo);
     -# Puzzle
     -# Jogo da Velha Infinito
     @param arquivo Arquivo .csv com dados dos jogadores.
+    @return Caso a lista esteja vazia, retorna 0. Se não, retorna 1;
     
     @warning Ao implementar novos jogos, atente-se ao formato dos dados adicionados por essa função.
 */
