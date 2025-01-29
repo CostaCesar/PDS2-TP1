@@ -16,6 +16,7 @@ const std::string reset_color = "\033[0m";    // Resetando a cor
 
 uint Game_Liga4::Play(std::string player1, std::string player2)
 {
+    system("");
     Vec2 last_move;
 
     while (this->num_plays > 0)
