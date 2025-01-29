@@ -28,7 +28,7 @@ map<string, int> INDEX= {
 };
 
 void printMenu() {
-    cout << "digite uma das opções abaixo:" << std::endl;
+    cout << "digite uma das opçoes abaixo:" << std::endl;
     cout << std::endl << "Cadastrar jogador: CJ <Apelido> <Nome>" << std::endl;
     cout << "Remover jogador: RJ <Apelido>" << std::endl;
     cout << "Listar jogadores: LJ [A|N]" << std::endl;
